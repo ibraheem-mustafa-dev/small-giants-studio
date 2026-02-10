@@ -101,7 +101,7 @@ export function Services() {
             <h3 className="text-xl font-bold text-text-primary group-hover:text-primary-700 dark:group-hover:text-primary-300 sm:text-2xl">
               {services[0].title}
             </h3>
-            <p className="mt-2 text-lg font-medium text-accent-500">{services[0].outcome}</p>
+            <p className="mt-2 text-lg font-medium text-accent-700 dark:text-accent-400">{services[0].outcome}</p>
             <p className="mt-2 text-text-secondary">
               {services[0].description} I audit your whole digital setup and rebuild it as one connected system — marketing, operations, CRM, all talking to each other.
             </p>
@@ -128,7 +128,7 @@ export function Services() {
               <h3 className="mt-3 text-base font-semibold text-text-primary group-hover:text-primary-700 dark:group-hover:text-primary-300">
                 {service.title}
               </h3>
-              <p className="mt-1 text-sm font-medium text-accent-500">{service.outcome}</p>
+              <p className="mt-1 text-sm font-medium text-accent-700 dark:text-accent-400">{service.outcome}</p>
               <div className="mt-3 flex items-center text-xs font-medium text-primary-700 dark:text-primary-300 opacity-0 transition-opacity group-hover:opacity-100">
                 Learn more
                 <svg className="ml-1 h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">

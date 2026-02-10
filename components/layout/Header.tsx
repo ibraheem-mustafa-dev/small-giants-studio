@@ -88,7 +88,7 @@ export function Header() {
           <ThemeToggle />
           <Link
             href="/contact"
-            className="rounded-lg bg-accent-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+            className="rounded-lg bg-accent-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-800 focus:outline-none focus:ring-2 focus:ring-accent-700 focus:ring-offset-2"
           >
             Let&apos;s Chat
           </Link>
@@ -114,7 +114,7 @@ export function Header() {
           <div className="pt-2">
             <Link
               href="/contact"
-              className="block w-full rounded-lg bg-accent-500 px-3 py-3 text-center text-base font-semibold text-white transition-all hover:bg-accent-600"
+              className="block w-full rounded-lg bg-accent-700 px-3 py-3 text-center text-base font-semibold text-white transition-all hover:bg-accent-800"
               onClick={() => setMobileMenuOpen(false)}
             >
               Let&apos;s Chat

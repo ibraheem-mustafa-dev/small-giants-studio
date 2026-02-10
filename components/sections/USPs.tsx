@@ -107,7 +107,7 @@ export function USPs() {
               key={usp.title}
               className="group rounded-xl border border-border bg-surface p-6 transition-all hover:border-primary-300 hover:shadow-lg"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-700 transition-colors group-hover:bg-primary-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-700 dark:text-primary-300 transition-colors group-hover:bg-primary-200">
                 {usp.icon}
               </div>
               <h3 className="mt-4 text-lg font-semibold text-text-primary">

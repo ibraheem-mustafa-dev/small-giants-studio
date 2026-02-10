@@ -204,7 +204,7 @@ export default function ServicesPage() {
               >
                 {/* Content */}
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-accent-500">
+                  <p className="text-sm font-semibold uppercase tracking-wider text-accent-700 dark:text-accent-400">
                     {service.outcome}
                   </p>
                   <h2 className="mt-2 text-2xl font-bold text-text-primary sm:text-3xl">
@@ -372,7 +372,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-accent-500 py-16 sm:py-24">
+      <section className="bg-accent-700 py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
             Not sure where to start?

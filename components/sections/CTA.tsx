@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 export function CTA() {
   return (
     <section
-      className="relative bg-gradient-to-r from-accent-500 to-accent-600 py-16 sm:py-24"
+      className="relative bg-gradient-to-r from-accent-700 to-accent-800 py-16 sm:py-24"
       aria-labelledby="cta-heading"
     >
       {/* Wave divider */}

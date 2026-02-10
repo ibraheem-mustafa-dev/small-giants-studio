@@ -149,7 +149,7 @@ export function Testimonials() {
           <div className="mt-8 flex items-center justify-center gap-4">
             <button
               onClick={prevTestimonial}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface text-text-secondary transition-all hover:border-primary-300 hover:text-primary-700"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface text-text-secondary transition-all hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-300"
               aria-label="Previous testimonial"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
@@ -180,7 +180,7 @@ export function Testimonials() {
 
             <button
               onClick={nextTestimonial}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface text-text-secondary transition-all hover:border-primary-300 hover:text-primary-700"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface text-text-secondary transition-all hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-300"
               aria-label="Next testimonial"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">

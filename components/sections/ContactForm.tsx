@@ -94,7 +94,7 @@ export function ContactForm() {
       {/* Name */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-text-primary">
-          Name <span className="text-accent-500">*</span>
+          Name <span className="text-accent-700 dark:text-accent-400">*</span>
         </label>
         <input
           type="text"
@@ -110,7 +110,7 @@ export function ContactForm() {
       {/* Email */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-text-primary">
-          Email <span className="text-accent-500">*</span>
+          Email <span className="text-accent-700 dark:text-accent-400">*</span>
         </label>
         <input
           type="email"
@@ -183,7 +183,7 @@ export function ContactForm() {
       {/* Message */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-text-primary">
-          Message <span className="text-accent-500">*</span>
+          Message <span className="text-accent-700 dark:text-accent-400">*</span>
         </label>
         <textarea
           id="message"

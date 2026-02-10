@@ -5,7 +5,7 @@
   /* Primary - Teal */
   --color-primary-900: #0F4C4C;
   --color-primary-800: #1B6B6B;
-  --color-primary-700: #238888;
+  --color-primary-700: #1F7A7A;
   --color-primary-600: #2D9E9E;
   --color-primary-500: #3AA8A8;
   --color-primary-400: #5CBDBD;
@@ -15,6 +15,8 @@
   --color-primary-50: #E6F4F4;
 
   /* Accent - Orange */
+  --color-accent-800: #954D0E;
+  --color-accent-700: #B85A10;
   --color-accent-600: #D96E1F;
   --color-accent-500: #F5842C;
   --color-accent-400: #F79D54;
@@ -25,7 +27,7 @@
   /* Neutrals */
   --color-text-primary: #1A202C;
   --color-text-secondary: #4A5568;
-  --color-text-muted: #718096;
+  --color-text-muted: #606D80;
   --color-background: #FAFAFA;
   --color-surface: #FFFFFF;
   --color-border: #E2E8F0;
@@ -51,6 +53,8 @@
   --color-primary-100: var(--color-primary-100);
   --color-primary-50: var(--color-primary-50);
 
+  --color-accent-800: var(--color-accent-800);
+  --color-accent-700: var(--color-accent-700);
   --color-accent-600: var(--color-accent-600);
   --color-accent-500: var(--color-accent-500);
   --color-accent-400: var(--color-accent-400);
@@ -76,7 +80,7 @@ html.dark {
   --color-border: var(--color-dark-border);
   --color-text-primary: var(--color-dark-text-primary);
   --color-text-secondary: var(--color-dark-text-secondary);
-  --color-text-muted: #64748B;
+  --color-text-muted: #8494A7;
 
   /* Light teal backgrounds → dark teal in dark mode */
   --color-primary-50: #0D1F1F;
