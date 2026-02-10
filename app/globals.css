@@ -76,6 +76,14 @@ html.dark {
   --color-border: var(--color-dark-border);
   --color-text-primary: var(--color-dark-text-primary);
   --color-text-secondary: var(--color-dark-text-secondary);
+  --color-text-muted: #64748B;
+
+  /* Light teal backgrounds → dark teal in dark mode */
+  --color-primary-50: #0D1F1F;
+  --color-primary-100: #132E2E;
+
+  /* Accent light backgrounds */
+  --color-accent-100: #2A1A0A;
 }
 
 /* Base styles */

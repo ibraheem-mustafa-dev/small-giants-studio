@@ -1,9 +1,0 @@
-export { Hero } from "./Hero";
-export { Problem } from "./Problem";
-export { FishTank } from "./FishTank";
-export { USPs } from "./USPs";
-export { Services } from "./Services";
-export { Testimonials } from "./Testimonials";
-export { Community } from "./Community";
-export { CTA } from "./CTA";
-export { ContactForm } from "./ContactForm";

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { forwardRef } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "white";
   size?: "md" | "lg";
   href?: string;
   external?: boolean;
@@ -18,6 +18,8 @@ const variants = {
     "border-2 border-primary-800 text-primary-800 hover:bg-primary-50 focus:ring-primary-500 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-900/20",
   ghost:
     "text-primary-800 hover:bg-primary-50 focus:ring-primary-500 dark:text-primary-400 dark:hover:bg-primary-900/20",
+  white:
+    "bg-white text-accent-600 shadow-md hover:bg-white/90 hover:shadow-lg focus:ring-white",
 };
 
 const sizes = {

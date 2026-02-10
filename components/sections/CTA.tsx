@@ -3,9 +3,26 @@ import { Button } from "@/components/ui/Button";
 export function CTA() {
   return (
     <section
-      className="bg-gradient-to-r from-accent-500 to-accent-600 py-16 sm:py-24"
+      className="relative bg-gradient-to-r from-accent-500 to-accent-600 py-16 sm:py-24"
       aria-labelledby="cta-heading"
     >
+      {/* Wave divider */}
+      <div className="absolute top-0 left-0 w-full h-8 sm:h-12 lg:h-16 -translate-y-full">
+        <svg
+          className="block w-full h-full"
+          viewBox="0 0 1440 60"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 0L48 8C96 16 192 32 288 37.3C384 43 480 37 576 32C672 27 768 21 864 24C960 27 1056 37 1152 40C1248 43 1344 37 1392 35L1440 32V0H0Z"
+            style={{ fill: 'var(--color-surface)' }}
+          />
+        </svg>
+      </div>
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2
@@ -27,8 +44,8 @@ export function CTA() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button
               href="/contact"
+              variant="white"
               size="lg"
-              className="bg-white text-accent-600 hover:bg-white/90 focus:ring-white"
             >
               Let&apos;s Talk
             </Button>

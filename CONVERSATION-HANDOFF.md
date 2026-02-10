@@ -80,6 +80,7 @@
 > - Intelligent availability: even when a calendar shows an event, I want to manually mark specific slots as "open anyway" or "blocked" even when the calendar is free
 > - My own branding — Small Giants Studio colours (#1B6B6B primary, #E8B931 accent), logo, and domain
 > - Email confirmations to both me and the client
+> - Follow up emails options to request things like reviews, reminders to book follow-up etc.
 > - Buffer time between meetings (configurable, default 15 minutes)
 > - Timezone detection for the client
 >

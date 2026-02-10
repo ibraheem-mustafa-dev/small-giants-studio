@@ -5,12 +5,22 @@ import { Button } from "@/components/ui/Button";
 
 const howDidYouFindUs = [
   "Google search",
+  "AI / Chatbot (ChatGPT, Gemini, etc.)",
   "LinkedIn",
   "Referral from someone",
   "Muslims in Construction",
   "Association of Muslim Engineers",
-  "Birmingham Muslims In Tech",
   "Other",
+];
+
+const interests = [
+  "Digital Transformation",
+  "Marketing Strategy",
+  "Website Design",
+  "CRM & Operations",
+  "AI & Automation",
+  "SEO, GEO & Digital Marketing",
+  "Not sure yet \u2014 let\u2019s chat",
 ];
 
 export function ContactForm() {
@@ -24,11 +34,14 @@ export function ContactForm() {
     setError(null);
 
     const formData = new FormData(event.currentTarget);
+    const selectedInterests = formData.getAll("interests").join(", ");
+
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
       source: formData.get("source"),
+      interests: selectedInterests || "Not specified",
       message: formData.get("message"),
     };
 
@@ -53,10 +66,10 @@ export function ContactForm() {
 
   if (isSubmitted) {
     return (
-      <div className="rounded-xl border border-primary-200 bg-primary-50 p-8 text-center">
+      <div role="status" aria-live="polite" className="rounded-xl border border-primary-200 bg-primary-50 p-8 text-center">
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
           <svg
-            className="h-6 w-6 text-primary-700"
+            className="h-6 w-6 text-primary-700 dark:text-primary-300"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="2"
@@ -144,6 +157,29 @@ export function ContactForm() {
         </select>
       </div>
 
+      {/* What are you interested in */}
+      <fieldset>
+        <legend className="block text-sm font-medium text-text-primary">
+          What are you interested in? <span className="text-text-muted">(select all that apply)</span>
+        </legend>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          {interests.map((interest) => (
+            <label
+              key={interest}
+              className="flex min-h-[44px] cursor-pointer items-center gap-3 rounded-lg border border-border bg-background px-4 py-3 transition-colors has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50 hover:border-primary-300"
+            >
+              <input
+                type="checkbox"
+                name="interests"
+                value={interest}
+                className="h-4 w-4 rounded border-border text-primary-600 focus:ring-primary-500"
+              />
+              <span className="text-sm text-text-primary">{interest}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
       {/* Message */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-text-primary">
@@ -161,7 +197,7 @@ export function ContactForm() {
 
       {/* Error message */}
       {error && (
-        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700">
+        <div role="alert" aria-live="assertive" className="rounded-lg bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
           {error}
         </div>
       )}
