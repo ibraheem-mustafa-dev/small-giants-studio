@@ -4,6 +4,9 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy for Small Giants Studio Ltd. How we collect, use, and protect your personal data.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {
@@ -112,7 +115,7 @@ export default function PrivacyPage() {
           </ul>
           <p>
             To exercise any of these rights, please contact us at{" "}
-            <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700">
+            <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300">
               hello@smallgiantsstudio.co.uk
             </a>
             .
@@ -159,7 +162,7 @@ export default function PrivacyPage() {
           <ul className="list-none pl-0">
             <li>
               Email:{" "}
-              <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700">
+              <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300">
                 hello@smallgiantsstudio.co.uk
               </a>
             </li>
@@ -176,7 +179,7 @@ export default function PrivacyPage() {
               href="https://www.ico.org.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-700"
+              className="text-primary-700 dark:text-primary-300"
             >
               www.ico.org.uk
             </a>

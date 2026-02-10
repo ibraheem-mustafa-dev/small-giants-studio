@@ -6,7 +6,10 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Digital Transformation Services for UK SMEs & Charities",
   description:
-    "Get found and handle the growth. I build connected marketing, operations, and tech systems for UK SMEs and charities — at budgets that actually work.",
+    "Digital transformation, marketing, AI automation, and CRM services for UK SMEs and charities. Based in Birmingham, serving businesses across the UK — at budgets that actually work.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 const services = [
@@ -14,8 +17,8 @@ const services = [
     id: "digital-transformation",
     title: "Digital Transformation",
     outcome: "Get your whole digital setup working together",
-    problem: "Your tools don't talk to each other. You're manually copying data between systems. Things fall through the cracks because nothing is connected.",
-    solution: "I audit your entire digital setup and rebuild it as one connected system. Marketing, operations, and customer data all flowing together seamlessly.",
+    problem: "Your tools don't talk to each other. You're manually copying data between systems. Things fall through the cracks because nothing's connected. (I see this every single time.)",
+    solution: "I audit your whole digital setup and rebuild it as one connected system. Marketing, operations, CRM — all talking to each other instead of living in separate tabs you forgot about.",
     includes: [
       "Full digital audit and strategy",
       "System architecture design",
@@ -29,8 +32,8 @@ const services = [
     id: "marketing-strategy",
     title: "Marketing Strategy",
     outcome: "Get found by the right people",
-    problem: "You're spending money on marketing but not seeing results. You're not sure where your next customers are coming from. Your competitors seem to be everywhere while you're invisible.",
-    solution: "I develop a strategy that focuses on where your ideal customers actually are. No wasted budget on channels that don't work for your business.",
+    problem: "You're spending money on marketing but can't point to what's actually working. Your competitors seem to be everywhere while you're invisible. Sound familiar?",
+    solution: "Strategy that actually brings in the right people — not vanity metrics that look good in a report but don't pay the bills. (Sound familiar?)",
     includes: [
       "Target audience research",
       "Competitor analysis",
@@ -45,7 +48,7 @@ const services = [
     title: "Website Design & Development",
     outcome: "A website that actually generates leads",
     problem: "Your website looks outdated. It doesn't work on mobile. Visitors come but never get in touch. You can't update it yourself without breaking something.",
-    solution: "I build fast, accessible websites designed to convert visitors into customers. Easy to update, optimised for search engines, and built to grow with your business.",
+    solution: "Fast, accessible websites that convert visitors into customers. Not a digital brochure that sits there looking pretty and doing nothing.",
     includes: [
       "Custom design tailored to your brand",
       "Mobile-first responsive development",
@@ -59,8 +62,8 @@ const services = [
     id: "crm-operations",
     title: "CRM & Operations",
     outcome: "Stop things falling through the cracks",
-    problem: "You're tracking customers in spreadsheets. Follow-ups get forgotten. You don't know where leads are in your pipeline. Important tasks slip through because there's no system.",
-    solution: "I set up a CRM that actually fits how you work. Every lead tracked, every follow-up scheduled, every customer relationship managed properly.",
+    problem: "You're tracking customers in spreadsheets — or worse, your head. Follow-ups get forgotten. You don't know where leads are in your pipeline. Important stuff slips because there's no system.",
+    solution: "Systems that track every lead, every follow-up, every task — so nothing falls through the cracks. No more 'I'm sure I emailed them back' moments.",
     includes: [
       "CRM selection and setup",
       "Pipeline and workflow design",
@@ -74,8 +77,8 @@ const services = [
     id: "ai-automation",
     title: "AI & Automation",
     outcome: "Free up your time for actual work",
-    problem: "You're spending hours on repetitive tasks. You know there must be a better way but don't know where to start with AI. You're worried about getting left behind.",
-    solution: "I implement practical AI tools that actually save you time. No hype, no jargon — just automation that works for your specific business.",
+    problem: "You're spending hours on repetitive tasks you know could be automated. You've heard about AI but don't know where to start — and honestly, most of what you've seen feels like hype.",
+    solution: "Practical AI that actually saves you time. No hype, no 'AI will replace everyone' nonsense — just automation for the stuff you're tired of doing manually.",
     includes: [
       "AI opportunity assessment",
       "Custom automation development",
@@ -87,14 +90,15 @@ const services = [
   },
   {
     id: "seo-marketing",
-    title: "SEO & Digital Marketing",
-    outcome: "Show up where your customers are looking",
-    problem: "Your website doesn't appear on Google. You're paying for ads but not sure if they're working. Competitors rank higher even though you've been around longer.",
-    solution: "I improve your visibility on search engines and run targeted campaigns that bring in customers who are actively looking for what you offer.",
+    title: "SEO, GEO & Digital Marketing",
+    outcome: "Show up where your customers are looking — including AI",
+    problem: "Your website doesn't appear on Google. You're invisible on ChatGPT, Gemini, and Copilot when people ask for recommendations. Competitors rank higher even though you've been around longer.",
+    solution: "Be found on Google, ChatGPT, and everywhere else your customers search. Most businesses aren't even thinking about AI search yet — which is exactly why you should be.",
     includes: [
       "SEO audit and strategy",
-      "On-page optimisation",
-      "Content creation and optimisation",
+      "GEO (Generative Engine Optimisation) for AI discoverability",
+      "On-page and technical optimisation",
+      "Content optimised for both Google and AI chatbots",
       "Google Ads management",
       "Social media advertising",
       "Monthly reporting and analysis",
@@ -235,7 +239,7 @@ export default function ServicesPage() {
                     {service.includes.map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <svg
-                          className="mt-1 h-5 w-5 flex-shrink-0 text-primary-600"
+                          className="mt-1 h-5 w-5 flex-shrink-0 text-primary-600 dark:text-primary-400"
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth="2"
@@ -282,6 +286,60 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Pricing Signals Section */}
+      <section className="bg-surface py-16 sm:py-24" aria-labelledby="pricing-heading">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 id="pricing-heading" className="text-2xl font-bold text-text-primary sm:text-3xl">
+              Honest pricing. No surprises.
+            </h2>
+            <p className="mt-4 text-lg text-text-secondary">
+              I know small businesses worry about consultant fees. Here&apos;s how I keep things fair.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+            <div className="rounded-xl border border-border bg-background p-6 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
+                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-text-primary">Fixed-price projects</h3>
+              <p className="mt-2 text-sm text-text-secondary">
+                You know exactly what you&apos;re paying before we start. No hourly surprises, no scope creep charges.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-background p-6 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
+                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-text-primary">Scaled to your budget</h3>
+              <p className="mt-2 text-sm text-text-secondary">
+                I work with what you&apos;ve got. Charities and social enterprises get flexible pricing. No one gets priced out.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-background p-6 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
+                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-text-primary">No inflated licences</h3>
+              <p className="mt-2 text-sm text-text-secondary">
+                I recommend tools that fit your budget — not the ones that earn me the biggest commission. Most of what I use is free or affordable.
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <p className="text-text-secondary">
+              Most projects start from a few thousand pounds. Let&apos;s talk about what you need — I&apos;ll be upfront about what it costs.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="bg-background py-16 sm:py-24" aria-labelledby="faq-heading">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -291,7 +349,7 @@ export default function ServicesPage() {
           <div className="mt-8 divide-y divide-border">
             {faqs.map((faq, index) => (
               <details key={index} className="group py-6">
-                <summary className="flex cursor-pointer items-center justify-between text-lg font-semibold text-text-primary hover:text-primary-700">
+                <summary className="flex cursor-pointer items-center justify-between text-lg font-semibold text-text-primary hover:text-primary-700 dark:hover:text-primary-300">
                   {faq.question}
                   <svg
                     className="ml-4 h-5 w-5 shrink-0 text-text-muted transition-transform group-open:rotate-180"
@@ -326,8 +384,8 @@ export default function ServicesPage() {
           <div className="mt-8">
             <Button
               href="/contact"
+              variant="white"
               size="lg"
-              className="bg-white text-accent-600 hover:bg-white/90"
             >
               Let&apos;s Talk
             </Button>

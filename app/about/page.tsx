@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Ibraheem Mustafa | Digital Transformation Consultant | Birmingham",
   description:
     "Meet Ibraheem, digital transformation specialist for UK SMEs and charities. With ADHD and 8+ years' experience, I build connected marketing and operations systems at budgets that actually work.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const values = [
@@ -32,6 +35,10 @@ const values = [
     title: "Security from the start",
     description: "Data protection isn't an afterthought. It's built in from day one.",
   },
+  {
+    title: "Your business, your way",
+    description: "I don't pretend to know your business better than you. I help you find the ideal solution, then build it bespoke. No cookie-cutter templates.",
+  },
 ];
 
 const communityInvolvement = [
@@ -46,9 +53,9 @@ const communityInvolvement = [
     description: "I help AME with their events — because community matters. The work they do supporting Muslim engineers is inspiring.",
   },
   {
-    name: "Birmingham Muslims In Tech",
-    role: "Active member",
-    description: "Part of the local tech community. The people I've met here have completely blown me away — proper collaboration, not networking for what you can extract.",
+    name: "Evertreen",
+    role: "Tree planting partnership",
+    description: "Every client I work with plants trees through Evertreen. It's not greenwashing — it's a small thing, but it adds up. Alhamdulillah for the opportunity to give back.",
   },
   {
     name: "Arts Council England",
@@ -76,7 +83,7 @@ export default function AboutPage() {
             "https://www.linkedin.com/company/small-giants-studio",
           ],
           affiliation: {
-            "@type": "Organisation",
+            "@type": "Organization",
             "@id": "https://smallgiantsstudio.co.uk",
             name: "Small Giants Studio",
           },
@@ -112,7 +119,7 @@ export default function AboutPage() {
               <div className="relative h-64 w-64 overflow-hidden rounded-2xl border-4 border-white/20 shadow-2xl sm:h-80 sm:w-80">
                 <Image
                   src="/images/ibraheem-headshot.png"
-                  alt="Ibraheem Mustafa"
+                  alt="Ibraheem Mustafa — Digital Transformation Consultant, Birmingham"
                   fill
                   className="object-cover"
                   priority
@@ -139,9 +146,9 @@ export default function AboutPage() {
             </p>
             <p>
               Growth only happens when two things work together —{" "}
-              <Link href="/services#marketing-strategy" className="font-semibold text-primary-700 underline hover:text-primary-800">marketing</Link>{" "}
+              <Link href="/services#marketing-strategy" className="font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800">marketing</Link>{" "}
               (so people find you) and{" "}
-              <Link href="/services#crm-operations" className="font-semibold text-primary-700 underline hover:text-primary-800">operations</Link>{" "}
+              <Link href="/services#crm-operations" className="font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800">operations</Link>{" "}
               (so you can handle them when they do). Corporations have entire teams
               building connected systems. Small businesses? They end up with a Frankenstein of tools
               that don&apos;t talk to each other. Or nothing at all.
@@ -262,8 +269,8 @@ export default function AboutPage() {
           <div className="mt-8">
             <Button
               href="/contact"
+              variant="white"
               size="lg"
-              className="bg-white text-accent-600 hover:bg-white/90"
             >
               Let&apos;s Have a Chat
             </Button>

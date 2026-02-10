@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Get in Touch | Book a Consultation",
+  title: "Contact Ibraheem | Digital Transformation Consultant Birmingham",
   description:
-    "Ready to transform your business? Have a chat with Ibraheem about your digital transformation needs. No hard sell — just an honest conversation about what's holding you back.",
+    "Get in touch with Ibraheem Mustafa at Small Giants Studio. Digital transformation, marketing, and AI automation for UK SMEs and charities. Based in Birmingham — no hard sell, just an honest chat.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {
@@ -71,7 +75,7 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-text-primary">Email</h3>
                     <a
                       href="mailto:hello@smallgiantsstudio.co.uk"
-                      className="mt-1 text-primary-700 hover:text-primary-800"
+                      className="mt-1 text-primary-700 dark:text-primary-300 hover:text-primary-800 dark:hover:text-primary-200"
                     >
                       hello@smallgiantsstudio.co.uk
                     </a>
@@ -99,7 +103,7 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-text-primary">Phone</h3>
                     <a
                       href="tel:+447424449555"
-                      className="mt-1 text-primary-700 hover:text-primary-800"
+                      className="mt-1 text-primary-700 dark:text-primary-300 hover:text-primary-800 dark:hover:text-primary-200"
                     >
                       07424 449555
                     </a>
@@ -132,7 +136,7 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-text-primary">Location</h3>
                     <p className="mt-1 text-text-secondary">Birmingham, UK</p>
                     <p className="text-sm text-text-muted">
-                      UK-focused, but open to working globally
+                      UK-focused — but happy to help anyone doing meaningful work
                     </p>
                   </div>
                 </div>
@@ -147,10 +151,18 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-text-primary">LinkedIn</h3>
                     <a
+                      href="https://www.linkedin.com/in/ibraheem-mustafa"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 block text-primary-700 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-200"
+                    >
+                      Connect with Ibraheem
+                    </a>
+                    <a
                       href="https://www.linkedin.com/company/small-giants-studio"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1 text-primary-700 hover:text-primary-800"
+                      className="mt-1 block text-primary-700 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-200"
                     >
                       Follow Small Giants Studio
                     </a>
@@ -160,6 +172,22 @@ export default function ContactPage() {
 
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Quick links */}
+      <section className="border-t border-border bg-background py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-sm text-text-muted">
+            Not sure what you need yet? Check out my{" "}
+            <Link href="/services" className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800">
+              services
+            </Link>
+            {" "}or read{" "}
+            <Link href="/about" className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800">
+              more about me
+            </Link>.
+          </p>
         </div>
       </section>
     </>

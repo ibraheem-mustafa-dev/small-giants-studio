@@ -34,7 +34,7 @@ export function Community() {
             className="text-2xl font-bold text-text-primary sm:text-3xl"
           >
             Community isn&apos;t a marketing strategy.
-            <span className="mt-1 block text-primary-700">It&apos;s who I am.</span>
+            <span className="mt-1 block text-primary-700 dark:text-primary-300">It&apos;s who I am.</span>
           </h2>
           <p className="mt-4 text-lg text-text-secondary">
             Not networking for what you can extract — but investing in something that lifts the
@@ -55,11 +55,11 @@ export function Community() {
               <div className="flex h-16 items-center justify-center">
                 <Image
                   src={partner.logo}
-                  alt={`${partner.name} logo`}
+                  alt={`${partner.name} — Small Giants Studio community partner`}
                   width={160}
                   height={64}
                   sizes="(max-width: 640px) 120px, 160px"
-                  className="h-12 w-auto object-contain grayscale transition-all group-hover:grayscale-0"
+                  className="h-12 w-auto object-contain transition-all group-hover:scale-110 group-hover:grayscale"
                 />
               </div>
               <h3 className="mt-4 text-center text-lg font-semibold text-text-primary">
@@ -68,7 +68,7 @@ export function Community() {
               <p className="mt-2 flex-1 text-center text-sm text-text-secondary">
                 {partner.description}
               </p>
-              <div className="mt-4 flex items-center justify-center text-sm font-medium text-primary-700 opacity-0 transition-opacity group-hover:opacity-100">
+              <div className="mt-4 flex items-center justify-center text-sm font-medium text-primary-700 dark:text-primary-300 opacity-0 transition-opacity group-hover:opacity-100">
                 Visit website
                 <svg
                   className="ml-1 h-4 w-4"

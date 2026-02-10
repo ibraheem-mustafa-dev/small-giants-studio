@@ -1,31 +1,38 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore, useCallback } from "react";
 import Link from "next/link";
 
 type ConsentState = "accepted" | "rejected" | null;
 
+const emptySubscribe = () => () => {};
+
 export function CookieConsent() {
-  const [consent, setConsent] = useState<ConsentState>(null);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
 
-  useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem("cookie-consent");
-    if (stored === "accepted" || stored === "rejected") {
-      setConsent(stored);
+  const [consent, setConsent] = useState<ConsentState>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("cookie-consent");
+      if (stored === "accepted" || stored === "rejected") {
+        return stored;
+      }
     }
-  }, []);
+    return null;
+  });
 
-  function accept() {
+  const accept = useCallback(() => {
     localStorage.setItem("cookie-consent", "accepted");
     setConsent("accepted");
-  }
+  }, []);
 
-  function reject() {
+  const reject = useCallback(() => {
     localStorage.setItem("cookie-consent", "rejected");
     setConsent("rejected");
-  }
+  }, []);
 
   // Don't render during SSR or if consent already given
   if (!mounted || consent !== null) {
@@ -46,7 +53,7 @@ export function CookieConsent() {
             adding any in future.{" "}
             <Link
               href="/privacy"
-              className="font-medium text-primary-700 underline hover:text-primary-800"
+              className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800"
             >
               Privacy policy
             </Link>

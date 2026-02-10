@@ -94,6 +94,9 @@ export const metadata: Metadata = {
     // Add your verification codes here
     // google: "your-google-verification-code",
   },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
@@ -113,6 +116,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/images/sgs-logo.jpg" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#1B6B6B" />
+        <link rel="preload" href="/images/sgs-horizontal-logo.png" as="image" />
       </head>
       <body className="min-h-screen bg-background text-text-primary antialiased">
         <JsonLd
@@ -133,6 +137,12 @@ export default function RootLayout({
               addressRegion: "West Midlands",
               addressCountry: "GB",
             },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 52.4862,
+              longitude: -1.8904,
+            },
+            priceRange: "$$",
             founder: {
               "@type": "Person",
               "@id": "https://smallgiantsstudio.co.uk/about#founder",

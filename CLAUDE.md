@@ -5,7 +5,7 @@ Website for Small Giants Studio — a Birmingham-based digital transformation co
 
 **Domain:** smallgiantsstudio.co.uk
 **Stack:** Next.js (deployed to Vercel)
-**Status:** Initial build
+**Status:** Pre-launch (Phase 4.5 visual overhaul complete)
 
 ---
 
@@ -106,12 +106,16 @@ All brand, voice, and positioning docs live in `/docs/`. **Read these before any
 - [x] Honeypot field accessibility fixed on contact form
 - [x] Phase 2 voice & identity pass completed (9 Feb 2026) — 7 files updated
 - [x] Phase 3 compliance, UX, infrastructure completed (9 Feb 2026) — cookie consent, error/loading states, touch targets, dark mode toggle
+- [x] Phase 4.5 visual & content overhaul completed (9 Feb 2026) — dark mode fixes, horizontal logo, animated hero/fish tank, GEO service, contact form interests, both LinkedIn profiles
+- [x] Phase 5 SEO infrastructure completed (10 Feb 2026) — sitemap, robots, JSON-LD schemas (LocalBusiness/Person/Service/FAQ/Breadcrumb), keyword meta titles, canonical URLs, pricing signals, geo coordinates, internal cross-links, image alt text, preload hints, React 19 lint fixes
 
 ## What's Broken
 
 **Resolved in Phase 1:** Items 1-5, 9, 26 (manifest.json exists)
 **Resolved in Phase 2:** Items 10-15, 31
 **Resolved in Phase 3:** Items 18-20 (touch targets), 21 (cookie consent), 23 (error boundary), 24 (loading states), 25 (dark mode toggle), 27 (insights simplified), 33 (removed `sm` button size)
+**Resolved in Phase 4.5:** Dark mode legibility across all pages, hero animation, fish tank animation, Evertreen logo colour, 6th value card, GEO/AI service description, contact form multi-choice interests
+**Resolved in Phase 5 (SEO):** Items 6 (sitemap), 7 (robots), 8 (JSON-LD), 16 (meta titles), 17 (canonical URLs), 28 (local SEO + geo coordinates), 29 (internal linking + breadcrumbs), 30 (FAQ section + schema), 32 (pricing signals), 36 (image alt text), 37 (breadcrumb schema), 39 (preload hints)
 
 ### Critical (Must fix before launch)
 1. **Contact form is fake** — simulates submission, logs to console, nobody receives messages. Connect to Formspree/Resend. Remove `console.log` (security: leaks personal data). `components/sections/ContactForm.tsx:36-39`
@@ -191,28 +195,63 @@ All brand, voice, and positioning docs live in `/docs/`. **Read these before any
 - [x] Implement dark mode toggle — `components/ui/ThemeToggle.tsx` in Header, inline script prevents flash
 - [x] /insights already simplified to "coming soon" page (done in Phase 1)
 
+### Phase 4.5: Visual & Content Overhaul — DONE (9 Feb 2026)
+- [x] Dark mode colour fixes in globals.css (bg-primary-50/100 overrides, text-muted)
+- [x] Horizontal logo (sgs-horizontal-logo.png) in Logo.tsx with light variant inversion
+- [x] Button "white" variant added, all CTA buttons updated
+- [x] WCAG dark: text overrides across 15+ files (text-primary-700 → dark:text-primary-300)
+- [x] Header nav text bumped to text-base (was text-sm)
+- [x] Evertreen SVG fill changed from white to #008636
+- [x] 6th "What I Believe" value added ("Your business, your way")
+- [x] Community: replaced "Birmingham Muslims in Tech" with Evertreen partnership
+- [x] /work page simplified to cleaner "coming soon" card
+- [x] SEO service updated to "SEO, GEO & Digital Marketing" with AI discoverability
+- [x] Both LinkedIn profiles on contact page, footer, and insights page
+- [x] Contact form: "AI/Chatbot" source option + interest multi-choice checkboxes
+- [x] Fish tank SVG animation (swimming fish, bubbles, seaweed, shimmer)
+- [x] Hero replaced headshot with coded SVG animation (small figure + giant silhouette)
+
+### Phase 5: SEO Infrastructure — DONE (10 Feb 2026)
+- [x] `app/sitemap.ts` — all pages with priorities, /work deprioritised to 0.3
+- [x] `app/robots.ts` — allows all, blocks /api/, links to sitemap
+- [x] JSON-LD: LocalBusiness (with geo + priceRange), Person, Service, FAQPage, BreadcrumbList
+- [x] Keyword-rich meta titles on all pages (contact, work, insights, about, services)
+- [x] Canonical URLs on all pages via `alternates.canonical`
+- [x] Breadcrumbs with BreadcrumbList schema on all sub-pages
+- [x] FAQ section + FAQPage schema on services page (6 questions)
+- [x] Pricing signals section on services page (fixed-price, budget-scaled, no inflated licences)
+- [x] Geo coordinates (52.4862, -1.8904) + priceRange in LocalBusiness schema
+- [x] Birmingham/West Midlands strengthened across services meta description + schema
+- [x] Internal cross-links: contact → services/about, insights → services/contact
+- [x] Image alt text keyword-rich (headshot, logo, partner logos)
+- [x] Logo preload hint in layout head
+- [x] /work removed from Header and Footer navigation
+- [x] React 19 lint fixes: useSyncExternalStore for CookieConsent + ThemeToggle, removed useEffect from Header
+- [x] ESLint passes clean (0 errors, 0 warnings)
+
+### Phase 5b: Design & UX Improvements — DONE (10 Feb 2026)
+- [x] Mid-page CTA after Fish Tank section (`components/sections/MidCTA.tsx`) — catches visitors at emotional peak
+- [x] Services section redesign — featured full-width Digital Transformation card + compact 5-col grid below
+- [x] SVG labels hidden on mobile (<640px) for hero node labels and fish tank labels — prevents unreadable text
+- [x] UI/UX audit completed: storytelling, animation, colour, typography, dark mode, mobile, conversion flow
+
 ### Phase 4: Content and polish
 - [ ] Replace /work with real case studies (needs client permission) or remove page
 - [ ] Write real blog posts for /insights
-- [ ] Add pricing signals to services page
-- [ ] Add company registration number to privacy/terms
-- [ ] Add FAQ section to services page — answers real questions visitors have
+- [ ] Add company registration number to privacy/terms (needs number)
+- [ ] LinkedIn feed integration on /work page (embed personal posts)
 - [ ] Run `/ui-ux-pro-max` for visual design critique
 - [ ] Run `/writing-clearly-and-concisely` to tighten copy
 - [ ] Run `/verification-before-completion` before deploying
 - [ ] Deploy to Vercel
 
-### Post-launch: SEO
-- [ ] Create `app/sitemap.ts`
-- [ ] Create `app/robots.ts`
-- [ ] Add JSON-LD schema (LocalBusiness + Service)
-- [ ] Rewrite all page meta titles with keywords
-- [ ] Add canonical URLs to all pages
-- [ ] Set up Google Search Console + add verification code
-- [ ] Set up Google Business Profile (Birmingham)
-- [ ] Improve internal linking (breadcrumbs, related services)
-- [ ] Make image alt text more keyword-rich
-- [ ] Add Google Analytics 4
+### Post-launch: Remaining SEO
+- [ ] Set up Google Search Console + add verification code (needs account)
+- [ ] Set up Google Business Profile — Birmingham (needs account)
+- [ ] Add Google Analytics 4 (needs tracking ID)
+
+### Separate project
+- [ ] Custom booking system (prompt in CONVERSATION-HANDOFF.md)
 
 ---
 

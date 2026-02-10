@@ -1,27 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { Logo } from "@/components/ui/Logo";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navigation = [
   { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
-  { name: "Work", href: "/work" },
   { name: "Insights", href: "/insights" },
   { name: "Contact", href: "/contact" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-surface/80 backdrop-blur-md">
@@ -41,7 +33,7 @@ export function Header() {
           <ThemeToggle />
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md p-3 text-text-secondary hover:bg-primary-50 hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="inline-flex items-center justify-center rounded-md p-3 text-text-secondary hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -84,7 +76,7 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium text-text-secondary transition-colors hover:text-primary-700"
+              className="text-base font-medium text-text-secondary transition-colors hover:text-primary-700 dark:hover:text-primary-300"
             >
               {item.name}
             </Link>
@@ -107,15 +99,13 @@ export function Header() {
       <div
         id="mobile-menu"
         className={`lg:hidden ${mobileMenuOpen ? "block" : "hidden"}`}
-        role="dialog"
-        aria-modal="true"
       >
         <div className="space-y-1 border-t border-border bg-surface px-4 pb-4 pt-2">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary transition-colors hover:bg-primary-50 hover:text-primary-800"
+              className="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary transition-colors hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               {item.name}

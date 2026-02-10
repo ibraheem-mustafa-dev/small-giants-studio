@@ -3,9 +3,12 @@ import { Button } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Case Studies: Digital Transformation Results",
+  title: "Case Studies | Digital Transformation Projects for UK SMEs",
   description:
-    "Real results from digital transformation, marketing, and automation projects for UK SMEs and charities. See how Small Giants Studio helps businesses grow.",
+    "Real digital transformation case studies for UK SMEs and charities. Clients you can speak to directly. Based in Birmingham, serving businesses across the UK.",
+  alternates: {
+    canonical: "/work",
+  },
 };
 
 export default function WorkPage() {
@@ -16,10 +19,10 @@ export default function WorkPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-              Work that makes a difference
+              Work
             </h1>
             <p className="mt-6 text-xl text-primary-100">
-              Case studies are on their way. In the meantime, here&apos;s what I can tell you.
+              Real projects. Real clients you can call up and ask about me.
             </p>
           </div>
         </div>
@@ -30,7 +33,7 @@ export default function WorkPage() {
           <div className="rounded-xl border border-border bg-background p-8 sm:p-12">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary-100">
               <svg
-                className="h-8 w-8 text-primary-700"
+                className="h-8 w-8 text-primary-700 dark:text-primary-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
@@ -43,24 +46,17 @@ export default function WorkPage() {
                 />
               </svg>
             </div>
-            <h2 className="mt-6 text-2xl font-bold text-text-primary sm:text-3xl">
-              Real case studies coming soon
+            <h2 className="mt-6 text-2xl font-bold text-text-primary">
+              Case studies coming soon
             </h2>
             <p className="mt-4 text-lg text-text-secondary">
-              I&apos;m putting together detailed case studies from real projects — with permission
-              from the businesses I&apos;ve worked with. No made-up numbers, no anonymous
-              &ldquo;Client A&rdquo; stories. Just honest results from real partnerships.
-            </p>
-            <p className="mt-4 text-text-secondary">
-              While you wait, you can read what clients have said about working with me on the{" "}
-              <a href="/" className="font-medium text-primary-600 underline hover:text-primary-700">
-                homepage
-              </a>
-              , or just get in touch and I&apos;ll walk you through what I&apos;ve done.
+              I&apos;m putting together case studies from completed projects —
+              with client permission, of course. In the meantime, get in touch
+              and I&apos;ll walk you through what I&apos;ve done.
             </p>
             <div className="mt-8">
               <Button href="/contact" size="lg">
-                Let&apos;s Have a Chat
+                Let&apos;s Chat
               </Button>
             </div>
           </div>

@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Digital Transformation Blog: AI, Marketing & Automation for SMEs",
   description:
     "Practical guides on digital transformation, marketing automation, AI implementation, and building sustainable business systems for UK SMEs without burning out.",
+  alternates: {
+    canonical: "/insights",
+  },
 };
 
 export default function InsightsPage() {
@@ -32,7 +36,7 @@ export default function InsightsPage() {
           <div className="rounded-xl border border-border bg-background p-8 text-center sm:p-12">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary-100">
               <svg
-                className="h-8 w-8 text-primary-700"
+                className="h-8 w-8 text-primary-700 dark:text-primary-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
@@ -52,7 +56,7 @@ export default function InsightsPage() {
               the first articles go live.
             </p>
             <a
-              href="https://www.linkedin.com/company/small-giants-studio"
+              href="https://www.linkedin.com/in/ibraheem-mustafa"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary-700 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
@@ -73,6 +77,16 @@ export default function InsightsPage() {
               </svg>
             </a>
           </div>
+          <p className="mt-6 text-sm text-text-muted">
+            In the meantime, see what I can help with on my{" "}
+            <Link href="/services" className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800">
+              services page
+            </Link>
+            {" "}or{" "}
+            <Link href="/contact" className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800">
+              get in touch
+            </Link>.
+          </p>
         </div>
       </section>
     </>

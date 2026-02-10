@@ -4,6 +4,9 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms of Service for Small Giants Studio Ltd. The terms and conditions governing use of our website and services.",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 export default function TermsPage() {
@@ -129,7 +132,7 @@ export default function TermsPage() {
           <ul className="list-none pl-0">
             <li>
               Email:{" "}
-              <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700">
+              <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300">
                 hello@smallgiantsstudio.co.uk
               </a>
             </li>
