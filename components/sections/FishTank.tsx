@@ -193,7 +193,7 @@ export function FishTank() {
               <p className="text-lg font-semibold text-primary-800 dark:text-primary-200">
                 Which area is your limiting factor?
               </p>
-              <p className="mt-2 text-primary-700 dark:text-primary-300">
+              <p className="mt-2 text-primary-800 dark:text-primary-300">
                 I build both as one connected system — not a Frankenstein of tools that don&apos;t
                 talk to each other.
               </p>

@@ -54,7 +54,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="space-y-6">
             <Logo variant="light" className="h-12 w-auto" />
-            <p className="max-w-xs text-sm text-primary-100">
+            <p className="max-w-xs text-sm text-primary-100 dark:text-primary-200">
               Helping human-led businesses compete with the giants. Enterprise-level marketing,
               automation, and tech — at budgets that actually work.
             </p>
@@ -88,7 +88,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-100 transition-colors hover:text-white"
+                        className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
                       >
                         {item.name}
                       </Link>
@@ -105,7 +105,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-100 transition-colors hover:text-white"
+                        className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
                       >
                         {item.name}
                       </Link>
@@ -123,7 +123,7 @@ export function Footer() {
                   <li>
                     <a
                       href="mailto:hello@smallgiantsstudio.co.uk"
-                      className="text-sm text-primary-100 transition-colors hover:text-white"
+                      className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
                     >
                       hello@smallgiantsstudio.co.uk
                     </a>
@@ -131,12 +131,12 @@ export function Footer() {
                   <li>
                     <a
                       href="tel:+447424449555"
-                      className="text-sm text-primary-100 transition-colors hover:text-white"
+                      className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
                     >
                       07424 449555
                     </a>
                   </li>
-                  <li className="text-sm text-primary-100">Birmingham, UK</li>
+                  <li className="text-sm text-primary-100 dark:text-primary-200">Birmingham, UK</li>
                 </ul>
               </div>
               <div className="mt-10">
@@ -146,7 +146,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-100 transition-colors hover:text-white"
+                        className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
                       >
                         {item.name}
                       </Link>
