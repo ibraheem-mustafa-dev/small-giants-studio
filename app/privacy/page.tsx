@@ -27,7 +27,7 @@ export default function PrivacyPage() {
             services.
           </p>
           <p>
-            We are registered in England and Wales. For the purposes of the UK General Data
+            We are registered in England and Wales (company number 16959564). For the purposes of the UK General Data
             Protection Regulation (UK GDPR) and the Data Protection Act 2018, we are the data
             controller.
           </p>

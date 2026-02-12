@@ -32,7 +32,7 @@ export default function TermsPage() {
 
           <h2 className="mt-8 text-xl font-semibold text-text-primary">2. About Us</h2>
           <p>
-            Small Giants Studio Ltd is a company registered in England and Wales. We provide
+            Small Giants Studio Ltd is a company registered in England and Wales (company number 16959564). We provide
             digital transformation, marketing, and technology consulting services to UK SMEs,
             charities, and social enterprises.
           </p>
