@@ -12,6 +12,7 @@ const navigation = {
   ],
   company: [
     { name: "About", href: "/about" },
+    { name: "Sustainability", href: "/sustainability" },
     { name: "Insights", href: "/insights" },
     { name: "Contact", href: "/contact" },
   ],
@@ -162,7 +163,7 @@ export function Footer() {
         <div className="mt-12 border-t border-primary-800 pt-8">
           <p className="text-center text-xs text-primary-300">
             &copy; {currentYear} Small Giants Studio Ltd. All rights reserved. Company registered in
-            England and Wales.
+            England and Wales (16959564).
           </p>
         </div>
       </div>
