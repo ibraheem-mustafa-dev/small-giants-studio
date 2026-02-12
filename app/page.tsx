@@ -1,12 +1,25 @@
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
-import { FishTank } from "@/components/sections/FishTank";
 import { MidCTA } from "@/components/sections/MidCTA";
 import { USPs } from "@/components/sections/USPs";
 import { Services } from "@/components/sections/Services";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { Community } from "@/components/sections/Community";
 import { CTA } from "@/components/sections/CTA";
+
+const FishTank = dynamic(
+  () =>
+    import("@/components/sections/FishTank").then((mod) => mod.FishTank),
+);
+const Testimonials = dynamic(
+  () =>
+    import("@/components/sections/Testimonials").then(
+      (mod) => mod.Testimonials,
+    ),
+);
+const Community = dynamic(
+  () =>
+    import("@/components/sections/Community").then((mod) => mod.Community),
+);
 
 export default function HomePage() {
   return (
