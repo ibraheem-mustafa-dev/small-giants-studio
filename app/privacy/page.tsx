@@ -115,7 +115,7 @@ export default function PrivacyPage() {
           </ul>
           <p>
             To exercise any of these rights, please contact us at{" "}
-            <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300">
+            <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300 underline">
               hello@smallgiantsstudio.co.uk
             </a>
             .
@@ -162,7 +162,7 @@ export default function PrivacyPage() {
           <ul className="list-none pl-0">
             <li>
               Email:{" "}
-              <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300">
+              <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300 underline">
                 hello@smallgiantsstudio.co.uk
               </a>
             </li>
@@ -179,7 +179,7 @@ export default function PrivacyPage() {
               href="https://www.ico.org.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-700 dark:text-primary-300"
+              className="text-primary-700 dark:text-primary-300 underline"
             >
               www.ico.org.uk
             </a>

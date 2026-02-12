@@ -132,7 +132,7 @@ export default function TermsPage() {
           <ul className="list-none pl-0">
             <li>
               Email:{" "}
-              <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300">
+              <a href="mailto:hello@smallgiantsstudio.co.uk" className="text-primary-700 dark:text-primary-300 underline">
                 hello@smallgiantsstudio.co.uk
               </a>
             </li>

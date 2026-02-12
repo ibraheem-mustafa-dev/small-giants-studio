@@ -247,7 +247,7 @@ export default function AboutPage() {
                 className="rounded-xl bg-primary-800/50 p-6 backdrop-blur-sm"
               >
                 <h3 className="text-lg font-semibold text-white">{item.name}</h3>
-                <p className="mt-1 text-sm font-medium text-accent-400">{item.role}</p>
+                <p className="mt-1 text-sm font-medium text-accent-300">{item.role}</p>
                 <p className="mt-2 text-primary-200">{item.description}</p>
               </div>
             ))}
@@ -261,7 +261,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
             Want to work together?
           </h2>
-          <p className="mt-4 text-lg text-white/90">
+          <p className="mt-4 text-lg text-white">
             I only work with values-driven businesses. If you genuinely care about your customers
             and want the systems to compete with the giants in your industry — I&apos;d love to
             connect. When the right audience finds the right business, everybody wins.

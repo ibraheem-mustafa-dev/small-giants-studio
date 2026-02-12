@@ -56,7 +56,7 @@ export function Problem() {
               <div className="mt-1 text-lg font-semibold text-white">
                 {point.unit}
               </div>
-              <div className="mt-1 text-sm text-primary-300">{point.label}</div>
+              <div className="mt-1 text-sm text-primary-200">{point.label}</div>
               <p className="mt-4 text-sm text-primary-200">{point.description}</p>
             </div>
           ))}

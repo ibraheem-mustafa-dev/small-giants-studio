@@ -377,7 +377,7 @@ export default function ServicesPage() {
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
             Not sure where to start?
           </h2>
-          <p className="mt-4 text-lg text-white/90">
+          <p className="mt-4 text-lg text-white">
             Let&apos;s have a chat about your business. No hard sell — just an honest conversation
             about what&apos;s holding you back and whether I can help.
           </p>

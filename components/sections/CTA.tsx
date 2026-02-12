@@ -32,7 +32,7 @@ export function CTA() {
             The world doesn&apos;t need more Goliaths.
             <span className="mt-2 block">It needs more BFGs.</span>
           </h2>
-          <p className="mt-6 text-lg text-white/90">
+          <p className="mt-6 text-lg text-white">
             Big Friendly Giants who actually care about their customers. If you&apos;re a small
             business, charity, or social enterprise doing meaningful work — I&apos;d love to help
             you compete with the giants in your industry.

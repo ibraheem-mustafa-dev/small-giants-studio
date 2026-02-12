@@ -1,76 +1,70 @@
-# Session Handoff — 9 Feb 2026
+# Session Handoff — 12 Feb 2026
 
 ## Completed This Session
 
-1. Read all 5 reference docs (`/docs/`) and every page/component in the codebase
-2. Started dev server and took 24 Playwright screenshots (8 pages x 3 breakpoints: 375px, 768px, 1440px) — saved in `/review-screenshots/`
-3. Ran three parallel reviews:
-   - **Code quality review** (code-reviewer agent) — found 23 issues across components
-   - **SEO audit** (seo-auditor agent) — scored site 62/100, found 20 issues
-   - **Copy/voice review** (main Claude) — compared all site copy against 5 brand docs
-4. Compiled all findings into a prioritised 40-item fix list in CLAUDE.md under "What's Broken" and "What's Next"
-5. **Fixed: Contact form** — removed fake simulation and `console.log`, connected to Formspree (ID: `xeeloran`). Fixed doubled URL bug (`https://formspree.io/f/xeeloran`)
-6. **Fixed: Work page** — replaced fabricated case studies with honest "coming soon" page
-7. **Fixed: Calendly dead link** — removed broken booking section from `/contact`
-8. **Fixed: OG image** — created `app/opengraph-image.tsx` that auto-generates 1200x630px branded image (no static file needed)
-9. **Fixed: Layout.tsx** — removed hardcoded og-image.jpg references (now handled by opengraph-image route)
-10. **Fixed: Services CSS bug** — removed `lg:flex-row-reverse` from grid element in `app/services/page.tsx`
-11. **Fixed: Navigation** — removed /work from Header and Footer nav (page still exists at URL but hidden)
-12. **Fixed: Honeypot accessibility** — added `aria-hidden` and `aria-label` to spam trap field
-13. Wrote a detailed booking system prompt for a future session (Ibraheem wants a custom self-hosted booking tool, not Calendly)
-14. Installed Playwright browsers (Chromium) for screenshot automation
+1. **Full WCAG 2.2 AA accessibility audit** — tested all 8 pages in both light and dark mode using axe-core 4.10.2 via Playwright. Found 69 violations (16 light, 53 dark).
+2. **Discovered critical Tailwind v4 dark mode bug** — `@custom-variant dark` was missing from `globals.css`, meaning ALL `dark:` utility classes (like `dark:text-primary-300`) were completely broken when toggled via the UI button. They only responded to OS `prefers-color-scheme`, not the `.dark` class toggle. This single line fixed 38 of 53 dark mode violations.
+3. **Fixed all 69 accessibility violations** — 7 fixes across 9 files:
+   - FIX-0: Added `@custom-variant dark` to globals.css (fixed 38 dark mode violations)
+   - FIX-1: Button white variant `text-accent-600` → `text-accent-700` (ratio 3.38 → 4.66)
+   - FIX-2: CTA banner `text-white/90` → `text-white` in 3 files (ratio 4.07 → 4.66)
+   - FIX-3: Stat card labels `text-primary-300` → `text-primary-200` (ratio 4.37 → 5.6)
+   - FIX-4: About partner labels `text-accent-400` → `text-accent-300` (ratio 3.69 → 4.53)
+   - FIX-5: Fish tank callout `text-primary-700` → `text-primary-800` (ratio 4.31 → 5.3)
+   - FIX-6: Added `underline` to inline links on /privacy and /terms (link-in-text-block fix)
+4. **Verified 0 violations remain** — full re-audit of all 8 pages in both modes passed clean.
+5. **Ran Vercel React best practices audit** — codebase is well-structured. Only actionable improvement: add `next/dynamic` imports for below-the-fold homepage sections (Testimonials, Community, FishTank).
+6. **Set up local a11y MCP server** in `.mcp.json` for future accessibility testing.
+7. **Created A11Y-FIXES.md** — full tracking document with all issues, fixes, and verification log.
 
 ## Current State
 
-- **Dev server**: Not running (was on localhost:3000 during session)
-- **Contact form**: Live with Formspree endpoint `xeeloran` — submissions go to Ibraheem's email
-- **Work page**: Shows "coming soon" message — no fake case studies
-- **OG image**: Auto-generated via Next.js opengraph-image route
-- **Favicons**: Using `sgs-logo.jpg` (exists in `/public/images/`) — not ideal but functional
-- **manifest.json**: Exists and is valid
+- **Dev server**: Running on localhost:3000 (background process)
+- **Accessibility**: All 8 pages pass WCAG 2.2 AA in both light and dark mode — 0 violations
+- **Dark mode**: NOW WORKING PROPERLY — `@custom-variant dark` makes all `dark:` Tailwind utilities respond to the `.dark` class toggle
+- **React best practices**: Clean audit. Optional improvement: dynamic imports for below-the-fold components
 - **Not deployed**: Site is local only, no Vercel deployment yet
+- **Booking system**: Separate project at `c:\Users\Bean\Projects\booking-system` (has its own .mcp.json with Supabase)
 
 ## Known Issues / Blockers
 
-1. **Formspree needs testing** — form is connected but hasn't been tested with a real submission. Test before launch.
-2. **CLAUDE.md "What's Next" is stale** — Phase 1 items are now mostly done but the checkboxes aren't ticked. Next session should update these.
-3. **Voice is the biggest remaining gap** — site reads like professional copywriting, not like Ibraheem. Zero Islamic phrases, zero playful asides, zero BFG framing. This will be the most time-consuming fix.
-4. **No booking system yet** — Calendly won't work for Ibraheem's multi-calendar needs. A separate project to build a custom booking tool using an open-source base (Cal.com suggested). Prompt is in the handoff summary above.
+1. **No dynamic imports** — homepage loads all 9 section components eagerly. Testimonials, Community, and FishTank should use `next/dynamic` for ~15-25% FCP improvement. Not blocking but recommended before deployment.
+2. **Formspree still untested** — form is connected but no real submission test has been done.
+3. **No Google Analytics / Search Console** — needs account setup (post-launch task).
+4. **No real case studies or blog posts** — /work and /insights are "coming soon" placeholders.
 
 ## Next Priorities (in order)
 
-1. **Phase 2: Voice & identity pass** — rewrite copy across all pages to match Ibraheem's actual voice (warm, vulnerable, playful, faith-integrated). Read all 5 brand docs fresh. Add Islamic phrases naturally, BFG framing, "Small Giants" name explanation, fix "worldwide" to "UK", add work-life balance USP, add budget-conscious messaging.
-2. **Phase 3: Compliance & UX** — cookie consent banner (GDPR), error boundary (`app/error.tsx`), loading states (`app/loading.tsx`), fix all 44px touch target violations (carousel dots, mobile menu button, insights filter buttons), dark mode toggle decision.
-3. **Phase 4: Content & polish** — simplify /insights to coming soon, pricing signals on services page, FAQ section, company registration number, final QA passes with `/ui-ux-pro-max`, `/writing-clearly-and-concisely`, `/verification-before-completion`.
-4. **Post-launch SEO** — sitemap.ts, robots.ts, JSON-LD schema, meta titles, canonical URLs, Search Console, Google Business Profile, GA4.
-5. **Booking system** — separate project, use the prompt written this session.
+1. **Add dynamic imports to homepage** — `next/dynamic` for Testimonials, Community, FishTank (quick win, ~15 min)
+2. **Phase 4: Content & polish** — replace /work with real case studies (needs client permission), write blog posts, add company registration number
+3. **Deploy to Vercel** — site is ready for deployment. Run `/deploy-check` (adapted for Next.js, not WordPress) and `/verification-before-completion` first
+4. **Post-launch SEO** — Google Search Console verification, Google Business Profile, GA4 tracking
+5. **Booking system** — separate project, prompt in previous handoff below
 
-## Files Modified
+## Files Modified This Session
 
-1. `c:\Users\Bean\Projects\small-giants-studio\components\sections\ContactForm.tsx` — Formspree integration, removed console.log, honeypot accessibility
-2. `c:\Users\Bean\Projects\small-giants-studio\app\work\page.tsx` — replaced fabricated case studies with coming soon
-3. `c:\Users\Bean\Projects\small-giants-studio\app\contact\page.tsx` — removed Calendly booking section
-4. `c:\Users\Bean\Projects\small-giants-studio\app\layout.tsx` — removed hardcoded OG image references
-5. `c:\Users\Bean\Projects\small-giants-studio\app\services\page.tsx` — removed broken lg:flex-row-reverse
-6. `c:\Users\Bean\Projects\small-giants-studio\components\layout\Header.tsx` — removed /work from nav
-7. `c:\Users\Bean\Projects\small-giants-studio\components\layout\Footer.tsx` — removed /work from nav
-8. `c:\Users\Bean\Projects\small-giants-studio\app\opengraph-image.tsx` — NEW: auto-generated OG image
-9. `c:\Users\Bean\Projects\small-giants-studio\CLAUDE.md` — updated with full review findings and prioritised fix list
-10. `c:\Users\Bean\Projects\small-giants-studio\review-screenshots\take-screenshots.sh` — NEW: screenshot automation script
-11. `c:\Users\Bean\Projects\small-giants-studio\review-screenshots\take-screenshots.mjs` — NEW: alternative screenshot script (unused, .sh version works)
+1. `c:\Users\Bean\Projects\small-giants-studio\app\globals.css` — added `@custom-variant dark` (line 2)
+2. `c:\Users\Bean\Projects\small-giants-studio\components\ui\Button.tsx` — white variant `text-accent-600` → `text-accent-700`
+3. `c:\Users\Bean\Projects\small-giants-studio\app\about\page.tsx` — `text-white/90` → `text-white`, partner labels `text-accent-400` → `text-accent-300`
+4. `c:\Users\Bean\Projects\small-giants-studio\app\services\page.tsx` — `text-white/90` → `text-white`
+5. `c:\Users\Bean\Projects\small-giants-studio\components\sections\CTA.tsx` — `text-white/90` → `text-white`
+6. `c:\Users\Bean\Projects\small-giants-studio\components\sections\Problem.tsx` — stat labels `text-primary-300` → `text-primary-200`
+7. `c:\Users\Bean\Projects\small-giants-studio\components\sections\FishTank.tsx` — callout `text-primary-700` → `text-primary-800`
+8. `c:\Users\Bean\Projects\small-giants-studio\app\privacy\page.tsx` — added `underline` to 3 inline links
+9. `c:\Users\Bean\Projects\small-giants-studio\app\terms\page.tsx` — added `underline` to 1 inline link
+10. `c:\Users\Bean\Projects\small-giants-studio\.mcp.json` — NEW: a11y MCP server config
+11. `c:\Users\Bean\Projects\small-giants-studio\A11Y-FIXES.md` — NEW: accessibility fix tracking doc
 
 ## Notes for Next Session
 
-- **Read the 5 docs in `/docs/` before any copy work** — the voice guides are essential for Phase 2
-- **The "What's Broken" section in CLAUDE.md has every issue numbered** with file paths and line numbers — work through it
-- **Ibraheem has ADHD** — list changes one file at a time, wait for confirmation. Interrupt perfectionism spirals.
-- **UK English only** — colour, behaviour, analyse, organisation. CSS properties keep US spelling.
-- **Screenshots are in `/review-screenshots/`** — 24 PNGs at 375px, 768px, 1440px for all 8 pages. Use these for visual reference.
-- **The booking system is a separate project** — don't mix it into the website build. There's a detailed prompt ready to go.
-- **Formspree free tier** is 50 submissions/month — fine for pre-launch but may need upgrading.
-- **Today is Sunday 9 Feb** — no business development reminder needed (Thursday/Friday only).
+- **Dark mode is now fully functional** — the `@custom-variant dark` fix was the biggest discovery. All `dark:` utilities now work with the class toggle.
+- **A11Y-FIXES.md has full audit details** — every violation, fix, and verification result
+- **The a11y MCP server can't reach localhost** — if you need to re-audit, use the Playwright + axe-core injection approach (inject axe-core via `page.addScriptTag`, run `axe.run()` in `page.evaluate`). This is documented in the conversation.
+- **Ibraheem is working on the booking system in a separate project** (`c:\Users\Bean\Projects\booking-system`) — don't mix it with this website project
+- **CLAUDE.md needs updating** — the "What's Next" section should reflect that Phase 5b is done and accessibility is now clean
+- **No commits have been made** — all changes are unstaged
 
-## Booking System Prompt (for future session)
+## Booking System Prompt (carried forward from 9 Feb)
 
 > Build me a self-hosted booking/scheduling system for Small Giants Studio. Requirements:
 >

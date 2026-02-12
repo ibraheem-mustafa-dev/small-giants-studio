@@ -19,7 +19,7 @@ const variants = {
   ghost:
     "text-primary-800 hover:bg-primary-50 focus:ring-primary-500 dark:text-primary-400 dark:hover:bg-primary-900/20",
   white:
-    "bg-white text-accent-600 shadow-md hover:bg-white/90 hover:shadow-lg focus:ring-white",
+    "bg-white text-accent-700 shadow-md hover:bg-white/90 hover:shadow-lg focus:ring-white",
 };
 
 const sizes = {
