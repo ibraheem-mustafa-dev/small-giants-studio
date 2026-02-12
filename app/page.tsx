@@ -16,11 +16,6 @@ const Testimonials = dynamic(
       (mod) => mod.Testimonials,
     ),
 );
-const Community = dynamic(
-  () =>
-    import("@/components/sections/Community").then((mod) => mod.Community),
-);
-
 export default function HomePage() {
   return (
     <>
@@ -31,7 +26,6 @@ export default function HomePage() {
       <USPs />
       <Services />
       <Testimonials />
-      <Community />
       <CTA />
     </>
   );

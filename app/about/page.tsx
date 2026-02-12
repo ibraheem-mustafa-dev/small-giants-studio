@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { Community } from "@/components/sections/Community";
 
 export const metadata: Metadata = {
   title: "Ibraheem Mustafa | Digital Transformation Consultant | Birmingham",
@@ -254,6 +255,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Partners & Forest */}
+      <Community />
 
       {/* CTA Section */}
       <section className="bg-accent-700 py-16 sm:py-24">

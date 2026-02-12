@@ -12,7 +12,7 @@ export function Hero() {
           100% { r: 4; opacity: 1; }
         }
         @keyframes line-draw {
-          0% { stroke-dashoffset: 100; opacity: 0; }
+          0% { stroke-dashoffset: 200; opacity: 0; }
           20% { opacity: 0.6; }
           100% { stroke-dashoffset: 0; opacity: 0.6; }
         }
@@ -22,8 +22,8 @@ export function Hero() {
         }
         @keyframes shadow-grow {
           0% { transform: scaleY(0); opacity: 0; }
-          70% { transform: scaleY(1.03); opacity: 0.14; }
-          100% { transform: scaleY(1); opacity: 0.11; }
+          70% { transform: scaleY(1.03); opacity: 0.25; }
+          100% { transform: scaleY(1); opacity: 0.22; }
         }
         @keyframes crown-pulse {
           0%, 100% { opacity: 0.5; transform: scale(1); }
@@ -42,7 +42,7 @@ export function Hero() {
         }
         @media (prefers-reduced-motion: reduce) {
           .hero-anim { animation: none !important; opacity: 1 !important; }
-          .hero-anim-hidden { animation: none !important; opacity: 0.11 !important; }
+          .hero-anim-hidden { animation: none !important; opacity: 0.22 !important; }
           .hero-anim-line { animation: none !important; stroke-dashoffset: 0 !important; opacity: 0.6 !important; }
         }
       `}</style>
@@ -120,9 +120,9 @@ export function Hero() {
                 {/* Act 1: Giant shadow grows up from the ground (appears first, behind everything) */}
                 <g className="hero-anim-hidden" style={{ animation: "shadow-grow 1.8s ease-out 0.3s forwards", transformOrigin: "210px 380px" }}>
                   {/* Head */}
-                  <circle cx="210" cy="72" r="36" fill="white" opacity="0.11" />
+                  <circle cx="210" cy="72" r="36" fill="white" opacity="0.22" />
                   {/* Neck */}
-                  <rect x="200" y="108" width="20" height="16" fill="white" opacity="0.11" rx="4" />
+                  <rect x="200" y="108" width="20" height="16" fill="white" opacity="0.22" rx="4" />
                   {/* Shoulders & torso — broad, confident */}
                   <path
                     d="M140 124 L280 124 C282 124 284 126 284 128 L276 200 L260 200 L256 260 L258 380 L232 380 L224 280 L210 280 L196 280 L188 380 L162 380 L164 260 L160 200 L144 200 L136 128 C136 126 138 124 140 124Z"
@@ -137,7 +137,7 @@ export function Hero() {
                     strokeWidth="14"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    opacity="0.09"
+                    opacity="0.18"
                   />
                   {/* Right arm — hand on hip */}
                   <path
@@ -147,7 +147,7 @@ export function Hero() {
                     strokeWidth="14"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    opacity="0.09"
+                    opacity="0.18"
                   />
                 </g>
 
@@ -155,19 +155,19 @@ export function Hero() {
                 <g>
                   {/* Connection lines — drawn with dash animation */}
                   {/* Marketing node → CRM node */}
-                  <line x1="130" y1="170" x2="200" y2="230" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="100" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.6s forwards", strokeDashoffset: 100, opacity: 0 }} />
+                  <line x1="130" y1="170" x2="200" y2="230" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.6s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* CRM → Operations */}
-                  <line x1="200" y1="230" x2="290" y2="180" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="100" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.9s forwards", strokeDashoffset: 100, opacity: 0 }} />
+                  <line x1="200" y1="230" x2="290" y2="180" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.9s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* Operations → AI */}
-                  <line x1="290" y1="180" x2="280" y2="280" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="100" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.2s forwards", strokeDashoffset: 100, opacity: 0 }} />
+                  <line x1="290" y1="180" x2="280" y2="280" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.2s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* AI → Website */}
-                  <line x1="280" y1="280" x2="150" y2="290" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="100" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.5s forwards", strokeDashoffset: 100, opacity: 0 }} />
+                  <line x1="280" y1="280" x2="150" y2="290" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.5s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* Website → Marketing (closing the loop) */}
-                  <line x1="150" y1="290" x2="130" y2="170" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="100" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.8s forwards", strokeDashoffset: 100, opacity: 0 }} />
+                  <line x1="150" y1="290" x2="130" y2="170" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.8s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* Cross connections */}
-                  <line x1="130" y1="170" x2="290" y2="180" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="100" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.0s forwards", strokeDashoffset: 100, opacity: 0 }} />
-                  <line x1="200" y1="230" x2="280" y2="280" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="100" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.2s forwards", strokeDashoffset: 100, opacity: 0 }} />
-                  <line x1="200" y1="230" x2="150" y2="290" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="100" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.3s forwards", strokeDashoffset: 100, opacity: 0 }} />
+                  <line x1="130" y1="170" x2="290" y2="180" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.0s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="200" y1="230" x2="280" y2="280" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.2s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="200" y1="230" x2="150" y2="290" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.3s forwards", strokeDashoffset: 200, opacity: 0 }} />
 
                   {/* System nodes — appear with staggered timing */}
                   {/* Marketing */}

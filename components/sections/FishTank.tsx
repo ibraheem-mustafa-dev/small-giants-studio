@@ -5,8 +5,8 @@ export function FishTank() {
       className="relative bg-primary-50 py-16 sm:py-24"
       aria-labelledby="fishtank-heading"
     >
-      {/* Wave divider */}
-      <div className="absolute top-0 left-0 w-full h-8 sm:h-12 lg:h-16 -translate-y-full">
+      {/* Wave divider — 2px overlap prevents anti-aliasing gap */}
+      <div className="absolute top-0 left-0 w-full h-8 sm:h-12 lg:h-16 -translate-y-[calc(100%-2px)]">
         <svg
           className="block w-full h-full"
           viewBox="0 0 1440 60"
@@ -189,11 +189,11 @@ export function FishTank() {
                 connected system.
               </p>
             </div>
-            <div className="mt-8 rounded-lg bg-primary-100 p-6">
-              <p className="text-lg font-semibold text-primary-800 dark:text-primary-300">
+            <div className="mt-8 rounded-lg border border-primary-300 bg-primary-100 p-6 shadow-sm dark:border-primary-700">
+              <p className="text-lg font-semibold text-primary-800 dark:text-primary-200">
                 Which area is your limiting factor?
               </p>
-              <p className="mt-2 text-primary-800 dark:text-primary-300">
+              <p className="mt-2 text-primary-700 dark:text-primary-300">
                 I build both as one connected system — not a Frankenstein of tools that don&apos;t
                 talk to each other.
               </p>

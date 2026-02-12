@@ -53,22 +53,24 @@ export function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           {/* Brand column */}
           <div className="space-y-6">
-            <Logo variant="light" className="h-10 w-auto" />
-            <p className="max-w-xs text-sm text-primary-200">
+            <Logo variant="light" className="h-12 w-auto" />
+            <p className="max-w-xs text-sm text-primary-100">
               Helping human-led businesses compete with the giants. Enterprise-level marketing,
               automation, and tech — at budgets that actually work.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-5">
               {navigation.social.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-300 transition-colors hover:text-white"
-                  aria-label={`Visit our ${item.name} page`}
+                  className="flex items-center gap-2 text-primary-200 transition-colors hover:text-white"
                 >
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                  <item.icon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                  <span className="text-xs font-medium">
+                    {item.name === "Ibraheem on LinkedIn" ? "Ibraheem" : "Company"}
+                  </span>
                 </a>
               ))}
             </div>
@@ -86,7 +88,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-200 transition-colors hover:text-white"
+                        className="text-sm text-primary-100 transition-colors hover:text-white"
                       >
                         {item.name}
                       </Link>
@@ -103,7 +105,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-200 transition-colors hover:text-white"
+                        className="text-sm text-primary-100 transition-colors hover:text-white"
                       >
                         {item.name}
                       </Link>
@@ -121,7 +123,7 @@ export function Footer() {
                   <li>
                     <a
                       href="mailto:hello@smallgiantsstudio.co.uk"
-                      className="text-sm text-primary-200 transition-colors hover:text-white"
+                      className="text-sm text-primary-100 transition-colors hover:text-white"
                     >
                       hello@smallgiantsstudio.co.uk
                     </a>
@@ -129,12 +131,12 @@ export function Footer() {
                   <li>
                     <a
                       href="tel:+447424449555"
-                      className="text-sm text-primary-200 transition-colors hover:text-white"
+                      className="text-sm text-primary-100 transition-colors hover:text-white"
                     >
                       07424 449555
                     </a>
                   </li>
-                  <li className="text-sm text-primary-200">Birmingham, UK</li>
+                  <li className="text-sm text-primary-100">Birmingham, UK</li>
                 </ul>
               </div>
               <div className="mt-10">
@@ -144,7 +146,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-200 transition-colors hover:text-white"
+                        className="text-sm text-primary-100 transition-colors hover:text-white"
                       >
                         {item.name}
                       </Link>

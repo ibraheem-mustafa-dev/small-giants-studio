@@ -6,8 +6,8 @@ export function CTA() {
       className="relative bg-gradient-to-r from-accent-700 to-accent-800 py-16 sm:py-24"
       aria-labelledby="cta-heading"
     >
-      {/* Wave divider */}
-      <div className="absolute top-0 left-0 w-full h-8 sm:h-12 lg:h-16 -translate-y-full">
+      {/* Wave divider — matches Testimonials section above (2px overlap prevents gap) */}
+      <div className="absolute top-0 left-0 w-full h-8 sm:h-12 lg:h-16 -translate-y-[calc(100%-2px)]">
         <svg
           className="block w-full h-full"
           viewBox="0 0 1440 60"
@@ -18,7 +18,7 @@ export function CTA() {
         >
           <path
             d="M0 0L48 8C96 16 192 32 288 37.3C384 43 480 37 576 32C672 27 768 21 864 24C960 27 1056 37 1152 40C1248 43 1344 37 1392 35L1440 32V0H0Z"
-            style={{ fill: 'var(--color-surface)' }}
+            className="fill-primary-50 dark:fill-background"
           />
         </svg>
       </div>

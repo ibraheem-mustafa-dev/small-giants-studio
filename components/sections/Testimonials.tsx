@@ -51,11 +51,11 @@ export function Testimonials() {
 
   return (
     <section
-      className="relative bg-primary-50 py-16 sm:py-24"
+      className="relative bg-primary-50 dark:bg-background py-16 sm:py-24"
       aria-labelledby="testimonials-heading"
     >
-      {/* Wave divider */}
-      <div className="absolute top-0 left-0 w-full h-8 sm:h-12 lg:h-16 -translate-y-full">
+      {/* Wave divider — 2px overlap prevents anti-aliasing gap */}
+      <div className="absolute top-0 left-0 w-full h-8 sm:h-12 lg:h-16 -translate-y-[calc(100%-2px)]">
         <svg
           className="block w-full h-full"
           viewBox="0 0 1440 60"
