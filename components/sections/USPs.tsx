@@ -24,7 +24,7 @@ const usps = [
       </svg>
     ),
     title: "18 months ahead",
-    description: "Cutting-edge tools before your competitors even know they exist. By the time they're debating it, you've got it working.",
+    description: "Tools your competitors won't hear about for another year. By the time they're debating it, you've got it working.",
   },
   {
     icon: (

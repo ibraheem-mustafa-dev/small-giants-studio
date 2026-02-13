@@ -39,8 +39,7 @@ export default function InsightsPage() {
               Latest from LinkedIn
             </h2>
             <p className="mt-4 text-lg text-text-secondary">
-              I share what I&apos;m learning, building, and thinking about — follow along for the
-              unfiltered version.
+              What I&apos;m learning, building, and thinking about — no filter, no performance.
             </p>
           </div>
 

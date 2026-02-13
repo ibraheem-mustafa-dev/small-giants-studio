@@ -165,9 +165,9 @@ export default function AboutPage() {
               compete with one. You just need the right systems.
             </p>
             <p>
-              I use cutting-edge AI and automation that most agencies won&apos;t touch for another
+              I use AI and automation that most agencies won&apos;t touch for another
               18 months — at budgets that actually work. The goal isn&apos;t just growth. It&apos;s
-              giving you back your time, your headspace, and the ability to actually switch off
+              giving you back your time, your headspace, and the ability to switch off
               when you&apos;re not working.
             </p>
           </div>

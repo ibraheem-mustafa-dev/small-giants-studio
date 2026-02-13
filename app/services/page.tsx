@@ -33,7 +33,7 @@ const services = [
     title: "Marketing Strategy",
     outcome: "Get found by the right people",
     problem: "You're spending money on marketing but can't point to what's actually working. Your competitors seem to be everywhere while you're invisible. Sound familiar?",
-    solution: "Strategy that actually brings in the right people — not vanity metrics that look good in a report but don't pay the bills. (Sound familiar?)",
+    solution: "Strategy that actually brings in the right people — not vanity metrics that look good in a report but don't pay the bills.",
     includes: [
       "Target audience research",
       "Competitor analysis",
