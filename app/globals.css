@@ -89,6 +89,8 @@ html.dark {
 
   /* Accent light backgrounds */
   --color-accent-100: #2A1A0A;
+  --color-accent-200: #3D2510;
+  --color-accent-500: #D96E1F;
 }
 
 /* Base styles */

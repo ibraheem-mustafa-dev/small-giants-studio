@@ -66,7 +66,7 @@ export function Testimonials() {
         >
           <path
             d="M0 0L48 8C96 16 192 32 288 37.3C384 43 480 37 576 32C672 27 768 21 864 24C960 27 1056 37 1152 40C1248 43 1344 37 1392 35L1440 32V0H0Z"
-            style={{ fill: 'var(--color-background)' }}
+            style={{ fill: 'var(--color-accent-500)' }}
           />
         </svg>
       </div>

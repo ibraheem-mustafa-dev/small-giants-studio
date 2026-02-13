@@ -1,114 +1,104 @@
-# Session Handoff — 12 Feb 2026
+# Session Handoff — 13 Feb 2026
 
 ## Completed This Session
 
-1. **Added next/dynamic imports** for FishTank, Testimonials, Community on homepage — reduces initial bundle for ~15-25% FCP improvement.
-2. **Committed all accessibility fixes** from previous session (9 files, 69 WCAG violations fixed) as `06271b8`.
-3. **Committed dynamic import changes** as `06e18d4`.
-4. **Deployed to Vercel** — site is live at https://small-giants-studio.vercel.app (project: `prj_1CXQEqDKFr2ZEImnEZe1uIls1uj8`).
-5. **Fixed 14 visual issues** found from reviewing the live deployment:
-   - V1/V11: Logo — removed `brightness-0 invert` hack. Header uses `mix-blend-multiply` (light) + LogoText fallback (dark). Footer always uses LogoText.
-   - V2: Wave dividers — fixed anti-aliasing gaps with 2px overlap (`-translate-y-[calc(100%-2px)]`). Fixed USPs wave fill colour (was primary-50, should be primary-900 to match MidCTA above).
-   - V3/V4: Hero SVG — doubled giant opacity (0.11→0.22, arms 0.09→0.18). Fixed connection lines (strokeDasharray 100→200, longest line is ~160 units).
-   - V5: FishTank callout box — added visible border + shadow for light mode.
-   - V6: USP cards — added `border-primary-200 shadow-sm dark:border-primary-800`.
-   - V7: Testimonials dark mode — added `dark:bg-background` to prevent green (#0D1F1F) background.
-   - V9: Removed "One connected system, not Frankenstein" USP (word-for-word redundant with FishTank callout). Now 6 cards in 3x2 grid.
-   - V10/V12: Footer — text lightened to primary-100, LinkedIn icons labelled ("Ibraheem" / "Company"), logo bumped to h-12.
-   - V14: Community section moved from homepage to About page (partners + Evertreen forest embed).
-   - CTA wave divider now uses className-based fill with dark: variant for proper mode switching.
-6. **Documented all issues** in `VISUAL-FIXES.md` with root causes, fixes, and verification.
-7. **Re-deployed** all visual fixes to Vercel production.
-8. **Integrated new transparent logo** — user provided `SGS Logo Horizontal.png` (RGBA with transparency). Optimised from 2048x634 (345KB) to 600x185 (60KB). Replaced `sgs-horizontal-logo.png`. Logo now shows full-colour giant figure on light mode, clean white on dark mode/footer. `brightness-0 invert` works correctly with transparent PNG (letter holes stay transparent).
+1. **Fixed logo dark mode colour** — removed `dark:brightness-0 dark:invert` filter that was turning the logo fully white. Logo now shows original brand colours (teal + orange) in both light and dark mode. File: `components/ui/Logo.tsx:20-22`.
+2. **Diagnosed and fixed CSS loading failure** — site was completely unstyled (raw HTML). Root cause: dozens of stale `node.exe` processes from previous `next start` runs. An old server process was responding with HTML referencing a CSS chunk hash that no longer existed on disk. Fixed by killing all node processes, cleaning `.next` directory, and rebuilding.
+3. **Services section colour experiment (from prior session, uncommitted)** — Services background changed to accent-500 (orange), wave divider above Testimonials updated to match, dark mode accent-200/accent-500 CSS variables added to globals.css.
+4. **CLAUDE.md updates (from prior session, uncommitted)** — added LinkedIn API feed section to "What's Next", marked company registration number as done.
 
 ## Current State
 
-- **Live site**: https://small-giants-studio.vercel.app — deployed and working
-- **Build**: passes clean (13/13 pages, 0 lint errors, 0 type errors)
-- **Git**: 9 modified files + VISUAL-FIXES.md not yet committed. 2 new logo files untracked.
-- **Domain**: smallgiantsstudio.co.uk not yet pointed to Vercel. Needs DNS configuration in Hostinger.
-- **Vercel project**: `small-giants-studio` (org: `ibraheem-mustafas-projects`). No GitHub remote — deploying via `npx vercel --prod` directly.
-- **No git remote** configured — all changes are local only.
+- **Live site**: https://smallgiantsstudio.co.uk (deployed 13 Feb 2026, Vercel)
+- **Vercel URL**: https://small-giants-studio.vercel.app
+- **Branch**: `master` (no remote configured — deploys via `npx vercel --prod`)
+- **Build**: passes clean
+- **Server**: running on `localhost:3099` (production build)
+- **5 modified files uncommitted** (see below)
+- **12 untracked screenshot PNGs** in root directory (design experiments, safe to delete)
 
 ## Known Issues / Blockers
 
-1. **Logo resolved** — transparent PNG integrated and optimised (60KB). The unoptimised source files (`SGS Logo Horizontal.png` 295KB, `SGS Logo Horizontal.svg` 424KB) can be deleted from public/images after committing.
-3. **Domain DNS** not configured — Hostinger domain (smallgiantsstudio.co.uk) not pointed to Vercel yet. User has an SSH key available. Steps: run `npx vercel domains add smallgiantsstudio.co.uk`, then update DNS records in Hostinger control panel.
-4. **Formspree untested** — contact form connected to Formspree (ID: xeeloran) but no real submission test done.
-5. **No Google Analytics / Search Console** — needs account setup (post-launch task).
-6. **No real case studies or blog posts** — /work and /insights are "coming soon" placeholders.
+1. **Uncommitted changes** — 5 files modified across multiple sessions need reviewing and committing. The Services orange background and Testimonials wave change may or may not be intentional (appears to be a design experiment from a prior session).
+2. **Stale screenshot files** — 12 PNG screenshots in the project root (`dark-mode-header.png`, `services-brand-orange*.png`, etc.) are design experiment artifacts. Should be deleted, not committed.
+3. **Logo on dark background** — no filter applied now. If the teal text is too dark to read on the dark header, a slight brightness bump (e.g. `dark:brightness-125`) may be needed. User asked for "normal colours" so left as-is.
+4. **Playwright MCP** — cannot launch when Chrome is already running. Known Windows issue. Workaround: close Chrome first, or use `start http://localhost:PORT` to open in existing browser.
+5. **Formspree untested** — contact form connected (ID: xeeloran) but no real submission test done.
+6. **No Google Analytics / Search Console / Business Profile** — needs account setup (post-launch).
+7. **No real case studies or blog posts** — /work and /insights are "coming soon" placeholders.
 
 ## Next Priorities (in order)
 
-1. **Connect domain** — `npx vercel domains add smallgiantsstudio.co.uk` then update Hostinger DNS (CNAME to `cname.vercel-dns.com` or A record to `76.76.21.21`).
-3. **Commit visual fixes** — 9 modified files + VISUAL-FIXES.md need committing.
-4. **BFG content incorporation** — user loves the BFG framing and wants it more central. Recommendations: About page narrative, meta descriptions, LinkedIn content. No code changes made yet — just recommendations documented.
-5. **Phase 4: Content & polish** — real case studies (needs client permission), blog posts, company reg number.
-6. **Post-launch SEO** — Google Search Console, Business Profile, GA4.
+1. **Review and commit uncommitted changes** — the 5 modified files include the logo fix (definitely keep), Services orange background (check if user wants this), CLAUDE.md updates (keep), and CSS variables (keep if Services change is kept).
+2. **Clean up screenshot files** — delete the 12 untracked PNGs from the project root.
+3. **Deploy latest changes to Vercel** — `npx vercel --prod` after committing.
+4. **Test contact form** — submit a real test message through Formspree to confirm it works end-to-end.
+5. **Phase 4: Content & polish** — real case studies (needs client permission), blog posts, copy tightening.
+6. **Post-launch SEO** — Google Search Console, Business Profile, GA4 (all need accounts).
 
-## Files Modified This Session (uncommitted)
+## Files Modified (uncommitted)
 
-1. `c:\Users\Bean\Projects\small-giants-studio\components\ui\Logo.tsx` — removed brightness-0 invert, mix-blend-multiply + LogoText dark fallback
-2. `c:\Users\Bean\Projects\small-giants-studio\components\sections\Hero.tsx` — giant opacity doubled, strokeDasharray 100→200
-3. `c:\Users\Bean\Projects\small-giants-studio\components\sections\FishTank.tsx` — wave 2px overlap, callout box border/shadow
-4. `c:\Users\Bean\Projects\small-giants-studio\components\sections\USPs.tsx` — removed redundant USP, wave fill fix, card borders
-5. `c:\Users\Bean\Projects\small-giants-studio\components\sections\Testimonials.tsx` — dark:bg-background, wave 2px overlap
-6. `c:\Users\Bean\Projects\small-giants-studio\components\sections\CTA.tsx` — wave overlap, className-based fill
-7. `c:\Users\Bean\Projects\small-giants-studio\components\layout\Footer.tsx` — text contrast, LinkedIn labels, logo size
-8. `c:\Users\Bean\Projects\small-giants-studio\app\page.tsx` — removed Community import/component
-9. `c:\Users\Bean\Projects\small-giants-studio\app\about\page.tsx` — added Community import/component
-10. `c:\Users\Bean\Projects\small-giants-studio\VISUAL-FIXES.md` — NEW: visual issue tracking document
+1. `c:\Users\Bean\Projects\small-giants-studio\components\ui\Logo.tsx` — removed dark mode filter, logo shows original colours in both modes
+2. `c:\Users\Bean\Projects\small-giants-studio\app\globals.css` — added `--color-accent-200` and `--color-accent-500` dark mode variables
+3. `c:\Users\Bean\Projects\small-giants-studio\components\sections\Services.tsx` — background changed to accent-500 (orange), subheading text changed to text-primary
+4. `c:\Users\Bean\Projects\small-giants-studio\components\sections\Testimonials.tsx` — wave fill changed from background to accent-500
+5. `c:\Users\Bean\Projects\small-giants-studio\CLAUDE.md` — added LinkedIn API feed section, marked company reg number done
 
-## New Untracked Files
-
-- `public/images/SGS Logo Horizontal.png` — 295KB, source file (optimised version saved as sgs-horizontal-logo.png at 60KB). Can be deleted.
-- `public/images/SGS Logo Horizontal.svg` — 424KB, too large for web use. Can be deleted.
-- `VISUAL-FIXES.md` — documents all 14 visual issues, root causes, and fixes
+### Untracked files (delete, do not commit)
+- `dark-mode-header.png`, `dark-mode-services.png`
+- `services-brand-orange.png`, `services-brand-orange-v2.png`, `services-brand-orange-final.png`
+- `services-final.png`, `services-inline-style.png`, `services-orange-200.png`
+- `services-section-bg.png`, `services-section-teal.png`, `services-section-teal2.png`
+- `services-to-testimonials-transition.png`
 
 ## Notes for Next Session
 
-- **Phone number format**: confirmed as 07424 449555 (UK domestic format).
-- **Community section**: moved to About page by design decision — the forest iframe broke the homepage conversion funnel between Testimonials and CTA. The About page already had a text-based community section; the visual partner cards + forest embed now sit after it.
-- **USP removed**: "One connected system, not Frankenstein" was removed because the FishTank callout box says the exact same thing word-for-word. 6 USPs now fit the 3x2 grid cleanly.
-- **Wave divider architecture**: each wave sits ABOVE its section and fills with the colour of the section ABOVE it. FishTank wave = primary-900 (Problem above), USPs wave = primary-900 (MidCTA above), Testimonials wave = background (Services above), CTA wave = primary-50/background with dark: variant (Testimonials above).
-- **Logo resolved**: New transparent PNG integrated and optimised (345KB → 60KB). `brightness-0 invert` now works correctly for dark mode and footer. Giant figure visible in all contexts.
-- **Vercel MCP** is installed via `claude mcp add` but needs OAuth on first use — not tested this session.
-- **No git remote** — there's no GitHub repo linked. All deploys go directly via `npx vercel --prod`.
+- **Logo decision**: User explicitly said "just use my normal colours" — no filter in dark mode. If teal text is hard to read on the dark header, user will say so.
+- **Services orange background**: This change is in the diff but wasn't discussed this session. Likely a design experiment from the previous session. Ask the user if they want to keep it before committing.
+- **Stale node processes**: Windows doesn't cleanly kill background `next start` processes when using `&` in Git Bash. Always kill all node processes before starting a new server: `/c/Windows/System32/taskkill.exe //F //IM node.exe`.
+- **Wave divider architecture**: each wave sits ABOVE its section and fills with the colour of the section ABOVE it. If Services goes orange, the wave above Testimonials must also be orange.
+- **No git remote** — no GitHub repo. All deploys go directly via `npx vercel --prod`.
+- **No co-author tags in commits** — user wants AI generation hidden.
 
-## Available Tooling
+## Relevant Tooling for Next Tasks
 
-### Skills (slash commands)
-- `/commit` — create git commit
-- `/commit-push-pr` — commit, push, and open PR
-- `/deploy-nextjs` — pre-deployment checklist for Next.js
-- `/verification-before-completion` — verify work before claiming done
-- `/brainstorming` — explore requirements before building
-- `/writing-plans` — plan multi-step implementations
-- `/systematic-debugging` — debug any issue methodically
-- `/ui-ux-pro-max` — visual design and UX critique
-- `/writing-clearly-and-concisely` — tighten website copy
-- `/vercel-react-best-practices` — Next.js code quality and performance
-- `/a11y-audit` — WCAG 2.2 AA accessibility audit
+### Commands (slash commands)
+- `/commit` — commit the uncommitted changes after review
+- `/deploy-nextjs` — pre-deployment checklist before pushing to Vercel
 - `/handoff` — generate session handoff summary
-- `/linkedin` — create LinkedIn post from topic/story
-- `/brain-dump` — structure rambling brain dump into actions
+- `/verification-before-completion` — verify work before claiming done
 
-### Custom Agents
-- `performance-auditor` — Core Web Vitals, Lighthouse, bundle size
-- `seo-auditor` — SEO analysis and recommendations
-- `test-and-explain` — tests code and explains results in plain English
+### Skills (plugin skills)
+- `/ui-ux-pro-max` — visual design critique if reviewing the Services orange background
+- `/writing-clearly-and-concisely` — tighten website copy for Phase 4
+
+### Agents
+- `performance-auditor` — Core Web Vitals audit post-deployment
+- `test-and-explain` — test contact form and explain results
 
 ### MCP Servers
-- **Vercel MCP** — installed via `claude mcp add` (needs OAuth on first use)
-- **GitHub MCP** — available for repo management
-- **Playwright MCP** — browser automation for visual testing
-- **a11y MCP** — accessibility testing (can't reach localhost — use Playwright + axe-core injection approach instead)
-- **Context7** — up-to-date library documentation
+- **Playwright MCP** — browser testing (close Chrome first on Windows)
 
-### Hooks (user-level, in `~/.claude/settings.json`)
-- **Auto-lint** — runs on file changes
+### Hooks
+- **Auto-lint** — runs on file changes (user-level, `~/.claude/settings.json`)
 - **Block .env** — prevents committing secrets
-- Scripts in `~/.claude/hooks/` (Python — reliable on Windows)
+
+## Next Session Prompt
+
+~~~
+/superpowers:using-superpowers
+
+The Small Giants Studio website is live at smallgiantsstudio.co.uk. There are 5 uncommitted file changes from design experiments (Services orange background, logo dark mode fix, CSS variables, CLAUDE.md updates) and 12 screenshot PNGs to clean up.
+
+Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context, then work through these priorities:
+
+1. **Review uncommitted changes** — show me the diff for each file and ask whether to keep or revert, especially the Services orange background. Use `/commit` once confirmed.
+2. **Delete screenshot artifacts** — remove the 12 untracked PNGs from the project root (dark-mode-*.png, services-*.png).
+3. **Deploy to Vercel** — run `/deploy-nextjs` checklist then `npx vercel --prod`.
+4. **Test contact form** — submit a real test through Formspree (ID: xeeloran) to confirm messages arrive.
+
+Critical: no git remote exists — deploys go via `npx vercel --prod` directly. No co-author tags in commits.
+~~~
 
 ## Booking System Prompt (carried forward from 9 Feb)
 

@@ -72,7 +72,8 @@ const services = [
 export function Services() {
   return (
     <section
-      className="bg-background py-16 sm:py-24"
+      className="py-16 sm:py-24"
+      style={{ backgroundColor: 'var(--color-accent-500)' }}
       aria-labelledby="services-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -83,7 +84,7 @@ export function Services() {
           >
             What I can help with
           </h2>
-          <p className="mt-4 text-lg text-text-secondary">
+          <p className="mt-4 text-lg text-text-primary">
             I don&apos;t build until I understand your business. Strategy first. Tools chosen for
             how you work, not what&apos;s popular.
           </p>

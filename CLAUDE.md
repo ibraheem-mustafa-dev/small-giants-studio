@@ -250,6 +250,12 @@ All brand, voice, and positioning docs live in `/docs/`. **Read these before any
 - [ ] Set up Google Business Profile — Birmingham (needs account)
 - [ ] Add Google Analytics 4 (needs tracking ID)
 
+### Post-launch: LinkedIn API feed
+- [ ] LinkedIn API app created at developers.linkedin.com (needs Community Management API approval)
+- [ ] Build OAuth flow + token refresh for reading company page posts
+- [ ] n8n automation alternative once API access confirmed
+- [ ] For now: using oEmbed with curated post URLs on /insights page
+
 ### Separate project
 - [ ] Custom booking system (prompt in CONVERSATION-HANDOFF.md)
 
@@ -264,4 +270,4 @@ All brand, voice, and positioning docs live in `/docs/`. **Read these before any
 - [ ] Real blog posts (for /insights page)
 - [ ] Google Analytics 4 tracking ID (post-launch)
 - [ ] Google Business Profile setup (post-launch)
-- [ ] Company registration number
+- [x] Company registration number — 16959564 (added to privacy, terms, footer)

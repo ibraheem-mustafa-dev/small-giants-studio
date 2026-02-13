@@ -15,10 +15,11 @@ export function Logo({ className = "h-10 w-auto sm:h-12", variant = "default" }:
     return <LogoText className={className} variant={variant} />;
   }
 
-  // Logo PNG now has transparent background — brightness-0 invert works cleanly
+  // Logo PNG has transparent background
+  // Light variant: fully white for use on coloured backgrounds
   const filterClass = variant === "light"
     ? "brightness-0 invert"
-    : "dark:brightness-0 dark:invert";
+    : "";
 
   return (
     <div className={`flex items-center ${className}`}>
