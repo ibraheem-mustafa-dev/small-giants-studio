@@ -180,11 +180,11 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-text-muted">
             Not sure what you need yet? Check out my{" "}
-            <Link href="/services" className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800">
+            <Link href="/services" className="rounded font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
               services
             </Link>
             {" "}or read{" "}
-            <Link href="/about" className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800">
+            <Link href="/about" className="rounded font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
               more about me
             </Link>.
           </p>

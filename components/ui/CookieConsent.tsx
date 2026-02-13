@@ -53,7 +53,7 @@ export function CookieConsent() {
             adding any in future.{" "}
             <Link
               href="/privacy"
-              className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800"
+              className="rounded font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
               Privacy policy
             </Link>
@@ -62,13 +62,13 @@ export function CookieConsent() {
         <div className="flex shrink-0 gap-3">
           <button
             onClick={reject}
-            className="rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            className="rounded-lg border border-border px-4 py-3 text-sm font-medium text-text-secondary transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
           >
             Reject all
           </button>
           <button
             onClick={accept}
-            className="rounded-lg bg-primary-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            className="rounded-lg bg-primary-700 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
           >
             Accept all
           </button>

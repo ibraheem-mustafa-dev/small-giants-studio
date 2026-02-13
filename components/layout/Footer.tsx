@@ -66,7 +66,7 @@ export function Footer() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-primary-200 transition-colors hover:text-white"
+                  className="flex items-center gap-2 rounded text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400"
                 >
                   <item.icon className="h-5 w-5 shrink-0" aria-hidden="true" />
                   <span className="text-xs font-medium">
@@ -89,7 +89,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
+                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400"
                       >
                         {item.name}
                       </Link>
@@ -106,7 +106,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
+                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400"
                       >
                         {item.name}
                       </Link>
@@ -124,7 +124,7 @@ export function Footer() {
                   <li>
                     <a
                       href="mailto:hello@smallgiantsstudio.co.uk"
-                      className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
+                      className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400"
                     >
                       hello@smallgiantsstudio.co.uk
                     </a>
@@ -132,7 +132,7 @@ export function Footer() {
                   <li>
                     <a
                       href="tel:+447424449555"
-                      className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
+                      className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400"
                     >
                       07424 449555
                     </a>
@@ -147,7 +147,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white"
+                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400"
                       >
                         {item.name}
                       </Link>

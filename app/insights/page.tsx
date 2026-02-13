@@ -120,11 +120,11 @@ export default function InsightsPage() {
           </div>
           <p className="mt-6 text-center text-sm text-text-muted">
             In the meantime, see what I can help with on my{" "}
-            <Link href="/services" className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800">
+            <Link href="/services" className="rounded font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
               services page
             </Link>
             {" "}or{" "}
-            <Link href="/contact" className="font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800">
+            <Link href="/contact" className="rounded font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
               get in touch
             </Link>.
           </p>

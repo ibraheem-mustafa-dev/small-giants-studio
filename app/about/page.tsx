@@ -147,9 +147,9 @@ export default function AboutPage() {
             </p>
             <p>
               Growth only happens when two things work together —{" "}
-              <Link href="/services#marketing-strategy" className="font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800">marketing</Link>{" "}
+              <Link href="/services#marketing-strategy" className="rounded font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">marketing</Link>{" "}
               (so people find you) and{" "}
-              <Link href="/services#crm-operations" className="font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800">operations</Link>{" "}
+              <Link href="/services#crm-operations" className="rounded font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">operations</Link>{" "}
               (so you can handle them when they do). Corporations have entire teams
               building connected systems. Small businesses? They end up with a Frankenstein of tools
               that don&apos;t talk to each other. Or nothing at all.
