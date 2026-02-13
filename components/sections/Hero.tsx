@@ -119,34 +119,28 @@ export function Hero() {
 
                 {/* Act 1: Giant shadow grows up from the ground (appears first, behind everything) */}
                 <g className="hero-anim-hidden" style={{ animation: "shadow-grow 1.8s ease-out 0.3s forwards", transformOrigin: "210px 380px" }}>
-                  {/* Head */}
-                  <circle cx="210" cy="72" r="36" fill="white" opacity="0.22" />
-                  {/* Neck */}
-                  <rect x="200" y="108" width="20" height="16" fill="white" opacity="0.22" rx="4" />
-                  {/* Shoulders & torso — broad, confident */}
+                  {/* Unified giant silhouette — single path for natural flow */}
                   <path
-                    d="M140 124 L280 124 C282 124 284 126 284 128 L276 200 L260 200 L256 260 L258 380 L232 380 L224 280 L210 280 L196 280 L188 380 L162 380 L164 260 L160 200 L144 200 L136 128 C136 126 138 124 140 124Z"
+                    d="M210 36
+                       C232 36 250 54 250 76 C250 94 238 108 222 112
+                       L226 124 L280 132
+                       C282 132 284 134 283 136
+                       L310 172 L322 206
+                       C324 212 318 216 314 212
+                       L296 176 L272 148
+                       L274 200 L270 260 L258 380
+                       L232 380 L224 280
+                       L210 278
+                       L196 280 L188 380
+                       L162 380 L160 260 L156 200
+                       L148 148 L124 176 L106 212
+                       C102 216 96 212 98 206
+                       L110 172 L137 136
+                       C136 134 138 132 140 132
+                       L198 124 L198 112
+                       C182 108 170 94 170 76
+                       C170 54 188 36 210 36Z"
                     fill="white"
-                    opacity="0.11"
-                  />
-                  {/* Left arm — hand on hip */}
-                  <path
-                    d="M140 130 L112 160 L96 210 L104 214 L118 170 L144 148"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="14"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    opacity="0.18"
-                  />
-                  {/* Right arm — hand on hip */}
-                  <path
-                    d="M280 130 L308 160 L324 210 L316 214 L302 170 L276 148"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="14"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
                     opacity="0.18"
                   />
                 </g>
