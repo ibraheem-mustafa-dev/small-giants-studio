@@ -80,11 +80,11 @@ export function Services() {
         <div className="mx-auto max-w-2xl text-center">
           <h2
             id="services-heading"
-            className="text-2xl font-bold text-text-primary sm:text-3xl"
+            className="text-2xl font-bold text-primary-900 dark:text-primary-900 sm:text-3xl"
           >
             What I can help with
           </h2>
-          <p className="mt-4 text-lg text-text-primary">
+          <p className="mt-4 text-lg text-primary-900 dark:text-primary-900">
             I don&apos;t build until I understand your business. Strategy first. Tools chosen for
             how you work, not what&apos;s popular.
           </p>

@@ -34,7 +34,7 @@ export function Header() {
           <ThemeToggle />
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md p-3 text-text-secondary hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="inline-flex items-center justify-center rounded-md p-3 text-text-secondary hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -89,7 +89,7 @@ export function Header() {
           <ThemeToggle />
           <Link
             href="/contact"
-            className="rounded-lg bg-accent-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-800 focus:outline-none focus:ring-2 focus:ring-accent-700 focus:ring-offset-2"
+            className="rounded-lg bg-accent-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-800 focus:outline-none focus:ring-2 focus:ring-accent-700 dark:focus:ring-accent-400 focus:ring-offset-2"
           >
             Let&apos;s Chat
           </Link>
@@ -106,7 +106,7 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary transition-colors hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300"
+              className="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary transition-colors hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               {item.name}

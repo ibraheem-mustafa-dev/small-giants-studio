@@ -102,7 +102,7 @@ export function ContactForm() {
           name="name"
           required
           autoComplete="name"
-          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary placeholder-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary placeholder-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-300 dark:focus:border-primary-300"
           placeholder="Your name"
         />
       </div>
@@ -118,7 +118,7 @@ export function ContactForm() {
           name="email"
           required
           autoComplete="email"
-          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary placeholder-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary placeholder-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-300 dark:focus:border-primary-300"
           placeholder="you@example.com"
         />
       </div>
@@ -133,7 +133,7 @@ export function ContactForm() {
           id="phone"
           name="phone"
           autoComplete="tel"
-          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary placeholder-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary placeholder-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-300 dark:focus:border-primary-300"
           placeholder="07xxx xxxxxx"
         />
       </div>
@@ -146,7 +146,7 @@ export function ContactForm() {
         <select
           id="source"
           name="source"
-          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-300 dark:focus:border-primary-300"
         >
           <option value="">Select an option</option>
           {howDidYouFindUs.map((option) => (
@@ -172,7 +172,7 @@ export function ContactForm() {
                 type="checkbox"
                 name="interests"
                 value={interest}
-                className="h-4 w-4 rounded border-border text-primary-600 focus:ring-primary-500"
+                className="h-4 w-4 rounded border-border text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-300"
               />
               <span className="text-sm text-text-primary">{interest}</span>
             </label>
@@ -190,7 +190,7 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
-          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary placeholder-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+          className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-text-primary placeholder-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-300 dark:focus:border-primary-300"
           placeholder="Tell me a bit about your business and what you're looking for..."
         />
       </div>

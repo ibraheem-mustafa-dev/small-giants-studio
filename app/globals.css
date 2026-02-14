@@ -15,15 +15,15 @@
   --color-primary-100: #D9F1F1;
   --color-primary-50: #E6F4F4;
 
-  /* Accent - Orange */
-  --color-accent-800: #954D0E;
-  --color-accent-700: #B85A10;
-  --color-accent-600: #D96E1F;
-  --color-accent-500: #F5842C;
-  --color-accent-400: #F79D54;
-  --color-accent-300: #FAB77D;
-  --color-accent-200: #FCD1A6;
-  --color-accent-100: #FEE8D2;
+  /* Accent - Orange (brand: #F87A09 from logo) */
+  --color-accent-800: #8B4305;
+  --color-accent-700: #B95B07;
+  --color-accent-600: #D96C08;
+  --color-accent-500: #F87A09;
+  --color-accent-400: #F9953B;
+  --color-accent-300: #FBB06D;
+  --color-accent-200: #FDCB9F;
+  --color-accent-100: #FEE6D1;
 
   /* Neutrals */
   --color-text-primary: #1A202C;
@@ -88,9 +88,9 @@ html.dark {
   --color-primary-100: #132E2E;
 
   /* Accent light backgrounds */
-  --color-accent-100: #2A1A0A;
-  --color-accent-200: #3D2510;
-  --color-accent-500: #D96E1F;
+  --color-accent-100: #2A1908;
+  --color-accent-200: #3D240D;
+  --color-accent-500: #D96C08;
 }
 
 /* Base styles */

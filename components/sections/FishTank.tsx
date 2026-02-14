@@ -48,8 +48,8 @@ export function FishTank() {
           50% { opacity: 0.35; }
         }
         @keyframes food-drop {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(12px); }
+          0% { transform: translateY(0); opacity: 0.9; }
+          100% { transform: translateY(40px); opacity: 0; }
         }
         @media (max-width: 639px) {
           .tank-label { display: none; }
@@ -68,7 +68,8 @@ export function FishTank() {
               <svg
                 viewBox="0 0 400 400"
                 className="h-full w-full"
-                aria-hidden="true"
+                role="img"
+                aria-label="Fish tank metaphor: marketing feeds your business, operations is the tank that lets it grow"
               >
                 {/* Tank */}
                 <rect
@@ -78,7 +79,7 @@ export function FishTank() {
                   height="250"
                   rx="10"
                   fill="none"
-                  stroke="#1B6B6B"
+                  style={{ stroke: 'var(--color-primary-800)' }}
                   strokeWidth="4"
                 />
                 {/* Water with shimmer */}
@@ -88,67 +89,70 @@ export function FishTank() {
                   width="292"
                   height="226"
                   rx="6"
-                  fill="#3AA8A8"
                   className="water-shimmer"
-                  style={{ animation: "shimmer 4s ease-in-out infinite" }}
+                  style={{ fill: 'var(--color-primary-500)', animation: "shimmer 4s ease-in-out infinite" }}
                 />
 
                 {/* Seaweed */}
                 <g className="seaweed-sway" style={{ animation: "sway 3s ease-in-out infinite", transformOrigin: "100px 326px" }}>
-                  <path d="M100 326 Q95 290 105 260 Q95 230 100 200" fill="none" stroke="#238888" strokeWidth="4" strokeLinecap="round" />
-                  <ellipse cx="105" cy="260" rx="8" ry="14" fill="#238888" opacity="0.6" />
-                  <ellipse cx="95" cy="230" rx="7" ry="12" fill="#2D9E9E" opacity="0.5" />
+                  <path d="M100 326 Q95 290 105 260 Q95 230 100 200" fill="none" style={{ stroke: 'var(--color-primary-700)' }} strokeWidth="4" strokeLinecap="round" />
+                  <ellipse cx="105" cy="260" rx="8" ry="14" style={{ fill: 'var(--color-primary-700)' }} opacity="0.6" />
+                  <ellipse cx="95" cy="230" rx="7" ry="12" style={{ fill: 'var(--color-primary-600)' }} opacity="0.5" />
                 </g>
                 <g className="seaweed-sway" style={{ animation: "sway 3.5s ease-in-out infinite 0.5s", transformOrigin: "300px 326px" }}>
-                  <path d="M300 326 Q305 295 295 265 Q305 235 300 210" fill="none" stroke="#238888" strokeWidth="3" strokeLinecap="round" />
-                  <ellipse cx="295" cy="265" rx="7" ry="12" fill="#238888" opacity="0.5" />
+                  <path d="M300 326 Q305 295 295 265 Q305 235 300 210" fill="none" style={{ stroke: 'var(--color-primary-700)' }} strokeWidth="3" strokeLinecap="round" />
+                  <ellipse cx="295" cy="265" rx="7" ry="12" style={{ fill: 'var(--color-primary-700)' }} opacity="0.5" />
                 </g>
                 <g className="seaweed-sway" style={{ animation: "sway 2.8s ease-in-out infinite 1s", transformOrigin: "180px 326px" }}>
-                  <path d="M180 326 Q175 300 185 275" fill="none" stroke="#2D9E9E" strokeWidth="3" strokeLinecap="round" />
-                  <ellipse cx="185" cy="275" rx="6" ry="10" fill="#2D9E9E" opacity="0.4" />
+                  <path d="M180 326 Q175 300 185 275" fill="none" style={{ stroke: 'var(--color-primary-600)' }} strokeWidth="3" strokeLinecap="round" />
+                  <ellipse cx="185" cy="275" rx="6" ry="10" style={{ fill: 'var(--color-primary-600)' }} opacity="0.4" />
                 </g>
 
                 {/* Fish 1 — swimming right */}
                 <g className="fish-swim" style={{ animation: "swim-right 6s ease-in-out infinite" }}>
                   <g transform="translate(140, 180)">
-                    <ellipse cx="0" cy="0" rx="40" ry="25" fill="#F5842C" />
-                    <polygon points="35,0 55,-15 55,15" fill="#F5842C" />
+                    <ellipse cx="0" cy="0" rx="40" ry="25" style={{ fill: 'var(--color-accent-500)' }} />
+                    <polygon points="35,0 55,-15 55,15" style={{ fill: 'var(--color-accent-500)' }} />
                     <circle cx="-20" cy="-5" r="5" fill="white" />
-                    <circle cx="-18" cy="-5" r="3" fill="#1A202C" />
-                    <path d="M5 -20 Q15 -30 25 -18" fill="none" stroke="#D96E1F" strokeWidth="2" />
+                    <circle cx="-18" cy="-5" r="3" style={{ fill: 'var(--color-primary-900)' }} />
+                    <path d="M5 -20 Q15 -30 25 -18" fill="none" style={{ stroke: 'var(--color-accent-600)' }} strokeWidth="2" />
                   </g>
                 </g>
 
                 {/* Fish 2 — swimming left */}
                 <g className="fish-swim" style={{ animation: "swim-left 7s ease-in-out infinite 1s" }}>
                   <g transform="translate(280, 240)">
-                    <ellipse cx="0" cy="0" rx="30" ry="18" fill="#F5842C" opacity="0.8" />
-                    <polygon points="25,0 40,-10 40,10" fill="#F5842C" opacity="0.8" />
+                    <ellipse cx="0" cy="0" rx="30" ry="18" style={{ fill: 'var(--color-accent-500)' }} opacity="0.8" />
+                    <polygon points="25,0 40,-10 40,10" style={{ fill: 'var(--color-accent-500)' }} opacity="0.8" />
                     <circle cx="-15" cy="-3" r="4" fill="white" />
-                    <circle cx="-13" cy="-3" r="2.5" fill="#1A202C" />
+                    <circle cx="-13" cy="-3" r="2.5" style={{ fill: 'var(--color-primary-900)' }} />
                   </g>
                 </g>
 
                 {/* Fish 3 — small background fish */}
                 <g className="fish-swim" style={{ animation: "swim-right 8s ease-in-out infinite 2s" }}>
                   <g transform="translate(200, 280)">
-                    <ellipse cx="0" cy="0" rx="18" ry="10" fill="#F79D54" opacity="0.5" />
-                    <polygon points="15,0 25,-7 25,7" fill="#F79D54" opacity="0.5" />
+                    <ellipse cx="0" cy="0" rx="18" ry="10" style={{ fill: 'var(--color-accent-400)' }} opacity="0.5" />
+                    <polygon points="15,0 25,-7 25,7" style={{ fill: 'var(--color-accent-400)' }} opacity="0.5" />
                   </g>
                 </g>
 
                 {/* Bubbles — staggered timing */}
-                <circle cx="200" cy="200" r="6" fill="#1B6B6B" opacity="0.3" className="bubble-rise" style={{ animation: "rise 3s ease-out infinite" }} />
-                <circle cx="220" cy="220" r="4" fill="#1B6B6B" opacity="0.2" className="bubble-rise" style={{ animation: "rise 3.5s ease-out infinite 0.8s" }} />
-                <circle cx="180" cy="210" r="5" fill="#1B6B6B" opacity="0.25" className="bubble-rise" style={{ animation: "rise 4s ease-out infinite 1.5s" }} />
-                <circle cx="160" cy="190" r="3" fill="#1B6B6B" opacity="0.2" className="bubble-rise" style={{ animation: "rise 3.2s ease-out infinite 2.2s" }} />
-                <circle cx="240" cy="250" r="4" fill="#1B6B6B" opacity="0.2" className="bubble-rise" style={{ animation: "rise 3.8s ease-out infinite 0.5s" }} />
+                <circle cx="200" cy="200" r="6" fill="white" opacity="0.3" className="bubble-rise" style={{ animation: "rise 3s ease-out infinite" }} />
+                <circle cx="220" cy="220" r="4" fill="white" opacity="0.2" className="bubble-rise" style={{ animation: "rise 3.5s ease-out infinite 0.8s" }} />
+                <circle cx="180" cy="210" r="5" fill="white" opacity="0.25" className="bubble-rise" style={{ animation: "rise 4s ease-out infinite 1.5s" }} />
+                <circle cx="160" cy="190" r="3" fill="white" opacity="0.2" className="bubble-rise" style={{ animation: "rise 3.2s ease-out infinite 2.2s" }} />
+                <circle cx="240" cy="250" r="4" fill="white" opacity="0.2" className="bubble-rise" style={{ animation: "rise 3.8s ease-out infinite 0.5s" }} />
 
-                {/* Food dropping in */}
-                <g className="food-float" style={{ animation: "food-drop 2s ease-in-out infinite" }}>
-                  <circle cx="180" cy="85" r="4" fill="#F5842C" />
-                  <circle cx="200" cy="80" r="3" fill="#F5842C" />
-                  <circle cx="220" cy="87" r="4" fill="#F5842C" />
+                {/* Food dropping into water */}
+                <g className="food-float" style={{ animation: "food-drop 3s ease-in infinite" }}>
+                  <circle cx="180" cy="105" r="3" style={{ fill: 'var(--color-accent-500)' }} />
+                  <circle cx="200" cy="108" r="2.5" style={{ fill: 'var(--color-accent-500)' }} />
+                  <circle cx="220" cy="103" r="3" style={{ fill: 'var(--color-accent-500)' }} />
+                </g>
+                <g className="food-float" style={{ animation: "food-drop 3s ease-in infinite 1.5s" }}>
+                  <circle cx="160" cy="107" r="2" style={{ fill: 'var(--color-accent-400)' }} />
+                  <circle cx="240" cy="104" r="2.5" style={{ fill: 'var(--color-accent-400)' }} />
                 </g>
 
                 {/* Labels */}

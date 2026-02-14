@@ -149,7 +149,7 @@ export function Testimonials() {
           <div className="mt-8 flex items-center justify-center gap-4">
             <button
               onClick={prevTestimonial}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface text-text-secondary transition-all hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface text-text-secondary transition-all hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300 focus:ring-offset-2"
               aria-label="Previous testimonial"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
@@ -163,7 +163,7 @@ export function Testimonials() {
                 <button
                   key={index}
                   onClick={() => setActiveIndex(index)}
-                  className="flex h-11 w-11 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                  className="flex h-11 w-11 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300 focus:ring-offset-2"
                   aria-label={`Go to testimonial ${index + 1}`}
                   aria-current={index === activeIndex ? "true" : "false"}
                 >
@@ -180,7 +180,7 @@ export function Testimonials() {
 
             <button
               onClick={nextTestimonial}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface text-text-secondary transition-all hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface text-text-secondary transition-all hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300 focus:ring-offset-2"
               aria-label="Next testimonial"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">

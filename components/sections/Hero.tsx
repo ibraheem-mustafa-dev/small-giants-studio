@@ -149,68 +149,68 @@ export function Hero() {
                 <g>
                   {/* Connection lines — drawn with dash animation */}
                   {/* Marketing node → CRM node */}
-                  <line x1="130" y1="170" x2="200" y2="230" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.6s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="130" y1="170" x2="200" y2="230" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.6s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* CRM → Operations */}
-                  <line x1="200" y1="230" x2="290" y2="180" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.9s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="200" y1="230" x2="290" y2="180" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.9s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* Operations → AI */}
-                  <line x1="290" y1="180" x2="280" y2="280" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.2s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="290" y1="180" x2="280" y2="280" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.2s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* AI → Website */}
-                  <line x1="280" y1="280" x2="150" y2="290" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.5s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="280" y1="280" x2="150" y2="290" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.5s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* Website → Marketing (closing the loop) */}
-                  <line x1="150" y1="290" x2="130" y2="170" stroke="#5CBDBD" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.8s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="150" y1="290" x2="130" y2="170" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.8s forwards", strokeDashoffset: 200, opacity: 0 }} />
                   {/* Cross connections */}
-                  <line x1="130" y1="170" x2="290" y2="180" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.0s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  <line x1="200" y1="230" x2="280" y2="280" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.2s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  <line x1="200" y1="230" x2="150" y2="290" stroke="#5CBDBD" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.3s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="130" y1="170" x2="290" y2="180" stroke="var(--color-primary-400)" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.0s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="200" y1="230" x2="280" y2="280" stroke="var(--color-primary-400)" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.2s forwards", strokeDashoffset: 200, opacity: 0 }} />
+                  <line x1="200" y1="230" x2="150" y2="290" stroke="var(--color-primary-400)" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.3s forwards", strokeDashoffset: 200, opacity: 0 }} />
 
                   {/* System nodes — appear with staggered timing */}
                   {/* Marketing */}
-                  <circle cx="130" cy="170" r="0" fill="#F5842C" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 1.4s forwards" }} />
+                  <circle cx="130" cy="170" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 1.4s forwards" }} />
                   <text x="130" y="155" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 1.6s forwards", opacity: 0 }}>Marketing</text>
 
                   {/* CRM */}
-                  <circle cx="200" cy="230" r="0" fill="#F5842C" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 1.7s forwards" }} />
+                  <circle cx="200" cy="230" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 1.7s forwards" }} />
                   <text x="200" y="248" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 1.9s forwards", opacity: 0 }}>CRM</text>
 
                   {/* Operations */}
-                  <circle cx="290" cy="180" r="0" fill="#F5842C" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.0s forwards" }} />
+                  <circle cx="290" cy="180" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.0s forwards" }} />
                   <text x="290" y="166" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 2.2s forwards", opacity: 0 }}>Operations</text>
 
                   {/* AI */}
-                  <circle cx="280" cy="280" r="0" fill="#F5842C" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.3s forwards" }} />
+                  <circle cx="280" cy="280" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.3s forwards" }} />
                   <text x="280" y="298" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 2.5s forwards", opacity: 0 }}>AI</text>
 
                   {/* Website */}
-                  <circle cx="150" cy="290" r="0" fill="#F5842C" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.6s forwards" }} />
+                  <circle cx="150" cy="290" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.6s forwards" }} />
                   <text x="150" y="308" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 2.8s forwards", opacity: 0 }}>Website</text>
                 </g>
 
                 {/* Act 1 continued: Small orange figure enters — confident, centre stage */}
                 <g className="hero-anim" style={{ animation: "figure-enter 0.7s ease-out 0.5s both, gentle-bob 4s ease-in-out 3.5s infinite" }}>
                   {/* Head */}
-                  <circle cx="210" cy="310" r="14" fill="#F5842C" />
+                  <circle cx="210" cy="310" r="14" fill="var(--color-accent-500)" />
                   {/* Body */}
-                  <rect x="198" y="324" width="24" height="38" rx="6" fill="#F5842C" />
-                  {/* Left arm — relaxed confident */}
-                  <path d="M198 330 L182 346" fill="none" stroke="#F5842C" strokeWidth="5" strokeLinecap="round" />
-                  {/* Right arm — relaxed confident */}
-                  <path d="M222 330 L238 346" fill="none" stroke="#F5842C" strokeWidth="5" strokeLinecap="round" />
+                  <rect x="198" y="324" width="24" height="38" rx="6" fill="var(--color-accent-500)" />
+                  {/* Left arm — relaxed with natural elbow bend */}
+                  <path d="M198 330 Q186 336 184 342 Q182 348 178 350" fill="none" stroke="var(--color-accent-500)" strokeWidth="5" strokeLinecap="round" />
+                  {/* Right arm — relaxed with natural elbow bend */}
+                  <path d="M222 330 Q234 336 236 342 Q238 348 242 350" fill="none" stroke="var(--color-accent-500)" strokeWidth="5" strokeLinecap="round" />
                   {/* Left leg */}
-                  <path d="M204 362 L200 388" fill="none" stroke="#F5842C" strokeWidth="5" strokeLinecap="round" />
+                  <path d="M204 362 L200 388" fill="none" stroke="var(--color-accent-500)" strokeWidth="5" strokeLinecap="round" />
                   {/* Right leg */}
-                  <path d="M216 362 L220 388" fill="none" stroke="#F5842C" strokeWidth="5" strokeLinecap="round" />
+                  <path d="M216 362 L220 388" fill="none" stroke="var(--color-accent-500)" strokeWidth="5" strokeLinecap="round" />
                 </g>
 
                 {/* Act 3: Crown/achievement sparkle — appears last, on the giant's head */}
                 <g className="hero-anim" style={{ animation: "crown-pulse 2.5s ease-in-out 3.8s infinite" }}>
                   {/* Star above giant's head */}
-                  <path d="M210 30 l3 9 9 3 -9 3 -3 9 -3-9 -9-3 9-3z" fill="#F5842C" opacity="0.8" />
+                  <path d="M210 30 l3 9 9 3 -9 3 -3 9 -3-9 -9-3 9-3z" fill="var(--color-accent-500)" opacity="0.8" />
                 </g>
 
                 {/* Small accent sparkles — appear after network completes */}
-                <circle cx="100" cy="130" r="2" fill="#F79D54" className="hero-anim" style={{ animation: "crown-pulse 3s ease-in-out 3.5s infinite", opacity: 0 }} />
+                <circle cx="100" cy="130" r="2" fill="var(--color-accent-400)" className="hero-anim" style={{ animation: "crown-pulse 3s ease-in-out 3.5s infinite", opacity: 0 }} />
                 <circle cx="330" cy="120" r="1.5" fill="white" className="hero-anim" style={{ animation: "crown-pulse 2.8s ease-in-out 4s infinite", opacity: 0 }} />
-                <circle cx="340" cy="310" r="2" fill="#F79D54" className="hero-anim" style={{ animation: "crown-pulse 3.2s ease-in-out 3.8s infinite", opacity: 0 }} />
+                <circle cx="340" cy="310" r="2" fill="var(--color-accent-400)" className="hero-anim" style={{ animation: "crown-pulse 3.2s ease-in-out 3.8s infinite", opacity: 0 }} />
                 <circle cx="90" cy="320" r="1.5" fill="white" className="hero-anim" style={{ animation: "crown-pulse 2.6s ease-in-out 4.2s infinite", opacity: 0 }} />
               </svg>
             </div>
