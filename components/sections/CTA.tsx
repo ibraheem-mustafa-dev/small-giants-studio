@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
@@ -9,13 +10,29 @@ export function CTA() {
   return (
     <section
       ref={sectionRef}
+      className="relative overflow-hidden"
       style={{
         backgroundColor: "var(--color-surface-dark)",
         padding: "clamp(8rem, 15vh, 14rem) 0",
       }}
       aria-labelledby="cta-heading"
     >
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+      {/* Background texture */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{ opacity: 0.07, mixBlendMode: "screen" }}
+      >
+        <Image
+          src="/images/generated/cta-texture.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-3xl text-center">
           <h2
             id="cta-heading"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -22,6 +23,8 @@ const services = [
     id: "digital-transformation",
     title: "Digital Transformation",
     outcome: "Get your whole digital setup working together",
+    illustration: "/images/generated/service-digital-transformation.png",
+    illustrationAlt: "Digital transformation illustration",
     problem: "Your tools don't talk to each other. You're manually copying data between systems. Things fall through the cracks because nothing's connected. (I see this every single time.)",
     solution: "I audit your whole digital setup and rebuild it as one connected system. Marketing, operations, CRM — all talking to each other instead of living in separate tabs you forgot about.",
     includes: [
@@ -37,6 +40,8 @@ const services = [
     id: "marketing-strategy",
     title: "Marketing Strategy",
     outcome: "Get found by the right people",
+    illustration: "/images/generated/service-marketing.png",
+    illustrationAlt: "Marketing strategy illustration",
     problem: "You're spending money on marketing but can't point to what's actually working. Your competitors seem to be everywhere while you're invisible. Sound familiar?",
     solution: "Strategy that actually brings in the right people — not vanity metrics that look good in a report but don't pay the bills.",
     includes: [
@@ -52,6 +57,8 @@ const services = [
     id: "website-development",
     title: "Website Design & Development",
     outcome: "A website that actually generates leads",
+    illustration: "/images/generated/service-web-dev.png",
+    illustrationAlt: "Website development illustration",
     problem: "Your website looks outdated. It doesn't work on mobile. Visitors come but never get in touch. You can't update it yourself without breaking something.",
     solution: "Fast, accessible websites that convert visitors into customers. Not a digital brochure that sits there looking pretty and doing nothing.",
     includes: [
@@ -67,6 +74,8 @@ const services = [
     id: "crm-operations",
     title: "CRM & Operations",
     outcome: "Stop things falling through the cracks",
+    illustration: "/images/generated/service-crm.png",
+    illustrationAlt: "CRM and operations illustration",
     problem: "You're tracking customers in spreadsheets — or worse, your head. Follow-ups get forgotten. You don't know where leads are in your pipeline. Important stuff slips because there's no system.",
     solution: "Systems that track every lead, every follow-up, every task — so nothing falls through the cracks. No more 'I'm sure I emailed them back' moments.",
     includes: [
@@ -82,6 +91,8 @@ const services = [
     id: "ai-automation",
     title: "AI & Automation",
     outcome: "Free up your time for actual work",
+    illustration: "/images/generated/service-automation.png",
+    illustrationAlt: "AI and automation illustration",
     problem: "You're spending hours on repetitive tasks you know could be automated. You've heard about AI but don't know where to start — and honestly, most of what you've seen feels like hype.",
     solution: "Practical AI that actually saves you time. No hype, no 'AI will replace everyone' nonsense — just automation for the stuff you're tired of doing manually.",
     includes: [
@@ -97,6 +108,8 @@ const services = [
     id: "seo-marketing",
     title: "SEO, GEO & Digital Marketing",
     outcome: "Show up where your customers are looking — including AI",
+    illustration: "/images/generated/service-seo.png",
+    illustrationAlt: "SEO and digital marketing illustration",
     problem: "Your website doesn't appear on Google. You're invisible on ChatGPT, Gemini, and Copilot when people ask for recommendations. Competitors rank higher even though you've been around longer.",
     solution: "Be found on Google, ChatGPT, and everywhere else your customers search. Most businesses aren't even thinking about AI search yet — which is exactly why you should be.",
     includes: [
@@ -222,6 +235,18 @@ export default function ServicesPage() {
               >
                 {/* Content */}
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  {/* Service illustration */}
+                  <div className="mb-6" style={{ width: "64px", height: "64px" }}>
+                    <Image
+                      src={service.illustration}
+                      alt={service.illustrationAlt}
+                      width={64}
+                      height={64}
+                      sizes="64px"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+
                   <p
                     className="text-sm font-semibold uppercase tracking-widest"
                     style={{ color: "var(--color-accent)" }}

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
@@ -13,6 +14,22 @@ export function Hero() {
       style={{ backgroundColor: "var(--color-surface-light)" }}
       aria-labelledby="hero-heading"
     >
+      {/* Background illustration — subtle, behind all content */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{ opacity: 0.12, mixBlendMode: "multiply" }}
+      >
+        <Image
+          src="/images/generated/hero-v2.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+      </div>
+
       {/* Content anchored to bottom */}
       <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 pt-32 sm:px-8 sm:pb-24 lg:px-12 lg:pb-32">
         {/* Main heading — massive editorial typography */}

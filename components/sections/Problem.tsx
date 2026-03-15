@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
 export function Problem() {
@@ -11,18 +12,24 @@ export function Problem() {
       unit: "hours",
       label: "per week on admin",
       description: "Government research shows small business owners spend a third of their week on paperwork",
+      illustration: "/images/generated/pain-time.png",
+      illustrationAlt: "Illustration of time lost to administrative tasks",
     },
     {
       stat: "Multiple",
       unit: "hats",
       label: "worn daily",
       description: "Marketing, sales, operations, finance — all on your shoulders",
+      illustration: "/images/generated/pain-hats.png",
+      illustrationAlt: "Illustration of wearing multiple hats at once",
     },
     {
       stat: "Can't",
       unit: "switch",
       label: "off",
       description: "Your health, hobbies, and family take a back seat to the business",
+      illustration: "/images/generated/pain-burnout.png",
+      illustrationAlt: "Illustration of burnout from overwork",
     },
   ];
 
@@ -71,6 +78,16 @@ export function Problem() {
                 borderRadius: "0",
               }}
             >
+              <div className="mx-auto mb-5 w-16 sm:w-20" style={{ opacity: 0.85 }}>
+                <Image
+                  src={point.illustration}
+                  alt={point.illustrationAlt}
+                  width={80}
+                  height={80}
+                  sizes="80px"
+                  className="h-auto w-full"
+                />
+              </div>
               <div
                 className="text-4xl font-light sm:text-5xl"
                 style={{

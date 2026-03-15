@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
@@ -8,31 +9,43 @@ const services = [
     id: "digital-transformation",
     title: "Digital Transformation",
     description: "Complete overhaul of your marketing and operations into one connected system.",
+    illustration: "/images/generated/service-digital-transformation.png",
+    illustrationAlt: "Digital transformation illustration",
   },
   {
     id: "marketing-strategy",
     title: "Marketing Strategy",
     description: "Strategy that brings in customers who actually need what you offer.",
+    illustration: "/images/generated/service-marketing.png",
+    illustrationAlt: "Marketing strategy illustration",
   },
   {
     id: "website-development",
     title: "Website Design & Development",
     description: "Fast, accessible websites built to convert visitors into customers.",
+    illustration: "/images/generated/service-web-dev.png",
+    illustrationAlt: "Website development illustration",
   },
   {
     id: "crm-operations",
     title: "CRM & Operations",
     description: "Systems that track every lead, customer, and task so nothing gets lost.",
+    illustration: "/images/generated/service-crm.png",
+    illustrationAlt: "CRM and operations illustration",
   },
   {
     id: "ai-automation",
     title: "AI & Automation",
     description: "Smart automation that handles repetitive tasks so you don't have to.",
+    illustration: "/images/generated/service-automation.png",
+    illustrationAlt: "AI and automation illustration",
   },
   {
     id: "seo-marketing",
     title: "SEO, GEO & Digital Marketing",
     description: "Be found on Google, ChatGPT, and every platform your customers use to search.",
+    illustration: "/images/generated/service-seo.png",
+    illustrationAlt: "SEO and digital marketing illustration",
   },
 ];
 
@@ -98,6 +111,21 @@ export function Services() {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </span>
+
+                {/* Service illustration — small thumbnail */}
+                <div
+                  className="hidden shrink-0 opacity-0 transition-opacity group-hover:opacity-100 sm:block"
+                  style={{ width: "48px", height: "48px" }}
+                >
+                  <Image
+                    src={service.illustration}
+                    alt={service.illustrationAlt}
+                    width={48}
+                    height={48}
+                    sizes="48px"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
 
                 {/* Service content */}
                 <div className="flex-1">
