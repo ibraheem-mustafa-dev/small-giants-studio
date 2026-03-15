@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "Digital Transformation Blog: AI, Marketing & Automation for SMEs",
   description:
     "Practical guides on digital transformation, marketing automation, AI implementation, and building sustainable business systems for UK SMEs without burning out.",
+  openGraph: {
+    title: "Digital Transformation Blog: AI, Marketing & Automation for SMEs",
+    description:
+      "Practical guides on digital transformation, marketing automation, AI implementation, and building sustainable business systems for UK SMEs.",
+  },
   alternates: {
     canonical: "/insights",
   },

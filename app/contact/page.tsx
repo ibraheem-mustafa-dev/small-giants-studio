@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "Contact Ibraheem | Digital Transformation Consultant Birmingham",
   description:
     "Get in touch with Ibraheem Mustafa at Small Giants Studio. Digital transformation, marketing, and AI automation for UK SMEs and charities. Based in Birmingham — no hard sell, just an honest chat.",
+  openGraph: {
+    title: "Contact Ibraheem | Digital Transformation Consultant Birmingham",
+    description:
+      "Get in touch with Ibraheem Mustafa at Small Giants Studio. Digital transformation, marketing, and AI automation for UK SMEs and charities.",
+  },
   alternates: {
     canonical: "/contact",
   },

@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "Case Studies | Digital Transformation Projects for UK SMEs",
   description:
     "Real digital transformation case studies for UK SMEs and charities. Clients you can speak to directly. Based in Birmingham, serving businesses across the UK.",
+  openGraph: {
+    title: "Case Studies | Digital Transformation Projects for UK SMEs",
+    description:
+      "Real digital transformation case studies for UK SMEs and charities. Clients you can speak to directly.",
+  },
   alternates: {
     canonical: "/work",
   },

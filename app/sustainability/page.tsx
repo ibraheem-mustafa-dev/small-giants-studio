@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "Sustainability | Giving Back Through Every Project",
   description:
     "Every project I complete plants real trees through Evertreen. Sustainability isn't an add-on — it's built into how I work. See our growing forest.",
+  openGraph: {
+    title: "Sustainability | Giving Back Through Every Project",
+    description:
+      "Every project I complete plants real trees through Evertreen. Sustainability isn't an add-on — it's built into how I work.",
+  },
   alternates: {
     canonical: "/sustainability",
   },

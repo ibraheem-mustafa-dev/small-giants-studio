@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   title: "Ibraheem Mustafa | Digital Transformation Consultant | Birmingham",
   description:
     "Meet Ibraheem, digital transformation specialist for UK SMEs and charities. With ADHD and 8+ years' experience, I build connected marketing and operations systems at budgets that actually work.",
+  openGraph: {
+    title: "Ibraheem Mustafa | Digital Transformation Consultant | Birmingham",
+    description:
+      "Meet Ibraheem, digital transformation specialist for UK SMEs and charities. Connected marketing and operations systems at budgets that actually work.",
+  },
   alternates: {
     canonical: "/about",
   },

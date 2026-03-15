@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "Digital Transformation Services for UK SMEs & Charities",
   description:
     "Digital transformation, marketing, AI automation, and CRM services for UK SMEs and charities. Based in Birmingham, serving businesses across the UK — at budgets that actually work.",
+  openGraph: {
+    title: "Digital Transformation Services for UK SMEs & Charities",
+    description:
+      "Digital transformation, marketing, AI automation, and CRM services for UK SMEs and charities. Based in Birmingham, serving across the UK.",
+  },
   alternates: {
     canonical: "/services",
   },

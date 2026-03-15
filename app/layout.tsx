@@ -59,6 +59,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     siteName: "Small Giants Studio",
+    title: "Small Giants Studio | Digital Transformation for UK SMEs & Charities",
+    description:
+      "Helping human-led businesses compete with the giants. Enterprise-level marketing, automation, and tech — at budgets that actually work.",
     images: [
       {
         url: "/opengraph-image",
