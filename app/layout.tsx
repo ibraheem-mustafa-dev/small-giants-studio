@@ -58,11 +58,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://smallgiantsstudio.co.uk",
     siteName: "Small Giants Studio",
-    title: "Small Giants Studio | Digital Transformation for UK SMEs & Charities",
-    description:
-      "Helping human-led businesses compete with the giants. Enterprise-level marketing, automation, and tech — at budgets that actually work.",
     images: [
       {
         url: "/opengraph-image",
@@ -74,9 +70,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Small Giants Studio | Digital Transformation for UK SMEs & Charities",
-    description:
-      "Helping human-led businesses compete with the giants. Enterprise-level marketing, automation, and tech — at budgets that actually work.",
     images: ["/opengraph-image"],
   },
   robots: {

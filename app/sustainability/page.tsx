@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Sustainability | Giving Back Through Every Project | Small Giants Studio",
+  title: "Sustainability | Giving Back Through Every Project",
   description:
     "Every project I complete plants real trees through Evertreen. Sustainability isn't an add-on — it's built into how I work. See our growing forest.",
   alternates: {

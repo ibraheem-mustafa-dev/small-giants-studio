@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/work",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function WorkPage() {

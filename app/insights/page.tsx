@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/insights",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function InsightsPage() {
