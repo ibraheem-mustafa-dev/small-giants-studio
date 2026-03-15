@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
 export function Hero() {
@@ -46,6 +47,19 @@ export function Hero() {
           .hero-anim-line { animation: none !important; stroke-dashoffset: 0 !important; opacity: 0.6 !important; }
         }
       `}</style>
+
+      {/* Hero illustration background */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/generated/hero-v1.png"
+          alt="Illustration of a small business competing with larger corporations"
+          fill
+          className="object-cover opacity-15"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/80 via-primary-800/70 to-primary-700/80" />
+      </div>
 
       {/* Subtle dot grid background */}
       <div className="absolute inset-0 opacity-[0.07]">

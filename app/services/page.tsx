@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -21,6 +22,8 @@ export const metadata: Metadata = {
 const services = [
   {
     id: "digital-transformation",
+    image: "/images/generated/service-digital-transformation.png",
+    imageAlt: "Illustration of digital transformation connecting business systems",
     title: "Digital Transformation",
     outcome: "Get your whole digital setup working together",
     problem: "Your tools don't talk to each other. You're manually copying data between systems. Things fall through the cracks because nothing's connected. (I see this every single time.)",
@@ -36,6 +39,8 @@ const services = [
   },
   {
     id: "marketing-strategy",
+    image: "/images/generated/service-marketing.png",
+    imageAlt: "Illustration of marketing strategy bringing in the right customers",
     title: "Marketing Strategy",
     outcome: "Get found by the right people",
     problem: "You're spending money on marketing but can't point to what's actually working. Your competitors seem to be everywhere while you're invisible. Sound familiar?",
@@ -51,6 +56,8 @@ const services = [
   },
   {
     id: "website-development",
+    image: "/images/generated/service-web-dev.png",
+    imageAlt: "Illustration of website design and development for lead generation",
     title: "Website Design & Development",
     outcome: "A website that actually generates leads",
     problem: "Your website looks outdated. It doesn't work on mobile. Visitors come but never get in touch. You can't update it yourself without breaking something.",
@@ -66,6 +73,8 @@ const services = [
   },
   {
     id: "crm-operations",
+    image: "/images/generated/service-crm.png",
+    imageAlt: "Illustration of CRM and operations management keeping everything on track",
     title: "CRM & Operations",
     outcome: "Stop things falling through the cracks",
     problem: "You're tracking customers in spreadsheets — or worse, your head. Follow-ups get forgotten. You don't know where leads are in your pipeline. Important stuff slips because there's no system.",
@@ -81,6 +90,8 @@ const services = [
   },
   {
     id: "ai-automation",
+    image: "/images/generated/service-automation.png",
+    imageAlt: "Illustration of AI and automation freeing up time from repetitive tasks",
     title: "AI & Automation",
     outcome: "Free up your time for actual work",
     problem: "You're spending hours on repetitive tasks you know could be automated. You've heard about AI but don't know where to start — and honestly, most of what you've seen feels like hype.",
@@ -96,6 +107,8 @@ const services = [
   },
   {
     id: "seo-marketing",
+    image: "/images/generated/service-seo.png",
+    imageAlt: "Illustration of SEO and digital marketing visibility across search engines and AI",
     title: "SEO, GEO & Digital Marketing",
     outcome: "Show up where your customers are looking — including AI",
     problem: "Your website doesn't appear on Google. You're invisible on ChatGPT, Gemini, and Copilot when people ask for recommendations. Competitors rank higher even though you've been around longer.",
@@ -210,6 +223,15 @@ export default function ServicesPage() {
               >
                 {/* Content */}
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  <div className="relative mx-auto mb-6 h-32 w-32 sm:h-40 sm:w-40 lg:mx-0">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      className="object-contain"
+                      sizes="(min-width: 640px) 160px, 128px"
+                    />
+                  </div>
                   <p className="text-sm font-semibold uppercase tracking-wider text-accent-700 dark:text-accent-400">
                     {service.outcome}
                   </p>

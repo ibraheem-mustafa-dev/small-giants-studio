@@ -8,6 +8,12 @@ export function CTA() {
     <section
       className="relative bg-gradient-to-r from-accent-700 to-accent-800 py-16 sm:py-24"
       aria-labelledby="cta-heading"
+      style={{
+        backgroundImage: `url(/images/generated/cta-texture.png)`,
+        backgroundSize: '600px 600px',
+        backgroundRepeat: 'repeat',
+        backgroundBlendMode: 'soft-light',
+      }}
     >
       {/* Wave divider — matches Testimonials section above (2px overlap prevents gap) */}
       <div className="absolute top-0 left-0 w-full h-8 sm:h-12 lg:h-16 -translate-y-[calc(100%-2px)]">
