@@ -21,14 +21,21 @@ export default function ContactPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-dark)" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+            <h1 style={{ color: "var(--color-ink-on-dark)" }}>
               Let&apos;s have a chat about your business
             </h1>
-            <p className="mt-6 text-xl text-primary-100">
+            <p
+              className="mt-8 text-xl"
+              style={{ color: "var(--color-ink-on-dark-secondary)" }}
+            >
               No hard sell. Just an honest conversation about what&apos;s holding you back and
               whether I can help.
             </p>
@@ -37,31 +44,43 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="bg-surface py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-light)" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <div className="grid gap-16 lg:grid-cols-2">
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-bold text-text-primary">Send a message</h2>
-              <p className="mt-2 text-text-secondary">
+              <h2 style={{ color: "var(--color-ink-primary)" }}>Send a message</h2>
+              <p
+                className="mt-3"
+                style={{ color: "var(--color-ink-secondary)" }}
+              >
                 Fill in the form and I&apos;ll get back to you within 24 hours.
               </p>
-              <div className="mt-8">
+              <div className="mt-10">
                 <ContactForm />
               </div>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl font-bold text-text-primary">Or get in touch directly</h2>
-              <p className="mt-2 text-text-secondary">
+              <h2 style={{ color: "var(--color-ink-primary)" }}>Or get in touch directly</h2>
+              <p
+                className="mt-3"
+                style={{ color: "var(--color-ink-secondary)" }}
+              >
                 Prefer to talk? Give me a call or send an email.
               </p>
 
-              <div className="mt-8 space-y-6">
+              <div className="mt-10 space-y-8">
                 {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-700 dark:text-primary-300">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center"
+                    style={{ color: "var(--color-accent)" }}
+                  >
                     <svg
                       className="h-6 w-6"
                       fill="none"
@@ -77,10 +96,20 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-text-primary">Email</h3>
+                    <h3
+                      className="font-medium"
+                      style={{
+                        fontFamily: "var(--font-display, serif)",
+                        fontWeight: 400,
+                        color: "var(--color-ink-primary)",
+                      }}
+                    >
+                      Email
+                    </h3>
                     <a
                       href="mailto:hello@smallgiantsstudio.co.uk"
-                      className="mt-1 text-primary-700 dark:text-primary-300 hover:text-primary-800 dark:hover:text-primary-200"
+                      className="editorial-link mt-1"
+                      style={{ color: "var(--color-accent)" }}
                     >
                       hello@smallgiantsstudio.co.uk
                     </a>
@@ -89,7 +118,10 @@ export default function ContactPage() {
 
                 {/* Phone */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-700 dark:text-primary-300">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center"
+                    style={{ color: "var(--color-accent)" }}
+                  >
                     <svg
                       className="h-6 w-6"
                       fill="none"
@@ -105,10 +137,20 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-text-primary">Phone</h3>
+                    <h3
+                      className="font-medium"
+                      style={{
+                        fontFamily: "var(--font-display, serif)",
+                        fontWeight: 400,
+                        color: "var(--color-ink-primary)",
+                      }}
+                    >
+                      Phone
+                    </h3>
                     <a
                       href="tel:+447424449555"
-                      className="mt-1 text-primary-700 dark:text-primary-300 hover:text-primary-800 dark:hover:text-primary-200"
+                      className="editorial-link mt-1"
+                      style={{ color: "var(--color-accent)" }}
                     >
                       07424 449555
                     </a>
@@ -117,7 +159,10 @@ export default function ContactPage() {
 
                 {/* Location */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-700 dark:text-primary-300">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center"
+                    style={{ color: "var(--color-accent)" }}
+                  >
                     <svg
                       className="h-6 w-6"
                       fill="none"
@@ -138,9 +183,18 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-text-primary">Location</h3>
-                    <p className="mt-1 text-text-secondary">Birmingham, UK</p>
-                    <p className="text-sm text-text-muted">
+                    <h3
+                      className="font-medium"
+                      style={{
+                        fontFamily: "var(--font-display, serif)",
+                        fontWeight: 400,
+                        color: "var(--color-ink-primary)",
+                      }}
+                    >
+                      Location
+                    </h3>
+                    <p className="mt-1" style={{ color: "var(--color-ink-secondary)" }}>Birmingham, UK</p>
+                    <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
                       UK-focused — but happy to help anyone doing meaningful work
                     </p>
                   </div>
@@ -148,18 +202,31 @@ export default function ContactPage() {
 
                 {/* LinkedIn */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-700 dark:text-primary-300">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center"
+                    style={{ color: "var(--color-accent)" }}
+                  >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-text-primary">LinkedIn</h3>
+                    <h3
+                      className="font-medium"
+                      style={{
+                        fontFamily: "var(--font-display, serif)",
+                        fontWeight: 400,
+                        color: "var(--color-ink-primary)",
+                      }}
+                    >
+                      LinkedIn
+                    </h3>
                     <a
                       href="https://www.linkedin.com/in/ibraheem-mustafa"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1 block text-primary-700 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-200"
+                      className="editorial-link mt-1 block"
+                      style={{ color: "var(--color-accent)" }}
                     >
                       Connect with Ibraheem
                     </a>
@@ -167,7 +234,8 @@ export default function ContactPage() {
                       href="https://www.linkedin.com/company/small-giants-studio"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1 block text-primary-700 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-200"
+                      className="editorial-link mt-1 block"
+                      style={{ color: "var(--color-accent)" }}
                     >
                       Follow Small Giants Studio
                     </a>
@@ -181,15 +249,24 @@ export default function ContactPage() {
       </section>
 
       {/* Quick links */}
-      <section className="border-t border-border bg-background py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-text-muted">
+      <section
+        className="border-t py-12"
+        style={{
+          borderColor: "var(--color-border)",
+          backgroundColor: "var(--color-surface-light-alt)",
+        }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <p
+            className="text-center text-sm"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             Not sure what you need yet? Check out my{" "}
-            <Link href="/services" className="rounded font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <Link href="/services" className="editorial-link font-medium" style={{ color: "var(--color-accent)" }}>
               services
             </Link>
             {" "}or read{" "}
-            <Link href="/about" className="rounded font-medium text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <Link href="/about" className="editorial-link font-medium" style={{ color: "var(--color-accent)" }}>
               more about me
             </Link>.
           </p>

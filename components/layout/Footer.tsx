@@ -46,16 +46,26 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-primary-900" aria-labelledby="footer-heading">
+    <footer
+      className="border-t"
+      style={{
+        backgroundColor: "var(--color-surface-dark)",
+        borderColor: "var(--color-surface-dark-alt)",
+      }}
+      aria-labelledby="footer-heading"
+    >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-12 lg:py-16">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           {/* Brand column */}
           <div className="space-y-6">
             <Logo variant="light" className="h-12 w-auto" />
-            <p className="max-w-xs text-sm text-primary-100 dark:text-primary-200">
+            <p
+              className="max-w-xs text-sm"
+              style={{ color: "var(--color-ink-on-dark-secondary)" }}
+            >
               Helping human-led businesses compete with the giants. Enterprise-level marketing,
               automation, and tech — at budgets that actually work.
             </p>
@@ -66,7 +76,8 @@ export function Footer() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                  className="flex items-center gap-2 rounded transition-colors focus:outline-none focus:ring-2"
+                  style={{ color: "var(--color-ink-on-dark-secondary)" }}
                 >
                   <item.icon className="h-5 w-5 shrink-0" aria-hidden="true" />
                   <span className="text-xs font-medium">
@@ -81,7 +92,10 @@ export function Footer() {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+                <h3
+                  className="text-sm font-semibold uppercase tracking-widest"
+                  style={{ color: "var(--color-ink-on-dark)" }}
+                >
                   Services
                 </h3>
                 <ul role="list" className="mt-4 space-y-3">
@@ -89,7 +103,8 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        className="rounded text-sm transition-colors focus:outline-none focus:ring-2"
+                        style={{ color: "var(--color-ink-on-dark-secondary)" }}
                       >
                         {item.name}
                       </Link>
@@ -98,7 +113,10 @@ export function Footer() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+                <h3
+                  className="text-sm font-semibold uppercase tracking-widest"
+                  style={{ color: "var(--color-ink-on-dark)" }}
+                >
                   Company
                 </h3>
                 <ul role="list" className="mt-4 space-y-3">
@@ -106,7 +124,8 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        className="rounded text-sm transition-colors focus:outline-none focus:ring-2"
+                        style={{ color: "var(--color-ink-on-dark-secondary)" }}
                       >
                         {item.name}
                       </Link>
@@ -117,14 +136,18 @@ export function Footer() {
             </div>
             <div>
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+                <h3
+                  className="text-sm font-semibold uppercase tracking-widest"
+                  style={{ color: "var(--color-ink-on-dark)" }}
+                >
                   Get in Touch
                 </h3>
                 <ul role="list" className="mt-4 space-y-3">
                   <li>
                     <a
                       href="mailto:hello@smallgiantsstudio.co.uk"
-                      className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                      className="rounded text-sm transition-colors focus:outline-none focus:ring-2"
+                      style={{ color: "var(--color-ink-on-dark-secondary)" }}
                     >
                       hello@smallgiantsstudio.co.uk
                     </a>
@@ -132,22 +155,34 @@ export function Footer() {
                   <li>
                     <a
                       href="tel:+447424449555"
-                      className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                      className="rounded text-sm transition-colors focus:outline-none focus:ring-2"
+                      style={{ color: "var(--color-ink-on-dark-secondary)" }}
                     >
                       07424 449555
                     </a>
                   </li>
-                  <li className="text-sm text-primary-100 dark:text-primary-200">Birmingham, UK</li>
+                  <li
+                    className="text-sm"
+                    style={{ color: "var(--color-ink-on-dark-secondary)" }}
+                  >
+                    Birmingham, UK
+                  </li>
                 </ul>
               </div>
               <div className="mt-10">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Legal</h3>
+                <h3
+                  className="text-sm font-semibold uppercase tracking-widest"
+                  style={{ color: "var(--color-ink-on-dark)" }}
+                >
+                  Legal
+                </h3>
                 <ul role="list" className="mt-4 space-y-3">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        className="rounded text-sm transition-colors focus:outline-none focus:ring-2"
+                        style={{ color: "var(--color-ink-on-dark-secondary)" }}
                       >
                         {item.name}
                       </Link>
@@ -160,8 +195,14 @@ export function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="mt-12 border-t border-primary-800 pt-8">
-          <p className="text-center text-xs text-primary-300">
+        <div
+          className="mt-12 border-t pt-8"
+          style={{ borderColor: "var(--color-surface-dark-alt)" }}
+        >
+          <p
+            className="text-center text-xs"
+            style={{ color: "var(--color-ink-on-dark-secondary)" }}
+          >
             &copy; {currentYear} Small Giants Studio Ltd. All rights reserved. Company registered in
             England and Wales (16959564).
           </p>

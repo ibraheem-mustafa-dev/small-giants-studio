@@ -96,33 +96,46 @@ export default function AboutPage() {
         }}
       />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-dark)" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <div>
-              <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+              <h1 style={{ color: "var(--color-ink-on-dark)" }}>
                 Hi, I&apos;m Ibraheem.
               </h1>
-              <p className="mt-6 text-xl text-primary-100">
+              <p
+                className="mt-8 text-xl"
+                style={{ color: "var(--color-ink-on-dark-secondary)" }}
+              >
                 I help small businesses get found and handle the growth — marketing and operations
                 as one connected system, powered by AI and automation. I&apos;m a nerd for this
                 stuff (my family can confirm).
               </p>
-              <p className="mt-4 text-primary-200">
+              <p
+                className="mt-4"
+                style={{ color: "var(--color-ink-on-dark-secondary)", opacity: 0.7 }}
+              >
                 Founder of Small Giants Studio. Based in Birmingham, UK-focused — but if
                 you&apos;re doing meaningful work, I don&apos;t mind where you are.
                 ADHD entrepreneur, new dad, long-term carer for my brother. Work-life balance
                 isn&apos;t a buzzword for me — it&apos;s the whole point.
               </p>
-              <div className="mt-8">
+              <div className="mt-10">
                 <Button href="/contact" size="lg">
                   Let&apos;s Have a Chat
                 </Button>
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <div className="relative h-64 w-64 overflow-hidden rounded-2xl border-4 border-white/20 shadow-2xl sm:h-80 sm:w-80">
+              <div
+                className="relative h-64 w-64 overflow-hidden shadow-2xl sm:h-80 sm:w-80"
+                style={{ borderRadius: "0" }}
+              >
                 <Image
                   src="/images/ibraheem-headshot.png"
                   alt="Ibraheem Mustafa — Digital Transformation Consultant, Birmingham"
@@ -138,23 +151,29 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="bg-surface py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">The story</h2>
-          <div className="mt-8 space-y-6 text-lg text-text-secondary">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-light)" }}
+      >
+        <div className="mx-auto max-w-3xl px-6 sm:px-8 lg:px-12">
+          <h2 style={{ color: "var(--color-ink-primary)" }}>The story</h2>
+          <div
+            className="mt-8 space-y-6 text-lg"
+            style={{ color: "var(--color-ink-secondary)" }}
+          >
             <p>
               I started in marketing. I got clients visibility, leads, sales — then watched them
               struggle to handle the growth. Things falling through cracks. Wearing multiple hats.
               Working around the clock just to keep up. Sound familiar?
             </p>
             <p>
-              That&apos;s when I realised: <strong className="text-text-primary">marketing alone isn&apos;t enough.</strong>
+              That&apos;s when I realised: <strong style={{ color: "var(--color-ink-primary)" }}>marketing alone isn&apos;t enough.</strong>
             </p>
             <p>
               Growth only happens when two things work together —{" "}
-              <Link href="/services#marketing-strategy" className="rounded font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">marketing</Link>{" "}
+              <Link href="/services#marketing-strategy" className="editorial-link font-semibold" style={{ color: "var(--color-accent)" }}>marketing</Link>{" "}
               (so people find you) and{" "}
-              <Link href="/services#crm-operations" className="rounded font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">operations</Link>{" "}
+              <Link href="/services#crm-operations" className="editorial-link font-semibold" style={{ color: "var(--color-accent)" }}>operations</Link>{" "}
               (so you can handle them when they do). Corporations have entire teams
               building connected systems. Small businesses? They end up with a Frankenstein of tools
               that don&apos;t talk to each other. Or nothing at all.
@@ -180,10 +199,16 @@ export default function AboutPage() {
       </section>
 
       {/* Personal Context */}
-      <section className="bg-primary-50 py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">A bit more about me</h2>
-          <div className="mt-8 space-y-6 text-lg text-text-secondary">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-light-alt)" }}
+      >
+        <div className="mx-auto max-w-3xl px-6 sm:px-8 lg:px-12">
+          <h2 style={{ color: "var(--color-ink-primary)" }}>A bit more about me</h2>
+          <div
+            className="mt-8 space-y-6 text-lg"
+            style={{ color: "var(--color-ink-secondary)" }}
+          >
             <p>
               I have ADHD. My brain sees connections others miss — but I&apos;m also a regular
               victim of analysis paralysis (ADHDers will know). That&apos;s actually why the
@@ -213,23 +238,48 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="bg-surface py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Values Section — sharp-edged cards */}
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-light)" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">What I believe</h2>
-            <p className="mt-4 text-lg text-text-secondary">
+            <h2 style={{ color: "var(--color-ink-primary)" }}>What I believe</h2>
+            <p
+              className="mt-6 text-lg"
+              style={{ color: "var(--color-ink-secondary)" }}
+            >
               These aren&apos;t corporate values on a wall. They&apos;re how I actually work.
             </p>
           </div>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((value) => (
               <div
                 key={value.title}
-                className="rounded-xl border border-border bg-background p-6"
+                className="border p-8"
+                style={{
+                  borderColor: "var(--color-border)",
+                  backgroundColor: "var(--color-surface-light)",
+                  borderRadius: "0",
+                }}
               >
-                <h3 className="text-lg font-semibold text-text-primary">{value.title}</h3>
-                <p className="mt-2 text-text-secondary">{value.description}</p>
+                <h3
+                  className="text-lg"
+                  style={{
+                    fontFamily: "var(--font-display, serif)",
+                    fontWeight: 400,
+                    color: "var(--color-ink-primary)",
+                  }}
+                >
+                  {value.title}
+                </h3>
+                <p
+                  className="mt-3 text-sm leading-relaxed"
+                  style={{ color: "var(--color-ink-secondary)" }}
+                >
+                  {value.description}
+                </p>
               </div>
             ))}
           </div>
@@ -237,24 +287,53 @@ export default function AboutPage() {
       </section>
 
       {/* Community Section */}
-      <section className="bg-primary-900 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-dark)" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold text-white sm:text-3xl">Community matters</h2>
-            <p className="mt-4 text-lg text-primary-200">
+            <h2 style={{ color: "var(--color-ink-on-dark)" }}>Community matters</h2>
+            <p
+              className="mt-6 text-lg"
+              style={{ color: "var(--color-ink-on-dark-secondary)" }}
+            >
               Alhamdulillah, I get to work with communities that genuinely care about lifting each
               other up. Not networking for what you can extract — but investing in something bigger.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2">
             {communityInvolvement.map((item) => (
               <div
                 key={item.name}
-                className="rounded-xl bg-primary-800/50 p-6 backdrop-blur-sm"
+                className="p-8"
+                style={{
+                  backgroundColor: "var(--color-surface-dark-alt)",
+                  borderRadius: "0",
+                }}
               >
-                <h3 className="text-lg font-semibold text-white">{item.name}</h3>
-                <p className="mt-1 text-sm font-medium text-accent-300">{item.role}</p>
-                <p className="mt-2 text-primary-200">{item.description}</p>
+                <h3
+                  className="text-lg"
+                  style={{
+                    fontFamily: "var(--font-display, serif)",
+                    fontWeight: 400,
+                    color: "var(--color-ink-on-dark)",
+                  }}
+                >
+                  {item.name}
+                </h3>
+                <p
+                  className="mt-1 text-sm font-medium"
+                  style={{ color: "var(--color-accent-light)" }}
+                >
+                  {item.role}
+                </p>
+                <p
+                  className="mt-3 text-sm leading-relaxed"
+                  style={{ color: "var(--color-ink-on-dark-secondary)" }}
+                >
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
@@ -265,20 +344,28 @@ export default function AboutPage() {
       <Community />
 
       {/* CTA Section */}
-      <section className="bg-accent-700 py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl">
+      <section
+        style={{
+          backgroundColor: "var(--color-surface-dark)",
+          padding: "clamp(6rem, 12vh, 10rem) 0",
+        }}
+      >
+        <div className="mx-auto max-w-3xl px-6 text-center sm:px-8 lg:px-12">
+          <h2 style={{ color: "var(--color-ink-on-dark)" }}>
             Want to work together?
           </h2>
-          <p className="mt-4 text-lg text-white">
+          <p
+            className="mt-6 text-lg"
+            style={{ color: "var(--color-ink-on-dark-secondary)" }}
+          >
             I only work with values-driven businesses. If you genuinely care about your customers
             and want the systems to compete with the giants in your industry — I&apos;d love to
             connect. When the right audience finds the right business, everybody wins.
           </p>
-          <div className="mt-8">
+          <div className="mt-10">
             <Button
               href="/contact"
-              variant="white"
+              variant="primary"
               size="lg"
             >
               Let&apos;s Have a Chat

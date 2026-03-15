@@ -1,4 +1,10 @@
+"use client";
+
+import { useScrollReveal } from "@/components/hooks/useScrollReveal";
+
 export function Problem() {
+  const sectionRef = useScrollReveal<HTMLElement>();
+
   const painPoints = [
     {
       stat: "33",
@@ -22,52 +28,97 @@ export function Problem() {
 
   return (
     <section
-      className="bg-primary-900 py-16 sm:py-24"
+      ref={sectionRef}
+      style={{
+        backgroundColor: "var(--color-surface-dark)",
+        padding: "clamp(4rem, 10vh, 8rem) 0",
+      }}
       aria-labelledby="problem-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         {/* Opening statement */}
         <div className="mx-auto max-w-3xl text-center">
           <h2
             id="problem-heading"
-            className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl"
+            className="scroll-reveal"
+            style={{ color: "var(--color-ink-on-dark)" }}
           >
             You started your business to do work you love.
-            <span className="mt-2 block text-primary-300">
+            <span
+              className="mt-2 block"
+              style={{ color: "var(--color-ink-on-dark-secondary)" }}
+            >
               Instead you&apos;re drowning in admin.
             </span>
           </h2>
-          <p className="mt-6 text-lg text-primary-200">
+          <p
+            className="scroll-reveal mt-6 text-lg"
+            style={{ color: "var(--color-ink-on-dark-secondary)" }}
+          >
             Your bigger competitors have teams, tools, and infrastructure that let them dominate
             online. You&apos;re juggling everything alone.
           </p>
         </div>
 
-        {/* Stats grid */}
-        <div className="mt-12 grid gap-8 sm:grid-cols-3">
+        {/* Stats grid — sharp cards (border-radius: 0) */}
+        <div className="stagger-children mt-16 grid gap-8 sm:grid-cols-3">
           {painPoints.map((point) => (
             <div
               key={point.label}
-              className="rounded-xl bg-primary-800/50 p-6 text-center backdrop-blur-sm"
+              className="scroll-reveal p-8 text-center"
+              style={{
+                backgroundColor: "var(--color-surface-dark-alt)",
+                borderRadius: "0",
+              }}
             >
-              <div className="text-4xl font-bold text-accent-400 sm:text-5xl">
+              <div
+                className="text-4xl font-light sm:text-5xl"
+                style={{
+                  fontFamily: "var(--font-display, serif)",
+                  color: "var(--color-accent-light)",
+                  letterSpacing: "-0.03em",
+                }}
+              >
                 {point.stat}
               </div>
-              <div className="mt-1 text-lg font-semibold text-white">
+              <div
+                className="mt-1 text-lg font-semibold"
+                style={{ color: "var(--color-ink-on-dark)" }}
+              >
                 {point.unit}
               </div>
-              <div className="mt-1 text-sm text-primary-200">{point.label}</div>
-              <p className="mt-4 text-sm text-primary-200">{point.description}</p>
+              <div
+                className="mt-1 text-sm"
+                style={{ color: "var(--color-ink-on-dark-secondary)" }}
+              >
+                {point.label}
+              </div>
+              <p
+                className="mt-4 text-sm"
+                style={{ color: "var(--color-ink-on-dark-secondary)" }}
+              >
+                {point.description}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Closing statement */}
-        <div className="mx-auto mt-12 max-w-2xl text-center">
-          <p className="text-lg font-medium text-white">
+        <div className="mx-auto mt-16 max-w-2xl text-center">
+          <p
+            className="scroll-reveal text-lg font-medium"
+            style={{ color: "var(--color-ink-on-dark)" }}
+          >
             Not because you&apos;re doing it wrong —
           </p>
-          <p className="mt-2 text-xl font-bold text-accent-400">
+          <p
+            className="scroll-reveal mt-2 text-xl"
+            style={{
+              fontFamily: "var(--font-display, serif)",
+              fontWeight: 400,
+              color: "var(--color-accent-light)",
+            }}
+          >
             because you don&apos;t have the systems they have.
           </p>
         </div>

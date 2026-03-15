@@ -176,18 +176,28 @@ export default function ServicesPage() {
         }}
       />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-dark)" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+            <h1 style={{ color: "var(--color-ink-on-dark)" }}>
               What I can help with
             </h1>
-            <p className="mt-6 text-xl text-primary-100">
+            <p
+              className="mt-8 text-xl"
+              style={{ color: "var(--color-ink-on-dark-secondary)" }}
+            >
               I don&apos;t build until I understand your business. Strategy first. Tools chosen
               for how you work, not what&apos;s popular.
             </p>
-            <p className="mt-4 text-primary-200">
+            <p
+              className="mt-4"
+              style={{ color: "var(--color-ink-on-dark-secondary)", opacity: 0.7 }}
+            >
               Every engagement starts with understanding where you are, where you want to be, and
               what&apos;s blocking your growth. And I&apos;m resourceful with your budget — if
               expensive software isn&apos;t realistic right now, I build smart with affordable
@@ -198,53 +208,103 @@ export default function ServicesPage() {
       </section>
 
       {/* Services List */}
-      <section className="bg-surface py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="space-y-24">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-light)" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <div className="space-y-32">
             {services.map((service, index) => (
               <div
                 key={service.id}
                 id={service.id}
-                className="grid gap-12 lg:grid-cols-2 lg:items-start"
+                className="grid gap-16 lg:grid-cols-2 lg:items-start"
               >
                 {/* Content */}
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-accent-700 dark:text-accent-400">
+                  <p
+                    className="text-sm font-semibold uppercase tracking-widest"
+                    style={{ color: "var(--color-accent)" }}
+                  >
                     {service.outcome}
                   </p>
-                  <h2 className="mt-2 text-2xl font-bold text-text-primary sm:text-3xl">
+                  <h2
+                    className="mt-3"
+                    style={{ color: "var(--color-ink-primary)" }}
+                  >
                     {service.title}
                   </h2>
 
-                  <div className="mt-6 space-y-4">
+                  <div className="mt-8 space-y-6">
                     <div>
-                      <h3 className="font-semibold text-text-primary">The problem</h3>
-                      <p className="mt-2 text-text-secondary">{service.problem}</p>
+                      <h3
+                        style={{
+                          fontFamily: "var(--font-display, serif)",
+                          fontWeight: 400,
+                          color: "var(--color-ink-primary)",
+                        }}
+                      >
+                        The problem
+                      </h3>
+                      <p
+                        className="mt-3"
+                        style={{ color: "var(--color-ink-secondary)" }}
+                      >
+                        {service.problem}
+                      </p>
                     </div>
 
                     <div>
-                      <h3 className="font-semibold text-text-primary">How I help</h3>
-                      <p className="mt-2 text-text-secondary">{service.solution}</p>
+                      <h3
+                        style={{
+                          fontFamily: "var(--font-display, serif)",
+                          fontWeight: 400,
+                          color: "var(--color-ink-primary)",
+                        }}
+                      >
+                        How I help
+                      </h3>
+                      <p
+                        className="mt-3"
+                        style={{ color: "var(--color-ink-secondary)" }}
+                      >
+                        {service.solution}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="mt-8">
+                  <div className="mt-10">
                     <Button href="/contact">Let&apos;s discuss your {service.title.toLowerCase()}</Button>
                   </div>
                 </div>
 
-                {/* What's included */}
+                {/* What's included — sharp card */}
                 <div
-                  className={`rounded-xl border border-border bg-background p-6 sm:p-8 ${
+                  className={`border p-8 sm:p-10 ${
                     index % 2 === 1 ? "lg:order-1" : ""
                   }`}
+                  style={{
+                    borderColor: "var(--color-border)",
+                    backgroundColor: "var(--color-surface-light)",
+                    borderRadius: "0",
+                  }}
                 >
-                  <h3 className="text-lg font-semibold text-text-primary">What&apos;s included</h3>
-                  <ul className="mt-4 space-y-3">
+                  <h3
+                    className="text-lg"
+                    style={{
+                      fontFamily: "var(--font-display, serif)",
+                      fontWeight: 400,
+                      color: "var(--color-ink-primary)",
+                    }}
+                  >
+                    What&apos;s included
+                  </h3>
+                  <ul className="mt-6 space-y-4">
                     {service.includes.map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <svg
-                          className="mt-1 h-5 w-5 flex-shrink-0 text-primary-600 dark:text-primary-400"
+                          className="mt-1 h-5 w-5 flex-shrink-0"
+                          style={{ color: "var(--color-accent)" }}
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth="2"
@@ -256,7 +316,7 @@ export default function ServicesPage() {
                             d="M4.5 12.75l6 6 9-13.5"
                           />
                         </svg>
-                        <span className="text-text-secondary">{item}</span>
+                        <span style={{ color: "var(--color-ink-secondary)" }}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -268,10 +328,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Approach Section */}
-      <section className="bg-primary-50 py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">How I work</h2>
-          <div className="mt-8 space-y-6 text-lg text-text-secondary">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-light-alt)" }}
+      >
+        <div className="mx-auto max-w-3xl px-6 text-center sm:px-8 lg:px-12">
+          <h2 style={{ color: "var(--color-ink-primary)" }}>How I work</h2>
+          <div
+            className="mt-8 space-y-6 text-lg"
+            style={{ color: "var(--color-ink-secondary)" }}
+          >
             <p>
               I&apos;m not a vendor who builds what you ask for and disappears. I&apos;m a partner
               who helps you figure out what you actually need. There&apos;s a difference (and if
@@ -292,53 +358,126 @@ export default function ServicesPage() {
       </section>
 
       {/* Pricing Signals Section */}
-      <section className="bg-surface py-16 sm:py-24" aria-labelledby="pricing-heading">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-light)" }}
+        aria-labelledby="pricing-heading"
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 id="pricing-heading" className="text-2xl font-bold text-text-primary sm:text-3xl">
+            <h2
+              id="pricing-heading"
+              style={{ color: "var(--color-ink-primary)" }}
+            >
               Honest pricing. No surprises.
             </h2>
-            <p className="mt-4 text-lg text-text-secondary">
+            <p
+              className="mt-6 text-lg"
+              style={{ color: "var(--color-ink-secondary)" }}
+            >
               I know small businesses worry about consultant fees. Here&apos;s how I keep things fair.
             </p>
           </div>
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
-            <div className="rounded-xl border border-border bg-background p-6 text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
-                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+          <div className="mt-16 grid gap-6 sm:grid-cols-3">
+            <div
+              className="border p-8 text-center"
+              style={{
+                borderColor: "var(--color-border)",
+                borderRadius: "0",
+              }}
+            >
+              <div
+                className="mx-auto flex h-12 w-12 items-center justify-center"
+                style={{ color: "var(--color-accent)" }}
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
                 </svg>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-text-primary">Fixed-price projects</h3>
-              <p className="mt-2 text-sm text-text-secondary">
+              <h3
+                className="mt-4 text-lg"
+                style={{
+                  fontFamily: "var(--font-display, serif)",
+                  fontWeight: 400,
+                  color: "var(--color-ink-primary)",
+                }}
+              >
+                Fixed-price projects
+              </h3>
+              <p
+                className="mt-3 text-sm leading-relaxed"
+                style={{ color: "var(--color-ink-secondary)" }}
+              >
                 You know exactly what you&apos;re paying before we start. No hourly surprises, no scope creep charges.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-background p-6 text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
-                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+            <div
+              className="border p-8 text-center"
+              style={{
+                borderColor: "var(--color-border)",
+                borderRadius: "0",
+              }}
+            >
+              <div
+                className="mx-auto flex h-12 w-12 items-center justify-center"
+                style={{ color: "var(--color-accent)" }}
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
                 </svg>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-text-primary">Scaled to your budget</h3>
-              <p className="mt-2 text-sm text-text-secondary">
+              <h3
+                className="mt-4 text-lg"
+                style={{
+                  fontFamily: "var(--font-display, serif)",
+                  fontWeight: 400,
+                  color: "var(--color-ink-primary)",
+                }}
+              >
+                Scaled to your budget
+              </h3>
+              <p
+                className="mt-3 text-sm leading-relaxed"
+                style={{ color: "var(--color-ink-secondary)" }}
+              >
                 I work with what you&apos;ve got. Charities and social enterprises get flexible pricing. No one gets priced out.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-background p-6 text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
-                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+            <div
+              className="border p-8 text-center"
+              style={{
+                borderColor: "var(--color-border)",
+                borderRadius: "0",
+              }}
+            >
+              <div
+                className="mx-auto flex h-12 w-12 items-center justify-center"
+                style={{ color: "var(--color-accent)" }}
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                 </svg>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-text-primary">No inflated licences</h3>
-              <p className="mt-2 text-sm text-text-secondary">
+              <h3
+                className="mt-4 text-lg"
+                style={{
+                  fontFamily: "var(--font-display, serif)",
+                  fontWeight: 400,
+                  color: "var(--color-ink-primary)",
+                }}
+              >
+                No inflated licences
+              </h3>
+              <p
+                className="mt-3 text-sm leading-relaxed"
+                style={{ color: "var(--color-ink-secondary)" }}
+              >
                 I recommend tools that fit your budget — not the ones that earn me the biggest commission. Most of what I use is free or affordable.
               </p>
             </div>
           </div>
-          <div className="mt-8 text-center">
-            <p className="text-text-secondary">
+          <div className="mt-10 text-center">
+            <p style={{ color: "var(--color-ink-secondary)" }}>
               Most projects start from a few thousand pounds. Let&apos;s talk about what you need — I&apos;ll be upfront about what it costs.
             </p>
           </div>
@@ -346,18 +485,36 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-background py-16 sm:py-24" aria-labelledby="faq-heading">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 id="faq-heading" className="text-2xl font-bold text-text-primary sm:text-3xl">
+      <section
+        className="py-24 sm:py-32"
+        style={{ backgroundColor: "var(--color-surface-light-alt)" }}
+        aria-labelledby="faq-heading"
+      >
+        <div className="mx-auto max-w-3xl px-6 sm:px-8 lg:px-12">
+          <h2
+            id="faq-heading"
+            style={{ color: "var(--color-ink-primary)" }}
+          >
             Questions I get asked a lot
           </h2>
-          <div className="mt-8 divide-y divide-border">
+          <div
+            className="mt-10 divide-y"
+            style={{ borderColor: "var(--color-border)" }}
+          >
             {faqs.map((faq, index) => (
-              <details key={index} className="group py-6">
-                <summary className="flex cursor-pointer items-center justify-between text-lg font-semibold text-text-primary hover:text-primary-700 dark:hover:text-primary-300">
+              <details key={index} className="group py-8">
+                <summary
+                  className="flex cursor-pointer items-center justify-between text-lg font-medium transition-colors"
+                  style={{
+                    fontFamily: "var(--font-display, serif)",
+                    fontWeight: 400,
+                    color: "var(--color-ink-primary)",
+                  }}
+                >
                   {faq.question}
                   <svg
-                    className="ml-4 h-5 w-5 shrink-0 text-text-muted transition-transform group-open:rotate-180"
+                    className="ml-4 h-5 w-5 shrink-0 transition-transform group-open:rotate-180"
+                    style={{ color: "var(--color-text-muted)" }}
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
@@ -367,7 +524,10 @@ export default function ServicesPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                   </svg>
                 </summary>
-                <p className="mt-4 text-text-secondary">
+                <p
+                  className="mt-4"
+                  style={{ color: "var(--color-ink-secondary)" }}
+                >
                   {faq.answer}
                 </p>
               </details>
@@ -377,19 +537,27 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-accent-700 py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl">
+      <section
+        style={{
+          backgroundColor: "var(--color-surface-dark)",
+          padding: "clamp(6rem, 12vh, 10rem) 0",
+        }}
+      >
+        <div className="mx-auto max-w-3xl px-6 text-center sm:px-8 lg:px-12">
+          <h2 style={{ color: "var(--color-ink-on-dark)" }}>
             Not sure where to start?
           </h2>
-          <p className="mt-4 text-lg text-white">
+          <p
+            className="mt-6 text-lg"
+            style={{ color: "var(--color-ink-on-dark-secondary)" }}
+          >
             Let&apos;s have a chat about your business. No hard sell — just an honest conversation
             about what&apos;s holding you back and whether I can help.
           </p>
-          <div className="mt-8">
+          <div className="mt-10">
             <Button
               href="/contact"
-              variant="white"
+              variant="primary"
               size="lg"
             >
               Let&apos;s Talk

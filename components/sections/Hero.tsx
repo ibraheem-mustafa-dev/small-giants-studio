@@ -1,221 +1,122 @@
-import { Button } from "@/components/ui/Button";
+"use client";
+
+import Link from "next/link";
+import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
 export function Hero() {
+  const sectionRef = useScrollReveal<HTMLElement>();
+
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700"
+      ref={sectionRef}
+      className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden"
+      style={{ backgroundColor: "var(--color-surface-light)" }}
       aria-labelledby="hero-heading"
     >
-      <style>{`
-        @keyframes node-appear {
-          0% { r: 0; opacity: 0; }
-          100% { r: 4; opacity: 1; }
-        }
-        @keyframes line-draw {
-          0% { stroke-dashoffset: 200; opacity: 0; }
-          20% { opacity: 0.6; }
-          100% { stroke-dashoffset: 0; opacity: 0.6; }
-        }
-        @keyframes figure-enter {
-          0% { transform: translateY(30px); opacity: 0; }
-          100% { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes shadow-grow {
-          0% { transform: scaleY(0); opacity: 0; }
-          70% { transform: scaleY(1.03); opacity: 0.25; }
-          100% { transform: scaleY(1); opacity: 0.22; }
-        }
-        @keyframes crown-pulse {
-          0%, 100% { opacity: 0.5; transform: scale(1); }
-          50% { opacity: 0.9; transform: scale(1.08); }
-        }
-        @keyframes gentle-bob {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-6px); }
-        }
-        @keyframes label-fade {
-          0% { opacity: 0; transform: translateY(6px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 639px) {
-          .hero-label { display: none; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .hero-anim { animation: none !important; opacity: 1 !important; }
-          .hero-anim-hidden { animation: none !important; opacity: 0.22 !important; }
-          .hero-anim-line { animation: none !important; stroke-dashoffset: 0 !important; opacity: 0.6 !important; }
-        }
-      `}</style>
+      {/* Content anchored to bottom */}
+      <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 pt-32 sm:px-8 sm:pb-24 lg:px-12 lg:pb-32">
+        {/* Main heading — massive editorial typography */}
+        <h1
+          id="hero-heading"
+          className="scroll-reveal max-w-[18ch]"
+          style={{
+            fontSize: "clamp(3.5rem, 10vw, 10rem)",
+            lineHeight: 0.92,
+            fontWeight: 300,
+            letterSpacing: "-0.04em",
+            color: "var(--color-ink-primary)",
+          }}
+        >
+          Helping human-led businesses{" "}
+          <em
+            className="not-italic"
+            style={{ color: "var(--color-accent)" }}
+          >
+            compete with the giants
+          </em>
+        </h1>
 
-      {/* Subtle dot grid background */}
-      <div className="absolute inset-0 opacity-[0.07]">
-        <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="white" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
-      </div>
+        {/* Thin editorial rule */}
+        <hr
+          className="editorial-rule scroll-reveal mt-8 sm:mt-10"
+          style={{ maxWidth: "120px" }}
+          aria-hidden="true"
+        />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-          {/* Text content */}
-          <div className="text-center lg:text-left">
-            <h1
-              id="hero-heading"
-              className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl"
+        {/* Subtitle — narrow measure */}
+        <p
+          className="scroll-reveal mt-8 max-w-[35ch] text-lg sm:text-xl"
+          style={{ color: "var(--color-ink-secondary)" }}
+        >
+          Enterprise-level marketing, automation, and tech — at budgets that actually work.
+        </p>
+
+        <p
+          className="scroll-reveal mt-4 max-w-[40ch] text-base"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          For UK SMEs, charities, and social enterprises who genuinely care about their
+          customers.
+        </p>
+
+        {/* CTAs — pill primary, text-link secondary */}
+        <div className="scroll-reveal mt-10 flex flex-wrap items-center gap-6">
+          <Link
+            href="/contact"
+            className="inline-flex min-h-[48px] items-center justify-center px-8 py-3 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-offset-2"
+            style={{
+              backgroundColor: "var(--color-accent)",
+              borderRadius: "999px",
+            }}
+          >
+            Let&apos;s Have a Chat About Your Business
+          </Link>
+
+          <Link
+            href="#approach"
+            className="editorial-link inline-flex items-center gap-2 text-base font-medium transition-colors"
+            style={{ color: "var(--color-ink-primary)" }}
+          >
+            See How I Work
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              aria-hidden="true"
             >
-              Helping human-led businesses{" "}
-              <span className="text-accent-400">compete with the giants</span>
-            </h1>
-            <p className="mt-6 text-lg text-primary-100 sm:text-xl">
-              Enterprise-level marketing, automation, and tech — at budgets that actually work.
-            </p>
-            <p className="mt-4 text-base text-primary-200">
-              For UK SMEs, charities, and social enterprises who genuinely care about their
-              customers.
-            </p>
-
-            {/* CTAs */}
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
-              <Button href="/contact" size="lg">
-                Let&apos;s Have a Chat About Your Business
-              </Button>
-              <Button href="#approach" variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                See How I Work
-              </Button>
-            </div>
-
-            {/* Location */}
-            <p className="mt-8 flex items-center justify-center gap-2 text-sm text-primary-200 lg:justify-start">
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                />
-              </svg>
-              Based in Birmingham. UK-focused — but happy to help anyone doing meaningful work.
-            </p>
-          </div>
-
-          {/* Small Giants Narrative Animation */}
-          <div className="flex justify-center lg:justify-end" aria-hidden="true">
-            <div className="relative h-72 w-72 sm:h-80 sm:w-80 lg:h-[420px] lg:w-[420px]">
-              <svg viewBox="0 0 420 420" className="h-full w-full">
-
-                {/* Act 1: Giant shadow grows up from the ground (appears first, behind everything) */}
-                <g className="hero-anim-hidden" style={{ animation: "shadow-grow 1.8s ease-out 0.3s forwards", transformOrigin: "210px 380px" }}>
-                  {/* Unified giant silhouette — single path for natural flow */}
-                  <path
-                    d="M210 36
-                       C232 36 250 54 250 76 C250 94 238 108 222 112
-                       L226 124 L280 132
-                       C282 132 284 134 283 136
-                       L310 172 L322 206
-                       C324 212 318 216 314 212
-                       L296 176 L272 148
-                       L274 200 L270 260 L258 380
-                       L232 380 L224 280
-                       L210 278
-                       L196 280 L188 380
-                       L162 380 L160 260 L156 200
-                       L148 148 L124 176 L106 212
-                       C102 216 96 212 98 206
-                       L110 172 L137 136
-                       C136 134 138 132 140 132
-                       L198 124 L198 112
-                       C182 108 170 94 170 76
-                       C170 54 188 36 210 36Z"
-                    fill="white"
-                    opacity="0.18"
-                  />
-                </g>
-
-                {/* Act 2: Connection network forms (the systems) — staggered line draws */}
-                <g>
-                  {/* Connection lines — drawn with dash animation */}
-                  {/* Marketing node → CRM node */}
-                  <line x1="130" y1="170" x2="200" y2="230" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.6s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  {/* CRM → Operations */}
-                  <line x1="200" y1="230" x2="290" y2="180" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 1.9s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  {/* Operations → AI */}
-                  <line x1="290" y1="180" x2="280" y2="280" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.2s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  {/* AI → Website */}
-                  <line x1="280" y1="280" x2="150" y2="290" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.5s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  {/* Website → Marketing (closing the loop) */}
-                  <line x1="150" y1="290" x2="130" y2="170" stroke="var(--color-primary-400)" strokeWidth="1.5" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 2.8s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  {/* Cross connections */}
-                  <line x1="130" y1="170" x2="290" y2="180" stroke="var(--color-primary-400)" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.0s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  <line x1="200" y1="230" x2="280" y2="280" stroke="var(--color-primary-400)" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.2s forwards", strokeDashoffset: 200, opacity: 0 }} />
-                  <line x1="200" y1="230" x2="150" y2="290" stroke="var(--color-primary-400)" strokeWidth="1" strokeDasharray="200" className="hero-anim-line" style={{ animation: "line-draw 0.8s ease-out 3.3s forwards", strokeDashoffset: 200, opacity: 0 }} />
-
-                  {/* System nodes — appear with staggered timing */}
-                  {/* Marketing */}
-                  <circle cx="130" cy="170" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 1.4s forwards" }} />
-                  <text x="130" y="155" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 1.6s forwards", opacity: 0 }}>Marketing</text>
-
-                  {/* CRM */}
-                  <circle cx="200" cy="230" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 1.7s forwards" }} />
-                  <text x="200" y="248" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 1.9s forwards", opacity: 0 }}>CRM</text>
-
-                  {/* Operations */}
-                  <circle cx="290" cy="180" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.0s forwards" }} />
-                  <text x="290" y="166" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 2.2s forwards", opacity: 0 }}>Operations</text>
-
-                  {/* AI */}
-                  <circle cx="280" cy="280" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.3s forwards" }} />
-                  <text x="280" y="298" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 2.5s forwards", opacity: 0 }}>AI</text>
-
-                  {/* Website */}
-                  <circle cx="150" cy="290" r="0" fill="var(--color-accent-500)" className="hero-anim" style={{ animation: "node-appear 0.5s ease-out 2.6s forwards" }} />
-                  <text x="150" y="308" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" className="hero-anim hero-label" style={{ animation: "label-fade 0.4s ease-out 2.8s forwards", opacity: 0 }}>Website</text>
-                </g>
-
-                {/* Act 1 continued: Small orange figure enters — confident, centre stage */}
-                <g className="hero-anim" style={{ animation: "figure-enter 0.7s ease-out 0.5s both, gentle-bob 4s ease-in-out 3.5s infinite" }}>
-                  {/* Head */}
-                  <circle cx="210" cy="310" r="14" fill="var(--color-accent-500)" />
-                  {/* Body */}
-                  <rect x="198" y="324" width="24" height="38" rx="6" fill="var(--color-accent-500)" />
-                  {/* Left arm — relaxed with natural elbow bend */}
-                  <path d="M198 330 Q186 336 184 342 Q182 348 178 350" fill="none" stroke="var(--color-accent-500)" strokeWidth="5" strokeLinecap="round" />
-                  {/* Right arm — relaxed with natural elbow bend */}
-                  <path d="M222 330 Q234 336 236 342 Q238 348 242 350" fill="none" stroke="var(--color-accent-500)" strokeWidth="5" strokeLinecap="round" />
-                  {/* Left leg */}
-                  <path d="M204 362 L200 388" fill="none" stroke="var(--color-accent-500)" strokeWidth="5" strokeLinecap="round" />
-                  {/* Right leg */}
-                  <path d="M216 362 L220 388" fill="none" stroke="var(--color-accent-500)" strokeWidth="5" strokeLinecap="round" />
-                </g>
-
-                {/* Act 3: Crown/achievement sparkle — appears last, on the giant's head */}
-                <g className="hero-anim" style={{ animation: "crown-pulse 2.5s ease-in-out 3.8s infinite" }}>
-                  {/* Star above giant's head */}
-                  <path d="M210 30 l3 9 9 3 -9 3 -3 9 -3-9 -9-3 9-3z" fill="var(--color-accent-500)" opacity="0.8" />
-                </g>
-
-                {/* Small accent sparkles — appear after network completes */}
-                <circle cx="100" cy="130" r="2" fill="var(--color-accent-400)" className="hero-anim" style={{ animation: "crown-pulse 3s ease-in-out 3.5s infinite", opacity: 0 }} />
-                <circle cx="330" cy="120" r="1.5" fill="white" className="hero-anim" style={{ animation: "crown-pulse 2.8s ease-in-out 4s infinite", opacity: 0 }} />
-                <circle cx="340" cy="310" r="2" fill="var(--color-accent-400)" className="hero-anim" style={{ animation: "crown-pulse 3.2s ease-in-out 3.8s infinite", opacity: 0 }} />
-                <circle cx="90" cy="320" r="1.5" fill="white" className="hero-anim" style={{ animation: "crown-pulse 2.6s ease-in-out 4.2s infinite", opacity: 0 }} />
-              </svg>
-            </div>
-          </div>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </Link>
         </div>
+
+        {/* Location */}
+        <p
+          className="scroll-reveal mt-12 flex items-center gap-2 text-sm"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+          Based in Birmingham. UK-focused — but happy to help anyone doing meaningful work.
+        </p>
       </div>
     </section>
   );

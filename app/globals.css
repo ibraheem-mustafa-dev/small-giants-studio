@@ -1,44 +1,64 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Small Giants Studio Brand Colours */
+/* ============================================================
+   Small Giants Studio — Editorial Design System
+   ============================================================ */
+
 :root {
-  /* Primary - Teal */
-  --color-primary-900: #0F4C4C;
-  --color-primary-800: #1B6B6B;
-  --color-primary-700: #1F7A7A;
-  --color-primary-600: #2D9E9E;
-  --color-primary-500: #3AA8A8;
-  --color-primary-400: #5CBDBD;
-  --color-primary-300: #7FCFCF;
-  --color-primary-200: #B3E3E3;
-  --color-primary-100: #D9F1F1;
-  --color-primary-50: #E6F4F4;
+  /* Warm surfaces */
+  --color-surface-light: #F7F3EE;
+  --color-surface-light-alt: #EDE8E0;
+  --color-surface-dark: #1C1917;
+  --color-surface-dark-alt: #292524;
 
-  /* Accent - Orange (brand: #F87A09 from logo) */
-  --color-accent-800: #8B4305;
-  --color-accent-700: #B95B07;
-  --color-accent-600: #D96C08;
-  --color-accent-500: #F87A09;
-  --color-accent-400: #F9953B;
-  --color-accent-300: #FBB06D;
-  --color-accent-200: #FDCB9F;
-  --color-accent-100: #FEE6D1;
+  /* Ink */
+  --color-ink-primary: #1C1917;
+  --color-ink-secondary: #78716C;
+  --color-ink-on-dark: #F7F3EE;
+  --color-ink-on-dark-secondary: #A8A29E;
 
-  /* Neutrals */
-  --color-text-primary: #1A202C;
-  --color-text-secondary: #4A5568;
-  --color-text-muted: #606D80;
-  --color-background: #FAFAFA;
-  --color-surface: #FFFFFF;
-  --color-border: #E2E8F0;
+  /* Accent — teal, used sparingly */
+  --color-accent: #0D9488;
+  --color-accent-dark: #0F766E;
+  --color-accent-light: #2DD4BF;
 
-  /* Dark mode colours */
-  --color-dark-bg: #0F172A;
-  --color-dark-surface: #1E293B;
-  --color-dark-border: #334155;
-  --color-dark-text-primary: #F1F5F9;
-  --color-dark-text-secondary: #94A3B8;
+  /* Backward-compatible tokens used by Tailwind @theme */
+  --color-primary-900: #1C1917;
+  --color-primary-800: #292524;
+  --color-primary-700: #44403C;
+  --color-primary-600: #57534E;
+  --color-primary-500: #78716C;
+  --color-primary-400: #A8A29E;
+  --color-primary-300: #D6D3D1;
+  --color-primary-200: #E7E5E4;
+  --color-primary-100: #F5F5F4;
+  --color-primary-50: #F7F3EE;
+
+  /* Accent palette — teal mapped */
+  --color-accent-800: #065F5F;
+  --color-accent-700: #0F766E;
+  --color-accent-600: #0D9488;
+  --color-accent-500: #0D9488;
+  --color-accent-400: #2DD4BF;
+  --color-accent-300: #5EEAD4;
+  --color-accent-200: #99F6E4;
+  --color-accent-100: #CCFBF1;
+
+  /* Semantic tokens */
+  --color-background: #F7F3EE;
+  --color-surface: #F7F3EE;
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #78716C;
+  --color-text-muted: #A8A29E;
+  --color-border: #D6D3D1;
+
+  /* Dark mode base colours */
+  --color-dark-bg: #1C1917;
+  --color-dark-surface: #292524;
+  --color-dark-border: #44403C;
+  --color-dark-text-primary: #F7F3EE;
+  --color-dark-text-secondary: #A8A29E;
 }
 
 @theme inline {
@@ -70,39 +90,80 @@
   --color-surface: var(--color-surface);
   --color-border: var(--color-border);
 
-  /* Font */
+  /* Fonts */
   --font-sans: var(--font-inter);
+  --font-display: var(--font-display);
 }
 
-/* Dark mode — controlled by .dark class on <html>, set by inline script before paint */
+/* Dark mode — controlled by .dark class on <html> */
 html.dark {
   --color-background: var(--color-dark-bg);
   --color-surface: var(--color-dark-surface);
   --color-border: var(--color-dark-border);
   --color-text-primary: var(--color-dark-text-primary);
   --color-text-secondary: var(--color-dark-text-secondary);
-  --color-text-muted: #8494A7;
+  --color-text-muted: #78716C;
 
-  /* Light teal backgrounds → dark teal in dark mode */
-  --color-primary-50: #0D1F1F;
-  --color-primary-100: #132E2E;
+  --color-primary-50: #292524;
+  --color-primary-100: #1C1917;
+  --color-primary-200: #44403C;
 
-  /* Accent light backgrounds */
-  --color-accent-100: #2A1908;
-  --color-accent-200: #3D240D;
-  --color-accent-500: #D96C08;
+  --color-accent-100: #1C2E2E;
+  --color-accent-200: #0D3D3D;
+  --color-accent-500: #0D9488;
 }
 
-/* Base styles */
+/* ============================================================
+   Typography — Editorial hierarchy
+   ============================================================ */
+
+h1, h2, h3 {
+  font-family: var(--font-display, serif);
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.95;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.05;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+/* ============================================================
+   Base styles
+   ============================================================ */
+
 body {
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
 }
 
+/* Grain texture overlay — subtle depth */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
 /* Focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid var(--color-primary-500);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
@@ -111,8 +172,8 @@ body {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--color-primary-800);
-  color: white;
+  background: var(--color-surface-dark);
+  color: var(--color-ink-on-dark);
   padding: 8px 16px;
   z-index: 100;
   transition: top 0.3s;
@@ -131,6 +192,10 @@ html {
   html {
     scroll-behavior: auto;
   }
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* Custom scrollbar */
@@ -139,14 +204,78 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-border);
+  background: var(--color-surface-light-alt);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary-400);
+  background: var(--color-ink-secondary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-500);
+  background: var(--color-ink-primary);
+}
+
+/* ============================================================
+   Editorial Components
+   ============================================================ */
+
+/* Animated text link underline */
+.editorial-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.editorial-link:hover::after,
+.editorial-link:focus-visible::after {
+  width: 100%;
+}
+
+/* Scroll reveal animation base class */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger children */
+.stagger-children > .scroll-reveal:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > .scroll-reveal:nth-child(2) { transition-delay: 100ms; }
+.stagger-children > .scroll-reveal:nth-child(3) { transition-delay: 200ms; }
+.stagger-children > .scroll-reveal:nth-child(4) { transition-delay: 300ms; }
+.stagger-children > .scroll-reveal:nth-child(5) { transition-delay: 400ms; }
+.stagger-children > .scroll-reveal:nth-child(6) { transition-delay: 500ms; }
+
+/* Horizontal rule — editorial style */
+.editorial-rule {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
 }

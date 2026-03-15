@@ -24,33 +24,47 @@ const partners = [
 export function Community() {
   return (
     <section
-      className="bg-surface py-16 sm:py-24"
+      className="py-24 sm:py-32"
+      style={{ backgroundColor: "var(--color-surface-light)" }}
       aria-labelledby="community-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-2xl text-center">
           <h2
             id="community-heading"
-            className="text-2xl font-bold text-text-primary sm:text-3xl"
+            style={{ color: "var(--color-ink-primary)" }}
           >
             Community isn&apos;t a marketing strategy.
-            <span className="mt-1 block text-primary-700 dark:text-primary-300">It&apos;s who I am.</span>
+            <span
+              className="mt-1 block"
+              style={{ color: "var(--color-accent)" }}
+            >
+              It&apos;s who I am.
+            </span>
           </h2>
-          <p className="mt-4 text-lg text-text-secondary">
+          <p
+            className="mt-6 text-lg"
+            style={{ color: "var(--color-ink-secondary)" }}
+          >
             Not networking for what you can extract — but investing in something that lifts the
             whole community. Alhamdulillah, I get to work with people who genuinely care.
           </p>
         </div>
 
-        {/* Partner cards */}
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        {/* Partner cards — sharp edges */}
+        <div className="mt-16 grid gap-6 md:grid-cols-3">
           {partners.map((partner) => (
             <a
               key={partner.name}
               href={partner.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col rounded-xl border border-border bg-background p-6 transition-all hover:border-primary-300 hover:shadow-lg"
+              className="group flex flex-col border p-8 transition-all hover:shadow-lg"
+              style={{
+                borderColor: "var(--color-border)",
+                backgroundColor: "var(--color-surface-light)",
+                borderRadius: "0",
+              }}
             >
               <div className="flex h-16 items-center justify-center">
                 <Image
@@ -59,16 +73,29 @@ export function Community() {
                   width={160}
                   height={64}
                   sizes="(max-width: 640px) 120px, 160px"
-                  className="h-12 w-auto object-contain transition-all group-hover:scale-110 group-hover:grayscale"
+                  className="h-12 w-auto object-contain transition-all group-hover:scale-110"
                 />
               </div>
-              <h3 className="mt-4 text-center text-lg font-semibold text-text-primary">
+              <h3
+                className="mt-6 text-center text-lg"
+                style={{
+                  fontFamily: "var(--font-display, serif)",
+                  fontWeight: 400,
+                  color: "var(--color-ink-primary)",
+                }}
+              >
                 {partner.name}
               </h3>
-              <p className="mt-2 flex-1 text-center text-sm text-text-secondary">
+              <p
+                className="mt-3 flex-1 text-center text-sm leading-relaxed"
+                style={{ color: "var(--color-ink-secondary)" }}
+              >
                 {partner.description}
               </p>
-              <div className="mt-4 flex items-center justify-center text-sm font-medium text-primary-700 dark:text-primary-300 opacity-0 transition-opacity group-hover:opacity-100">
+              <div
+                className="mt-6 flex items-center justify-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100"
+                style={{ color: "var(--color-accent)" }}
+              >
                 Visit website
                 <svg
                   className="ml-1 h-4 w-4"
@@ -85,16 +112,31 @@ export function Community() {
         </div>
 
         {/* Evertreen Forest Embed */}
-        <div className="mt-16">
+        <div className="mt-20">
           <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-xl font-semibold text-text-primary">
+            <h3
+              style={{
+                fontFamily: "var(--font-display, serif)",
+                fontWeight: 400,
+                color: "var(--color-ink-primary)",
+              }}
+            >
               Our Growing Forest
             </h3>
-            <p className="mt-2 text-text-secondary">
+            <p
+              className="mt-3"
+              style={{ color: "var(--color-ink-secondary)" }}
+            >
               Every project I complete plants real trees. It&apos;s a small thing — but it adds up.
             </p>
           </div>
-          <div className="mt-8 overflow-hidden rounded-xl border border-border bg-background">
+          <div
+            className="mt-8 overflow-hidden border"
+            style={{
+              borderColor: "var(--color-border)",
+              borderRadius: "0",
+            }}
+          >
             <iframe
               width="100%"
               height="500"

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -8,6 +8,12 @@ import { JsonLd } from "@/components/ui/JsonLd";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
 });
@@ -101,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className={inter.variable} suppressHydrationWarning>
+    <html lang="en-GB" className={`${inter.variable} ${fraunces.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -111,7 +117,7 @@ export default function RootLayout({
         <link rel="icon" href="/images/sgs-logo.jpg" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/images/sgs-logo.jpg" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#1B6B6B" />
+        <meta name="theme-color" content="#1C1917" />
         <link rel="preload" href="/images/sgs-horizontal-logo.png" as="image" />
       </head>
       <body className="min-h-screen bg-background text-text-primary antialiased">

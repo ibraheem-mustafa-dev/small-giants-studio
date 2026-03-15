@@ -37,13 +37,14 @@ export function Logo({ className = "h-10 w-auto sm:h-12", variant = "default" }:
 }
 
 export function LogoText({ className = "", variant = "default" }: LogoProps) {
-  const textColor = variant === "light" ? "text-white" : "text-primary-800 dark:text-primary-300";
-  const accentColor = variant === "light" ? "text-accent-400" : "text-accent-700 dark:text-accent-400";
-
   return (
     <div className={`flex items-center gap-1.5 text-xl font-bold ${className}`}>
-      <span className={textColor}>Small Giants</span>
-      <span className={accentColor}>Studio</span>
+      <span style={{ color: variant === "light" ? "var(--color-ink-on-dark)" : "var(--color-ink-primary)" }}>
+        Small Giants
+      </span>
+      <span style={{ color: "var(--color-accent)" }}>
+        Studio
+      </span>
     </div>
   );
 }

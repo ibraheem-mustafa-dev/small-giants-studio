@@ -2,14 +2,27 @@ import { Button } from "@/components/ui/Button";
 
 export function MidCTA() {
   return (
-    <section className="bg-primary-900 py-12 sm:py-16">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <section
+      className="py-12 sm:py-16"
+      style={{ backgroundColor: "var(--color-surface-dark)" }}
+    >
+      <div className="mx-auto max-w-4xl px-6 sm:px-8 lg:px-12">
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
           <div className="text-center sm:text-left">
-            <p className="text-xl font-bold text-white sm:text-2xl">
+            <p
+              className="text-xl font-medium sm:text-2xl"
+              style={{
+                fontFamily: "var(--font-display, serif)",
+                color: "var(--color-ink-on-dark)",
+                fontWeight: 400,
+              }}
+            >
               Sound like your business?
             </p>
-            <p className="mt-2 text-primary-200">
+            <p
+              className="mt-2"
+              style={{ color: "var(--color-ink-on-dark-secondary)" }}
+            >
               Let&apos;s figure out whether it&apos;s the tank or the food that needs fixing first.
             </p>
           </div>
