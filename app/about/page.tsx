@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Community } from "@/components/sections/Community";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Ibraheem Mustafa | Digital Transformation Consultant | Birmingham",
@@ -223,14 +224,15 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {values.map((value) => (
-              <div
-                key={value.title}
-                className="rounded-xl border border-border bg-background p-6"
-              >
-                <h3 className="text-lg font-semibold text-text-primary">{value.title}</h3>
-                <p className="mt-2 text-text-secondary">{value.description}</p>
-              </div>
+            {values.map((value, index) => (
+              <ScrollReveal key={value.title} animation="fade-up" delay={index * 150}>
+                <div
+                  className="rounded-xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <h3 className="text-lg font-semibold text-text-primary">{value.title}</h3>
+                  <p className="mt-2 text-text-secondary">{value.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -247,15 +249,16 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {communityInvolvement.map((item) => (
-              <div
-                key={item.name}
-                className="rounded-xl bg-primary-800/50 p-6 backdrop-blur-sm"
-              >
-                <h3 className="text-lg font-semibold text-white">{item.name}</h3>
-                <p className="mt-1 text-sm font-medium text-accent-300">{item.role}</p>
-                <p className="mt-2 text-primary-200">{item.description}</p>
-              </div>
+            {communityInvolvement.map((item, index) => (
+              <ScrollReveal key={item.name} animation="fade-up" delay={index * 150}>
+                <div
+                  className="rounded-xl bg-primary-800/50 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <h3 className="text-lg font-semibold text-white">{item.name}</h3>
+                  <p className="mt-1 text-sm font-medium text-accent-300">{item.role}</p>
+                  <p className="mt-2 text-primary-200">{item.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

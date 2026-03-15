@@ -1,3 +1,5 @@
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+
 export function FishTank() {
   return (
     <section
@@ -63,6 +65,7 @@ export function FishTank() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           {/* Illustration */}
+          <ScrollReveal animation="slide-left">
           <div className="relative">
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 p-8">
               <svg
@@ -165,8 +168,10 @@ export function FishTank() {
               </svg>
             </div>
           </div>
+          </ScrollReveal>
 
           {/* Content */}
+          <ScrollReveal animation="slide-right" delay={200}>
           <div>
             <h2
               id="fishtank-heading"
@@ -203,6 +208,7 @@ export function FishTank() {
               </p>
             </div>
           </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

@@ -1,3 +1,7 @@
+'use client';
+
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+
 const usps = [
   {
     icon: (
@@ -79,33 +83,36 @@ export function USPs() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2
-            id="usps-heading"
-            className="text-2xl font-bold text-text-primary sm:text-3xl"
-          >
-            How we&apos;re different
-          </h2>
-          <p className="mt-4 text-lg text-text-secondary">
-            Not another agency. Not another one-thing-at-a-time consultant. A growth partner who
-            builds alongside you until it works.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2
+              id="usps-heading"
+              className="text-2xl font-bold text-text-primary sm:text-3xl"
+            >
+              How we&apos;re different
+            </h2>
+            <p className="mt-4 text-lg text-text-secondary">
+              Not another agency. Not another one-thing-at-a-time consultant. A growth partner who
+              builds alongside you until it works.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {usps.map((usp) => (
-            <div
-              key={usp.title}
-              className="group rounded-xl border border-primary-200 bg-surface p-6 shadow-sm transition-all hover:border-primary-300 hover:shadow-lg dark:border-primary-800"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-700 dark:text-primary-300 transition-colors group-hover:bg-primary-200">
-                {usp.icon}
+          {usps.map((usp, index) => (
+            <ScrollReveal key={usp.title} animation="fade-up" delay={index * 150}>
+              <div
+                className="group rounded-xl border border-primary-200 bg-surface p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl dark:border-primary-800"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-700 dark:text-primary-300 transition-colors group-hover:bg-primary-200">
+                  {usp.icon}
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-text-primary">
+                  {usp.title}
+                </h3>
+                <p className="mt-2 text-text-secondary">{usp.description}</p>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-text-primary">
-                {usp.title}
-              </h3>
-              <p className="mt-2 text-text-secondary">{usp.description}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

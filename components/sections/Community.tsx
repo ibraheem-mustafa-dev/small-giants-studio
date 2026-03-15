@@ -1,4 +1,7 @@
+'use client';
+
 import Image from "next/image";
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 const partners = [
   {
@@ -28,29 +31,31 @@ export function Community() {
       aria-labelledby="community-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2
-            id="community-heading"
-            className="text-2xl font-bold text-text-primary sm:text-3xl"
-          >
-            Community isn&apos;t a marketing strategy.
-            <span className="mt-1 block text-primary-700 dark:text-primary-300">It&apos;s who I am.</span>
-          </h2>
-          <p className="mt-4 text-lg text-text-secondary">
-            Not networking for what you can extract — but investing in something that lifts the
-            whole community. Alhamdulillah, I get to work with people who genuinely care.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2
+              id="community-heading"
+              className="text-2xl font-bold text-text-primary sm:text-3xl"
+            >
+              Community isn&apos;t a marketing strategy.
+              <span className="mt-1 block text-primary-700 dark:text-primary-300">It&apos;s who I am.</span>
+            </h2>
+            <p className="mt-4 text-lg text-text-secondary">
+              Not networking for what you can extract — but investing in something that lifts the
+              whole community. Alhamdulillah, I get to work with people who genuinely care.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Partner cards */}
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {partners.map((partner) => (
+          {partners.map((partner, index) => (
+            <ScrollReveal key={partner.name} animation="fade-up" delay={index * 150}>
             <a
-              key={partner.name}
               href={partner.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col rounded-xl border border-border bg-background p-6 transition-all hover:border-primary-300 hover:shadow-lg"
+              className="group flex flex-col rounded-xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl"
             >
               <div className="flex h-16 items-center justify-center">
                 <Image
@@ -81,10 +86,12 @@ export function Community() {
                 </svg>
               </div>
             </a>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Evertreen Forest Embed */}
+        <ScrollReveal animation="fade-up" delay={500}>
         <div className="mt-16">
           <div className="mx-auto max-w-2xl text-center">
             <h3 className="text-xl font-semibold text-text-primary">
@@ -105,6 +112,7 @@ export function Community() {
             />
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

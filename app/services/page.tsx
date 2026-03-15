@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Digital Transformation Services for UK SMEs & Charities",
@@ -202,8 +203,8 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-24">
             {services.map((service, index) => (
+              <ScrollReveal key={service.id} animation={index % 2 === 0 ? 'slide-left' : 'slide-right'}>
               <div
-                key={service.id}
                 id={service.id}
                 className="grid gap-12 lg:grid-cols-2 lg:items-start"
               >
@@ -262,6 +263,7 @@ export default function ServicesPage() {
                   </ul>
                 </div>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -303,39 +305,45 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
-            <div className="rounded-xl border border-border bg-background p-6 text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
-                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                </svg>
+            <ScrollReveal animation="fade-up" delay={0}>
+              <div className="rounded-xl border border-border bg-background p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
+                  <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-text-primary">Fixed-price projects</h3>
+                <p className="mt-2 text-sm text-text-secondary">
+                  You know exactly what you&apos;re paying before we start. No hourly surprises, no scope creep charges.
+                </p>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-text-primary">Fixed-price projects</h3>
-              <p className="mt-2 text-sm text-text-secondary">
-                You know exactly what you&apos;re paying before we start. No hourly surprises, no scope creep charges.
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-background p-6 text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
-                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
-                </svg>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={150}>
+              <div className="rounded-xl border border-border bg-background p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
+                  <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-text-primary">Scaled to your budget</h3>
+                <p className="mt-2 text-sm text-text-secondary">
+                  I work with what you&apos;ve got. Charities and social enterprises get flexible pricing. No one gets priced out.
+                </p>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-text-primary">Scaled to your budget</h3>
-              <p className="mt-2 text-sm text-text-secondary">
-                I work with what you&apos;ve got. Charities and social enterprises get flexible pricing. No one gets priced out.
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-background p-6 text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
-                <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                </svg>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={300}>
+              <div className="rounded-xl border border-border bg-background p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
+                  <svg className="h-6 w-6 text-primary-700 dark:text-primary-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-text-primary">No inflated licences</h3>
+                <p className="mt-2 text-sm text-text-secondary">
+                  I recommend tools that fit your budget — not the ones that earn me the biggest commission. Most of what I use is free or affordable.
+                </p>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-text-primary">No inflated licences</h3>
-              <p className="mt-2 text-sm text-text-secondary">
-                I recommend tools that fit your budget — not the ones that earn me the biggest commission. Most of what I use is free or affordable.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
           <div className="mt-8 text-center">
             <p className="text-text-secondary">
