@@ -65,7 +65,7 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <h1
               id="hero-heading"
-              className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl"
+              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
             >
               Helping human-led businesses{" "}
               <span className="text-accent-400">compete with the giants</span>

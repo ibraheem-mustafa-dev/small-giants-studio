@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 const testimonials = [
   {
@@ -72,20 +73,23 @@ export function Testimonials() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2
-            id="testimonials-heading"
-            className="text-2xl font-bold text-text-primary sm:text-3xl"
-          >
-            What clients say
-          </h2>
-          <p className="mt-4 text-lg text-text-secondary">
-            Real results from real businesses. Every client I work with also plants trees through
-            my partnership with Evertreen.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2
+              id="testimonials-heading"
+              className="text-2xl font-bold text-text-primary sm:text-3xl"
+            >
+              What clients say
+            </h2>
+            <p className="mt-4 text-lg text-text-secondary">
+              Real results from real businesses. Every client I work with also plants trees through
+              my partnership with Evertreen.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Testimonial carousel */}
+        <ScrollReveal animation="fade-in" delay={200}>
         <div className="relative mt-12">
           <div className="overflow-hidden">
             <div
@@ -189,6 +193,7 @@ export function Testimonials() {
             </button>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );
