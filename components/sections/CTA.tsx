@@ -70,7 +70,7 @@ export function CTA() {
               href="/contact"
               className="inline-flex min-h-[48px] items-center justify-center px-10 py-3.5 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-offset-2"
               style={{
-                backgroundColor: "var(--color-accent)",
+                backgroundColor: "var(--color-accent-warm)",
                 borderRadius: "999px",
               }}
             >

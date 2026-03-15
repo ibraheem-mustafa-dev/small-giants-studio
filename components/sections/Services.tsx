@@ -94,10 +94,10 @@ export function Services() {
               <div className="flex items-start gap-6 py-8 transition-colors sm:gap-10 sm:py-10">
                 {/* Large serif number */}
                 <span
-                  className="shrink-0 text-3xl font-light tabular-nums transition-colors sm:text-4xl"
+                  className="shrink-0 text-3xl font-light tabular-nums transition-colors duration-300 sm:text-4xl"
                   style={{
                     fontFamily: "var(--font-display, serif)",
-                    color: "var(--color-text-muted)",
+                    color: "var(--color-accent)",
                   }}
                   aria-hidden="true"
                 >
@@ -106,7 +106,7 @@ export function Services() {
                   </span>
                   <span
                     className="hidden group-hover:inline"
-                    style={{ color: "var(--color-accent)" }}
+                    style={{ color: "var(--color-accent-warm)" }}
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>

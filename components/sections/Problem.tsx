@@ -92,7 +92,7 @@ export function Problem() {
                 className="text-4xl font-light sm:text-5xl"
                 style={{
                   fontFamily: "var(--font-display, serif)",
-                  color: "var(--color-accent-light)",
+                  color: "var(--color-accent-warm-light)",
                   letterSpacing: "-0.03em",
                 }}
               >

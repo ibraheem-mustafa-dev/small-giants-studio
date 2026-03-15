@@ -47,7 +47,7 @@ export function Hero() {
           Helping human-led businesses{" "}
           <em
             className="not-italic"
-            style={{ color: "var(--color-accent)" }}
+            style={{ color: "var(--color-accent-warm)" }}
           >
             compete with the giants
           </em>

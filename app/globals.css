@@ -18,10 +18,18 @@
   --color-ink-on-dark: #F7F3EE;
   --color-ink-on-dark-secondary: #A8A29E;
 
-  /* Accent — teal, used sparingly */
+  /* Accent — teal, used boldly */
   --color-accent: #0D9488;
   --color-accent-dark: #0F766E;
   --color-accent-light: #2DD4BF;
+
+  /* Warm accent — amber, paired with teal */
+  --color-accent-warm: #D97706;
+  --color-accent-warm-light: #F59E0B;
+  --color-accent-warm-dark: #B45309;
+
+  /* Dark teal — for section backgrounds */
+  --color-surface-dark-teal: #0F4C4C;
 
   /* Backward-compatible tokens used by Tailwind @theme */
   --color-primary-900: #1C1917;
@@ -82,6 +90,10 @@
   --color-accent-300: var(--color-accent-300);
   --color-accent-200: var(--color-accent-200);
   --color-accent-100: var(--color-accent-100);
+
+  --color-accent-warm: var(--color-accent-warm);
+  --color-accent-warm-light: var(--color-accent-warm-light);
+  --color-accent-warm-dark: var(--color-accent-warm-dark);
 
   --color-text-primary: var(--color-text-primary);
   --color-text-secondary: var(--color-text-secondary);

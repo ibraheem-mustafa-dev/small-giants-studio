@@ -25,14 +25,14 @@ export function Community() {
   return (
     <section
       className="py-24 sm:py-32"
-      style={{ backgroundColor: "var(--color-surface-light)" }}
+      style={{ backgroundColor: "var(--color-surface-dark-teal)" }}
       aria-labelledby="community-heading"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-2xl text-center">
           <h2
             id="community-heading"
-            style={{ color: "var(--color-ink-primary)" }}
+            style={{ color: "var(--color-ink-on-dark)" }}
           >
             Community isn&apos;t a marketing strategy.
             <span
@@ -44,7 +44,7 @@ export function Community() {
           </h2>
           <p
             className="mt-6 text-lg"
-            style={{ color: "var(--color-ink-secondary)" }}
+            style={{ color: "var(--color-ink-on-dark-secondary)" }}
           >
             Not networking for what you can extract — but investing in something that lifts the
             whole community. Alhamdulillah, I get to work with people who genuinely care.
@@ -61,8 +61,8 @@ export function Community() {
               rel="noopener noreferrer"
               className="group flex flex-col border p-8 transition-all hover:shadow-lg"
               style={{
-                borderColor: "var(--color-border)",
-                backgroundColor: "var(--color-surface-light)",
+                borderColor: "rgba(255,255,255,0.12)",
+                backgroundColor: "rgba(255,255,255,0.06)",
                 borderRadius: "0",
               }}
             >
@@ -81,14 +81,14 @@ export function Community() {
                 style={{
                   fontFamily: "var(--font-display, serif)",
                   fontWeight: 400,
-                  color: "var(--color-ink-primary)",
+                  color: "var(--color-ink-on-dark)",
                 }}
               >
                 {partner.name}
               </h3>
               <p
                 className="mt-3 flex-1 text-center text-sm leading-relaxed"
-                style={{ color: "var(--color-ink-secondary)" }}
+                style={{ color: "var(--color-ink-on-dark-secondary)" }}
               >
                 {partner.description}
               </p>
@@ -118,14 +118,14 @@ export function Community() {
               style={{
                 fontFamily: "var(--font-display, serif)",
                 fontWeight: 400,
-                color: "var(--color-ink-primary)",
+                color: "var(--color-ink-on-dark)",
               }}
             >
               Our Growing Forest
             </h3>
             <p
               className="mt-3"
-              style={{ color: "var(--color-ink-secondary)" }}
+              style={{ color: "var(--color-ink-on-dark-secondary)" }}
             >
               Every project I complete plants real trees. It&apos;s a small thing — but it adds up.
             </p>
@@ -133,7 +133,7 @@ export function Community() {
           <div
             className="mt-8 overflow-hidden border"
             style={{
-              borderColor: "var(--color-border)",
+              borderColor: "rgba(255,255,255,0.12)",
               borderRadius: "0",
             }}
           >

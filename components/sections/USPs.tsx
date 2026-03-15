@@ -36,7 +36,7 @@ export function USPs() {
     <section
       ref={sectionRef}
       className="py-24 sm:py-32"
-      style={{ backgroundColor: "var(--color-surface-light)" }}
+      style={{ backgroundColor: "var(--color-surface-light-alt)" }}
       aria-labelledby="usps-heading"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
@@ -67,6 +67,7 @@ export function USPs() {
                 borderColor: "var(--color-border)",
                 backgroundColor: "var(--color-surface-light)",
                 borderRadius: "0",
+                borderLeft: "3px solid var(--color-accent)",
               }}
             >
               <h3
