@@ -4,10 +4,14 @@
 Website for Small Giants Studio — a Birmingham-based digital transformation consultancy founded by Ibraheem Mustafa. Serves UK SMEs, charities, and social enterprises.
 
 **Domain:** smallgiantsstudio.co.uk
-**Stack:** Next.js (deployed to Vercel)
-**Status:** Pre-launch (Phase 4.5 visual overhaul complete)
+**Stack:** Next.js 16 + Tailwind CSS v4 (deployed to Vercel)
+**Status:** Phases 1-5 complete. Two redesign branches in progress (V1 improve + V2 editorial).
 
 ---
+
+## Git
+
+**Remote:** `github.com/ibraheem-mustafa-dev/small-giants-studio` (private). See global CLAUDE.md for workflow rules.
 
 ## Critical Rules
 
@@ -90,69 +94,46 @@ All brand, voice, and positioning docs live in `/docs/`. **Read these before any
 
 ---
 
-## What's Done
-- [x] Project scaffolded with Next.js
-- [x] Page routes created (home, about, services, work, insights, contact, privacy, terms)
-- [x] Component structure set up (layout, sections, ui)
-- [x] Reference docs and screenshots added to `/docs/`
-- [x] Full-site review completed (9 Feb 2026) — code quality, SEO, and copy/voice audit
-- [x] Screenshots taken at 375px, 768px, 1440px for all 8 pages (in `/review-screenshots/`)
-- [x] Contact form connected to Formspree (ID: xeeloran), console.log removed
-- [x] Fabricated case studies replaced with honest "coming soon" page on /work
-- [x] Broken Calendly link removed from /contact
-- [x] OG image auto-generates via `app/opengraph-image.tsx` (no static file needed)
-- [x] Services page CSS bug fixed (removed `lg:flex-row-reverse` from grid)
-- [x] /work hidden from Header and Footer navigation
-- [x] Honeypot field accessibility fixed on contact form
-- [x] Phase 2 voice & identity pass completed (9 Feb 2026) — 7 files updated
-- [x] Phase 3 compliance, UX, infrastructure completed (9 Feb 2026) — cookie consent, error/loading states, touch targets, dark mode toggle
-- [x] Phase 4.5 visual & content overhaul completed (9 Feb 2026) — dark mode fixes, horizontal logo, animated hero/fish tank, GEO service, contact form interests, both LinkedIn profiles
-- [x] Phase 5 SEO infrastructure completed (10 Feb 2026) — sitemap, robots, JSON-LD schemas (LocalBusiness/Person/Service/FAQ/Breadcrumb), keyword meta titles, canonical URLs, pricing signals, geo coordinates, internal cross-links, image alt text, preload hints, React 19 lint fixes
+## Current Design Work (2026-03-17)
 
-## What's Broken
+Two redesign branches exist — user wasn't satisfied with either. Both need refinement from THIS project directory with full context.
 
-**Resolved in Phase 1:** Items 1-5, 9, 26 (manifest.json exists)
-**Resolved in Phase 2:** Items 10-15, 31
-**Resolved in Phase 3:** Items 18-20 (touch targets), 21 (cookie consent), 23 (error boundary), 24 (loading states), 25 (dark mode toggle), 27 (insights simplified), 33 (removed `sm` button size)
-**Resolved in Phase 4.5:** Dark mode legibility across all pages, hero animation, fish tank animation, Evertreen logo colour, 6th value card, GEO/AI service description, contact form multi-choice interests
-**Resolved in Phase 5 (SEO):** Items 6 (sitemap), 7 (robots), 8 (JSON-LD), 16 (meta titles), 17 (canonical URLs), 28 (local SEO + geo coordinates), 29 (internal linking + breadcrumbs), 30 (FAQ section + schema), 32 (pricing signals), 36 (image alt text), 37 (breadcrumb schema), 39 (preload hints)
+| Branch | Font | Palette | Style |
+|---|---|---|---|
+| `feature/design-overhaul-motion-typography` (PR #1) | Instrument Serif | Warm teal/amber on cream (#FAF8F5) | Improved current — scroll animations, button physics, card hovers |
+| `feature/v2-editorial-redesign` (worktree at `~/Projects/small-giants-studio-v2`) | Fraunces (light) | Parchment (#F7F3EE) / near-black (#1C1917) / teal+amber | Editorial magazine — numbered services, massive pull-quote, grain texture, sharp cards |
 
-### Critical (Must fix before launch)
-1. **Contact form is fake** — simulates submission, logs to console, nobody receives messages. Connect to Formspree/Resend. Remove `console.log` (security: leaks personal data). `components/sections/ContactForm.tsx:36-39`
-2. **Work page case studies are fabricated** — placeholder data with generic clients ("Service Business", "UK Charity", "SME") and made-up testimonials. Publishing these would violate advertising standards and destroy credibility. Either replace with real case studies or remove the page until genuine ones are ready. `app/work/page.tsx:13-74`
-3. **Calendly "Book a Discovery Call" button is broken** — `href="#"` dead link on contact page. Fix or remove. `app/contact/page.tsx:168`
-4. **Missing og-image.jpg** — referenced in layout.tsx but doesn't exist. Social shares display no preview image. Create 1200x630px branded image. `app/layout.tsx:51`
-5. **Missing favicon files** — layout.tsx references favicon.ico, icon.svg, apple-touch-icon.png that don't exist. Browser tabs show generic icon. `app/layout.tsx:90-91`
-6. **Missing sitemap.ts** — no sitemap for search engines. Create `app/sitemap.ts` using Next.js Metadata API.
-7. **Missing robots.ts** — no robots.txt. Create `app/robots.ts`.
-8. **No JSON-LD schema markup** — zero structured data. Google can't identify the business type, services, or location. Add LocalBusiness + Service schemas.
-9. **Services page CSS bug** — `lg:flex-row-reverse` on a grid element does nothing. The class is silently ignored. Remove it (the `lg:order-2`/`lg:order-1` on children already handles alternating layout). `app/services/page.tsx:134`
+**Animation system:** `components/hooks/useScrollReveal.ts` + `components/ui/ScrollReveal.tsx` — IntersectionObserver with prefers-reduced-motion support, 5 animation types.
 
-### High (Fix within first week)
-10. **Website voice doesn't sound like Ibraheem** — copy is too polished/corporate. Missing: playful parenthetical asides, vulnerability, self-deprecating humour, warmth. Compare website ("I build connected marketing and operations systems") vs how he actually talks ("I'm a nerd for this stuff — my family can confirm"). Needs a copy pass with the voice guides.
-11. **Zero Islamic identity on the website** — brand guide says "Muslim professional with naturally integrated Islamic values." Voice analysis shows Islamic phrases in 6+ of 18 posts. The website has none. The Muslim entrepreneur audience segment will notice this gap. Add naturally where appropriate (about page, community section).
-12. **Missing the BFG framing** — "The world doesn't need more Goliaths. It needs more BFGs" is one of the most distinctive parts of the brand. Completely absent from the website. Add to homepage or about page.
-13. **Missing "Small Giants" name explanation** — what the name means and why it matters isn't on the site. Brand guide has it: "Small businesses with giant capabilities. You don't need to become a soulless corporation to compete with one."
-14. **Hero says "worldwide" but brand says "UK"** — "Working with ambitious founders worldwide" contradicts the consistent UK positioning. Change to "Working across the UK" per brand docs. `components/sections/Hero.tsx:76`
-15. **Missing USP #7: Work-life balance** — 6 of 7 USPs are on the homepage but "Work-life balance as core value" is missing. The docs say this differentiates from "hustle culture" consultants. `components/sections/USPs.tsx`
-16. **Weak meta titles** — "About | Small Giants Studio" is too generic. Each page needs keyword-rich titles. E.g. "About Ibraheem Mustafa | Digital Transformation Consultant for UK SMEs". All page metadata exports need updating.
-17. **Missing canonical URLs** — no explicit canonical tags on individual pages. Add `alternates.canonical` to each page's metadata export.
-18. **Testimonial carousel dots fail 44px touch target** — dots are 8px tall, WCAG 2.2 AA requires 44px minimum. Add padding wrapper. `components/sections/Testimonials.tsx:149`
-19. **Mobile menu button below 44px** — p-2.5 on h-6/w-6 icon = ~39px. Increase to p-3. `components/layout/Header.tsx:35`
-20. **Insights category filter buttons below 44px** — py-2 is too small. Increase to py-3. `app/insights/page.tsx:86`
+**Generated illustrations:** 11 images in `public/images/generated/` — hero, 6 services, 3 pain points, CTA texture. Wired into both versions.
 
-### Medium (Fix within 2 weeks)
-21. **Cookie consent banner missing** — GDPR compliance required. Implement before adding any analytics.
-22. **No Google Analytics** — can't track visitors, conversions, or marketing effectiveness.
-23. **No error boundary** — if a component crashes, entire app goes blank. Create `app/error.tsx`.
-24. **No loading states** — no `loading.tsx` files. Users see blank screen while pages load.
-25. **Dark mode toggle not implemented** — CSS variables respond to system preference, but no manual toggle exists. CLAUDE.md specifies dark mode support.
-26. **Missing manifest.json** — referenced in layout.tsx but doesn't exist. Create `public/manifest.json` for PWA support.
-27. **Insights page is entirely placeholder** — all posts say "Coming soon", category filters don't work, posts don't link anywhere. Either write real content or simplify to a "Coming soon" landing page.
-28. **No local SEO signals** — no Google Business Profile, no geo coordinates in schema, "Birmingham" only mentioned twice. Add to more pages and set up GBP.
-29. **Weak internal linking** — no breadcrumbs, no "related services" suggestions, work page doesn't link to relevant services.
-30. **No FAQ section or schema** — missing featured snippet opportunity. Add FAQ to services or about page.
-31. **Budget-conscious messaging missing from services page** — "resourceful with your budget" and "connecting affordable tools with automation" from About The Company doc would resonate with target audience. `app/services/page.tsx`
+**Design research:** `~/.claude/plans/sgs-website-design-research.md` (600 lines — typography, animation strategy, anti-generic patterns, 20+ reference sites).
+
+**Design preferences:** Read `~/.claude/projects/C--Windows-System32/memory/feedback_design_preferences.md` before making design decisions. User hates: generic AI look, darker orange, monotone palettes, weak hover effects, text-only pages.
+
+## Completed Phases
+
+Phases 1-5 all done (Feb 2026). See git history for details. Key milestones: SEO infrastructure, voice/identity pass, compliance/UX, visual overhaul, JSON-LD schemas.
+
+## Current Issues (2026-03-17)
+
+### Active
+1. **LinkedIn embeds broken on /insights** — CSP blocks iframes. Fix: add `linkedin.com` to `frame-src` in `next.config.ts`
+2. **Evertreen widget** — only renders on click in dark mode, 500px blank area on desktop
+3. **Vercel CDN stale** — OG fix pushed (0b9193a) but CDN was serving 28-day-old cache. May need manual redeploy.
+4. **Design quality** — V1 and V2 need refinement from project directory. User wants something that "demands respect"
+5. **No Google Analytics** — can't track visitors or conversions
+6. **V2 worktree** — `~/Projects/small-giants-studio-v2` needs cleanup when done: `git worktree remove`
+
+### Dark Mode (B+ grade, assessed 2026-03-15)
+- Body text contrast: 16.30:1 (excellent)
+- Card/bg contrast: 1.22:1 (too low — slate-800 vs slate-900)
+- Orange CTA: 3.88:1 (fails normal text AA)
+- Focus indicators: outline width defaults to 0px
+- Full report: `~/site-reviews/sgs-dark-mode-assessment-2026-03-15.md`
+
+### Resolved (Phases 1-5, Feb 2026)
+All items from the original audit (contact form, case studies, SEO, voice, identity, touch targets, cookie consent, error states, dark mode toggle, sitemaps, JSON-LD, canonical URLs) were resolved in Phases 1-5. See git history for details.
 32. **No pricing signals** — market research says "50% of UK SMEs avoid consultants due to perceived over-inflated costs." Even a general indicator would help.
 33. **Remove unused Button `sm` size** — 36px height violates WCAG. It's never used. `components/ui/Button.tsx:24`
 34. **Search Console verification codes empty** — `app/layout.tsx:76-78` has placeholder comment.
