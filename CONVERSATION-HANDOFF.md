@@ -1,123 +1,96 @@
-# Session Handoff — 13 Feb 2026
+# SGS Website (Next.js) — Session Handoff — 2026-03-16
 
 ## Completed This Session
 
-1. **Fixed logo dark mode colour** — removed `dark:brightness-0 dark:invert` filter that was turning the logo fully white. Logo now shows original brand colours (teal + orange) in both light and dark mode. File: `components/ui/Logo.tsx:20-22`.
-2. **Diagnosed and fixed CSS loading failure** — site was completely unstyled (raw HTML). Root cause: dozens of stale `node.exe` processes from previous `next start` runs. An old server process was responding with HTML referencing a CSS chunk hash that no longer existed on disk. Fixed by killing all node processes, cleaning `.next` directory, and rebuilding.
-3. **Services section colour experiment (from prior session, uncommitted)** — Services background changed to accent-500 (orange), wave divider above Testimonials updated to match, dark mode accent-200/accent-500 CSS variables added to globals.css.
-4. **CLAUDE.md updates (from prior session, uncommitted)** — added LinkedIn API feed section to "What's Next", marked company registration number as done.
+### SEO & Deploy Fixes
+1. **OG tags fixed** — Every subpage now has explicit `openGraph: { title, description }` in its metadata export. Root cause: Next.js doesn't auto-populate `og:title`/`og:description` from page-level `title`/`description` when the parent layout defines an `openGraph` object. Commit `0b9193a`, pushed to main.
+2. **Layout OG defaults** — Added explicit `title` and `description` to the layout's `openGraph` object so the homepage also gets proper OG tags.
+3. **Vercel CDN stale** — All 4 verification checks failed (OG, security headers, noindex, sitemap). The source code was correct (from commit `cce293c`) but the Vercel CDN was serving a 28-day-old cached version (`Age: 2472995`). The new push should force a fresh build.
+
+### Dark Mode Assessment
+4. **Full dark mode audit** — Grade B+. 22 screenshots across all 7 pages at 3 breakpoints. Report: `~/site-reviews/sgs-dark-mode-assessment-2026-03-15.md`
+   - Body text contrast: 16.30:1 (excellent)
+   - Critical: LinkedIn embeds render as white rectangles (CSP blocks iframes)
+   - Major: Evertreen widget only appears on click, 500px blank area on desktop
+   - Minor: Card/bg contrast only 1.22:1 (slate-800 vs slate-900), orange CTA 3.88:1
+
+### Design Overhaul — V1 (Improve Current)
+5. **Branch:** `feature/design-overhaul-motion-typography` — PR #1 open
+6. **Font:** Instrument Serif for all headings (replacing Inter everywhere)
+7. **Colours:** Background warmed #FAFAFA → #FAF8F5. Accent hover #8B4305 → #C4650A/#D97012
+8. **Animation system:**
+   - `components/hooks/useScrollReveal.ts` — IntersectionObserver + `prefers-reduced-motion`
+   - `components/ui/ScrollReveal.tsx` — 5 animation types + stagger delay
+   - `@keyframes` in globals.css
+9. **ScrollReveal on ALL sections:** Hero, Problem, USPs, Services, Testimonials, CTA, FishTank, MidCTA, Community, About, Services page
+10. **Button physics:** hover lift + shadow + glow + active press
+11. **Nav underlines:** Animated `::after` with `scale-x-0` → `scale-x-100`
+12. **Mobile menu:** Smooth `max-height` + `opacity` transition
+13. **Hero enlarged:** text-4xl → text-7xl responsive
+14. **Card hover lifts:** All card elements site-wide
+15. **Stat numbers enlarged:** text-5xl/6xl
+
+### Design Overhaul — V2 (Editorial Redesign)
+16. **Branch:** `feature/v2-editorial-redesign` — worktree at `~/Projects/small-giants-studio-v2`
+17. **Font:** Fraunces (variable, light 300) for headings
+18. **Colour system rewrite:** parchment (#F7F3EE), near-black (#1C1917), teal (#0D9488), amber (#D97706)
+19. **Grain overlay:** SVG noise at ~4% opacity
+20. **Hero rewrite:** full viewport, content at bottom, massive Fraunces type, editorial rule, pill CTA
+21. **Services rewrite:** numbered editorial list (01-06), teal → amber hover on numbers
+22. **Testimonials rewrite:** one massive pull-quote + two secondary (Feldon, Tajinder, Luke)
+23. **CTA:** near-black, Fraunces, amber pill button, dramatic clamp() padding
+24. **Sharp cards** (radius 0), **pill buttons** (999px), **4 section background treatments**
+
+### AI-Generated Illustrations (Both Versions)
+25. **11 images** via nano-banana in `public/images/generated/`:
+   - hero-v1.png, hero-v2.png (landscape, brand metaphor)
+   - 6 service illustrations (interconnected nodes, funnel, gears, dashboard, browser layers, magnifying lens)
+   - 3 pain point illustrations (compressed clock, juggling hats, dimming flame)
+   - cta-texture.png (topographic lines)
+26. **Wired into V1:** Hero bg, Problem stat cards, Services cards, CTA texture, Services page
+27. **Wired into V2:** Hero bg (12% multiply blend), stat cards, editorial list (hover reveal), CTA (7% screen blend)
+
+### Design Research
+28. **600-line document:** `~/.claude/plans/sgs-website-design-research.md` — 5 techniques, 5 anti-patterns, animation strategy, typography/colour recommendations, 20+ sources
 
 ## Current State
 
-- **Live site**: https://smallgiantsstudio.co.uk (deployed 13 Feb 2026, Vercel)
-- **Vercel URL**: https://small-giants-studio.vercel.app
-- **Branch**: `master` (no remote configured — deploys via `npx vercel --prod`)
-- **Build**: passes clean
-- **Server**: running on `localhost:3099` (production build)
-- **5 modified files uncommitted** (see below)
-- **12 untracked screenshot PNGs** in root directory (design experiments, safe to delete)
+- **main:** OG fix pushed (0b9193a)
+- **V1 branch:** PR #1 open, builds clean, 17 files changed
+- **V2 branch:** committed, worktree at `~/Projects/small-giants-studio-v2`
+- **User feedback:** "Not the biggest fan of either" — needs refinement from project directory
+- **Vercel:** awaiting CDN refresh
 
-## Known Issues / Blockers
+## Known Issues
 
-1. **Uncommitted changes** — 5 files modified across multiple sessions need reviewing and committing. The Services orange background and Testimonials wave change may or may not be intentional (appears to be a design experiment from a prior session).
-2. **Stale screenshot files** — 12 PNG screenshots in the project root (`dark-mode-header.png`, `services-brand-orange*.png`, etc.) are design experiment artifacts. Should be deleted, not committed.
-3. **Logo on dark background** — no filter applied now. If the teal text is too dark to read on the dark header, a slight brightness bump (e.g. `dark:brightness-125`) may be needed. User asked for "normal colours" so left as-is.
-4. **Playwright MCP** — cannot launch when Chrome is already running. Known Windows issue. Workaround: close Chrome first, or use `start http://localhost:PORT` to open in existing browser.
-5. **Formspree untested** — contact form connected (ID: xeeloran) but no real submission test done.
-6. **No Google Analytics / Search Console / Business Profile** — needs account setup (post-launch).
-7. **No real case studies or blog posts** — /work and /insights are "coming soon" placeholders.
+1. Design quality needs refinement from within project directory
+2. Vercel CDN may still serve stale version
+3. LinkedIn embeds broken on /insights (CSP)
+4. Evertreen widget dark mode issue
+5. V2 worktree needs cleanup: `git worktree remove ../small-giants-studio-v2`
 
-## Next Priorities (in order)
+## Next Priorities
 
-1. **Review and commit uncommitted changes** — the 5 modified files include the logo fix (definitely keep), Services orange background (check if user wants this), CLAUDE.md updates (keep), and CSS variables (keep if Services change is kept).
-2. **Clean up screenshot files** — delete the 12 untracked PNGs from the project root.
-3. **Deploy latest changes to Vercel** — `npx vercel --prod` after committing.
-4. **Test contact form** — submit a real test message through Formspree to confirm it works end-to-end.
-5. **Phase 4: Content & polish** — real case studies (needs client permission), blog posts, copy tightening.
-6. **Post-launch SEO** — Google Search Console, Business Profile, GA4 (all need accounts).
-
-## Files Modified (uncommitted)
-
-1. `c:\Users\Bean\Projects\small-giants-studio\components\ui\Logo.tsx` — removed dark mode filter, logo shows original colours in both modes
-2. `c:\Users\Bean\Projects\small-giants-studio\app\globals.css` — added `--color-accent-200` and `--color-accent-500` dark mode variables
-3. `c:\Users\Bean\Projects\small-giants-studio\components\sections\Services.tsx` — background changed to accent-500 (orange), subheading text changed to text-primary
-4. `c:\Users\Bean\Projects\small-giants-studio\components\sections\Testimonials.tsx` — wave fill changed from background to accent-500
-5. `c:\Users\Bean\Projects\small-giants-studio\CLAUDE.md` — added LinkedIn API feed section, marked company reg number done
-
-### Untracked files (delete, do not commit)
-- `dark-mode-header.png`, `dark-mode-services.png`
-- `services-brand-orange.png`, `services-brand-orange-v2.png`, `services-brand-orange-final.png`
-- `services-final.png`, `services-inline-style.png`, `services-orange-200.png`
-- `services-section-bg.png`, `services-section-teal.png`, `services-section-teal2.png`
-- `services-to-testimonials-transition.png`
-
-## Notes for Next Session
-
-- **Logo decision**: User explicitly said "just use my normal colours" — no filter in dark mode. If teal text is hard to read on the dark header, user will say so.
-- **Services orange background**: This change is in the diff but wasn't discussed this session. Likely a design experiment from the previous session. Ask the user if they want to keep it before committing.
-- **Stale node processes**: Windows doesn't cleanly kill background `next start` processes when using `&` in Git Bash. Always kill all node processes before starting a new server: `/c/Windows/System32/taskkill.exe //F //IM node.exe`.
-- **Wave divider architecture**: each wave sits ABOVE its section and fills with the colour of the section ABOVE it. If Services goes orange, the wave above Testimonials must also be orange.
-- **No git remote** — no GitHub repo. All deploys go directly via `npx vercel --prod`.
-- **No co-author tags in commits** — user wants AI generation hidden.
-
-## Relevant Tooling for Next Tasks
-
-### Commands (slash commands)
-- `/commit` — commit the uncommitted changes after review
-- `/deploy-nextjs` — pre-deployment checklist before pushing to Vercel
-- `/handoff` — generate session handoff summary
-- `/verification-before-completion` — verify work before claiming done
-
-### Skills (plugin skills)
-- `/ui-ux-pro-max` — visual design critique if reviewing the Services orange background
-- `/writing-clearly-and-concisely` — tighten website copy for Phase 4
-
-### Agents
-- `performance-auditor` — Core Web Vitals audit post-deployment
-- `test-and-explain` — test contact form and explain results
-
-### MCP Servers
-- **Playwright MCP** — browser testing (close Chrome first on Windows)
-
-### Hooks
-- **Auto-lint** — runs on file changes (user-level, `~/.claude/settings.json`)
-- **Block .env** — prevents committing secrets
+1. **Refine design from project directory** — `/frontend-design`, `/bolder`, `/animate`, `/critique`
+2. **Verify Vercel deploy** — Playwright check after CDN refresh
+3. **Fix LinkedIn embeds** — Add linkedin.com to CSP frame-src
+4. **Fix Evertreen widget** — dark mode rendering
 
 ## Next Session Prompt
 
-~~~
+```
 /superpowers:using-superpowers
 
-The Small Giants Studio website is live at smallgiantsstudio.co.uk. There are 5 uncommitted file changes from design experiments (Services orange background, logo dark mode fix, CSS variables, CLAUDE.md updates) and 12 screenshot PNGs to clean up.
+The SGS Next.js website has two design branches: V1 (PR #1, Instrument Serif + animations) and V2 (editorial redesign, Fraunces + parchment). Neither satisfied the user — need refinement with full project context. OG tags fixed, Vercel CDN may be stale. 11 AI illustrations wired in. Design research at ~/.claude/plans/sgs-website-design-research.md.
 
-Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context, then work through these priorities:
+IMPORTANT: Run this session FROM the project directory (~/Projects/small-giants-studio), not from System32. Design feedback and preferences are stored at ~/.claude/projects/C--Windows-System32/memory/feedback_design_preferences.md — read that file before making any design decisions.
 
-1. **Review uncommitted changes** — show me the diff for each file and ask whether to keep or revert, especially the Services orange background. Use `/commit` once confirmed.
-2. **Delete screenshot artifacts** — remove the 12 untracked PNGs from the project root (dark-mode-*.png, services-*.png).
-3. **Deploy to Vercel** — run `/deploy-nextjs` checklist then `npx vercel --prod`.
-4. **Test contact form** — submit a real test through Formspree (ID: xeeloran) to confirm messages arrive.
+Read CONVERSATION-HANDOFF.md for full context, then:
 
-Critical: no git remote exists — deploys go via `npx vercel --prod` directly. No co-author tags in commits.
-~~~
+1. **Refine design** — Review both branches visually. Use `/critique`, `/bolder`, `/animate`, `/frontend-design`. User wants something that DEMANDS RESPECT. Read ~/.claude/projects/C--Windows-System32/memory/feedback_design_preferences.md first for accumulated design feedback.
+2. **Verify Vercel deploy** — Playwright check for OG tags, security headers, noindex, sitemap.
+3. **Fix LinkedIn embeds** — Add linkedin.com to CSP frame-src in next.config.ts.
+4. **Fix Evertreen widget** — Dark mode rendering on /sustainability.
 
-## Booking System Prompt (carried forward from 9 Feb)
-
-> Build me a self-hosted booking/scheduling system for Small Giants Studio. Requirements:
->
-> **Core features:**
-> - Clients can see my available time slots and book a 30-minute discovery call
-> - I can connect multiple Google/Outlook calendars (personal, work, family, community) so all of them block out time
-> - Intelligent availability: even when a calendar shows an event, I want to manually mark specific slots as "open anyway" or "blocked" even when the calendar is free
-> - My own branding — Small Giants Studio colours (#1B6B6B primary, #E8B931 accent), logo, and domain
-> - Email confirmations to both me and the client
-> - Follow up emails options to request things like reviews, reminders to book follow-up etc.
-> - Buffer time between meetings (configurable, default 15 minutes)
-> - Timezone detection for the client
->
-> **Nice to have:** Reschedule/cancel links, reminder emails, contact form integration, admin dashboard
->
-> **Tech:** Look at open-source options first (Cal.com, Easy!Appointments). Self-hosted preferred. Next.js stack if building from scratch. Deployable to Vercel or VPS.
->
-> **Key differentiator from Calendly:** 5+ calendars with granular control over what counts as "busy." Need to say "yes there's a mosque event at 1pm but I can still take a call" or "no meetings after 3pm on Fridays even though the calendar is empty."
->
-> Research the best open-source option first and present your recommendation before building.
+V2 worktree: ~/Projects/small-giants-studio-v2. Clean up with git worktree remove when done.
+```
