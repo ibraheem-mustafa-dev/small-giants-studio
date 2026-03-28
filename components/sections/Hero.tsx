@@ -70,7 +70,7 @@ export function Hero() {
               Helping human-led businesses{" "}
               <span className="text-accent-400">compete with the giants</span>
             </h1>
-            <p className="mt-6 text-lg text-primary-100 sm:text-xl">
+            <p className="mt-6 text-lg text-primary-100 dark:text-accent-400 sm:text-xl">
               Enterprise-level marketing, automation, and tech — at budgets that actually work.
             </p>
             <p className="mt-4 text-base text-primary-200">
