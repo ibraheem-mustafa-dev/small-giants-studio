@@ -77,7 +77,7 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-base font-medium text-text-secondary transition-colors hover:text-primary-700 dark:hover:text-primary-300"
+              className="rounded-md px-3 py-2 text-base font-medium text-text-secondary transition-all hover:bg-primary-50 hover:text-primary-700 dark:hover:bg-primary-900/30 dark:hover:text-primary-300"
             >
               {item.name}
             </Link>
@@ -89,7 +89,7 @@ export function Header() {
           <ThemeToggle />
           <Link
             href="/contact"
-            className="rounded-lg bg-accent-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-800 focus:outline-none focus:ring-2 focus:ring-accent-700 dark:focus:ring-accent-400 focus:ring-offset-2"
+            className="rounded-lg bg-accent-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-lg hover:shadow-accent-700/30 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-accent-700 dark:focus:ring-accent-400 focus:ring-offset-2"
           >
             Let&apos;s Chat
           </Link>
@@ -99,14 +99,14 @@ export function Header() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`lg:hidden ${mobileMenuOpen ? "block" : "hidden"}`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
       >
         <div className="space-y-1 border-t border-border bg-surface px-4 pb-4 pt-2">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary transition-colors hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300"
+              className="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary transition-colors active:bg-primary-100 hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300 dark:active:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               {item.name}
@@ -115,7 +115,7 @@ export function Header() {
           <div className="pt-2">
             <Link
               href="/contact"
-              className="block w-full rounded-lg bg-accent-700 px-3 py-3 text-center text-base font-semibold text-white transition-all hover:bg-accent-800"
+              className="block w-full rounded-lg bg-accent-700 px-3 py-3 text-center text-base font-semibold text-white transition-all active:bg-accent-800 hover:bg-accent-600"
               onClick={() => setMobileMenuOpen(false)}
             >
               Let&apos;s Chat

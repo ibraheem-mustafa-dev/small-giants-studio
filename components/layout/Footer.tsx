@@ -54,7 +54,7 @@ export function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           {/* Brand column */}
           <div className="space-y-6">
-            <Logo variant="light" className="h-12 w-auto" />
+            <Logo variant="light" className="h-14 w-auto sm:h-12" />
             <p className="max-w-xs text-sm text-primary-100 dark:text-primary-200">
               Helping human-led businesses compete with the giants. Enterprise-level marketing,
               automation, and tech — at budgets that actually work.
@@ -68,8 +68,8 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 rounded text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
                 >
-                  <item.icon className="h-5 w-5 shrink-0" aria-hidden="true" />
-                  <span className="text-xs font-medium">
+                  <item.icon className="h-6 w-6 shrink-0 sm:h-5 sm:w-5" aria-hidden="true" />
+                  <span className="text-sm font-medium sm:text-xs">
                     {item.name === "Ibraheem on LinkedIn" ? "Ibraheem" : "Company"}
                   </span>
                 </a>
@@ -89,7 +89,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-all hover:text-white hover:underline hover:underline-offset-4 focus:outline-none focus:ring-2 focus:ring-primary-300"
                       >
                         {item.name}
                       </Link>
@@ -106,7 +106,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-all hover:text-white hover:underline hover:underline-offset-4 focus:outline-none focus:ring-2 focus:ring-primary-300"
                       >
                         {item.name}
                       </Link>
@@ -124,7 +124,7 @@ export function Footer() {
                   <li>
                     <a
                       href="mailto:hello@smallgiantsstudio.co.uk"
-                      className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                      className="rounded text-sm text-primary-100 dark:text-primary-200 transition-all hover:text-white hover:underline hover:underline-offset-4 focus:outline-none focus:ring-2 focus:ring-primary-300"
                     >
                       hello@smallgiantsstudio.co.uk
                     </a>
@@ -132,7 +132,7 @@ export function Footer() {
                   <li>
                     <a
                       href="tel:+447424449555"
-                      className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                      className="rounded text-sm text-primary-100 dark:text-primary-200 transition-all hover:text-white hover:underline hover:underline-offset-4 focus:outline-none focus:ring-2 focus:ring-primary-300"
                     >
                       07424 449555
                     </a>
@@ -147,7 +147,7 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        className="rounded text-sm text-primary-100 dark:text-primary-200 transition-all hover:text-white hover:underline hover:underline-offset-4 focus:outline-none focus:ring-2 focus:ring-primary-300"
                       >
                         {item.name}
                       </Link>
@@ -161,7 +161,7 @@ export function Footer() {
 
         {/* Bottom section */}
         <div className="mt-12 border-t border-primary-800 pt-8">
-          <p className="text-center text-xs text-primary-300">
+          <p className="text-center text-sm text-primary-300 sm:text-xs">
             &copy; {currentYear} Small Giants Studio Ltd. All rights reserved. Company registered in
             England and Wales (16959564).
           </p>

@@ -114,7 +114,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#1B6B6B" />
         <link rel="preload" href="/images/sgs-horizontal-logo.png" as="image" />
       </head>
-      <body className="min-h-screen bg-background text-text-primary antialiased">
+      <body className="min-h-screen overflow-x-hidden bg-background text-text-primary antialiased">
         <JsonLd
           data={{
             "@context": "https://schema.org",

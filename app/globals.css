@@ -29,9 +29,9 @@
   --color-text-primary: #1A202C;
   --color-text-secondary: #4A5568;
   --color-text-muted: #606D80;
-  --color-background: #FAFAFA;
+  --color-background: #F5F5F5;
   --color-surface: #FFFFFF;
-  --color-border: #E2E8F0;
+  --color-border: #D4DBE5;
 
   /* Dark mode colours */
   --color-dark-bg: #0F172A;
@@ -120,6 +120,14 @@ body {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* Mobile tap feedback */
+@media (hover: none) {
+  a:active, button:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
 }
 
 /* Smooth scrolling */

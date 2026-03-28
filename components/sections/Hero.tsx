@@ -38,7 +38,7 @@ export function Hero() {
           100% { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 639px) {
-          .hero-label { display: none; }
+          .hero-label { font-size: 8px; }
         }
         @media (prefers-reduced-motion: reduce) {
           .hero-anim { animation: none !important; opacity: 1 !important; }
@@ -83,7 +83,7 @@ export function Hero() {
               <Button href="/contact" size="lg">
                 Let&apos;s Have a Chat About Your Business
               </Button>
-              <Button href="#approach" variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+              <Button href="#approach" variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white/20">
                 See How I Work
               </Button>
             </div>

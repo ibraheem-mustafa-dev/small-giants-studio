@@ -8,7 +8,7 @@ interface LogoProps {
   variant?: "default" | "light";
 }
 
-export function Logo({ className = "h-10 w-auto sm:h-12", variant = "default" }: LogoProps) {
+export function Logo({ className = "h-12 w-auto sm:h-14", variant = "default" }: LogoProps) {
   const [imageError, setImageError] = useState(false);
 
   if (imageError) {

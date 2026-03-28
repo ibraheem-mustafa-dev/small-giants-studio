@@ -59,7 +59,7 @@ export function Community() {
                   width={160}
                   height={64}
                   sizes="(max-width: 640px) 120px, 160px"
-                  className="h-12 w-auto object-contain transition-all group-hover:scale-110 group-hover:grayscale"
+                  className="h-12 w-auto object-contain transition-transform group-hover:scale-110"
                 />
               </div>
               <h3 className="mt-4 text-center text-lg font-semibold text-text-primary">
@@ -68,7 +68,7 @@ export function Community() {
               <p className="mt-2 flex-1 text-center text-sm text-text-secondary">
                 {partner.description}
               </p>
-              <div className="mt-4 flex items-center justify-center text-sm font-medium text-primary-700 dark:text-primary-300 opacity-0 transition-opacity group-hover:opacity-100">
+              <div className="mt-4 flex items-center justify-center text-sm font-medium text-primary-700 dark:text-primary-300 opacity-70 transition-opacity group-hover:opacity-100">
                 Visit website
                 <svg
                   className="ml-1 h-4 w-4"
