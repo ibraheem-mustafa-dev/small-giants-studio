@@ -33,7 +33,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="flex h-10 w-10 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300"
+      className="flex h-10 w-10 items-center justify-center rounded-lg text-text-secondary transition-all duration-300 hover:bg-primary-50 hover:text-primary-800 hover:rotate-12 active:scale-90 dark:hover:text-primary-300 dark:hover:bg-primary-900/30 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300"
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
       aria-pressed={dark ? "true" : "false"}
     >

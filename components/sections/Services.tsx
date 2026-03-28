@@ -93,7 +93,7 @@ export function Services() {
         {/* Featured service — full width */}
         <Link
           href={`/services#${services[0].id}`}
-          className="group mt-12 flex flex-col items-center gap-6 rounded-2xl border-2 border-primary-200 bg-gradient-to-br from-primary-50 to-surface p-8 transition-all hover:border-primary-400 hover:shadow-xl dark:from-primary-900/30 dark:to-surface sm:flex-row sm:items-start sm:p-10"
+          className="group mt-12 flex flex-col items-center gap-6 rounded-2xl border-2 border-primary-200 bg-gradient-to-br from-primary-50 to-surface p-8 transition-all duration-200 hover:-translate-y-1 hover:border-primary-400 hover:shadow-xl dark:from-primary-900/30 dark:to-surface sm:flex-row sm:items-start sm:p-10"
         >
           <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-primary-700 text-white transition-colors group-hover:bg-primary-800">
             {services[0].icon}
@@ -121,7 +121,7 @@ export function Services() {
             <Link
               key={service.id}
               href={`/services#${service.id}`}
-              className="group flex flex-col rounded-xl border border-border bg-surface p-5 transition-all hover:border-primary-300 hover:shadow-lg"
+              className="group flex flex-col rounded-xl border border-border bg-surface p-5 transition-all duration-200 hover:-translate-y-1 hover:border-primary-300 hover:shadow-lg"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-100 text-primary-700 dark:text-primary-300 transition-colors group-hover:bg-primary-200">
                 {service.icon}
@@ -132,7 +132,7 @@ export function Services() {
               <p className="mt-1 text-sm font-medium text-accent-700 dark:text-accent-400">{service.outcome}</p>
               <div className="mt-3 flex items-center text-xs font-medium text-primary-700 dark:text-primary-300 opacity-0 transition-opacity group-hover:opacity-100">
                 Learn more
-                <svg className="ml-1 h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                <svg className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </div>

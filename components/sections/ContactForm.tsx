@@ -66,21 +66,26 @@ export function ContactForm() {
 
   if (isSubmitted) {
     return (
-      <div role="status" aria-live="polite" className="rounded-xl border border-primary-200 bg-primary-50 p-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
+      <div role="status" aria-live="polite" className="animate-fade-in rounded-xl border border-primary-200 bg-primary-50 p-8 text-center dark:border-primary-700 dark:bg-primary-900/30">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-800/50">
           <svg
-            className="h-6 w-6 text-primary-700 dark:text-primary-300"
+            className="h-7 w-7 text-primary-700 dark:text-primary-300"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth="2"
+            strokeWidth="2.5"
             stroke="currentColor"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+              className="animate-draw-check"
+            />
           </svg>
         </div>
         <h3 className="mt-4 text-lg font-semibold text-text-primary">Message sent!</h3>
         <p className="mt-2 text-text-secondary">
-          Thanks for getting in touch. I&apos;ll get back to you within 24 hours.
+          Thanks for reaching out. I&apos;ll get back to you within 24 hours — no chasing needed.
         </p>
       </div>
     );

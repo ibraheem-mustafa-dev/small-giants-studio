@@ -105,7 +105,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var d=document.documentElement,t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)){d.classList.add('dark')}}catch(e){}})()`,
+            __html: `(function(){try{var d=document.documentElement,t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)){d.classList.add('dark')}}catch(e){}})();console.log('%c\\u{1F331} Small Giants Studio','font-size:16px;font-weight:bold;color:#1B6B6B','\\nBuilt with care in Birmingham.\\nCurious how this was made? Let\\'s chat: hello@smallgiantsstudio.co.uk')`,
           }}
         />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
