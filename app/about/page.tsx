@@ -262,6 +262,39 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Social Proof — LinkedIn Recommendations */}
+      <section className="bg-background py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">
+                Don&apos;t take my word for it.
+              </h2>
+              <p className="mt-4 text-lg text-text-secondary">
+                These are real recommendations from people I&apos;ve worked with — not hand-picked
+                quotes, but what they actually wrote on LinkedIn. The full list is public.
+              </p>
+              <div className="mt-6">
+                <Button href="https://www.linkedin.com/in/ibraheem-mustafa" external variant="outline" size="lg">
+                  See all recommendations on LinkedIn
+                </Button>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl border border-border shadow-lg">
+              <Image
+                src="/images/linkedin-recommendations.jpg"
+                alt="LinkedIn recommendations for Ibraheem Mustafa from clients and colleagues"
+                width={800}
+                height={1200}
+                className="w-full object-cover object-top"
+                style={{ maxHeight: "500px" }}
+              />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Community Section */}
       <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
