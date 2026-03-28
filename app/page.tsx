@@ -5,6 +5,7 @@ import { MidCTA } from "@/components/sections/MidCTA";
 import { USPs } from "@/components/sections/USPs";
 import { Services } from "@/components/sections/Services";
 import { CTA } from "@/components/sections/CTA";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const FishTank = dynamic(
   () =>
@@ -20,13 +21,27 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Problem />
-      <FishTank />
-      <MidCTA />
-      <USPs />
-      <Services />
-      <Testimonials />
-      <CTA />
+      <ScrollReveal>
+        <Problem />
+      </ScrollReveal>
+      <ScrollReveal delay={100}>
+        <FishTank />
+      </ScrollReveal>
+      <ScrollReveal direction="fade">
+        <MidCTA />
+      </ScrollReveal>
+      <ScrollReveal>
+        <USPs />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Services />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Testimonials />
+      </ScrollReveal>
+      <ScrollReveal direction="fade">
+        <CTA />
+      </ScrollReveal>
     </>
   );
 }

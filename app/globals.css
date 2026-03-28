@@ -171,6 +171,52 @@ html {
   animation: draw-check 0.5s ease-out 0.3s forwards;
 }
 
+/* Scroll reveal system — GPU-accelerated transforms only */
+.scroll-reveal {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-up { opacity: 0; transform: translateY(24px); }
+.scroll-reveal-down { opacity: 0; transform: translateY(-24px); }
+.scroll-reveal-left { opacity: 0; transform: translateX(24px); }
+.scroll-reveal-right { opacity: 0; transform: translateX(-24px); }
+.scroll-reveal-fade { opacity: 0; }
+
+.scroll-reveal[data-revealed="true"] {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Hero stagger entrance */
+.hero-stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: hero-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.hero-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes hero-enter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* FAQ accordion smooth height */
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-content[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.faq-content > div {
+  overflow: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in {
     animation: none;
@@ -178,5 +224,18 @@ html {
   .animate-draw-check {
     animation: none;
     stroke-dashoffset: 0;
+  }
+  .scroll-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-stagger > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .faq-content {
+    transition: none;
   }
 }

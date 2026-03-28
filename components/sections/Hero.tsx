@@ -62,7 +62,7 @@ export function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           {/* Text content */}
-          <div className="text-center lg:text-left">
+          <div className="hero-stagger text-center lg:text-left">
             <h1
               id="hero-heading"
               className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl"

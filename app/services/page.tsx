@@ -354,10 +354,10 @@ export default function ServicesPage() {
           <div className="mt-8 divide-y divide-border">
             {faqs.map((faq, index) => (
               <details key={index} className="group py-6">
-                <summary className="flex cursor-pointer items-center justify-between text-lg font-semibold text-text-primary hover:text-primary-700 dark:hover:text-primary-300">
+                <summary className="flex cursor-pointer items-center justify-between text-lg font-semibold text-text-primary transition-colors hover:text-primary-700 dark:hover:text-primary-300">
                   {faq.question}
                   <svg
-                    className="ml-4 h-5 w-5 shrink-0 text-text-muted transition-transform group-open:rotate-180"
+                    className="ml-4 h-5 w-5 shrink-0 text-text-muted transition-transform duration-300 group-open:rotate-180"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
@@ -367,9 +367,11 @@ export default function ServicesPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                   </svg>
                 </summary>
-                <p className="mt-4 text-text-secondary">
-                  {faq.answer}
-                </p>
+                <div className="overflow-hidden transition-all duration-300 group-open:mt-4 group-open:max-h-96 max-h-0">
+                  <p className="text-text-secondary">
+                    {faq.answer}
+                  </p>
+                </div>
               </details>
             ))}
           </div>
