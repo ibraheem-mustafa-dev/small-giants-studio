@@ -1,9 +1,9 @@
 ## Where You Are
 
 Plan: .claude/plans/current_mission.md
-Current phase: Phase 1 (Foundation) + Phase 3 (Imagery) + Phase 4 (Layout Breaking)
-Progress: Phase 2 mostly complete (6/7 items done) — estimated 25%
-Next task: Generate 6 service illustrations (blocked on Gemini API key renewal)
+Current phase: Phase 1 (Foundation) + Phase 4 (Layout Breaking)
+Progress: Phase 2 mostly complete (6/7 items) — estimated 25%
+Next task: Add display font for headings (Phase 1, item 1)
 
 ---
 
@@ -18,17 +18,19 @@ Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context, then work through t
 | `/skill-agent-pipeline` | Before any skill/agent/pipeline changes |
 | `/research` | Auto-routes to right research tier |
 | `/strategic-plan` | Plan Phase 4 layout-breaking implementation |
-| `/nano-banana-pro` | Generate service illustrations once Gemini key renewed |
-| `/frontend-design` | Build new page layouts with images and visual breaks |
+| `/nano-banana-pro` | Generate illustrations for About/Contact pages |
+| `/frontend-design` | Build new varied page layouts |
 | `/interactive-design` | Stat counter animation for Problem section |
+| `/innovative-design` | Route design decisions (bolder, polish) |
 | `/design-review` | Verify changes after each batch |
+| `/research-check` | Quick lookup on display font options |
 
 ## MCP Servers and Tools
 
 | Tool | What to use it for |
 |------|-------------------|
 | Playwright | Screenshot verification at 375px, 768px, 1440px |
-| Firecrawl | Research display fonts and competitor sites for design inspiration |
+| Firecrawl | Research display fonts and competitor sites |
 | Context7 | Next.js 16 / Tailwind v4 docs |
 
 ## Agents to Delegate To
@@ -39,18 +41,19 @@ Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context, then work through t
 | performance-auditor | After adding images — check bundle size and CWV |
 | test-and-explain | After all design work to verify nothing broke |
 
-## Task 1: Generate Service Illustrations
-Renew Gemini API key at https://aistudio.google.com/apikey. Use `/nano-banana-pro` for 6 flat illustrations (teal+orange, 800x600): Digital Transformation, Marketing Strategy, Website Development, CRM & Operations, AI & Automation, SEO & Digital Marketing. Save to `public/images/services/`. Wire into `app/services/page.tsx` and `components/sections/Services.tsx`.
+## Task 1: Design Overhaul Phase 1 — Typography and Colour
+Add display font for headings (use `/internal-debate`). Refine accent orange to warmer amber/gold. Update background warmth. See `.claude/plans/current_mission.md` Phase 1.
 
-## Task 2: Design Overhaul Phase 1
-From `.claude/plans/current_mission.md` — add display font for headings (use `/internal-debate`), refine accent orange to warmer amber/gold, update background warmth.
+## Task 2: Break Template Layouts (Phase 4)
+Redesign Services page (break 6-block zebra stripe). Vary About/Contact layouts. Add illustrations between text blocks. Use `/frontend-design`.
 
-## Task 3: Break Template Layouts (Phase 4)
-Add images and visual elements between text-heavy sections on About, Services, Contact. Vary layouts — not every section centred text + card grid. User said inner pages are "a supermarket with nothing on shelves."
+## Task 3: Stat Counter Animation
+Count-up animation for Problem section stats using IntersectionObserver. Use `/interactive-design`.
 
 ## Guardrails
-- Deploy via `npx vercel --prod` — git push auto-deploy broken
+- Deploy via `npx vercel --prod` — git auto-deploy broken
 - Build must pass: `npm run build`
 - All animations respect `prefers-reduced-motion`
 - No American spellings
 - Test at 375px mobile
+- Read memory file `feedback_design_session_2026_03_28.md` for user preferences
