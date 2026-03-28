@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -22,6 +23,7 @@ const services = [
     id: "digital-transformation",
     title: "Digital Transformation",
     outcome: "Get your whole digital setup working together",
+    image: "/images/services/digital-transformation.png",
     problem: "Your tools don't talk to each other. You're manually copying data between systems. Things fall through the cracks because nothing's connected. (I see this every single time.)",
     solution: "I audit your whole digital setup and rebuild it as one connected system. Marketing, operations, CRM — all talking to each other instead of living in separate tabs you forgot about.",
     includes: [
@@ -37,6 +39,7 @@ const services = [
     id: "marketing-strategy",
     title: "Marketing Strategy",
     outcome: "Get found by the right people",
+    image: "/images/services/marketing-strategy.png",
     problem: "You're spending money on marketing but can't point to what's actually working. Your competitors seem to be everywhere while you're invisible. Sound familiar?",
     solution: "Strategy that actually brings in the right people — not vanity metrics that look good in a report but don't pay the bills.",
     includes: [
@@ -52,6 +55,7 @@ const services = [
     id: "website-development",
     title: "Website Design & Development",
     outcome: "A website that actually generates leads",
+    image: "/images/services/website-development.png",
     problem: "Your website looks outdated. It doesn't work on mobile. Visitors come but never get in touch. You can't update it yourself without breaking something.",
     solution: "Fast, accessible websites that convert visitors into customers. Not a digital brochure that sits there looking pretty and doing nothing.",
     includes: [
@@ -67,6 +71,7 @@ const services = [
     id: "crm-operations",
     title: "CRM & Operations",
     outcome: "Stop things falling through the cracks",
+    image: "/images/services/crm-operations.png",
     problem: "You're tracking customers in spreadsheets — or worse, your head. Follow-ups get forgotten. You don't know where leads are in your pipeline. Important stuff slips because there's no system.",
     solution: "Systems that track every lead, every follow-up, every task — so nothing falls through the cracks. No more 'I'm sure I emailed them back' moments.",
     includes: [
@@ -82,6 +87,7 @@ const services = [
     id: "ai-automation",
     title: "AI & Automation",
     outcome: "Free up your time for actual work",
+    image: "/images/services/ai-automation.png",
     problem: "You're spending hours on repetitive tasks you know could be automated. You've heard about AI but don't know where to start — and honestly, most of what you've seen feels like hype.",
     solution: "Practical AI that actually saves you time. No hype, no 'AI will replace everyone' nonsense — just automation for the stuff you're tired of doing manually.",
     includes: [
@@ -97,6 +103,7 @@ const services = [
     id: "seo-marketing",
     title: "SEO, GEO & Digital Marketing",
     outcome: "Show up where your customers are looking — including AI",
+    image: "/images/services/seo-marketing.png",
     problem: "Your website doesn't appear on Google. You're invisible on ChatGPT, Gemini, and Copilot when people ask for recommendations. Competitors rank higher even though you've been around longer.",
     solution: "Be found on Google, ChatGPT, and everywhere else your customers search. Most businesses aren't even thinking about AI search yet — which is exactly why you should be.",
     includes: [
@@ -110,6 +117,7 @@ const services = [
     ],
   },
 ];
+
 
 const faqs = [
   {
@@ -183,11 +191,11 @@ export default function ServicesPage() {
             <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
               What I can help with
             </h1>
-            <p className="mt-6 text-xl text-primary-100">
+            <p className="mt-6 text-xl text-white/90">
               I don&apos;t build until I understand your business. Strategy first. Tools chosen
               for how you work, not what&apos;s popular.
             </p>
-            <p className="mt-4 text-primary-200">
+            <p className="mt-4 text-white/80">
               Every engagement starts with understanding where you are, where you want to be, and
               what&apos;s blocking your growth. And I&apos;m resourceful with your budget — if
               expensive software isn&apos;t realistic right now, I build smart with affordable
@@ -233,33 +241,43 @@ export default function ServicesPage() {
                   </div>
                 </div>
 
-                {/* What's included */}
+                {/* Image and What's included */}
                 <div
-                  className={`rounded-xl border border-border bg-background p-6 sm:p-8 ${
+                  className={`space-y-8 ${
                     index % 2 === 1 ? "lg:order-1" : ""
                   }`}
                 >
-                  <h3 className="text-lg font-semibold text-text-primary">What&apos;s included</h3>
-                  <ul className="mt-4 space-y-3">
-                    {service.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <svg
-                          className="mt-1 h-5 w-5 flex-shrink-0 text-primary-600 dark:text-primary-400"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="2"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M4.5 12.75l6 6 9-13.5"
-                          />
-                        </svg>
-                        <span className="text-text-secondary">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-background">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                  <div className="rounded-xl border border-border bg-background p-6 sm:p-8">
+                    <h3 className="text-lg font-semibold text-text-primary">What&apos;s included</h3>
+                    <ul className="mt-4 space-y-3">
+                      {service.includes.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <svg
+                            className="mt-1 h-5 w-5 flex-shrink-0 text-primary-600 dark:text-primary-400"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M4.5 12.75l6 6 9-13.5"
+                            />
+                          </svg>
+                          <span className="text-text-secondary">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             ))}
