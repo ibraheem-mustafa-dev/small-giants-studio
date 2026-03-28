@@ -30,7 +30,7 @@ export default function ContactPage() {
               <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl text-left">
                 Let&apos;s have a chat about your business
               </h1>
-              <p className="mt-6 text-xl text-white/90">
+              <p className="mt-6 text-xl text-accent-300">
                 No hard sell. Just an honest conversation about what&apos;s holding you back and
                 whether I can help.
               </p>

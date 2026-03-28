@@ -31,7 +31,7 @@ export default function WorkPage() {
             <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
               Work
             </h1>
-            <p className="mt-6 text-xl text-white/90">
+            <p className="mt-6 text-xl text-accent-300">
               Real projects. Real clients you can call up and ask about me.
             </p>
           </div>

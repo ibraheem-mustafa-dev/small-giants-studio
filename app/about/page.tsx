@@ -104,7 +104,7 @@ export default function AboutPage() {
               <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
                 Hi, I&apos;m Ibraheem.
               </h1>
-              <p className="mt-6 text-xl text-white/90">
+              <p className="mt-6 text-xl text-accent-300">
                 I help small businesses get found and handle the growth — marketing and operations
                 as one connected system, powered by AI and automation. I&apos;m a nerd for this
                 stuff (my family can confirm).
@@ -278,7 +278,7 @@ export default function AboutPage() {
               if (item.name.includes("Muslims in Construction")) logoSrc = "/images/partners/mic-logo.png";
               if (item.name.includes("Association of Muslim Engineers")) logoSrc = "/images/partners/ame-logo.png";
               if (item.name.includes("Evertreen")) logoSrc = "/images/partners/evertreen-logo.svg";
-              
+
               return (
                 <div
                   key={item.name}

@@ -31,7 +31,7 @@ export default function SustainabilityPage() {
             <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               It starts with giving.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-white/90 sm:text-xl">
+            <p className="mt-6 text-lg leading-relaxed text-accent-300 sm:text-xl">
               In Islam, we believe we&apos;re stewards of this earth — not owners.
               That shapes everything about how I run this business. The goal was
               never just to build something profitable. It was to build something

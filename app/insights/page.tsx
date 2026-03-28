@@ -34,7 +34,7 @@ export default function InsightsPage() {
               <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl text-left">
                 Insights
               </h1>
-              <p className="mt-6 text-xl text-white/90">
+              <p className="mt-6 text-xl text-accent-300">
                 Thoughts on digital transformation, marketing, automation, and building businesses
                 that work for you.
               </p>
