@@ -9,7 +9,6 @@ interface ScrollRevealProps {
   direction?: RevealDirection;
   delay?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
 }
 
 /**
@@ -21,18 +20,16 @@ export function ScrollReveal({
   direction = "up",
   delay = 0,
   className = "",
-  as: Tag = "div",
 }: ScrollRevealProps) {
   const ref = useScrollReveal<HTMLDivElement>({ delay });
 
   return (
-    // @ts-expect-error — dynamic tag element
-    <Tag
+    <div
       ref={ref}
       className={`scroll-reveal scroll-reveal-${direction} ${className}`}
       data-revealed="false"
     >
       {children}
-    </Tag>
+    </div>
   );
 }
