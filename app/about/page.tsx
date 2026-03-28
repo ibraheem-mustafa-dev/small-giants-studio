@@ -47,28 +47,6 @@ const values = [
   },
 ];
 
-const communityInvolvement = [
-  {
-    name: "Muslims in Construction",
-    role: "Built their website",
-    description: "I built the MIC website and I couldn't be more proud of the work they do. MashaAllah, they're connecting Muslim professionals in construction across the UK.",
-  },
-  {
-    name: "Association of Muslim Engineers",
-    role: "Events support",
-    description: "I help AME with their events — because community matters. The work they do supporting Muslim engineers is inspiring.",
-  },
-  {
-    name: "Evertreen",
-    role: "Tree planting partnership",
-    description: "Every client I work with plants trees through Evertreen. It's not greenwashing — it's a small thing, but it adds up. Alhamdulillah for the opportunity to give back.",
-  },
-  {
-    name: "Arts Council England",
-    role: "SEO & SEM Tech Champion",
-    description: "Part-time role helping arts organisations improve their digital presence. It keeps me grounded in real-world problems.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -295,49 +273,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Community Section */}
-      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold text-white sm:text-3xl">Community matters</h2>
-            <p className="mt-4 text-lg text-white/80">
-              Alhamdulillah, I get to work with communities that genuinely care about lifting each
-              other up.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {communityInvolvement.map((item) => {
-              let logoSrc = "";
-              if (item.name.includes("Muslims in Construction")) logoSrc = "/images/partners/mic-logo.png";
-              if (item.name.includes("Association of Muslim Engineers")) logoSrc = "/images/partners/ame-logo.png";
-              if (item.name.includes("Evertreen")) logoSrc = "/images/partners/evertreen-logo.svg";
-
-              return (
-                <div
-                  key={item.name}
-                  className="flex flex-col rounded-xl bg-primary-800/50 p-6 backdrop-blur-sm transition-colors hover:bg-primary-800/70"
-                >
-                  {logoSrc && (
-                    <div className="relative mb-4 h-12 w-full">
-                      <Image
-                        src={logoSrc}
-                        alt={`${item.name} logo`}
-                        fill
-                        className="object-contain object-left brightness-0 invert"
-                      />
-                    </div>
-                  )}
-                  <h3 className="text-lg font-semibold text-white">{item.name}</h3>
-                  <p className="mt-1 text-sm font-medium text-accent-300">{item.role}</p>
-                  <p className="mt-4 text-sm text-white/80 leading-relaxed">{item.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Partners */}
+      {/* Partners & Community */}
       <Community showForest={false} />
 
       {/* CTA Section */}
