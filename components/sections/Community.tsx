@@ -21,7 +21,11 @@ const partners = [
   },
 ];
 
-export function Community() {
+interface CommunityProps {
+  showForest?: boolean;
+}
+
+export function Community({ showForest = true }: CommunityProps) {
   return (
     <section
       className="bg-surface py-16 sm:py-24"
@@ -84,27 +88,29 @@ export function Community() {
           ))}
         </div>
 
-        {/* Evertreen Forest Embed */}
-        <div className="mt-16">
-          <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-xl font-semibold text-text-primary">
-              Our Growing Forest
-            </h3>
-            <p className="mt-2 text-text-secondary">
-              Every project I complete plants real trees. It&apos;s a small thing — but it adds up.
-            </p>
+        {/* Evertreen Forest Embed — only shown when showForest is true */}
+        {showForest && (
+          <div className="mt-16">
+            <div className="mx-auto max-w-2xl text-center">
+              <h3 className="text-xl font-semibold text-text-primary">
+                Our Growing Forest
+              </h3>
+              <p className="mt-2 text-text-secondary">
+                Every project I complete plants real trees. It&apos;s a small thing — but it adds up.
+              </p>
+            </div>
+            <div className="mt-8 overflow-hidden rounded-xl border border-border bg-background">
+              <iframe
+                width="100%"
+                height="500"
+                style={{ border: "none" }}
+                src="https://www.evertreen.com/forest/697950af3dc86?iframe=1"
+                title="Small Giants Studio Evertreen Forest"
+                loading="lazy"
+              />
+            </div>
           </div>
-          <div className="mt-8 overflow-hidden rounded-xl border border-border bg-background">
-            <iframe
-              width="100%"
-              height="500"
-              style={{ border: "none" }}
-              src="https://www.evertreen.com/forest/697950af3dc86?iframe=1"
-              title="Small Giants Studio Evertreen Forest"
-              loading="lazy"
-            />
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

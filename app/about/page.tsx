@@ -179,6 +179,19 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Visual break — pull quote */}
+      <section className="bg-gradient-to-r from-primary-800 to-primary-700 py-12 sm:py-16">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <blockquote className="text-xl font-medium leading-relaxed text-white sm:text-2xl lg:text-3xl">
+            &ldquo;Government research says small business owners spend 33 hours a week on admin.
+            That&apos;s not running a business — that&apos;s being run by one.&rdquo;
+          </blockquote>
+          <p className="mt-4 text-base text-primary-200">
+            That stat is why Small Giants Studio exists.
+          </p>
+        </div>
+      </section>
+
       {/* Personal Context */}
       <section className="bg-primary-50 py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -237,7 +250,7 @@ export default function AboutPage() {
       </section>
 
       {/* Community Section */}
-      <section className="bg-primary-900 py-16 sm:py-24">
+      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">Community matters</h2>
@@ -261,8 +274,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Partners & Forest */}
-      <Community />
+      {/* Partners */}
+      <Community showForest={false} />
 
       {/* CTA Section */}
       <section className="bg-accent-700 py-16 sm:py-24">
