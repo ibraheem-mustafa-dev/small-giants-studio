@@ -38,8 +38,8 @@ export function Problem() {
             </span>
           </h2>
           <p className="mt-6 text-lg text-primary-200">
-            Your bigger competitors have teams, tools, and infrastructure that let them dominate
-            online. You&apos;re juggling everything alone.
+            Whether you&apos;re an SME competing with bigger players, a charity doing more with less,
+            or a social enterprise balancing mission and revenue — you&apos;re juggling everything alone.
           </p>
         </div>
 

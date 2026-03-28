@@ -229,7 +229,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="mt-8">
-                    <Button href="/contact">Let&apos;s discuss your {service.title.toLowerCase()}</Button>
+                    <Button href="/contact">Let&apos;s discuss your {service.title.toLowerCase().replace(/\bcrm\b/g, 'CRM').replace(/\bai\b/g, 'AI').replace(/\bseo\b/g, 'SEO').replace(/\bgeo\b/g, 'GEO')}</Button>
                   </div>
                 </div>
 

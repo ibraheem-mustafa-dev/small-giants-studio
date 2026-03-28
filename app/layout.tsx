@@ -108,8 +108,8 @@ export default function RootLayout({
             __html: `(function(){try{var d=document.documentElement,t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)){d.classList.add('dark')}}catch(e){}})()`,
           }}
         />
-        <link rel="icon" href="/images/sgs-logo.jpg" type="image/jpeg" />
-        <link rel="apple-touch-icon" href="/images/sgs-logo.jpg" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#1B6B6B" />
         <link rel="preload" href="/images/sgs-horizontal-logo.png" as="image" />

@@ -13,7 +13,7 @@ const navigation = {
   company: [
     { name: "About", href: "/about" },
     { name: "Sustainability", href: "/sustainability" },
-    { name: "Insights", href: "/insights" },
+    // { name: "Insights", href: "/insights" }, // Hidden until content ready
     { name: "Contact", href: "/contact" },
   ],
   legal: [
