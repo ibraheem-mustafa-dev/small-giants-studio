@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#fcfcfc"/>
+
+  <!-- Globe / Web Sphere -->
+  <circle cx="450" cy="300" r="160" fill="#3AA8A8"/>
+  <ellipse cx="450" cy="300" rx="80" ry="160" fill="none" stroke="#1F7A7A" stroke-width="8"/>
+  <ellipse cx="450" cy="300" rx="160" ry="80" fill="none" stroke="#1F7A7A" stroke-width="8"/>
+  <line x1="450" y1="140" x2="450" y2="460" stroke="#1F7A7A" stroke-width="8"/>
+  <line x1="290" y1="300" x2="610" y2="300" stroke="#1F7A7A" stroke-width="8"/>
+  
+  <!-- Abstract content on globe -->
+  <rect x="400" y="210" width="80" height="24" rx="6" fill="#ffffff"/>
+  <rect x="360" y="260" width="120" height="24" rx="6" fill="#ffffff"/>
+  <rect x="420" y="310" width="90" height="24" rx="6" fill="#ffffff"/>
+  
+  <!-- Magnifying Glass -->
+  <!-- Glass Reflection/Fill -->
+  <circle cx="320" cy="220" r="100" fill="#5CBDBD" fill-opacity="0.85"/>
+  <path d="M 270 170 Q 320 150 360 190 Q 340 160 270 170" fill="#ffffff" fill-opacity="0.6"/>
+  <!-- Outer ring -->
+  <circle cx="320" cy="220" r="100" fill="none" stroke="#F87A09" stroke-width="20"/>
+  <!-- Handle -->
+  <line x1="250" y1="290" x2="140" y2="400" stroke="#F87A09" stroke-width="32" stroke-linecap="round"/>
+  <line x1="190" y1="350" x2="140" y2="400" stroke="#F9953B" stroke-width="32" stroke-linecap="round"/>
+  <line x1="260" y1="280" x2="220" y2="320" stroke="#1F7A7A" stroke-width="32" stroke-linecap="round"/>
+
+  <!-- Sparkles -->
+  <g transform="translate(620, 150)">
+    <path d="M 0 -25 Q 5 -5 25 0 Q 5 5 0 25 Q -5 5 -25 0 Q -5 -5 0 -25 Z" fill="#F87A09"/>
+  </g>
+  <g transform="translate(560, 90) scale(0.6)">
+    <path d="M 0 -25 Q 5 -5 25 0 Q 5 5 0 25 Q -5 5 -25 0 Q -5 -5 0 -25 Z" fill="#F9953B"/>
+  </g>
+  <g transform="translate(680, 260) scale(0.7)">
+    <path d="M 0 -25 Q 5 -5 25 0 Q 5 5 0 25 Q -5 5 -25 0 Q -5 -5 0 -25 Z" fill="#5CBDBD"/>
+  </g>
+  <g transform="translate(240, 90) scale(0.8)">
+    <path d="M 0 -25 Q 5 -5 25 0 Q 5 5 0 25 Q -5 5 -25 0 Q -5 -5 0 -25 Z" fill="#F9953B"/>
+  </g>
+</svg>

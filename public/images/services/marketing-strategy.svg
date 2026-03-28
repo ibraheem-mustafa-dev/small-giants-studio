@@ -1,0 +1,27 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="transparent"/>
+  
+  <!-- Growth Bars -->
+  <rect x="200" y="450" width="60" height="40" rx="8" fill="#B3E3E3"/>
+  <rect x="280" y="410" width="60" height="80" rx="8" fill="#7FCFCF"/>
+  <rect x="360" y="350" width="60" height="140" rx="8" fill="#5CBDBD"/>
+  <rect x="440" y="270" width="60" height="220" rx="8" fill="#3AA8A8"/>
+  <rect x="520" y="150" width="60" height="340" rx="8" fill="#1F7A7A"/>
+  
+  <!-- Target -->
+  <circle cx="300" cy="200" r="100" fill="#1F7A7A" fill-opacity="0.1"/>
+  <circle cx="300" cy="200" r="80" stroke="#1F7A7A" stroke-width="15"/>
+  <circle cx="300" cy="200" r="45" stroke="#F87A09" stroke-width="15"/>
+  <circle cx="300" cy="200" r="15" fill="#F87A09"/>
+  
+  <!-- Arrow -->
+  <g transform="translate(450 80) rotate(45)">
+    <rect x="0" y="10" width="160" height="6" rx="3" fill="#F87A09"/>
+    <path d="M10 0L0 13L10 26" stroke="#F87A09" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M150 0L170 13L150 26" fill="#F87A09"/>
+  </g>
+  
+  <!-- Sparkles -->
+  <path d="M600 100L605 115L620 120L605 125L600 140L595 125L580 120L595 115L600 100Z" fill="#F9953B"/>
+  <circle cx="650" cy="180" r="8" fill="#B3E3E3"/>
+</svg>

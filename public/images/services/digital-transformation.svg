@@ -1,0 +1,49 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="transparent"/>
+  
+  <!-- Connection Network -->
+  <circle cx="400" cy="300" r="180" stroke="#B3E3E3" stroke-width="2" stroke-dasharray="12 12"/>
+  <circle cx="400" cy="300" r="100" stroke="#B3E3E3" stroke-width="1" stroke-dasharray="8 8"/>
+  
+  <!-- Central Hub -->
+  <rect x="340" y="240" width="120" height="120" rx="20" fill="#1F7A7A"/>
+  <path d="M370 280H430M370 300H430M370 320H410" stroke="#D9F1F1" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Connected Nodes -->
+  <!-- Marketing (Top Left) -->
+  <g transform="translate(180 140)">
+    <rect width="80" height="80" rx="16" fill="#F87A09"/>
+    <path d="M30 40L40 50L60 30" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="220" y1="160" x2="340" y2="250" stroke="#5CBDBD" stroke-width="3"/>
+  </g>
+  
+  <!-- Operations (Top Right) -->
+  <g transform="translate(540 140)">
+    <rect width="80" height="80" rx="16" fill="#3AA8A8"/>
+    <circle cx="40" cy="40" r="20" stroke="white" stroke-width="5"/>
+    <circle cx="40" cy="40" r="8" fill="white"/>
+    <line x1="-60" y1="160" x2="-140" y2="250" stroke="#5CBDBD" stroke-width="3"/>
+  </g>
+  
+  <!-- CRM (Bottom Left) -->
+  <g transform="translate(180 380)">
+    <rect width="80" height="80" rx="16" fill="#3AA8A8"/>
+    <path d="M30 30H50M30 40H50M30 50H40" stroke="white" stroke-width="5" stroke-linecap="round"/>
+    <line x1="220" y1="-80" x2="340" y2="-170" stroke="#5CBDBD" stroke-width="3"/>
+  </g>
+  
+  <!-- AI (Bottom Right) -->
+  <g transform="translate(540 380)">
+    <rect width="80" height="80" rx="16" fill="#F87A09"/>
+    <circle cx="30" cy="40" r="4" fill="white"/>
+    <circle cx="50" cy="40" r="4" fill="white"/>
+    <path d="M30 55C30 55 35 60 40 60C45 60 50 55 50 55" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-60" y1="-80" x2="-140" y2="-170" stroke="#5CBDBD" stroke-width="3"/>
+  </g>
+  
+  <!-- Floating Accents -->
+  <circle cx="400" cy="80" r="6" fill="#F87A09"/>
+  <circle cx="100" cy="300" r="4" fill="#5CBDBD"/>
+  <circle cx="700" cy="300" r="8" fill="#B3E3E3"/>
+  <circle cx="400" cy="520" r="5" fill="#1F7A7A"/>
+</svg>
