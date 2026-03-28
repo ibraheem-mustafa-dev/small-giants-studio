@@ -1,96 +1,120 @@
-# SGS Website (Next.js) — Session Handoff — 2026-03-16
+# Session Handoff — 2026-03-28
 
 ## Completed This Session
-
-### SEO & Deploy Fixes
-1. **OG tags fixed** — Every subpage now has explicit `openGraph: { title, description }` in its metadata export. Root cause: Next.js doesn't auto-populate `og:title`/`og:description` from page-level `title`/`description` when the parent layout defines an `openGraph` object. Commit `0b9193a`, pushed to main.
-2. **Layout OG defaults** — Added explicit `title` and `description` to the layout's `openGraph` object so the homepage also gets proper OG tags.
-3. **Vercel CDN stale** — All 4 verification checks failed (OG, security headers, noindex, sitemap). The source code was correct (from commit `cce293c`) but the Vercel CDN was serving a 28-day-old cached version (`Age: 2472995`). The new push should force a fresh build.
-
-### Dark Mode Assessment
-4. **Full dark mode audit** — Grade B+. 22 screenshots across all 7 pages at 3 breakpoints. Report: `~/site-reviews/sgs-dark-mode-assessment-2026-03-15.md`
-   - Body text contrast: 16.30:1 (excellent)
-   - Critical: LinkedIn embeds render as white rectangles (CSP blocks iframes)
-   - Major: Evertreen widget only appears on click, 500px blank area on desktop
-   - Minor: Card/bg contrast only 1.22:1 (slate-800 vs slate-900), orange CTA 3.88:1
-
-### Design Overhaul — V1 (Improve Current)
-5. **Branch:** `feature/design-overhaul-motion-typography` — PR #1 open
-6. **Font:** Instrument Serif for all headings (replacing Inter everywhere)
-7. **Colours:** Background warmed #FAFAFA → #FAF8F5. Accent hover #8B4305 → #C4650A/#D97012
-8. **Animation system:**
-   - `components/hooks/useScrollReveal.ts` — IntersectionObserver + `prefers-reduced-motion`
-   - `components/ui/ScrollReveal.tsx` — 5 animation types + stagger delay
-   - `@keyframes` in globals.css
-9. **ScrollReveal on ALL sections:** Hero, Problem, USPs, Services, Testimonials, CTA, FishTank, MidCTA, Community, About, Services page
-10. **Button physics:** hover lift + shadow + glow + active press
-11. **Nav underlines:** Animated `::after` with `scale-x-0` → `scale-x-100`
-12. **Mobile menu:** Smooth `max-height` + `opacity` transition
-13. **Hero enlarged:** text-4xl → text-7xl responsive
-14. **Card hover lifts:** All card elements site-wide
-15. **Stat numbers enlarged:** text-5xl/6xl
-
-### Design Overhaul — V2 (Editorial Redesign)
-16. **Branch:** `feature/v2-editorial-redesign` — worktree at `~/Projects/small-giants-studio-v2`
-17. **Font:** Fraunces (variable, light 300) for headings
-18. **Colour system rewrite:** parchment (#F7F3EE), near-black (#1C1917), teal (#0D9488), amber (#D97706)
-19. **Grain overlay:** SVG noise at ~4% opacity
-20. **Hero rewrite:** full viewport, content at bottom, massive Fraunces type, editorial rule, pill CTA
-21. **Services rewrite:** numbered editorial list (01-06), teal → amber hover on numbers
-22. **Testimonials rewrite:** one massive pull-quote + two secondary (Feldon, Tajinder, Luke)
-23. **CTA:** near-black, Fraunces, amber pill button, dramatic clamp() padding
-24. **Sharp cards** (radius 0), **pill buttons** (999px), **4 section background treatments**
-
-### AI-Generated Illustrations (Both Versions)
-25. **11 images** via nano-banana in `public/images/generated/`:
-   - hero-v1.png, hero-v2.png (landscape, brand metaphor)
-   - 6 service illustrations (interconnected nodes, funnel, gears, dashboard, browser layers, magnifying lens)
-   - 3 pain point illustrations (compressed clock, juggling hats, dimming flame)
-   - cta-texture.png (topographic lines)
-26. **Wired into V1:** Hero bg, Problem stat cards, Services cards, CTA texture, Services page
-27. **Wired into V2:** Hero bg (12% multiply blend), stat cards, editorial list (hover reveal), CTA (7% screen blend)
-
-### Design Research
-28. **600-line document:** `~/.claude/plans/sgs-website-design-research.md` — 5 techniques, 5 anti-patterns, animation strategy, typography/colour recommendations, 20+ sources
+1. Fixed CSP to allow LinkedIn + Evertreen iframes (`next.config.ts` frame-src + connect-src for formspree)
+2. Full site review across all 8 pages — content grading against 4 target personas, brand voice audit, dark mode assessment, accessibility check
+3. Replaced JPEG favicon with brand SVG icon (`app/icon.svg`, `public/icon.svg`, layout, manifest)
+4. Built scroll reveal system — `useScrollReveal` hook + `ScrollReveal` component with 5 animation directions, stagger delays, reduced-motion support
+5. Added micro-interaction delight — button lift/press, animated checkmark on contact form, service card hover lift, dark mode toggle rotation, console easter egg
+6. Fixed 15+ user-reported issues: CTA capitalisation, nav hovers, footer links, partner logo monochrome, mobile overflow, hamburger animation, mobile tap feedback, card contrast, sustainability banner, footer font sizes, header logo size
+7. Added charity/social enterprise language to homepage problem section
+8. About page: pull-quote visual break, forest widget removed (kept on sustainability via showForest prop), community banner gradient fixed
+9. Diagnosed Vercel auto-deploy cancellation — deployed via `npx vercel --prod` CLI workaround
+10. Updated design overhaul plan — Phase 2 (Motion) mostly complete
 
 ## Current State
+- **Branch:** main at be8986d
+- **Tests:** no test suite
+- **Build:** passes cleanly (Next.js 16.1.6 Turbopack)
+- **Uncommitted changes:** `.claude/plans/current_mission.md` (gitignored)
+- **Live URL:** https://smallgiantsstudio.co.uk (deployed via CLI)
+- **Vercel auto-deploy:** broken — use `npx vercel --prod` to deploy
 
-- **main:** OG fix pushed (0b9193a)
-- **V1 branch:** PR #1 open, builds clean, 17 files changed
-- **V2 branch:** committed, worktree at `~/Projects/small-giants-studio-v2`
-- **User feedback:** "Not the biggest fan of either" — needs refinement from project directory
-- **Vercel:** awaiting CDN refresh
+## Known Issues / Blockers
+- Gemini API keys expired/rate-limited — cannot generate service illustrations until renewed at https://aistudio.google.com/apikey
+- Vercel auto-deploy cancelled on every git push — likely spend management limit or deployment protection in Dashboard
+- Inner pages (Services, About, Contact) lack images — user described them as "supermarket with nothing on shelves"
+- Plan Phase 1 (Foundation) not started: display font, accent orange, warm background
+- Plan Phase 3 (Imagery) blocked by Gemini key
+- Plan Phase 4 (Layout Breaking) not started: varied layouts, diagonal edges, asymmetric designs
 
-## Known Issues
+## Next Priorities (in order)
+1. Renew Gemini API key, generate 6 service illustrations + pain point icons, wire into pages
+2. Fix Vercel auto-deploy — check Dashboard > Project Settings > Git for deployment pauses
+3. Design overhaul Phase 1 (display font for headings, accent orange refinement) and Phase 4 (break template layouts with images between text blocks)
+4. Add stat counter animation to Problem section (count up from 0 to 33)
+5. Write 2-3 blog posts for /insights before re-adding to nav
 
-1. Design quality needs refinement from within project directory
-2. Vercel CDN may still serve stale version
-3. LinkedIn embeds broken on /insights (CSP)
-4. Evertreen widget dark mode issue
-5. V2 worktree needs cleanup: `git worktree remove ../small-giants-studio-v2`
+## Files Modified
+| File | What changed |
+|------|-------------|
+| next.config.ts | CSP: linkedin, evertreen frame-src; formspree connect-src |
+| app/globals.css | Dark mode colours, scroll reveal CSS, delight animations, mobile tap, card contrast |
+| app/layout.tsx | SVG favicon, overflow-x-hidden, console easter egg |
+| app/page.tsx | ScrollReveal wrappers on homepage sections |
+| app/icon.svg + public/icon.svg | New brand SVG favicon |
+| public/manifest.json | SVG icon reference |
+| app/services/page.tsx | CTA capitalisation, FAQ accordion animation |
+| app/about/page.tsx | Pull-quote break, community gradient, forest removed |
+| app/sustainability/page.tsx | Banner gradient matched |
+| components/ui/Button.tsx | Hover brighten + glow, lift/press physics |
+| components/ui/Logo.tsx | Size bumped h-10/h-12 to h-12/h-14 |
+| components/ui/ScrollReveal.tsx | New scroll-triggered reveal component |
+| components/ui/ThemeToggle.tsx | Hover rotation + active scale |
+| components/hooks/useScrollReveal.ts | New IntersectionObserver hook |
+| components/layout/Header.tsx | Insights removed, pill hover, animated menu, CTA updated |
+| components/layout/Footer.tsx | Insights removed, underline hover, larger mobile fonts |
+| components/sections/Hero.tsx | Hero stagger, mobile SVG labels, button contrast |
+| components/sections/Problem.tsx | Charity + social enterprise language |
+| components/sections/Services.tsx | Card lift, "Learn more" always visible |
+| components/sections/Community.tsx | showForest prop, monochrome removed |
+| components/sections/ContactForm.tsx | Animated checkmark on success |
 
-## Next Priorities
-
-1. **Refine design from project directory** — `/frontend-design`, `/bolder`, `/animate`, `/critique`
-2. **Verify Vercel deploy** — Playwright check after CDN refresh
-3. **Fix LinkedIn embeds** — Add linkedin.com to CSP frame-src
-4. **Fix Evertreen widget** — dark mode rendering
+## Notes for Next Session
+- Deploy via `npx vercel --prod` not git push — auto-deploy is broken
+- Design plan at `.claude/plans/current_mission.md` — Phase 2 mostly done, Phases 1/3/4 remain
+- User dislikes: monochrome effects, darker-on-hover buttons, pages without images, invisible mobile hover states
+- Content review graded site C+ overall — main gap is zero case studies or quantified results
+- `site-review-2026-03-27/` has before-fix screenshots for comparison
 
 ## Next Session Prompt
 
-```
-/superpowers:using-superpowers
+~~~
+Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context, then work through these priorities:
 
-The SGS Next.js website has two design branches: V1 (PR #1, Instrument Serif + animations) and V2 (editorial redesign, Fraunces + parchment). Neither satisfied the user — need refinement with full project context. OG tags fixed, Vercel CDN may be stale. 11 AI illustrations wired in. Design research at ~/.claude/plans/sgs-website-design-research.md.
+## Skills to Invoke
 
-IMPORTANT: Run this session FROM the project directory (~/Projects/small-giants-studio), not from System32. Design feedback and preferences are stored at ~/.claude/projects/C--Windows-System32/memory/feedback_design_preferences.md — read that file before making any design decisions.
+| Skill | When to use |
+|-------|-------------|
+| `/internal-debate` | Deciding display font pairing for headings |
+| `/gap-analysis` | Grade site after each batch of changes |
+| `/skill-agent-pipeline` | Before any skill/agent/pipeline changes |
+| `/research` | Auto-routes to right research tier |
+| `/strategic-plan` | Plan Phase 4 layout-breaking implementation |
+| `/nano-banana-pro` | Generate service illustrations once Gemini key renewed |
+| `/frontend-design` | Build new page layouts with images and visual breaks |
+| `/interactive-design` | Stat counter animation for Problem section |
+| `/design-review` | Verify changes after each batch |
 
-Read CONVERSATION-HANDOFF.md for full context, then:
+## MCP Servers and Tools
 
-1. **Refine design** — Review both branches visually. Use `/critique`, `/bolder`, `/animate`, `/frontend-design`. User wants something that DEMANDS RESPECT. Read ~/.claude/projects/C--Windows-System32/memory/feedback_design_preferences.md first for accumulated design feedback.
-2. **Verify Vercel deploy** — Playwright check for OG tags, security headers, noindex, sitemap.
-3. **Fix LinkedIn embeds** — Add linkedin.com to CSP frame-src in next.config.ts.
-4. **Fix Evertreen widget** — Dark mode rendering on /sustainability.
+| Tool | What to use it for |
+|------|-------------------|
+| Playwright | Screenshot verification at 375px, 768px, 1440px |
+| Firecrawl | Research display fonts and competitor sites for design inspiration |
+| Context7 | Next.js 16 / Tailwind v4 docs |
 
-V2 worktree: ~/Projects/small-giants-studio-v2. Clean up with git worktree remove when done.
-```
+## Agents to Delegate To
+
+| Agent | When |
+|-------|------|
+| design-reviewer | After completing visual changes |
+| performance-auditor | After adding images — check bundle size and CWV |
+| test-and-explain | After all design work to verify nothing broke |
+
+## Task 1: Generate Service Illustrations
+Renew Gemini API key at https://aistudio.google.com/apikey. Use `/nano-banana-pro` for 6 flat illustrations (teal+orange, 800x600): Digital Transformation, Marketing Strategy, Website Development, CRM & Operations, AI & Automation, SEO & Digital Marketing. Save to `public/images/services/`. Wire into `app/services/page.tsx` and `components/sections/Services.tsx`.
+
+## Task 2: Design Overhaul Phase 1
+From `.claude/plans/current_mission.md` — add display font for headings (use `/internal-debate`), refine accent orange to warmer amber/gold, update background warmth.
+
+## Task 3: Break Template Layouts (Phase 4)
+Add images and visual elements between text-heavy sections on About, Services, Contact. Vary layouts — not every section centred text + card grid. User said inner pages are "a supermarket with nothing on shelves."
+
+## Guardrails
+- Deploy via `npx vercel --prod` — git push auto-deploy broken
+- Build must pass: `npm run build`
+- All animations respect `prefers-reduced-motion`
+- No American spellings
+- Test at 375px mobile
+~~~
