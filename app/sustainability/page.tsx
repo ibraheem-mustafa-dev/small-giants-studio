@@ -21,7 +21,7 @@ export default function SustainabilityPage() {
   return (
     <main>
       <Breadcrumbs
-        items={[{ label: "Sustainability" }]}
+        items={[{ label: "Home", href: "/" }, { label: "Sustainability" }]}
       />
 
       {/* Hero */}
