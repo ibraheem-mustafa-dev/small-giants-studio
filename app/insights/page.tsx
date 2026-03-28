@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { LinkedInFeed } from "@/components/sections/LinkedInFeed";
 
@@ -26,16 +27,27 @@ export default function InsightsPage() {
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Insights" }]} />
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24">
+      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-              Insights
-            </h1>
-            <p className="mt-6 text-xl text-primary-100">
-              Thoughts on digital transformation, marketing, automation, and building businesses
-              that work for you.
-            </p>
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl text-left">
+                Insights
+              </h1>
+              <p className="mt-6 text-xl text-white/90">
+                Thoughts on digital transformation, marketing, automation, and building businesses
+                that work for you.
+              </p>
+            </div>
+            <div className="relative h-64 w-full lg:h-96">
+              <Image
+                src="/images/insights-bulb.svg"
+                alt="Illustration of a lightbulb with a brain filament and data nodes"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -104,12 +104,12 @@ export default function AboutPage() {
               <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
                 Hi, I&apos;m Ibraheem.
               </h1>
-              <p className="mt-6 text-xl text-primary-100">
+              <p className="mt-6 text-xl text-white/90">
                 I help small businesses get found and handle the growth — marketing and operations
                 as one connected system, powered by AI and automation. I&apos;m a nerd for this
                 stuff (my family can confirm).
               </p>
-              <p className="mt-4 text-primary-200">
+              <p className="mt-4 text-white/80">
                 Founder of Small Giants Studio. Based in Birmingham, UK-focused — but if
                 you&apos;re doing meaningful work, I don&apos;t mind where you are.
                 ADHD entrepreneur, new dad, long-term carer for my brother. Work-life balance
@@ -139,42 +139,48 @@ export default function AboutPage() {
 
       {/* Story Section */}
       <section className="bg-surface py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">The story</h2>
-          <div className="mt-8 space-y-6 text-lg text-text-secondary">
-            <p>
-              I started in marketing. I got clients visibility, leads, sales — then watched them
-              struggle to handle the growth. Things falling through cracks. Wearing multiple hats.
-              Working around the clock just to keep up. Sound familiar?
-            </p>
-            <p>
-              That&apos;s when I realised: <strong className="text-text-primary">marketing alone isn&apos;t enough.</strong>
-            </p>
-            <p>
-              Growth only happens when two things work together —{" "}
-              <Link href="/services#marketing-strategy" className="rounded font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">marketing</Link>{" "}
-              (so people find you) and{" "}
-              <Link href="/services#crm-operations" className="rounded font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">operations</Link>{" "}
-              (so you can handle them when they do). Corporations have entire teams
-              building connected systems. Small businesses? They end up with a Frankenstein of tools
-              that don&apos;t talk to each other. Or nothing at all.
-            </p>
-            <p>
-              The world doesn&apos;t need more Goliaths — corporations focused on cost-cutting and
-              replacing humans. It needs more BFGs. Big Friendly Giants who actually care about
-              their customers.
-            </p>
-            <p>
-              That&apos;s why I built Small Giants Studio. The name says it all — small businesses
-              with giant capabilities. You don&apos;t need to become a soulless corporation to
-              compete with one. You just need the right systems.
-            </p>
-            <p>
-              I use AI and automation that most agencies won&apos;t touch for another
-              18 months — at budgets that actually work. The goal isn&apos;t just growth. It&apos;s
-              giving you back your time, your headspace, and the ability to switch off
-              when you&apos;re not working.
-            </p>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">The story</h2>
+              <div className="mt-8 space-y-6 text-lg text-text-secondary">
+                <p>
+                  I started in marketing. I got clients visibility, leads, sales — then watched them
+                  struggle to handle the growth. Things falling through cracks. Wearing multiple hats.
+                  Working around the clock just to keep up. Sound familiar?
+                </p>
+                <p>
+                  That&apos;s when I realised: <strong className="text-text-primary">marketing alone isn&apos;t enough.</strong>
+                </p>
+                <p>
+                  Growth only happens when two things work together —{" "}
+                  <Link href="/services#marketing-strategy" className="rounded font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">marketing</Link>{" "}
+                  (so people find you) and{" "}
+                  <Link href="/services#crm-operations" className="rounded font-semibold text-primary-700 dark:text-primary-300 underline hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500">operations</Link>{" "}
+                  (so you can handle them when they do).
+                </p>
+                <p>
+                  The world doesn&apos;t need more Goliaths — corporations focused on cost-cutting and
+                  replacing humans. It needs more BFGs. Big Friendly Giants who actually care about
+                  their customers.
+                </p>
+                <p>
+                  That&apos;s why I built Small Giants Studio. The name says it all — small businesses
+                  with giant capabilities. You don&apos;t need to become a soulless corporation to
+                  compete with one. You just need the right systems.
+                </p>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-primary-50 p-8">
+                <Image
+                  src="/images/story-bfg.svg"
+                  alt="Illustration of a small figure supported by a Big Friendly Giant, looking at a connected horizon"
+                  fill
+                  className="object-contain p-8"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -186,7 +192,7 @@ export default function AboutPage() {
             &ldquo;Government research says small business owners spend 33 hours a week on admin.
             That&apos;s not running a business — that&apos;s being run by one.&rdquo;
           </blockquote>
-          <p className="mt-4 text-base text-primary-200">
+          <p className="mt-4 text-base text-white/80">
             That stat is why Small Giants Studio exists.
           </p>
         </div>
@@ -194,34 +200,40 @@ export default function AboutPage() {
 
       {/* Personal Context */}
       <section className="bg-primary-50 py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">A bit more about me</h2>
-          <div className="mt-8 space-y-6 text-lg text-text-secondary">
-            <p>
-              I have ADHD. My brain sees connections others miss — but I&apos;m also a regular
-              victim of analysis paralysis (ADHDers will know). That&apos;s actually why the
-              systems I build are practical, not theoretical. If it doesn&apos;t work for how
-              real people operate, it doesn&apos;t work.
-            </p>
-            <p>
-              I&apos;m a new dad, Alhamdulillah. Time is my most precious resource now, and I
-              understand it&apos;s yours too.
-            </p>
-            <p>
-              I&apos;m a long-term carer for my brother. That&apos;s taught me patience, empathy,
-              and the importance of building things that genuinely help people — not just things
-              that look impressive in a pitch deck.
-            </p>
-            <p>
-              My faith guides how I work. Honesty, transparency, and doing right by people
-              isn&apos;t just good ethics — it&apos;s good business. I won&apos;t accept a world
-              where corporations automate everything while small businesses that actually care get
-              priced out of the tools they need.
-            </p>
-            <p>
-              Work-life balance isn&apos;t a marketing message for me. It&apos;s why I do what I
-              do. I build systems that give you your time back, not ones that demand more of it.
-            </p>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div className="relative aspect-square max-w-md mx-auto overflow-hidden rounded-2xl border-4 border-white shadow-xl lg:max-w-none">
+              <Image
+                src="/images/ibraheem-headshot.png"
+                alt="Ibraheem Mustafa at work"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">A bit more about me</h2>
+              <div className="mt-8 space-y-6 text-lg text-text-secondary">
+                <p>
+                  I have ADHD. My brain sees connections others miss — but I&apos;m also a regular
+                  victim of analysis paralysis. That&apos;s actually why the
+                  systems I build are practical, not theoretical. If it doesn&apos;t work for how
+                  real people operate, it doesn&apos;t work.
+                </p>
+                <p>
+                  I&apos;m a new dad, Alhamdulillah. Time is my most precious resource now, and I
+                  understand it&apos;s yours too.
+                </p>
+                <p>
+                  I&apos;m a long-term carer for my brother. That&apos;s taught me patience, empathy,
+                  and the importance of building things that genuinely help people — not just things
+                  that look impressive in a pitch deck.
+                </p>
+                <p>
+                  My faith guides how I work. Honesty, transparency, and doing right by people
+                  isn&apos;t just good ethics — it&apos;s good business.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -236,11 +248,12 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {values.map((value) => (
+            {values.map((value, index) => (
               <div
                 key={value.title}
-                className="rounded-xl border border-border bg-background p-6"
+                className={`rounded-xl border border-border bg-background p-6 transition-transform hover:-translate-y-1 ${index % 2 === 0 ? 'lg:mt-4' : 'lg:mb-4'}`}
               >
+                <div className="mb-4 h-1 w-12 bg-accent-500 rounded-full" />
                 <h3 className="text-lg font-semibold text-text-primary">{value.title}</h3>
                 <p className="mt-2 text-text-secondary">{value.description}</p>
               </div>
@@ -254,22 +267,39 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">Community matters</h2>
-            <p className="mt-4 text-lg text-primary-200">
+            <p className="mt-4 text-lg text-white/80">
               Alhamdulillah, I get to work with communities that genuinely care about lifting each
-              other up. Not networking for what you can extract — but investing in something bigger.
+              other up.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {communityInvolvement.map((item) => (
-              <div
-                key={item.name}
-                className="rounded-xl bg-primary-800/50 p-6 backdrop-blur-sm"
-              >
-                <h3 className="text-lg font-semibold text-white">{item.name}</h3>
-                <p className="mt-1 text-sm font-medium text-accent-300">{item.role}</p>
-                <p className="mt-2 text-primary-200">{item.description}</p>
-              </div>
-            ))}
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {communityInvolvement.map((item) => {
+              let logoSrc = "";
+              if (item.name.includes("Muslims in Construction")) logoSrc = "/images/partners/mic-logo.png";
+              if (item.name.includes("Association of Muslim Engineers")) logoSrc = "/images/partners/ame-logo.png";
+              if (item.name.includes("Evertreen")) logoSrc = "/images/partners/evertreen-logo.svg";
+              
+              return (
+                <div
+                  key={item.name}
+                  className="flex flex-col rounded-xl bg-primary-800/50 p-6 backdrop-blur-sm transition-colors hover:bg-primary-800/70"
+                >
+                  {logoSrc && (
+                    <div className="relative mb-4 h-12 w-full">
+                      <Image
+                        src={logoSrc}
+                        alt={`${item.name} logo`}
+                        fill
+                        className="object-contain object-left brightness-0 invert"
+                      />
+                    </div>
+                  )}
+                  <h3 className="text-lg font-semibold text-white">{item.name}</h3>
+                  <p className="mt-1 text-sm font-medium text-accent-300">{item.role}</p>
+                  <p className="mt-4 text-sm text-white/80 leading-relaxed">{item.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

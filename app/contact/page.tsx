@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
@@ -22,16 +23,27 @@ export default function ContactPage() {
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24">
+      <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-24 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-              Let&apos;s have a chat about your business
-            </h1>
-            <p className="mt-6 text-xl text-primary-100">
-              No hard sell. Just an honest conversation about what&apos;s holding you back and
-              whether I can help.
-            </p>
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl text-left">
+                Let&apos;s have a chat about your business
+              </h1>
+              <p className="mt-6 text-xl text-white/90">
+                No hard sell. Just an honest conversation about what&apos;s holding you back and
+                whether I can help.
+              </p>
+            </div>
+            <div className="relative h-64 w-full lg:h-96">
+              <Image
+                src="/images/contact-chat.svg"
+                alt="Illustration of a meaningful conversation"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
