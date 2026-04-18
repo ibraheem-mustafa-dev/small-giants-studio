@@ -15,21 +15,21 @@
   --color-primary-100: #D9F1F1;
   --color-primary-50: #E6F4F4;
 
-  /* Accent - Orange (brand: #F87A09 from logo) */
-  --color-accent-800: #8B4305;
-  --color-accent-700: #B95B07;
-  --color-accent-600: #D96C08;
-  --color-accent-500: #F87A09;
-  --color-accent-400: #F9953B;
-  --color-accent-300: #FBB06D;
-  --color-accent-200: #FDCB9F;
-  --color-accent-100: #FEE6D1;
+  /* Accent - Refined Amber (warmer, richer than original #F87A09) */
+  --color-accent-800: #78350F;
+  --color-accent-700: #92400E;
+  --color-accent-600: #B45309;
+  --color-accent-500: #D97706;
+  --color-accent-400: #F59E0B;
+  --color-accent-300: #FBBF24;
+  --color-accent-200: #FDE68A;
+  --color-accent-100: #FEF3C7;
 
   /* Neutrals */
   --color-text-primary: #1A202C;
   --color-text-secondary: #4A5568;
   --color-text-muted: #606D80;
-  --color-background: #F5F5F5;
+  --color-background: #FAF9F6;
   --color-surface: #FFFFFF;
   --color-border: #D4DBE5;
 
@@ -70,8 +70,9 @@
   --color-surface: var(--color-surface);
   --color-border: var(--color-border);
 
-  /* Font */
+  /* Fonts */
   --font-sans: var(--font-inter);
+  --font-display: var(--font-instrument);
 }
 
 /* Dark mode — controlled by .dark class on <html>, set by inline script before paint */
@@ -90,7 +91,7 @@ html.dark {
   /* Accent light backgrounds */
   --color-accent-100: #2A1908;
   --color-accent-200: #3D240D;
-  --color-accent-500: #D96C08;
+  --color-accent-500: #D97706;
 }
 
 /* Base styles */
@@ -98,6 +99,11 @@ body {
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display, serif);
+  font-weight: 400;
 }
 
 /* Focus styles for accessibility */

@@ -1,40 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <rect width="800" height="600" fill="#fcfcfc"/>
-
-  <!-- Glowing Nodes Network -->
-  <path d="M 450 150 L 600 100 L 700 220 L 620 380 L 480 400 Z" stroke="#5CBDBD" stroke-width="6" stroke-dasharray="8,8" fill="none"/>
-  <path d="M 600 100 L 620 380" stroke="#5CBDBD" stroke-width="4" stroke-dasharray="6,6" fill="none"/>
-  <path d="M 450 150 L 700 220" stroke="#5CBDBD" stroke-width="4" stroke-dasharray="6,6" fill="none"/>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="transparent"/>
   
-  <circle cx="450" cy="150" r="20" fill="#F9953B"/>
-  <circle cx="600" cy="100" r="25" fill="#3AA8A8"/>
-  <circle cx="700" cy="220" r="18" fill="#F87A09"/>
-  <circle cx="620" cy="380" r="30" fill="#1F7A7A"/>
-  <circle cx="480" cy="400" r="15" fill="#5CBDBD"/>
-
-  <!-- Base / Mount -->
-  <path d="M 120 500 L 280 500 L 250 400 L 150 400 Z" fill="#1F7A7A"/>
-  <rect x="130" y="490" width="140" height="20" rx="5" fill="#3AA8A8"/>
+  <!-- Circuitry Network -->
+  <path d="M100 300H200L250 200H350" stroke="#B3E3E3" stroke-width="4" stroke-dasharray="10 10"/>
+  <path d="M100 300L250 400H350" stroke="#B3E3E3" stroke-width="4" stroke-dasharray="10 10"/>
+  <path d="M700 300H600L550 200H450" stroke="#B3E3E3" stroke-width="4" stroke-dasharray="10 10"/>
+  <path d="M700 300L550 400H450" stroke="#B3E3E3" stroke-width="4" stroke-dasharray="10 10"/>
   
-  <!-- Gears at joint -->
-  <circle cx="200" cy="400" r="45" fill="#F87A09"/>
-  <circle cx="200" cy="400" r="20" fill="#ffffff"/>
+  <!-- Central AI Brain/Chip -->
+  <rect x="340" y="240" width="120" height="120" rx="16" fill="#1F7A7A"/>
+  <rect x="360" y="260" width="80" height="80" rx="8" fill="#3AA8A8"/>
+  <path d="M380 300L395 315L420 290" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
   
-  <!-- Robot Arm Segments -->
-  <!-- Lower arm -->
-  <rect x="180" y="240" width="40" height="160" rx="15" fill="#3AA8A8" transform="rotate(25 200 400)"/>
+  <!-- Glowing Nodes -->
+  <circle cx="200" cy="300" r="12" fill="#F87A09"/>
+  <circle cx="250" cy="200" r="10" fill="#F87A09" fill-opacity="0.6"/>
+  <circle cx="250" cy="400" r="10" fill="#F87A09" fill-opacity="0.6"/>
   
-  <!-- Mid joint -->
-  <circle cx="270" cy="250" r="35" fill="#1F7A7A"/>
-  <circle cx="270" cy="250" r="15" fill="#ffffff"/>
+  <circle cx="600" cy="300" r="12" fill="#F87A09"/>
+  <circle cx="550" cy="200" r="10" fill="#F87A09" fill-opacity="0.6"/>
+  <circle cx="550" cy="400" r="10" fill="#F87A09" fill-opacity="0.6"/>
   
-  <!-- Upper arm -->
-  <rect x="250" y="80" width="40" height="170" rx="15" fill="#5CBDBD" transform="rotate(-30 270 250)"/>
+  <!-- Robot Arm Base -->
+  <rect x="360" y="450" width="80" height="40" rx="4" fill="#1B6B6B"/>
+  <rect x="390" y="360" width="20" height="100" fill="#5CBDBD"/>
   
-  <!-- Claw / End effector -->
-  <circle cx="395" cy="175" r="25" fill="#F87A09"/>
-  <!-- Top pincer -->
-  <path d="M 405 155 Q 430 110 480 120 L 480 140 Q 440 140 420 170 Z" fill="#F9953B"/>
-  <!-- Bottom pincer -->
-  <path d="M 390 195 Q 430 240 480 230 L 480 210 Q 440 210 415 185 Z" fill="#F9953B"/>
+  <!-- Sparkles -->
+  <path d="M450 150L455 165L470 170L455 175L450 190L445 175L430 170L445 165L450 150Z" fill="#F9953B"/>
+  <path d="M150 450L155 465L170 470L155 475L150 490L145 475L130 470L145 465L150 450Z" fill="#F9953B"/>
 </svg>

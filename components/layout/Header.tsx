@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Logo } from "@/components/ui/Logo";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
@@ -15,9 +15,32 @@ const navigation = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Close menu on Esc key
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+    if (mobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [mobileMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-surface/80 backdrop-blur-md">
+    <header ref={headerRef} className="sticky top-0 z-50 w-full border-b border-border bg-surface/80 backdrop-blur-md">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
@@ -99,13 +122,17 @@ export function Header() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${
+          mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 invisible"
+        }`}
+        aria-hidden={!mobileMenuOpen}
       >
         <div className="space-y-1 border-t border-border bg-surface px-4 pb-4 pt-2">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
+              tabIndex={mobileMenuOpen ? 0 : -1}
               className="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary transition-colors active:bg-primary-100 hover:bg-primary-50 hover:text-primary-800 dark:hover:text-primary-300 dark:active:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-300"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -115,6 +142,7 @@ export function Header() {
           <div className="pt-2">
             <Link
               href="/contact"
+              tabIndex={mobileMenuOpen ? 0 : -1}
               className="block w-full rounded-lg bg-accent-700 px-3 py-3 text-center text-base font-semibold text-white transition-all active:bg-accent-800 hover:bg-accent-600"
               onClick={() => setMobileMenuOpen(false)}
             >

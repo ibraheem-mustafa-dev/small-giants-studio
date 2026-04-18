@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Small Giants Studio — Rollup Banner (85cm × 200cm)</title>
+  <style>
+    /*
+      Print-ready rollup banner: 85cm wide × 200cm tall
+      ──────────────────────────────────────────────────
+      EXPORT: Open in Chrome → Ctrl+P → Save as PDF
+        Paper size: Custom 850mm × 2000mm
+        Margins: None
+        Background graphics: ON (critical!)
+      ──────────────────────────────────────────────────
+      Layout replicated from reference image.
+      Colours: #0E7E80 (teal), #F87A09 (orange)
+    */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 850mm;
+      height: 2000mm;
+      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0E7E80;
+      color: #FFFFFF;
+    }
+
+    @media print {
+      @page { size: 850mm 2000mm; margin: 0; }
+      body { width: 850mm; height: 2000mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    .banner {
+      width: 850mm;
+      height: 2000mm;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ═══════════════════════════════════════════
+       ZONE 1: LOGO + HEADLINE — Dark teal
+       ═══════════════════════════════════════════ */
+    .zone-hero {
+      background: #0E7E80;
+      padding: 55mm 65mm 50mm;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 14mm;
+      margin-bottom: 45mm;
+    }
+
+    .logo-icon {
+      width: 80mm;
+      height: auto;
+    }
+
+    .logo-name {
+      font-size: 36pt;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.15;
+    }
+
+    .hero-headline {
+      text-align: center;
+      max-width: 680mm;
+    }
+
+    .hero-headline h1 {
+      font-size: 52pt;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .hero-headline h1 em {
+      font-style: italic;
+      color: #F87A09;
+    }
+
+    /* ═══════════════════════════════════════════
+       ZONE 2: PAIN POINT — Light mint
+       ═══════════════════════════════════════════ */
+    .zone-pain {
+      background: #E4EFEA;
+      padding: 40mm 65mm;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 30mm;
+    }
+
+    .pain-text {
+      flex: 1;
+    }
+
+    .pain-text p {
+      font-size: 28pt;
+      font-weight: 700;
+      color: #1E3A3A;
+      line-height: 1.35;
+    }
+
+    .fish-illustration {
+      flex: 0 0 220mm;
+      height: 220mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Placeholder circle for the fish tank — will be replaced by Nano Banana image */
+    .fish-circle {
+      width: 200mm;
+      height: 200mm;
+      border-radius: 50%;
+      background: #D5E8DF;
+      border: 3mm solid #C2D9CE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fish-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* If using generated image, uncomment and set src */
+    /* .fish-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; } */
+
+    /* Simple CSS fish tank illustration as fallback */
+    .fish-tank-svg {
+      width: 160mm;
+      height: 160mm;
+    }
+
+    /* ═══════════════════════════════════════════
+       ZONE 3: SERVICES — Orange
+       ═══════════════════════════════════════════ */
+    .zone-services {
+      background: #F87A09;
+      padding: 45mm 65mm;
+      flex: 0 0 auto;
+    }
+
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28mm;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 18mm;
+    }
+
+    .service-icon {
+      width: 48mm;
+      height: 48mm;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon svg {
+      width: 40mm;
+      height: 40mm;
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-name {
+      font-size: 30pt;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    /* ═══════════════════════════════════════════
+       ZONE 4: CTA — Dark teal
+       ═══════════════════════════════════════════ */
+    .zone-cta {
+      background: #0E7E80;
+      padding: 50mm 65mm;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .cta-text {
+      font-size: 48pt;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .cta-text .line1 {
+      color: #FFFFFF;
+    }
+
+    .cta-text .line2 {
+      color: #F87A09;
+    }
+
+    /* ═══════════════════════════════════════════
+       ZONE 5: CONTACT — Dark teal bottom
+       ═══════════════════════════════════════════ */
+    .zone-contact {
+      background: #0E7E80;
+      padding: 25mm 65mm 40mm;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 2mm solid #1A8F91;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30mm;
+      width: 100%;
+    }
+
+    .contact-url {
+      font-size: 28pt;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6mm;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 5mm;
+      font-size: 18pt;
+      font-weight: 500;
+      color: #CBD5E1;
+    }
+
+    .contact-detail svg {
+      width: 8mm;
+      height: 8mm;
+      fill: #F87A09;
+      flex-shrink: 0;
+    }
+
+    .qr-block {
+      width: 100mm;
+      height: 100mm;
+      background: #FFFFFF;
+      border-radius: 6mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8mm;
+    }
+
+    /* QR code placeholder — replace with actual QR code image */
+    .qr-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 10pt;
+      color: #0E7E80;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+
+    <!-- ═══ ZONE 1: LOGO + HEADLINE ═══ -->
+    <div class="zone-hero">
+      <div class="logo-block">
+        <!-- SGS Icon -->
+        <svg class="logo-icon" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="rg" cx="1033.34" cy="1392.78" r="822.79" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#b8ebda"/>
+              <stop offset=".16" stop-color="#8ccfc2"/>
+              <stop offset=".36" stop-color="#5fb2ab"/>
+              <stop offset=".54" stop-color="#3c9b98"/>
+              <stop offset=".72" stop-color="#228b8a"/>
+              <stop offset=".87" stop-color="#138182"/>
+              <stop offset="1" stop-color="#0e7e80"/>
+            </radialGradient>
+          </defs>
+          <path fill="url(#rg)" d="M1630.46,1664.11s-388.23-36.57-606.48-27.24c-218.22-9.33-606.45,27.24-606.45,27.24,60.69-10.89,238.08-47.46,334.55-153.26,96.47-105.81,136.92-290.97,136.92-479.25s-86.76-261.8-86.76-261.8c-15.15,63.01-102.29,97.62-102.29,97.62,13.62,27.24,21.78,70.82,35.4,106.6,13.62,35.78,50.95,29.56,75.08,29.56s29.94,28.41,30.73,37.74c.77,9.33,6.99,33.08-17.11,43.58-24.12,10.48-56.03.77-86.76-15.17-30.73-15.96-73.9-50.19-106.6-89.1-32.67-38.89-51.33-63.78-59.9-88.29-8.54-24.51,3.9-43.58,9.74-52.92,5.81-9.33,12.83-29.17,29.94-58.35,17.11-29.17,76.25-77.81,76.25-77.81l2.12-10.12c9.95-47.43,51.05-81.91,99.51-83.42,24.33-.76,46.54-1.45,54.37-1.76,20.22-.79,61.08-10.12,93.74-28,32.69-17.9,37.36-36.57,36.19-47.08-1.17-10.51-25.3-34.25-25.3-48.25s8.57-28.38,8.57-28.38l1.38-25.02c1.43-25.5,22.03-45.72,47.56-46.64l19.13-.71,19.13.71c25.53.92,46.16,21.14,47.56,46.64l1.4,25.02s8.54,14.38,8.54,28.38-24.1,37.74-25.27,48.25c-1.17,10.51,3.49,29.17,36.19,47.08,32.67,17.88,73.52,27.21,93.74,28,7.8.31,30.04.99,54.37,1.76,48.45,1.5,89.56,35.98,99.51,83.42l2.12,10.12s59.11,48.63,76.25,77.81c17.11,29.17,24.1,49.01,29.94,58.35,5.84,9.33,18.28,28.41,9.74,52.92-8.57,24.51-27.24,49.4-59.93,88.29-32.67,38.92-75.84,73.14-106.57,89.1-30.73,15.94-62.63,25.65-86.76,15.17-24.12-10.51-17.9-34.25-17.11-43.58.77-9.33,6.6-37.74,30.73-37.74s61.46,6.22,75.08-29.56c13.62-35.78,21.78-79.36,35.4-106.6,0,0-87.14-34.61-102.31-97.62,0,0-86.73,73.52-86.73,261.8s40.45,373.44,136.92,479.25c96.47,105.81,273.86,142.37,334.55,153.26Z"/>
+          <circle fill="#f87a09" cx="1024.01" cy="1209.76" r="45.12"/>
+          <path fill="#f87a09" d="M1121.9,1609.39c-9.36-16.86-16.09-69.24-24.2-106.83-8.13-37.61-20.15-77.55-20.15-77.55,0,0,45.11-38.63,56.26-47.99,11.17-9.33,27.77-28.26,26.22-38.64-1.58-10.38-38.66-45.11-54.98-57.84-16.35-12.7-40.98-19.97-46.95-23.08-5.97-3.11-24.89-15.81-24.89-15.81h-18.41s-18.92,12.7-24.89,15.81c-5.97,3.11-30.6,10.38-46.95,23.08-16.32,12.73-53.4,47.46-54.98,57.84-1.56,10.38,15.05,29.3,26.22,38.64,11.14,9.36,56.26,47.99,56.26,47.99,0,0-12.01,39.94-20.15,77.55-8.11,37.59-14.84,89.97-24.2,106.83-9.33,16.86-29.56,36.06-29.56,36.06h63.8s-2.6-14.26,1.56-24.89c4.16-10.63,21.01-42.28,26.7-68.22,5.71-25.94,35.4-94.66,35.4-94.66,0,0,29.68,68.73,35.4,94.66,5.69,25.93,22.54,57.58,26.7,68.22,4.16,10.63,1.56,24.89,1.56,24.89h63.8s-20.22-19.2-29.56-36.06ZM958.54,1381.43c-7.11-8.26-17.49-22.82-23.89-31.95-3.03-4.34-1.5-10.33,3.21-12.73l31.83-15.99s5.71,65.62,5.97,66.89c.26,1.3-6.22,6.5-17.11-6.22ZM1072.35,1387.65c.25-1.28,5.97-66.89,5.97-66.89l31.83,15.99c4.72,2.4,6.25,8.39,3.21,12.73-6.4,9.13-16.78,23.69-23.89,31.95-10.89,12.73-17.37,7.52-17.11,6.22Z"/>
+        </svg>
+        <div class="logo-name">Small<br>Giants Studio</div>
+      </div>
+
+      <div class="hero-headline">
+        <h1>Helping human-led businesses <em>compete with the giants.</em></h1>
+      </div>
+    </div>
+
+    <!-- ═══ ZONE 2: PAIN POINT + FISH TANK ═══ -->
+    <div class="zone-pain">
+      <div class="pain-text">
+        <p>You started your business to do work you love. Instead, you're drowning in admin.</p>
+      </div>
+      <div class="fish-illustration">
+        <div class="fish-circle">
+          <!-- Fish tank SVG illustration -->
+          <svg class="fish-tank-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Bowl -->
+            <ellipse cx="100" cy="110" rx="75" ry="65" fill="none" stroke="#7BA99D" stroke-width="2.5"/>
+            <ellipse cx="100" cy="105" rx="70" ry="55" fill="#B8D8CF" opacity="0.3"/>
+            <!-- Water line -->
+            <path d="M35 90 Q50 85, 65 90 Q80 95, 100 90 Q120 85, 135 90 Q150 95, 165 90" fill="none" stroke="#7BA99D" stroke-width="1.5" opacity="0.6"/>
+            <!-- Fish body -->
+            <ellipse cx="105" cy="118" rx="22" ry="12" fill="#F87A09"/>
+            <!-- Fish tail -->
+            <path d="M83 118 L68 106 L68 130 Z" fill="#F87A09"/>
+            <!-- Fish eye -->
+            <circle cx="115" cy="114" r="3.5" fill="#FFFFFF"/>
+            <circle cx="116" cy="113.5" r="1.5" fill="#1E3A3A"/>
+            <!-- Bubbles -->
+            <circle cx="128" cy="95" r="4" fill="none" stroke="#7BA99D" stroke-width="1"/>
+            <circle cx="135" cy="82" r="2.5" fill="none" stroke="#7BA99D" stroke-width="1"/>
+            <circle cx="122" cy="78" r="3" fill="none" stroke="#7BA99D" stroke-width="1"/>
+            <!-- Gears floating around the bowl -->
+            <g fill="none" stroke="#5A8A7E" stroke-width="1.5">
+              <!-- Gear 1 (top right) -->
+              <circle cx="155" cy="55" r="10"/>
+              <circle cx="155" cy="55" r="4.5"/>
+              <line x1="155" y1="43" x2="155" y2="47"/>
+              <line x1="155" y1="63" x2="155" y2="67"/>
+              <line x1="143" y1="55" x2="147" y2="55"/>
+              <line x1="163" y1="55" x2="167" y2="55"/>
+              <!-- Gear 2 (top) -->
+              <circle cx="115" cy="42" r="8"/>
+              <circle cx="115" cy="42" r="3.5"/>
+              <line x1="115" y1="32" x2="115" y2="36"/>
+              <line x1="115" y1="48" x2="115" y2="52"/>
+              <line x1="105" y1="42" x2="109" y2="42"/>
+              <line x1="121" y1="42" x2="125" y2="42"/>
+            </g>
+            <!-- Small floating icons -->
+            <g fill="#5A8A7E" opacity="0.7">
+              <!-- Envelope -->
+              <rect x="58" y="50" width="12" height="8" rx="1" fill="none" stroke="#5A8A7E" stroke-width="1.2"/>
+              <polyline points="58,50 64,55 70,50" fill="none" stroke="#5A8A7E" stroke-width="1.2"/>
+              <!-- Chart bars -->
+              <rect x="168" y="80" width="3" height="10" fill="#5A8A7E"/>
+              <rect x="173" y="75" width="3" height="15" fill="#5A8A7E"/>
+              <rect x="178" y="78" width="3" height="12" fill="#5A8A7E"/>
+              <!-- Pound sign -->
+              <text x="48" y="82" font-size="14" font-weight="700" fill="#5A8A7E" font-family="Plus Jakarta Sans, sans-serif">£</text>
+            </g>
+            <!-- Seaweed at bottom -->
+            <path d="M80 155 Q78 140, 82 130 Q80 125, 83 118" fill="none" stroke="#7BA99D" stroke-width="2" stroke-linecap="round"/>
+            <path d="M90 158 Q92 145, 88 135 Q90 128, 87 122" fill="none" stroke="#7BA99D" stroke-width="2" stroke-linecap="round"/>
+            <path d="M120 155 Q118 142, 122 132 Q120 126, 123 120" fill="none" stroke="#5A8A7E" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ZONE 3: SERVICES — Orange ═══ -->
+    <div class="zone-services">
+      <div class="service-list">
+
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48"><path d="M24 6 L24 42 M24 6 L32 14 M24 6 L16 14" /><rect x="10" y="18" width="28" height="20" rx="3"/></svg>
+          </div>
+          <div class="service-name">Digital Transformation</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 8 L24 16 M24 32 L24 40 M8 24 L16 24 M32 24 L40 24"/><circle cx="24" cy="24" r="5"/></svg>
+          </div>
+          <div class="service-name">AI &amp; Automation</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48"><path d="M6 38 L6 24 L14 24 L14 38 M18 38 L18 16 L26 16 L26 38 M30 38 L30 10 L38 10 L38 38 M4 38 L44 38"/></svg>
+          </div>
+          <div class="service-name">Marketing Strategy</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48"><path d="M8 28 C8 18, 18 12, 24 12 C30 12, 40 18, 40 28"/><circle cx="24" cy="32" r="8"/><path d="M20 30 L22 34 L28 28"/></svg>
+          </div>
+          <div class="service-name">CRM &amp; Operations</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="16" r="10"/><path d="M8 42 C8 32, 16 26, 24 26 C32 26, 40 32, 40 42"/><path d="M34 14 L42 6 M42 6 L42 14 M42 6 L34 6"/></svg>
+          </div>
+          <div class="service-name">Website Design &amp; Development</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ ZONE 4: CTA ═══ -->
+    <div class="zone-cta">
+      <div class="cta-text">
+        <div class="line1">Stop being the bottleneck.</div>
+        <div class="line2">Start being the CEO.</div>
+      </div>
+    </div>
+
+    <!-- ═══ ZONE 5: CONTACT ═══ -->
+    <div class="zone-contact">
+      <div class="contact-row">
+        <div>
+          <div class="contact-url">smallgiantsstudio.co.uk</div>
+          <div class="contact-details" style="margin-top: 8mm;">
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              hello@smallgiantsstudio.co.uk
+            </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              07424 449555
+            </div>
+          </div>
+        </div>
+        <div class="qr-block">
+          <div class="qr-placeholder">
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+              <!-- QR code simplified representation -->
+              <rect x="5" y="5" width="25" height="25" rx="2" fill="#0E7E80"/>
+              <rect x="70" y="5" width="25" height="25" rx="2" fill="#0E7E80"/>
+              <rect x="5" y="70" width="25" height="25" rx="2" fill="#0E7E80"/>
+              <rect x="10" y="10" width="15" height="15" rx="1" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+              <rect x="75" y="10" width="15" height="15" rx="1" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+              <rect x="10" y="75" width="15" height="15" rx="1" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+              <rect x="14" y="14" width="7" height="7" fill="#0E7E80"/>
+              <rect x="79" y="14" width="7" height="7" fill="#0E7E80"/>
+              <rect x="14" y="79" width="7" height="7" fill="#0E7E80"/>
+              <!-- Data dots -->
+              <rect x="35" y="5" width="5" height="5" fill="#0E7E80"/>
+              <rect x="45" y="5" width="5" height="5" fill="#0E7E80"/>
+              <rect x="55" y="10" width="5" height="5" fill="#0E7E80"/>
+              <rect x="35" y="15" width="5" height="5" fill="#0E7E80"/>
+              <rect x="50" y="20" width="5" height="5" fill="#0E7E80"/>
+              <rect x="40" y="25" width="5" height="5" fill="#0E7E80"/>
+              <rect x="35" y="35" width="5" height="5" fill="#0E7E80"/>
+              <rect x="45" y="40" width="5" height="5" fill="#0E7E80"/>
+              <rect x="55" y="35" width="5" height="5" fill="#0E7E80"/>
+              <rect x="65" y="40" width="5" height="5" fill="#0E7E80"/>
+              <rect x="75" y="35" width="5" height="5" fill="#0E7E80"/>
+              <rect x="85" y="45" width="5" height="5" fill="#0E7E80"/>
+              <rect x="5" y="40" width="5" height="5" fill="#0E7E80"/>
+              <rect x="15" y="45" width="5" height="5" fill="#0E7E80"/>
+              <rect x="25" y="40" width="5" height="5" fill="#0E7E80"/>
+              <rect x="40" y="50" width="5" height="5" fill="#0E7E80"/>
+              <rect x="55" y="55" width="5" height="5" fill="#0E7E80"/>
+              <rect x="70" y="50" width="5" height="5" fill="#0E7E80"/>
+              <rect x="5" y="55" width="5" height="5" fill="#0E7E80"/>
+              <rect x="20" y="60" width="5" height="5" fill="#0E7E80"/>
+              <rect x="35" y="65" width="5" height="5" fill="#0E7E80"/>
+              <rect x="50" y="70" width="5" height="5" fill="#0E7E80"/>
+              <rect x="65" y="65" width="5" height="5" fill="#0E7E80"/>
+              <rect x="80" y="70" width="5" height="5" fill="#0E7E80"/>
+              <rect x="40" y="80" width="5" height="5" fill="#0E7E80"/>
+              <rect x="55" y="85" width="5" height="5" fill="#0E7E80"/>
+              <rect x="70" y="75" width="5" height="5" fill="#0E7E80"/>
+              <rect x="85" y="80" width="5" height="5" fill="#0E7E80"/>
+              <rect x="75" y="90" width="5" height="5" fill="#0E7E80"/>
+              <rect x="90" y="70" width="5" height="5" fill="#0E7E80"/>
+              <!-- SGS icon in centre -->
+              <rect x="38" y="38" width="24" height="24" rx="2" fill="#FFFFFF"/>
+              <text x="50" y="54" font-size="12" font-weight="800" fill="#0E7E80" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif">SGS</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

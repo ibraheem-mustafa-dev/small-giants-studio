@@ -1,0 +1,29 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="transparent"/>
+  
+  <!-- Showcase Grid -->
+  <g transform="translate(150 100)">
+    <!-- Case Study 1 (Highlighted) -->
+    <rect x="0" y="0" width="240" height="180" rx="16" fill="#D97706" fill-opacity="0.1" stroke="#D97706" stroke-width="4"/>
+    <rect x="30" y="30" width="180" height="120" rx="8" fill="#D97706"/>
+    <path d="M70 90L100 120L170 60" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Case Study 2 -->
+    <rect x="280" y="0" width="240" height="180" rx="16" fill="#1F7A7A" fill-opacity="0.05" stroke="#B3E3E3" stroke-width="2" stroke-dasharray="8 8"/>
+    <rect x="310" y="40" width="180" height="10" rx="5" fill="#B3E3E3"/>
+    <rect x="310" y="70" width="140" height="10" rx="5" fill="#B3E3E3"/>
+    
+    <!-- Case Study 3 -->
+    <rect x="0" y="220" width="240" height="180" rx="16" fill="#1F7A7A" fill-opacity="0.05" stroke="#B3E3E3" stroke-width="2" stroke-dasharray="8 8"/>
+    <rect x="30" y="260" width="180" height="10" rx="5" fill="#B3E3E3"/>
+    <rect x="30" y="290" width="140" height="10" rx="5" fill="#B3E3E3"/>
+    
+    <!-- Case Study 4 -->
+    <rect x="280" y="220" width="240" height="180" rx="16" fill="#1F7A7A" fill-opacity="0.05" stroke="#B3E3E3" stroke-width="2" stroke-dasharray="8 8"/>
+    <rect x="310" y="260" width="180" height="10" rx="5" fill="#B3E3E3"/>
+    <rect x="310" y="290" width="140" height="10" rx="5" fill="#B3E3E3"/>
+  </g>
+  
+  <!-- Sparkles -->
+  <path d="M100 100L105 115L120 120L105 125L100 140L95 125L80 120L95 115L100 100Z" fill="#FBBF24"/>
+</svg>

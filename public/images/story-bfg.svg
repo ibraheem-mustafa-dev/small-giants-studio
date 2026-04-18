@@ -1,0 +1,30 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="transparent"/>
+  
+  <!-- The BFG (Big Friendly Giant) Silhouette - Simplified -->
+  <path d="M400 600C400 600 350 450 300 400C250 350 200 300 200 200C200 100 280 40 400 40C520 40 600 100 600 200C600 300 550 350 500 400C450 450 400 600 400 600Z" fill="#1F7A7A" fill-opacity="0.1"/>
+  
+  <!-- Small Figure standing on the Giant's shoulder -->
+  <g transform="translate(520 350)">
+    <circle cx="0" cy="-20" r="10" fill="#D97706"/>
+    <rect x="-10" y="0" width="20" height="30" rx="4" fill="#D97706"/>
+    <path d="M-5 30L-10 45M5 30L10 45" stroke="#D97706" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Horizon of Connected Nodes (Small Giants) -->
+  <g transform="translate(100 500)">
+    <circle cx="0" cy="0" r="15" fill="#3AA8A8"/>
+    <circle cx="100" cy="-40" r="12" fill="#5CBDBD"/>
+    <circle cx="200" cy="0" r="15" fill="#1F7A7A"/>
+    <circle cx="300" cy="-60" r="10" fill="#F9953B"/>
+    <circle cx="400" cy="-20" r="14" fill="#3AA8A8"/>
+    <circle cx="500" cy="-50" r="12" fill="#5CBDBD"/>
+    <circle cx="600" cy="0" r="15" fill="#1F7A7A"/>
+    
+    <!-- Connections -->
+    <path d="M0 0L100 -40L200 0L300 -60L400 -20L500 -50L600 0" stroke="#B3E3E3" stroke-width="2" stroke-dasharray="8 8"/>
+  </g>
+  
+  <!-- Sparkles -->
+  <path d="M650 100L655 115L670 120L655 125L650 140L645 125L630 120L645 115L650 100Z" fill="#F9953B"/>
+</svg>

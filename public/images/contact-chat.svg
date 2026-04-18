@@ -1,0 +1,32 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="transparent"/>
+  
+  <!-- Speech Bubbles -->
+  <g transform="translate(250 200)">
+    <!-- Teal Bubble (User/Consultant) -->
+    <path d="M0 40C0 17.9086 17.9086 0 40 0H200C222.091 0 240 17.9086 240 40V160C240 182.091 222.091 200 200 200H40C17.9086 200 0 182.091 0 160V40Z" fill="#1F7A7A"/>
+    <path d="M40 200L20 230L60 200H40Z" fill="#1F7A7A"/>
+    
+    <!-- Text Lines in Teal Bubble -->
+    <rect x="40" y="60" width="120" height="8" rx="4" fill="#D9F1F1" fill-opacity="0.3"/>
+    <rect x="40" y="85" width="160" height="8" rx="4" fill="#D9F1F1" fill-opacity="0.3"/>
+    <rect x="40" y="110" width="100" height="8" rx="4" fill="#D9F1F1" fill-opacity="0.3"/>
+  </g>
+  
+  <g transform="translate(350 250)">
+    <!-- Orange Bubble (Client) -->
+    <path d="M0 40C0 17.9086 17.9086 0 40 0H200C222.091 0 240 17.9086 240 40V160C240 182.091 222.091 200 200 200H40C17.9086 200 0 182.091 0 160V40Z" fill="#D97706"/>
+    <path d="M200 200L220 230L180 200H200Z" fill="#D97706"/>
+    
+    <!-- Text Lines in Orange Bubble -->
+    <rect x="40" y="60" width="160" height="8" rx="4" fill="white" fill-opacity="0.3"/>
+    <rect x="40" y="85" width="120" height="8" rx="4" fill="white" fill-opacity="0.3"/>
+    
+    <!-- Sparkle at Intersection -->
+    <path d="M-50 -20L-40 0L-20 10L-40 20L-50 40L-60 20L-80 10L-60 0L-50 -20Z" fill="#FBBF24"/>
+  </g>
+  
+  <!-- Floating Accents -->
+  <circle cx="200" cy="150" r="10" fill="#B3E3E3"/>
+  <circle cx="600" cy="450" r="15" fill="#FDE68A"/>
+</svg>

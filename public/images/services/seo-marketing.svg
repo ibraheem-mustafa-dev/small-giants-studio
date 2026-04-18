@@ -1,40 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <rect width="800" height="600" fill="#fcfcfc"/>
-
-  <!-- Globe / Web Sphere -->
-  <circle cx="450" cy="300" r="160" fill="#3AA8A8"/>
-  <ellipse cx="450" cy="300" rx="80" ry="160" fill="none" stroke="#1F7A7A" stroke-width="8"/>
-  <ellipse cx="450" cy="300" rx="160" ry="80" fill="none" stroke="#1F7A7A" stroke-width="8"/>
-  <line x1="450" y1="140" x2="450" y2="460" stroke="#1F7A7A" stroke-width="8"/>
-  <line x1="290" y1="300" x2="610" y2="300" stroke="#1F7A7A" stroke-width="8"/>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="transparent"/>
   
-  <!-- Abstract content on globe -->
-  <rect x="400" y="210" width="80" height="24" rx="6" fill="#ffffff"/>
-  <rect x="360" y="260" width="120" height="24" rx="6" fill="#ffffff"/>
-  <rect x="420" y="310" width="90" height="24" rx="6" fill="#ffffff"/>
+  <!-- Search Engine Result List -->
+  <rect x="150" y="100" width="500" height="400" rx="20" fill="#F5F5F5"/>
+  
+  <!-- Result items -->
+  <rect x="200" y="150" width="400" height="20" rx="10" fill="#1F7A7A" fill-opacity="0.1"/>
+  <rect x="200" y="200" width="400" height="80" rx="12" fill="white" stroke="#D4DBE5" stroke-width="2"/>
+  <rect x="200" y="300" width="400" height="80" rx="12" fill="white" stroke="#D4DBE5" stroke-width="2"/>
+  <rect x="200" y="400" width="400" height="80" rx="12" fill="white" stroke="#D4DBE5" stroke-width="2"/>
+  
+  <!-- Text lines in results -->
+  <rect x="230" y="220" width="200" height="8" rx="4" fill="#3AA8A8"/>
+  <rect x="230" y="240" width="300" height="6" rx="3" fill="#D4DBE5"/>
+  <rect x="230" y="255" width="250" height="6" rx="3" fill="#D4DBE5"/>
+  
+  <rect x="230" y="320" width="200" height="8" rx="4" fill="#3AA8A8"/>
+  <rect x="230" y="340" width="300" height="6" rx="3" fill="#D4DBE5"/>
+  
+  <rect x="230" y="420" width="200" height="8" rx="4" fill="#3AA8A8"/>
   
   <!-- Magnifying Glass -->
-  <!-- Glass Reflection/Fill -->
-  <circle cx="320" cy="220" r="100" fill="#5CBDBD" fill-opacity="0.85"/>
-  <path d="M 270 170 Q 320 150 360 190 Q 340 160 270 170" fill="#ffffff" fill-opacity="0.6"/>
-  <!-- Outer ring -->
-  <circle cx="320" cy="220" r="100" fill="none" stroke="#F87A09" stroke-width="20"/>
-  <!-- Handle -->
-  <line x1="250" y1="290" x2="140" y2="400" stroke="#F87A09" stroke-width="32" stroke-linecap="round"/>
-  <line x1="190" y1="350" x2="140" y2="400" stroke="#F9953B" stroke-width="32" stroke-linecap="round"/>
-  <line x1="260" y1="280" x2="220" y2="320" stroke="#1F7A7A" stroke-width="32" stroke-linecap="round"/>
-
-  <!-- Sparkles -->
-  <g transform="translate(620, 150)">
-    <path d="M 0 -25 Q 5 -5 25 0 Q 5 5 0 25 Q -5 5 -25 0 Q -5 -5 0 -25 Z" fill="#F87A09"/>
+  <g transform="translate(480 320) rotate(-15)">
+    <circle cx="60" cy="60" r="80" stroke="#F87A09" stroke-width="12" fill="white" fill-opacity="0.2"/>
+    <rect x="120" y="120" width="100" height="15" rx="7.5" fill="#F87A09" transform="rotate(45 120 120)"/>
+    
+    <!-- AI Sparkle in Lens -->
+    <path d="M60 40L65 55L80 60L65 65L60 80L55 65L40 60L55 55L60 40Z" fill="#F9953B"/>
   </g>
-  <g transform="translate(560, 90) scale(0.6)">
-    <path d="M 0 -25 Q 5 -5 25 0 Q 5 5 0 25 Q -5 5 -25 0 Q -5 -5 0 -25 Z" fill="#F9953B"/>
-  </g>
-  <g transform="translate(680, 260) scale(0.7)">
-    <path d="M 0 -25 Q 5 -5 25 0 Q 5 5 0 25 Q -5 5 -25 0 Q -5 -5 0 -25 Z" fill="#5CBDBD"/>
-  </g>
-  <g transform="translate(240, 90) scale(0.8)">
-    <path d="M 0 -25 Q 5 -5 25 0 Q 5 5 0 25 Q -5 5 -25 0 Q -5 -5 0 -25 Z" fill="#F9953B"/>
-  </g>
+  
+  <!-- Floating World Icon -->
+  <circle cx="650" cy="150" r="40" fill="#1F7A7A"/>
+  <path d="M650 110C635 125 635 175 650 190M650 110C665 125 665 175 650 190M610 150H690M625 125H675M625 175H675" stroke="white" stroke-width="2"/>
 </svg>
