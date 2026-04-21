@@ -43,6 +43,10 @@ yarn-error.log*
 .vscode/
 review-screenshots/
 
+# scratch briefs used by reviewer panels / recon dispatches (per-session artifacts)
+.recon-brief-*.md
+.review-brief-*.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
