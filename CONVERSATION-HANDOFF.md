@@ -1,156 +1,121 @@
-# Session Handoff — 2026-04-21 (toolset architecture session)
+# Session Handoff — 2026-04-24
 
 ## Completed This Session
-1. **Reconciled 4-reviewer panel on sgs-site-clone** — Sonnet + Flash + Cerebras + Gemini-Pro-thinking-only. Unanimous lens-6 motivation_meaning FAIL. Output_consistency 4.5 → reconciled 3.2. Ecosystem_awareness floor stands at 2.0 (dead `/site-clone` ref in load-bearing routing guidance, not typo).
-2. **Opus-authored regrade with direct file read** (per captured lesson 151 — read scripts, not just SKILL.md). Final grade B (3.88), grade_cap lens 6. 18-cell matrix = 4/18 full + 3/18 partial + 11/18 absent (worse than panel estimates). Gap register grew from Sonnet's 10 → 20 unified items.
-3. **Compiled 13 opportunities** across 4 reviewers + Opus direct-read. Killed opp #12 (re-clone quarterly) + L3 (QA regression monitoring) per user review. Kept L1 £500 audit, L2 library auto-growth, L4 competitive intel (price TBD), L5 mockup-to-block validator.
-4. **Research-buddies Round 1+2** (Nerd Sonnet + Practical Opus) — definitive reframe: **SGS build-website is a design-system transpiler, not a cloner.** Reference class is Figma-to-code (Builder.io/Locofy/Anima ~60-70% static), NOT raw cloners. Gutenberg block recovery forces dynamic-blocks-default architecture.
-5. **Lens-6 redesign approved** — `motivation_meaning` → `values_alignment`. Root cause, not band-aid. Generic-slop catcher. Source-of-truth files per target type. 18 files carry lens-count/motivation_meaning references — all need rename.
-6. **Pure-text edits applied in-session** (hook disabled by user): autopilot 4-row domain-table append (both copies — playwright, animation-harvest, sgs-discover, sgs-extraction now visible); deleted dead `/site-clone` ref in sgs-site-clone frontmatter; rewrote stale Opportunity Skills section → See Also; deleted dead `trend-detection.md` ref in sgs-extraction; fixed `design-tokens.json` → `dembrandt-tokens.json` divergence (scripts were truth).
-7. **Master spec Section 5+6 rewritten** at `C:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-21-toolset-spec-from-sgs-studio-session.md` — reconciled score matrix, 7-item remediation priority, 18-cell regrade for both sgs-site-clone and sgs-extraction.
-8. **Scratch briefs gitignored** — 12 `.recon-brief-*.md` + `.review-brief-*.md` files per-session artefacts.
-9. **Identified LLM→dumb swap opportunities** for build-website pipeline: k-means OKLCH replaces Gemini Vision palette pass (better quality); DOM-heuristic slot-mapping replaces LLM inference (~85% same, hybrid fallback); per-section SSIM replaces Vision failure localisation (math for WHERE, LLM only for WHY); template REPORT.md replaces LLM-narrated.
-10. **Plan revised with user** — next session in THIS project dedicated to bulk skill updates via Sonnet. small-giants-wp then consumes updated toolset. Full scope committed: every gap + every opportunity minus the 2 killed.
+
+1. **Phase 4 — `/build-website` rename complete.** Renamed `sgs-site-clone` → `build-website` across both skill registries (`.agents/skills/`, `.claude/skills/`), pipeline JSON, validator schema, and 27 live files (141 text replacements). Skill registry reload confirms `build-website` discoverable.
+2. **Phase 8a Task 3 — 4 of 6 unblocking skills built + graded.** Dispatched 4 parallel Sonnet subagents. Grades via formal `/gap-analysis` batch (validated, persisted to blub.db ids 11652-11654, archived to `~/.claude/gap-analysis/reports/`):
+   - `/uimax INGEST` command + ui-ux-pro-max INGEST capability — built, skillscore 92% A-, formal eval B (3.65/5)
+   - `/interactivity-capture` skill — built, skillscore 100%, gap-analysis B (3.97/5), 9 gaps logged
+   - `/ethics-gate` skill wrapper — built, skillscore 100%, gap-analysis B (4.08/5), 8 gaps logged
+   - `/qc` pipeline (redefined as test-as-user-first, code-review-as-backup) — built, skillscore 98% A, gap-analysis B (4.06/5), 10 gaps logged
+3. **Phase 8a Task 3 — 2 of 6 not built:** `/qc-inline` deferred until /qc gaps fixed (sequential dependency); `/extract-design-tokens` dropped (overlapped existing `/design-ref`, `/sgs-extraction`, `/wp-site-extraction`).
+4. **Major architectural pivot — `/ethics-gate` slated for CDP rearchitecture.** Brainstorming + multi-advisor research (Gemini-Pro, Cerebras) concluded ethics-gate as built is over-scoped. New plan: build `~/.claude/hooks/cdp-fetch.py` helper (launch-on-demand dedicated Chrome via `--remote-debugging-port=9222`, ephemeral BrowserContext per fetch, baked-in rate-limit + circuit-breaker, audit log retained). Ethics-gate slims to rate-limit + audit log only; drops robots.txt strict-block + UA branding. ~10-12h work scoped.
+5. **Design-brain architecture spec written.** Written to `c:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-24-design-brain-architecture.md` (595 lines, 39 KB). Covers: merging `/superdesign` + `/frontend-design` orphan into `/ui-ux-pro-max` as the central designer-brain; 22-skill consolidation matrix (8 modifiers → CLI modes); 4-reviewer adversarial council with model heterogeneity; 8-pipeline reshaping with before/after; 5-phase implementation plan (~26-38h). Evidence base: Gemini-Pro × 2 + Sonnet adversarial review (caught 3 Claude-internal breaking assumptions) + Gemini-Flash community signals. QC verdict: ship with 2 cosmetic fixes (confidence 89/100).
+6. **Captured to blub.db corrections:** "Bean is non-technical; on architectural/technical decisions, research deeply then RECOMMEND, do not present multiple-choice menus that require technical knowledge to pick between." Triggered after I asked Bean to choose between (i)/(ii)/(iii) implementation patterns mid-spec discussion.
 
 ## Current State
-- **Branch:** main at ce53a5b (unchanged — no commits yet this session)
-- **Tests:** no test suite (Next.js site project; no tests configured)
-- **Build:** n/a (no source changes this session — only docs + external skill edits)
-- **Uncommitted changes:** `.gitignore`, `CONVERSATION-HANDOFF.md`, `NEXT-SESSION-PROMPT.md`
-- **External edits (outside this repo):** `C:/Users/Bean/.agents/skills/autopilot/SKILL.md` + `.claude` copy, `sgs-site-clone/SKILL.md`, `sgs-extraction/SKILL.md` — user-global skill files, not tracked here
-- **lifecycle-gate.py hook:** DISABLED by user during this session — re-enable before shipping any skill changes OR keep off until bulk-edit session finishes
+- **Branch:** main at 03a56d3
+- **Tests:** no test suite (per project CLAUDE.md)
+- **Build:** n/a (Next.js, not built this session)
+- **Uncommitted changes:** `CONVERSATION-HANDOFF.md` (this file), `NEXT-SESSION-PROMPT.md` (regenerated by Gate 6), `EMBEDDING-SESSION-PROMPT.md` (carried over from prior session, scratch)
+- **Cross-project state:** `small-giants-wp` has 4 untracked plan files (the design-brain spec + 3 from 2026-04-21) and 3 modified files (build-website rename ripples). To be committed in that project separately.
 
 ## Known Issues / Blockers
-- **Lifecycle-gate hook disabled globally** — any SKILL.md edit in any session will currently go through without skillscore/gap-analysis enforcement. Re-enable in `~/.claude/settings.json` after bulk updates ship
-- **Gemini Pro 3.1 reviewer unreliable** — hit 5× 503 loop on sgs-site-clone dispatch, never emitted final JSON. Use `/gemini-pro` skill (has retry ladder) for future dispatches, not raw `gemini` CLI
-- **`/uimax` is read-only today** — INGEST command doesn't exist. Blocks Stage 8 of build-website + OE of sgs-extraction. Must build INGEST before skill remediations that depend on it
-- **blub.db dashboard API (localhost:5050) intermittent** — write direct to SQLite at `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/data/blub.db` if API fails
+- `/qc` pipeline SKILL.md has 2 cosmetic smells caught by inline QC: line 81 says "3-4 reviewers" but rest says "4"; some acronyms unexpanded on first use (NN/g, LCP, MCP, OKLCH). Fix in next session, ~5 min.
+- `lifecycle-gate.py` enforcement is currently disabled (Bean renamed the file mid-session to speed up edits across multiple skills). Re-enable at Phase 10 / Phase 4 of design-brain rebuild.
+- 4 of the 4 dispatched advisor subagents had infrastructure issues this session: Cerebras queue exhausted (no output), Gemini-Flash hit Gemini API 500-loop on web search before recovering. Coverage maintained by other 3 angles.
 
 ## Next Priorities (in order)
-1. **Bulk skill updates session** — run the phased plan below (Phase 0-10) using Sonnet as primary model. All architectural decisions locked; Sonnet executes per brief.
-2. **Then hand back to small-giants-wp** — updated toolset consumed for client migration/build work. Rewrite the HANDOFF-FROM-SGS-STUDIO file to drop Task 2 bundle (now done here) and focus on consume-toolset work.
-3. **Resume website design overhaul** (current_mission.md Phase 1 Foundation ~20%) only after toolset phases land.
-4. **Re-enable lifecycle-gate.py** once bulk edits complete.
-5. **Commit scratch-brief-cleanup** — briefs gitignored but still on disk; delete or leave per preference.
+1. **Apply 2 cosmetic fixes to design-brain spec** (line 81 "3-4" → "4"; expand 4 acronyms on first use). 5 min. File: `c:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-24-design-brain-architecture.md`.
+2. **Phase 8a Task 3 remediation work** — implement the 27 logged gaps across `/interactivity-capture` (9), `/ethics-gate` (8), `/qc` (10). Use `/phase-planner` first to sequence safely. Reports at `~/.claude/gap-analysis/reports/2026-04-24-*.json`.
+3. **Build `/qc-inline`** after /qc gap fixes land (sequential dependency, ~1h).
+4. **Decide on design-brain rebuild start.** Spec is 5-phase / ~26-38h. Either dive into Phase 1 next session OR queue for a dedicated design-brain rebuild session and stay focused on Phase 8a remediation. Recommend: Phase 8a remediation first (closes existing scope), then start design-brain Phase 1 cleanup (low risk).
+5. **Task 4 (deferred) — 9-skill optimiser run.** Master spec assigns 9 skills (animation-harvest, cloudflare-vps-webhook, email-html-builder, playwright, sgs-discover, sgs-email-branding, sgs-extraction, build-website, vps-deploy). Existing reports at `C:/Users/Bean/.openclaw/workspace/memory/research/gap-analysis/2026-04-20-154111/`. Dedicated session.
 
 ## Files Modified
 | File path | What changed |
 |---|---|
-| `C:/Users/Bean/Projects/small-giants-studio/.gitignore` | Added `.recon-brief-*.md` + `.review-brief-*.md` patterns |
-| `C:/Users/Bean/Projects/small-giants-studio/CONVERSATION-HANDOFF.md` | This file |
-| `C:/Users/Bean/Projects/small-giants-studio/NEXT-SESSION-PROMPT.md` | Rewritten for bulk-skill-updates focus |
-| `C:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-21-toolset-spec-from-sgs-studio-session.md` | Section 5 sgs-extraction 18-cell regrade added; Section 6 rewritten with reconciled 4-reviewer matrix + 7-item remediation priority + 18-cell regrade (10/18 originally, corrected 4/18 post-direct-read) |
-| `C:/Users/Bean/.agents/skills/autopilot/SKILL.md` (+ `.claude` mirror) | Domain-table appended 4 rows: playwright, animation-harvest, sgs-discover, sgs-extraction |
-| `C:/Users/Bean/.agents/skills/sgs-site-clone/SKILL.md` | Deleted dead `/site-clone` ref in frontmatter; rewrote stale Opportunity Skills section to See Also |
-| `C:/Users/Bean/.agents/skills/sgs-extraction/SKILL.md` | Deleted dead `trend-detection.md` ref; fixed `design-tokens.json` → `dembrandt-tokens.json` (script was truth) |
+| `C:/Users/Bean/.agents/skills/build-website/` (renamed from sgs-site-clone) | Plus 14+ live consumer files updated for the rename |
+| `C:/Users/Bean/.claude/skills/build-website/` (renamed) | Mirror of above |
+| `C:/Users/Bean/.claude/pipelines/build-website.json` | Renamed + content updated |
+| `C:/Users/Bean/.claude/hooks/validate-pipeline-artifact.py` | Pipeline schema renamed; added `qc` schema block |
+| `C:/Users/Bean/.agents/skills/{interactivity-capture,ethics-gate,qc}/` | New skills (3 dirs created with SKILL.md + scripts + references) |
+| `C:/Users/Bean/.claude/skills/{interactivity-capture,ethics-gate,qc}/` | Mirror of above |
+| `C:/Users/Bean/.claude/pipelines/qc.json` | New pipeline JSON for /qc |
+| `C:/Users/Bean/.claude/commands/uimax.md` | Added `ingest <manifest>` sub-command dispatch |
+| `C:/Users/Bean/.agents/skills/ui-ux-pro-max/SKILL.md` | Stage 5 INGEST block + ingest-extraction.py (778 lines) added |
+| `C:/Users/Bean/.agents/skills/skill-writer/SKILL.md` (both registries) | Fixed A:/.openclaw → C:/Users/Bean/.openclaw paths |
+| `C:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-24-design-brain-architecture.md` | NEW — 595-line architecture spec |
+| `C:/Users/Bean/.openclaw/workspace/memory/research/gap-analysis/2026-04-24-073823/` | Batch dir: 4 evaluation JSONs + waiting-queue.md + report.md + manifest.json |
+| `C:/Users/Bean/.claude/gap-analysis/reports/2026-04-24-{interactivity-capture,ethics-gate,qc}.json` | Archived eval JSONs |
+| `C:/Users/Bean/.claude/gap-analysis/evaluation-history.json` | Appended 3 new entries |
+| `C:/Users/Bean/Projects/small-giants-studio/{CONVERSATION-HANDOFF,NEXT-SESSION-PROMPT}.md` | Rewritten (this handoff) + earlier build-website rename ripples |
 
 ## Notes for Next Session
-- **Model split:** Sonnet for all skill edits (architectural decisions are done, execution per brief). Opus ONLY for values_alignment lens spec wording (new framework, judgement-sensitive) and `/qc` reviewer-score merge algorithm (complex logic). Cheap models (Cerebras/Flash) for tight-brief section edits (REPORT.md template slots, dead-ref cleanups). Python scripts for find-replace + schema migrations + deterministic algorithms.
-- **Captured lesson 151 HARD GATE:** for any skill wrapping scripts (sgs-extraction, design-extract, wp-pattern-gen) — READ the scripts during grading, not just SKILL.md. Doc-vs-script divergence is a categorical failure.
-- **Plan divergence flagged:** `current_mission.md` plan covers the website design overhaul; this session worked on toolset layer. No edit to plan file — resume from Phase 1 Foundation after toolset work completes.
-- **Dynamic blocks are the default** for build-website output — Gutenberg's markup-recovery validator nukes any static-block output that doesn't match canonical `save()` exactly. Research confirmed (WordPress Developer Handbook + issues #7604, #21703).
-- **Two-threshold fidelity approved**: brand-recognition ≥70% (weighted composite: 40% colour / 30% typography / 20% layout rhythm / 10% imagery) + edit-readiness ≥95% (canonical blocks + zero custom CSS). Four-way divergence handling documented in master spec Section 6.
+- **Plan divergence flag:** `current_mission.md` next-up is SGS website Phase 1 Foundation. This session pivoted entirely to toolset/architecture orchestration. Decision needed: continue Phase 8a remediation + design-brain rebuild, OR return to SGS website work?
+- **Multi-advisor research pattern is now validated.** Sonnet adversarial peer-review (with file-grep + Anthropic skills repo benchmarks) caught 3 breaking Claude-internal assumptions Gemini-Pro and Cerebras couldn't see. ALWAYS dispatch a Sonnet adversarial reviewer for high-stakes architecture decisions, alongside Gemini-Pro for authority research and Cerebras (if available) for sceptic angle.
+- **Ethics-gate-as-built is functional** but slated for slim-down. Don't invest more time hardening it; the CDP rearchitecture replaces most of it.
+- **Design-brain spec is ready for execution but Bean may want a session devoted to it** rather than mixing with Phase 8a remediation. Bean's preference: research-then-recommend, NOT multiple-choice menus on technical implementation details.
+- **Cross-project commit needed:** the 4 untracked plan files in `small-giants-wp/docs/plans/` should be committed in that project (not in this one).
 
 ## Next Session Prompt
 
 ~~~
-Read CONVERSATION-HANDOFF.md and CLAUDE.md first, then the master spec at `C:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-21-toolset-spec-from-sgs-studio-session.md` for full architectural context. This session executes the BULK SKILL UPDATES — all architectural decisions are locked.
+Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context, then work through these priorities:
 
 ## Skills to Invoke
 
 | Skill | When to use |
 |-------|-------------|
-| `/brainstorming` | When a remediation surfaces a micro-decision not already locked in the master spec |
-| `/gap-analysis` | ONLY for non-skill/non-pipeline targets (website/design/research/plan/custom) — skill + pipeline target types migrate to /skill-optimiser + /pipeline-optimiser this session |
-| `/lifecycle` | MANDATORY for every skill edit — start pipeline, run skillscore, run skill-optimiser DESIGN-mode (was gap-analysis), fix, ship |
-| `/research` | Only if a remediation surfaces a new evidence need. Most research completed last session |
-| `/strategic-plan` | Use at session start to lock the phase order + dispatch map |
-| `/skillscore` | BEFORE every rubric grading on every skill edit — per correction ledger (non-negotiable) |
-| `/skill-optimiser` | DESIGN-mode after skillscore passes (canonical for skill target type once this session ships Task 1) |
-| `/delegate` | Before every Agent dispatch — pick model per shared routing table |
-| `/batch-gap-analysis` | For parallel rubric grading across the 7-skill bulk |
-| `/handoff` | End-of-session continuity |
+| `/brainstorming` | Architectural micro-decisions during gap remediation; design-brain rebuild design questions |
+| `/gap-analysis` | Re-grade after gap fixes — confirm regressions don't drop ≥4 criteria below 3.5 |
+| `/lifecycle` | MANDATORY before any skill/agent/pipeline edit (lifecycle-gate.py is currently disabled — re-enable carefully) |
+| `/research` | If a fix surfaces unexpected evidence need; auto-routes to right tier |
+| `/strategic-plan` | Re-plan if Bean changes scope direction |
+| `/phase-planner` | FIRST INVOCATION on Task 2 — sequence the 27 gap fixes across 3 artifacts safely |
+| `/skillscore` | After every SKILL.md edit (auto-fires via PostToolUse hook) |
+| `/dispatching-parallel-agents` | If gap remediation can be parallelised |
+| `/delegate` | Before every Agent dispatch — pick model |
 
 ## MCP Servers & Tools
 
 | Tool | What to use it for |
 |------|-------------------|
 | `mcp__ide__getDiagnostics` | Pre-commit Problems-panel check |
-| SQLite direct: `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/data/blub.db` | Knowledge + correction writes if dashboard API down |
-| `python ~/.claude/hooks/search.py "query"` | Unified web search (fallback if research needed mid-task) |
-| `playwright` MCP | Only if verifying a UI-observable side-effect of a skill edit |
-| `gemini-pro` CLI via `/gemini-pro` skill | For any Gemini Pro dispatch — handles 503 retry ladder |
+| `python ~/.claude/hooks/local-search.py "query"` | Internal records search before any new build |
+| `python ~/.claude/hooks/search.py "query"` | Unified web search for fix research |
+| SQLite direct: `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/data/blub.db` | If dashboard API down |
 
 ## Agents to Delegate To
 
 | Agent | When |
 |-------|------|
-| Sonnet subagents (via Agent tool `model: "sonnet"`) | Execute per-skill remediation briefs — architectural decisions done, subagent writes the edit |
-| Haiku subagents (via Agent tool `model: "haiku"`) | Dead-ref cleanups, targeted section rewrites with precise briefs |
-| `wp-sgs-developer` | If any SGS WordPress plugin/theme edit surfaces (shouldn't this session) |
-| `research-pipeline` | Only if a phase surfaces a new research need |
+| Sonnet subagent (`model: "sonnet"`) | Most gap remediation, particularly B-priority structural fixes |
+| Sonnet adversarial peer-review | MANDATORY before locking any architectural change (caught 3 breaking assumptions this session) |
+| Haiku subagent (`model: "haiku"`) | Tight section rewrites, dead-ref cleanups, cosmetic fixes |
+| Opus | Reserve for Phase 10 regrade only |
 
----
+## Task 1: Apply 2 cosmetic fixes to design-brain spec
+File: `c:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-24-design-brain-architecture.md`. Change line 81 "3-4 reviewers" → "4 reviewers". Expand on first use: NN/g → "Nielsen Norman Group (NN/g)" line 36; LCP → "Largest Contentful Paint (LCP)" line 133; MCP → "Model Context Protocol (MCP)" line 42; OKLCH → "OKLCH (modern colour-space format)" line 512. ~5 min.
 
-## Phased execution plan (ordered for dependency + efficiency + delegation)
+## Task 2: `/phase-planner` for Phase 8a remediation
+Sequence the 27 gap fixes across `/interactivity-capture` (9), `/ethics-gate` (8), `/qc` (10). Reports at `~/.claude/gap-analysis/reports/2026-04-24-{interactivity-capture,ethics-gate,qc}.json`. Note: `/ethics-gate` is slated for CDP rearchitecture — defer its B-priority fixes (gap 4 cross-process rate-limit, gap 5 owned-domain allowlist) until the CDP rebuild absorbs them. Output: ordered fix list with effort estimates per artifact, parallelisation map, dependencies.
 
-### Phase 0 — Python-script deterministic batch (~15 min, zero LLM cost, zero risk)
-- **Python script**: 18-file `motivation_meaning` → `values_alignment` find-replace across `.agents/skills/{research-check,research-buddies,research-couple,research-council,deep-research,sgs-email-branding,vps-deploy,vps-deploy/references/manifest-sync-runbook,cloudflare-vps-webhook,subagent-driven-development,dispatching-parallel-agents,gap-analysis,skill-writer,delegate,cloudflare-toolkit,batch-gap-analysis}/SKILL.md` + `gap-analysis/scripts/validator.py` + `shared-references/sgs-skillscore.py`
-- **Python script**: `/sgs-update` run to migrate sgs-db schema — add `animations`, `sections_detected`, `block_opportunities`, `extraction_cache` tables
-- **Python script**: new `~/.claude/hooks/ethics-gate.py` module (robots.txt parse + rate-limit token bucket + UA setter + log to blub.db)
-- **Delegate**: none — deterministic, no judgement needed
+## Task 3: Execute Phase 8a remediation
+Per the phase-planner output. Likely dispatches multiple Sonnet subagents in parallel via `/dispatching-parallel-agents`. After each subagent returns: re-run `/gap-analysis` on touched files to confirm no regression below 3.5 on previously-≥4 criteria. Re-archive evaluation JSONs to `~/.claude/gap-analysis/reports/`.
 
-### Phase 1 — `/gap-analysis` skill fix (Sonnet, ~30 min)
-Remove `skill` + `pipeline` target_types (migrated to optimisers). Update `validator.py`: enforce 6 lenses (not 5), block `grade_cap_applied: null` when any lens = fail, HARD GATE on script-reading per lesson 151. Replace `motivation_meaning` with `values_alignment` verdict function + source-of-truth paths per target type (SGS brand guide / client brand / Bean's rules). Wire new lens into personas evaluator.
-- **Delegate**: Sonnet subagent with master spec Section 6 + values_alignment spec from handoff context
+## Task 4: Build `/qc-inline` skill
+Sequential dependency on `/qc` gaps fixed. Single-skill inline variant of /qc pipeline for main-thread use. Use updated /qc shape as reference. ~45min-1h. Same dispatch pattern as /qc itself.
 
-### Phase 2 — `/skill-optimiser` + `/pipeline-optimiser` DUAL-MODE (Sonnet, ~45 min each, parallelisable)
-Add DESIGN mode to each (pre-hoc rubric: 18-cell matrix + 3-paths + 5-goals + 6-lens + categorical floors). Auto-select: if `dispatch_log` rows exist for target → POST-USE mode, else → DESIGN mode. Mark these as canonical for their target types.
-- **Delegate**: Sonnet subagent × 2 in parallel
-
-### Phase 3 — `/lifecycle` cascade update (Sonnet, ~30 min)
-skillscore → skill-optimiser DESIGN-mode (was gap-analysis). Rename forced-hook marker file: `.pending-gap-analysis-{session_id}.json` → `.pending-skill-optimiser-{session_id}.json`. Pipeline equivalent for pipeline edits. Update SKILL.md to describe new flow.
-- **Delegate**: Sonnet subagent
-
-### Phase 4 — `/build-website` rename (Python script + follow-up edit, ~30 min)
-- **Python script**: rename directory `sgs-site-clone/` → `build-website/`. Find-replace `sgs-site-clone` → `build-website` across 14+ files (other skills that reference it, autopilot table, master spec, HANDOFFs). Update blub.db: keep historical `pipeline_runs.name` as-is; new runs use new name. Rename `~/.claude/pipeline-state/sgs-site-clone/` → `~/.claude/pipeline-state/build-website/`
-- **Delegate**: python script; no LLM
-
-### Phase 5 — `/build-website` remediation (Sonnet, ~90 min)
-Architectural edits to SKILL.md per master spec Section 6: Stage 1 OR → AND-parallel (wp-site-extraction + design-ref + sgs-extraction + publish schema contract); new Stage 1.5 interaction-sweep; Stage 2 hreflang/canonical/JSON-LD/Twitter Card extraction; Stage 4 partial-success skip-and-warn + DOM-heuristic slot-mapping (LLM→dumb swap); Stage 5 ethics-gate dispatch + non-empty-target guard + pre-flight block validation linter + DOM-order content-to-slot (LLM→dumb); Stage 6 dual-threshold replaces single 70% + per-section SSIM failure localisation (LLM→dumb) + k-means OKLCH palette reduction (LLM→dumb); new Stage 7.5 /site-reviewer smoke; new Stage 8 /uimax INGEST; tiered service-model note (Quick/Bespoke/Exploration); REPORT.md template voice rewrite per Practical's draft.
-- **Delegate**: Sonnet subagent with complete Practical+Nerd research output + master spec Section 6 embedded in brief
-
-### Phase 6 — `/sgs-extraction` remediation (Sonnet, ~60 min)
-Every Role A gap + Role B gap + Role C gap per master spec Section 5: html-capture.js Cloudflare retry + Stage 0.5 ethics gate + multi-viewport (375+1440) + Stage 3.5 `/a11y-audit` mandatory dispatch + Stage 0 blub.db 24h freshness cache + scripted manifest (not LLM) + output-dir UUID suffix + JS error boundaries + /uimax INGEST post-success + extraction-manifest.json consumer contract + Stage 6 /clone-patterns chain. Opportunities: OE1 blub.db extraction cache, OE3 axe-core a11y baseline (HIGH showpiece), OE4 /clone-patterns chain. OE2 Cloudflare stealth ladder = parked unless live blocker.
-- **Delegate**: Sonnet subagent
-
-### Phase 7 — Remaining 4 skill remediations (Sonnet, ~30 min each, parallelisable)
-`/animation-harvest` (split Path A standalone + Path B → new /scroll-animation-originator), `/email-html-builder`, `/playwright`, `/sgs-discover` (URL-only + /uimax feedback + block-gap detection + industry matching + mood-board memory). Apply gap-analysis findings from last session JSONs at `C:/Users/Bean/.openclaw/workspace/memory/research/gap-analysis/2026-04-20-154111/`.
-- **Delegate**: 4× Sonnet subagents in parallel
-
-### Phase 8 — NEW skills build (Sonnet, ~45 min each)
-`/interaction-sweep` (Stage 1.5 enabler + standalone skill, Playwright CDP events), `/extract-design-tokens` (L1 enabler — £500 audit product + standalone skill), `/uimax INGEST` command (unblocks Stage 8 + sgs-extraction OE), `/qc` (delegated review panel, Cerebras chunk-loop pattern embedded), `/qc-inline` (main-thread review mirror), shared `/ethics-gate` skill wrapper around the hook module from Phase 0.
-- **Delegate**: Sonnet subagents, one per skill
-
-### Phase 9 — LLM→dumb swap implementation (mixed delegation, ~60 min)
-- **Python**: k-means OKLCH colour quantisation in `design-extract.py` as new default palette-reduction path (keep Vision fallback on low-confidence classifier); DOM-heuristic component detection; positional DOM-order slot-mapping in `wp-pattern-gen.py`; per-section SSIM math module. All deterministic algorithms — no LLM inference at runtime.
-- **Sonnet**: wire the swaps into each skill's SKILL.md (brief edits per skill)
-- **Delegate**: Python scripts for algorithms; Sonnet for skill-level wiring
-
-### Phase 10 — Regrade + handoff (Opus ~30 min + docs)
-- **Opus**: regrade `build-website` + `sgs-extraction` via new `/skill-optimiser` DESIGN-mode (values_alignment lens + 18-cell matrix). Post 2 new eval rows to blub.db. Update master spec Sections 5/6/7/8 to reflect shipped remediations.
-- Rewrite `C:/Users/Bean/Projects/small-giants-wp/HANDOFF-FROM-SGS-STUDIO-2026-04-21.md` — drop Task 2 bundle (now done here), keep consume-toolset + migration-work focus.
-- `/handoff` for this session.
-
-## Research Approach
-Research completed last session + this session. Only new research if a phase surfaces unexpected evidence need — use `/research-check` for quick lookups. Do NOT re-run the research-buddies pixel-perfect analysis (locked).
+## Task 5: Decide on design-brain rebuild start
+Bean's call: dive into Phase 1 (cleanup, ~3-4h, low risk) next session OR park for dedicated session and finish Phase 8a remediation first. Recommend: ask Bean which after Task 3 completes.
 
 ## Guardrails
-- `/skillscore` BEFORE every rubric grading — non-negotiable per correction ledger
-- Re-enable `lifecycle-gate.py` in `~/.claude/settings.json` before the final commit of the session
-- Never run `/build-website` (renamed `/sgs-site-clone`) against production client sites during remediation testing
-- Scratch `.recon-brief-*.md` + `.review-brief-*.md` files are gitignored — safe to leave or delete
-- Captured lesson 151 HARD GATE still applies — read scripts, not just SKILL.md, for any graded skill that wraps scripts
-- blub.db dashboard may be down — write direct to SQLite if API fails
-- Sonnet fine for all phases except Phase 10 regrade (needs Opus judgement on values_alignment lens). Cerebras usable for small targeted edits only — NOT full SKILL.md rewrites (captured lesson from this session).
+- `lifecycle-gate.py` is currently disabled — re-enable carefully when tasks complete
+- `/skillscore` BEFORE every rubric grading
+- Regression guard: pre-fix criterion ≥4 must stay ≥3.5 post-fix, or revert that specific fix
+- Lesson-151 HARD GATE: read scripts before grading skills that wrap them
+- Never run `/build-website` against production client sites during testing
+- 4-reviewer council pattern (Sonnet + Gemini-Pro + Cerebras + Gemini-Vision) is the canonical adversarial-review approach for high-stakes decisions
+- Bean is non-technical: research-then-recommend, NOT multiple-choice menus on technical implementation details
 ~~~
