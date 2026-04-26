@@ -1,121 +1,139 @@
-# Session Handoff — 2026-04-24
+---
+recommended_model: sonnet
+session_date: 2026-04-25 to 2026-04-26
+primary_subproject: ssb (insights-generation redesign)
+---
+
+# Session Handoff — 2026-04-26
 
 ## Completed This Session
 
-1. **Phase 4 — `/build-website` rename complete.** Renamed `sgs-site-clone` → `build-website` across both skill registries (`.agents/skills/`, `.claude/skills/`), pipeline JSON, validator schema, and 27 live files (141 text replacements). Skill registry reload confirms `build-website` discoverable.
-2. **Phase 8a Task 3 — 4 of 6 unblocking skills built + graded.** Dispatched 4 parallel Sonnet subagents. Grades via formal `/gap-analysis` batch (validated, persisted to blub.db ids 11652-11654, archived to `~/.claude/gap-analysis/reports/`):
-   - `/uimax INGEST` command + ui-ux-pro-max INGEST capability — built, skillscore 92% A-, formal eval B (3.65/5)
-   - `/interactivity-capture` skill — built, skillscore 100%, gap-analysis B (3.97/5), 9 gaps logged
-   - `/ethics-gate` skill wrapper — built, skillscore 100%, gap-analysis B (4.08/5), 8 gaps logged
-   - `/qc` pipeline (redefined as test-as-user-first, code-review-as-backup) — built, skillscore 98% A, gap-analysis B (4.06/5), 10 gaps logged
-3. **Phase 8a Task 3 — 2 of 6 not built:** `/qc-inline` deferred until /qc gaps fixed (sequential dependency); `/extract-design-tokens` dropped (overlapped existing `/design-ref`, `/sgs-extraction`, `/wp-site-extraction`).
-4. **Major architectural pivot — `/ethics-gate` slated for CDP rearchitecture.** Brainstorming + multi-advisor research (Gemini-Pro, Cerebras) concluded ethics-gate as built is over-scoped. New plan: build `~/.claude/hooks/cdp-fetch.py` helper (launch-on-demand dedicated Chrome via `--remote-debugging-port=9222`, ephemeral BrowserContext per fetch, baked-in rate-limit + circuit-breaker, audit log retained). Ethics-gate slims to rate-limit + audit log only; drops robots.txt strict-block + UA branding. ~10-12h work scoped.
-5. **Design-brain architecture spec written.** Written to `c:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-24-design-brain-architecture.md` (595 lines, 39 KB). Covers: merging `/superdesign` + `/frontend-design` orphan into `/ui-ux-pro-max` as the central designer-brain; 22-skill consolidation matrix (8 modifiers → CLI modes); 4-reviewer adversarial council with model heterogeneity; 8-pipeline reshaping with before/after; 5-phase implementation plan (~26-38h). Evidence base: Gemini-Pro × 2 + Sonnet adversarial review (caught 3 Claude-internal breaking assumptions) + Gemini-Flash community signals. QC verdict: ship with 2 cosmetic fixes (confidence 89/100).
-6. **Captured to blub.db corrections:** "Bean is non-technical; on architectural/technical decisions, research deeply then RECOMMEND, do not present multiple-choice menus that require technical knowledge to pick between." Triggered after I asked Bean to choose between (i)/(ii)/(iii) implementation patterns mid-spec discussion.
+1. **Insights dashboard redesigned end-to-end.** Replaced the 164-node unreadable Cytoscape soup with three usable views in `blub-dashboard-v2`: cluster grid (heat-coloured cards by dominant category, count-up animations, hot-cluster pulse, fertility bars), All-Lessons table (chevron click-to-expand, copy button, cross-cutting purple shimmer, sortable + filterable), Map view (11 clusters in a circle layout sized by lesson count, edges by shared lessons). New components: `ClusterDashboard.tsx`, `ClusterMap.tsx`. Modified: `src/app/insights/page.tsx`, `globals.css`. Screenshots in `.scratch/insights-screenshots-2026-04-26/`.
+
+2. **`/rebuild-dashboard` slash command shipped.** PowerShell-only flow encoding the windows-nextjs-production-rebuild-friction lesson (kill listener PID via Stop-Process, absolute-path next.CMD build, cmd-wrapped Start-Process for new server, hard-refresh via about:blank → URL). Lives at `~/.claude/commands/rebuild-dashboard.md`.
+
+3. **Lesson captured: `windows-nextjs-production-rebuild-friction` (blub.db id 171).** Documents the four-shell-pitfall production rebuild flow.
+
+4. **Insights-generation redesign spec rewritten v1 → v2.** Original v1 graded C (2.76) by /gap-analysis. v2 closes all 8 A-grade gaps + adds 3 opportunities + merges everything from the original 2026-04-03 Insight Graph product brief / build plan / UX spec / 4 research files. Spec at `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/specs/2026-04-25-insights-generation-redesign.md` (920 lines). Centralised Feature Catalogue carries 84 deferred items so spec is the single roadmap.
+
+5. **5 producer defaults locked.** Cosine 0.78, silent contradiction notifications, `--max-cost £0.05` default-on, stale-synthesis auto-flag, terminal `--review` for Phase 1+2 (dashboard UI in Phase 3). Logged to `subprojects/ssb/decisions.md`.
+
+6. **/qc-inline ship verdict: 94/100.** Found + fixed inline: SQL DDL syntax error (`human_corrected TO TEXT` typo), three jargon terms missing bracket explanations. All 14 QC scenarios pass (or pass-after-fix). Gap-analysis report at `subprojects/ssb/reports/2026-04-25-insights-generation-redesign-gap-analysis.md`.
+
+7. **5 typed edge types finalised** (`connects` / `contradicts` / `depends` / `spawns` / `supersedes`) — added `spawns` (was dropped in v1) and `supersedes` (handles lesson-library rot). Edge catalogue FROZEN; new types require `edge_corrections` accuracy >90% on existing types first.
 
 ## Current State
-- **Branch:** main at 03a56d3
-- **Tests:** no test suite (per project CLAUDE.md)
-- **Build:** n/a (Next.js, not built this session)
-- **Uncommitted changes:** `CONVERSATION-HANDOFF.md` (this file), `NEXT-SESSION-PROMPT.md` (regenerated by Gate 6), `EMBEDDING-SESSION-PROMPT.md` (carried over from prior session, scratch)
-- **Cross-project state:** `small-giants-wp` has 4 untracked plan files (the design-brain spec + 3 from 2026-04-21) and 3 modified files (build-website rename ripples). To be committed in that project separately.
+
+- **Branch:** main at 104f882 (small-giants-studio repo — unrelated to spec work, which lives in OC)
+- **Tests:** no test suite (per project CLAUDE.md); spec passed /qc-inline 94/100
+- **Build:** dashboard verified live at http://localhost:5050/insights (HTTP 200, all three views render)
+- **Uncommitted:** CONVERSATION-HANDOFF.md (this), NEXT-SESSION-PROMPT.md (about to write); screenshots tidied to `.scratch/insights-screenshots-2026-04-26/`
 
 ## Known Issues / Blockers
-- `/qc` pipeline SKILL.md has 2 cosmetic smells caught by inline QC: line 81 says "3-4 reviewers" but rest says "4"; some acronyms unexpanded on first use (NN/g, LCP, MCP, OKLCH). Fix in next session, ~5 min.
-- `lifecycle-gate.py` enforcement is currently disabled (Bean renamed the file mid-session to speed up edits across multiple skills). Re-enable at Phase 10 / Phase 4 of design-brain rebuild.
-- 4 of the 4 dispatched advisor subagents had infrastructure issues this session: Cerebras queue exhausted (no output), Gemini-Flash hit Gemini API 500-loop on web search before recovering. Coverage maintained by other 3 angles.
+
+- The spec is build-ready but no code has been written yet. Layer A is the next session's job.
+- Cluster Map's circle layout is functional but cosmetic-only — when typed edges land in Phase 1, the edge styles will appear (they're already wired in `ClusterMap.tsx` via `EDGE_STYLE`).
+- `/api/decisions` POST is a no-op endpoint (returned 0 bytes) — decisions persist in `subprojects/ssb/decisions.md` instead. Non-blocking.
 
 ## Next Priorities (in order)
-1. **Apply 2 cosmetic fixes to design-brain spec** (line 81 "3-4" → "4"; expand 4 acronyms on first use). 5 min. File: `c:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-24-design-brain-architecture.md`.
-2. **Phase 8a Task 3 remediation work** — implement the 27 logged gaps across `/interactivity-capture` (9), `/ethics-gate` (8), `/qc` (10). Use `/phase-planner` first to sequence safely. Reports at `~/.claude/gap-analysis/reports/2026-04-24-*.json`.
-3. **Build `/qc-inline`** after /qc gap fixes land (sequential dependency, ~1h).
-4. **Decide on design-brain rebuild start.** Spec is 5-phase / ~26-38h. Either dive into Phase 1 next session OR queue for a dedicated design-brain rebuild session and stay focused on Phase 8a remediation. Recommend: Phase 8a remediation first (closes existing scope), then start design-brain Phase 1 cleanup (low risk).
-5. **Task 4 (deferred) — 9-skill optimiser run.** Master spec assigns 9 skills (animation-harvest, cloudflare-vps-webhook, email-html-builder, playwright, sgs-discover, sgs-email-branding, sgs-extraction, build-website, vps-deploy). Existing reports at `C:/Users/Bean/.openclaw/workspace/memory/research/gap-analysis/2026-04-20-154111/`. Dedicated session.
+
+1. **Build Layer A of the insights-generation spec.** 9 units U01-U09, ~90-120 min wall-time, parallelisable into 3-4 branches. Spec is fully self-contained with prompt bodies, schemas, and dashboard diffs. See Next Session Prompt for the orchestration recipe.
+2. **Run the 20-pair regression harness as Layer A's gate.** ≥14/20 correct = ship; below = tune prompts and re-run. Hand-graded pairs go in `fixtures/regression-pairs.json`.
+3. **Verify Cluster Map shows typed edges after Layer A producer ships.** The edge-styling code is already in `ClusterMap.tsx`; just needs the new graph JSON to include `edge.type` data.
 
 ## Files Modified
+
 | File path | What changed |
 |---|---|
-| `C:/Users/Bean/.agents/skills/build-website/` (renamed from sgs-site-clone) | Plus 14+ live consumer files updated for the rename |
-| `C:/Users/Bean/.claude/skills/build-website/` (renamed) | Mirror of above |
-| `C:/Users/Bean/.claude/pipelines/build-website.json` | Renamed + content updated |
-| `C:/Users/Bean/.claude/hooks/validate-pipeline-artifact.py` | Pipeline schema renamed; added `qc` schema block |
-| `C:/Users/Bean/.agents/skills/{interactivity-capture,ethics-gate,qc}/` | New skills (3 dirs created with SKILL.md + scripts + references) |
-| `C:/Users/Bean/.claude/skills/{interactivity-capture,ethics-gate,qc}/` | Mirror of above |
-| `C:/Users/Bean/.claude/pipelines/qc.json` | New pipeline JSON for /qc |
-| `C:/Users/Bean/.claude/commands/uimax.md` | Added `ingest <manifest>` sub-command dispatch |
-| `C:/Users/Bean/.agents/skills/ui-ux-pro-max/SKILL.md` | Stage 5 INGEST block + ingest-extraction.py (778 lines) added |
-| `C:/Users/Bean/.agents/skills/skill-writer/SKILL.md` (both registries) | Fixed A:/.openclaw → C:/Users/Bean/.openclaw paths |
-| `C:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-24-design-brain-architecture.md` | NEW — 595-line architecture spec |
-| `C:/Users/Bean/.openclaw/workspace/memory/research/gap-analysis/2026-04-24-073823/` | Batch dir: 4 evaluation JSONs + waiting-queue.md + report.md + manifest.json |
-| `C:/Users/Bean/.claude/gap-analysis/reports/2026-04-24-{interactivity-capture,ethics-gate,qc}.json` | Archived eval JSONs |
-| `C:/Users/Bean/.claude/gap-analysis/evaluation-history.json` | Appended 3 new entries |
-| `C:/Users/Bean/Projects/small-giants-studio/{CONVERSATION-HANDOFF,NEXT-SESSION-PROMPT}.md` | Rewritten (this handoff) + earlier build-website rename ripples |
+| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/specs/2026-04-25-insights-generation-redesign.md` | Rewritten v1→v2: prompt bodies, schemas, 5 edge types, decisions locked, 84-item feature catalogue. 920 lines |
+| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/reports/2026-04-25-insights-generation-redesign-gap-analysis.md` | New — gap-analysis report grade C 2.76 |
+| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/decisions.md` | +2 entries (spec defaults locked; 5 edge types frozen) |
+| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/state.md` | current_phase + step + last_updated bumped to 2026-04-26 |
+| `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/src/components/ClusterDashboard.tsx` | NEW — three-view cluster intelligence dashboard |
+| `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/src/components/ClusterMap.tsx` | NEW — Cytoscape circle layout, edge styling per type |
+| `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/src/app/insights/page.tsx` | Detect cluster JSON + auto-load + render ClusterDashboard |
+| `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/src/app/globals.css` | Cluster card animations, hot-cluster pulse, cross-cutting shimmer, ambient drift |
+| `C:/Users/Bean/.claude/commands/rebuild-dashboard.md` | NEW — PowerShell-only Windows production rebuild flow |
+| `C:/Users/Bean/.claude/gap-analysis/reports/2026-04-25-insights-generation-redesign.md` | NEW — global mirror of gap-analysis report |
+| `C:/Users/Bean/.claude/gap-analysis/evaluation-history.json` | +1 entry (id 78) |
 
 ## Notes for Next Session
-- **Plan divergence flag:** `current_mission.md` next-up is SGS website Phase 1 Foundation. This session pivoted entirely to toolset/architecture orchestration. Decision needed: continue Phase 8a remediation + design-brain rebuild, OR return to SGS website work?
-- **Multi-advisor research pattern is now validated.** Sonnet adversarial peer-review (with file-grep + Anthropic skills repo benchmarks) caught 3 breaking Claude-internal assumptions Gemini-Pro and Cerebras couldn't see. ALWAYS dispatch a Sonnet adversarial reviewer for high-stakes architecture decisions, alongside Gemini-Pro for authority research and Cerebras (if available) for sceptic angle.
-- **Ethics-gate-as-built is functional** but slated for slim-down. Don't invest more time hardening it; the CDP rearchitecture replaces most of it.
-- **Design-brain spec is ready for execution but Bean may want a session devoted to it** rather than mixing with Phase 8a remediation. Bean's preference: research-then-recommend, NOT multiple-choice menus on technical implementation details.
-- **Cross-project commit needed:** the 4 untracked plan files in `small-giants-wp/docs/plans/` should be committed in that project (not in this one).
+
+- **Spec is the source of truth.** Do not re-research; do not re-design. The 5 producer defaults are locked. If a build constraint surfaces that genuinely contradicts a default, ask Bean — don't override.
+- **Free-model routing.** Use `/delegate` per unit, NOT one model for the whole build. Most units are Cerebras- or Gemini Flash-shaped; Sonnet is reserved for U03 (producer skeleton) and U04 (LLM classification — load-bearing). See Next Session Prompt for the per-unit map.
+- **Mock-first architecture.** Build `fixtures/mock-graph-output.json` BEFORE the producer code. Dashboard edits (U06) build against the mock, not the live producer. This decouples and parallelises the work.
+- **The 3 prompts are already specified verbatim in the spec** (CLASSIFICATION, DIRECTION, SYNTHESIS). Do not paraphrase them — copy them character-for-character into the Python script.
+- **DO NOT re-run /gap-analysis or /qc on the spec — it's locked.** Run /qc on the BUILD output (the producer + dashboard changes), not the spec.
 
 ## Next Session Prompt
 
 ~~~
-Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context, then work through these priorities:
+Read CONVERSATION-HANDOFF.md and the spec at C:/Users/Bean/.openclaw/.claude/subprojects/ssb/specs/2026-04-25-insights-generation-redesign.md before any action. Spec is locked, all 5 open questions decided. Layer A build only — do not re-design.
 
 ## Skills to Invoke
 
 | Skill | When to use |
 |-------|-------------|
-| `/brainstorming` | Architectural micro-decisions during gap remediation; design-brain rebuild design questions |
-| `/gap-analysis` | Re-grade after gap fixes — confirm regressions don't drop ≥4 criteria below 3.5 |
-| `/lifecycle` | MANDATORY before any skill/agent/pipeline edit (lifecycle-gate.py is currently disabled — re-enable carefully) |
-| `/research` | If a fix surfaces unexpected evidence need; auto-routes to right tier |
-| `/strategic-plan` | Re-plan if Bean changes scope direction |
-| `/phase-planner` | FIRST INVOCATION on Task 2 — sequence the 27 gap fixes across 3 artifacts safely |
-| `/skillscore` | After every SKILL.md edit (auto-fires via PostToolUse hook) |
-| `/dispatching-parallel-agents` | If gap remediation can be parallelised |
-| `/delegate` | Before every Agent dispatch — pick model |
+| `/brainstorming` | Only if a build-time constraint forces a real architectural call (rare — spec is locked) |
+| `/gap-analysis` | After Layer A ships — grade the BUILD output, not the spec |
+| `/lifecycle` | If editing any skill / agent / pipeline file (not expected for this build) |
+| `/research` | Only if a library API change surfaces (e.g. Gemini SDK signature drift) |
+| `/strategic-plan` | Skip — phasing already done in the spec |
+| `/subagent-driven-development` | PRIMARY ORCHESTRATOR — runs Layer A units across parallel cold subagents |
+| `/dispatching-parallel-agents` | When fan-out exceeds 2 branches |
+| `/subagent-prompt` | For crafting cold subagent prompts (use spec sections as paste-blocks) |
+| `/delegate` | BEFORE EVERY agent dispatch — picks Cerebras / Flash / Sonnet per unit |
+| `/qc` | Final verification gate after all units ship |
+| `/rebuild-dashboard` | When dashboard edits land — encodes the Windows production rebuild flow |
 
 ## MCP Servers & Tools
 
 | Tool | What to use it for |
 |------|-------------------|
-| `mcp__ide__getDiagnostics` | Pre-commit Problems-panel check |
-| `python ~/.claude/hooks/local-search.py "query"` | Internal records search before any new build |
-| `python ~/.claude/hooks/search.py "query"` | Unified web search for fix research |
-| SQLite direct: `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/data/blub.db` | If dashboard API down |
+| Playwright (browser_navigate / browser_take_screenshot) | Verify dashboard `/insights` after rebuild — typed edges visible, filter panel works |
+| Direct sqlite3 on `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/data/blub.db` | Run U01 migration, verify schemas, query for fertility recompute |
+| `python ~/.claude/hooks/local-search.py` | Internal lookup before any new build (avoid re-inventing) |
 
-## Agents to Delegate To
+## Agents to Delegate To (free-model routing per unit)
 
-| Agent | When |
-|-------|------|
-| Sonnet subagent (`model: "sonnet"`) | Most gap remediation, particularly B-priority structural fixes |
-| Sonnet adversarial peer-review | MANDATORY before locking any architectural change (caught 3 breaking assumptions this session) |
-| Haiku subagent (`model: "haiku"`) | Tight section rewrites, dead-ref cleanups, cosmetic fixes |
-| Opus | Reserve for Phase 10 regrade only |
+| Unit | Model | Rationale |
+|------|-------|-----------|
+| U01 migration SQL | **Cerebras** (zero cost) | Mechanical SQL, schema already in spec |
+| U02 mock fixture | **Cerebras** | Copy JSON shape from spec into a file |
+| U03 producer skeleton | **Sonnet** | Multi-file Python with arg-parsing + DB integration |
+| U04 LLM classification loop + 3 prompts | **Sonnet** | Load-bearing; prompts already specified, but loop logic + retry + checkpointing is non-trivial |
+| U05 fertility recompute + JSON writer | **Cerebras** | Formula in spec; mechanical |
+| U06 dashboard TSX edits | **Sonnet** | Concrete diffs in spec but TSX needs care |
+| U07 APScheduler stub | **Cerebras** | YAML flow file + flag-disabled config |
+| U08 `--review` terminal | **Sonnet** | UX-ish but small surface |
+| U09 regression harness | **Cerebras** (Bean hand-grades 20 pairs separately) | Test runner is mechanical |
 
-## Task 1: Apply 2 cosmetic fixes to design-brain spec
-File: `c:/Users/Bean/Projects/small-giants-wp/docs/plans/2026-04-24-design-brain-architecture.md`. Change line 81 "3-4 reviewers" → "4 reviewers". Expand on first use: NN/g → "Nielsen Norman Group (NN/g)" line 36; LCP → "Largest Contentful Paint (LCP)" line 133; MCP → "Model Context Protocol (MCP)" line 42; OKLCH → "OKLCH (modern colour-space format)" line 512. ~5 min.
+## Research Approach
+None required — spec is build-ready. If a library API surprise surfaces, use `/research-check` for a 5-minute focused lookup.
 
-## Task 2: `/phase-planner` for Phase 8a remediation
-Sequence the 27 gap fixes across `/interactivity-capture` (9), `/ethics-gate` (8), `/qc` (10). Reports at `~/.claude/gap-analysis/reports/2026-04-24-{interactivity-capture,ethics-gate,qc}.json`. Note: `/ethics-gate` is slated for CDP rearchitecture — defer its B-priority fixes (gap 4 cross-process rate-limit, gap 5 owned-domain allowlist) until the CDP rebuild absorbs them. Output: ordered fix list with effort estimates per artifact, parallelisation map, dependencies.
+---
 
-## Task 3: Execute Phase 8a remediation
-Per the phase-planner output. Likely dispatches multiple Sonnet subagents in parallel via `/dispatching-parallel-agents`. After each subagent returns: re-run `/gap-analysis` on touched files to confirm no regression below 3.5 on previously-≥4 criteria. Re-archive evaluation JSONs to `~/.claude/gap-analysis/reports/`.
+## Task 1: Run /subagent-driven-development to orchestrate Layer A
+Open the spec, read §Phasing → Layer A. Use /subagent-driven-development to plan parallel branches:
+- Branch A (Cerebras parallel): U01 + U02 + U05 + U07 + U09
+- Branch B (Sonnet sequential): U03 → U04 → U08
+- Branch C (Sonnet, after U02 + U06 spec confirmed): U06
 
-## Task 4: Build `/qc-inline` skill
-Sequential dependency on `/qc` gaps fixed. Single-skill inline variant of /qc pipeline for main-thread use. Use updated /qc shape as reference. ~45min-1h. Same dispatch pattern as /qc itself.
+Use /subagent-prompt to craft each cold subagent's prompt (paste relevant spec sections; they have no conversation context). Use /delegate before each Agent dispatch and announce the routing decision.
 
-## Task 5: Decide on design-brain rebuild start
-Bean's call: dive into Phase 1 (cleanup, ~3-4h, low risk) next session OR park for dedicated session and finish Phase 8a remediation first. Recommend: ask Bean which after Task 3 completes.
+## Task 2: Run the 20-pair regression harness
+After U04 + U09 land, ask Bean to hand-grade 20 pairs (paste the pairs to him; he marks each with the expected edge type). Pipe through `python insights_producer.py --dry-run --regression`. Pass gate: ≥14/20 correct. Fail: tune prompts based on miss patterns + re-run.
+
+## Task 3: /qc verification + dashboard /rebuild-dashboard
+Run /qc on the producer + dashboard changes (NOT the spec — spec is locked). Then /rebuild-dashboard. Screenshot http://localhost:5050/insights showing typed edges in the Map view + cross-cutting shimmer in the All-Lessons table when contradicts edges exist.
 
 ## Guardrails
-- `lifecycle-gate.py` is currently disabled — re-enable carefully when tasks complete
-- `/skillscore` BEFORE every rubric grading
-- Regression guard: pre-fix criterion ≥4 must stay ≥3.5 post-fix, or revert that specific fix
-- Lesson-151 HARD GATE: read scripts before grading skills that wrap them
-- Never run `/build-website` against production client sites during testing
-- 4-reviewer council pattern (Sonnet + Gemini-Pro + Cerebras + Gemini-Vision) is the canonical adversarial-review approach for high-stakes decisions
-- Bean is non-technical: research-then-recommend, NOT multiple-choice menus on technical implementation details
+
+- Spec is LOCKED — do not re-research, do not re-design, do not change the 5 producer defaults without asking Bean
+- Mock-first — `fixtures/mock-graph-output.json` ships BEFORE the producer
+- Dashboard edits build against the mock, not the live producer (decouples parallel branches)
+- The 3 LLM prompts in the spec are character-for-character contracts — copy them, do not paraphrase
+- No /gap-analysis on the spec — only on the build output
+- /delegate per unit before every Agent dispatch
+- The 20-pair regression harness is the ship gate. Below 14/20 → tune + retry. Do not lower the gate
 ~~~
