@@ -2,10 +2,10 @@ You are a senior AI/ML engineer specialising in retrieval-augmented systems, typ
 
 ## Where You Are
 
-**Plan:** SSB subproject — insights-generation Layer A → Layer A.5 (meta-analysis layer added on Bean's request 2026-04-27)
-**Current phase:** Layer A built, regression gate FAILED on producer's gemini-2.5-flash classifier (best 10/20). Path to pass: model swap + direction fix.
-**Progress:** 9/9 build units complete. Gate verification done. Bean's blind grades captured at fixtures/regression-pairs.json + fixtures/regression-predictions.json.
-**Next task:** Swap the classifier model + fix spawns direction logic. THEN add Layer A.5 meta-analyses for actual insights.
+**Plan:** SSB subproject — insights-generation Layer A + A.5 SHIPPED (2026-04-27 sprint)
+**Current phase:** Producer running first real-run; Layer A.5 metrics live; lesson corrections applied; Layer B priorities set
+**Progress:** 9/9 Layer A units + Layer A.5 widgets + 4 lesson corrections + classifier+direction fixes all shipped. Gate still ~10/20 — accepted as model-bound limitation.
+**Next task:** Wait for producer real-run to finish writing edges → rebuild dashboard → Map view populates → wire Layer A.5 widgets to dashboard UI.
 
 ---
 
@@ -50,7 +50,25 @@ If the producer fails the gate and prompt-tuning is needed:
 
 ---
 
-## Bean's grading results (already computed, persisted in fixtures/regression-predictions.json)
+## What was shipped on 2026-04-27 (the "do it now" sprint)
+
+| Task | Status | Notes |
+|--|--|--|
+| 1. Classifier swap to gemini-3-flash-preview + system_instruction split + spawns direction fix | DONE | Gate still ~10/20, model-bound |
+| 2. Producer real-run | RUNNING IN BACKGROUND | First real run, heavy 503 rate-limiting. 12 edges written so far. Resume with `--resume` if interrupted. |
+| 3. Layer A.5 SQL widgets | DONE | `insights_metrics.py` ships 11 widgets. JSON at `workspace/memory/insights-metrics.json`. |
+| 4. Lesson corrections | DONE | 134 rewritten (alignment, not motivation), 133 rewritten (mechanical vs reasoning split), 79 supersedes-by-66, 140-142 archived. |
+| 5. Layer B priority reorder | DONE | Cluster synthesis + tension surfacing top priority. Original U10-U14 deferred. |
+
+## Outstanding work for THIS session
+
+1. **Wait for producer real-run to finish** (or kill + restart with `--resume`). 75 pairs, currently rate-limited.
+2. **Run `/rebuild-dashboard`** → typed edges populate the cluster JSON → Graphs tab shows the Cytoscape Map with edges.
+3. **Wire Layer A.5 metrics to dashboard UI** — `insights_metrics.py` already produces the JSON. Need a dashboard widget at `/insights/metrics` that reads it. Could be: API route `/api/insights/metrics` that runs the script + returns JSON; React component that renders the 11 widgets. ~30 min.
+4. **Re-run regression on 20 pairs after corrections** — lessons 79/140-142 now stale and 133/134 rewritten, so a few of the 20 pairs may behave differently.
+5. **Layer B kickoff** — cluster-level synthesis prompt (~11 LLM calls, one per cluster) + tension surfacing on contradicts edges.
+
+## Bean's grading results (persisted in fixtures/regression-predictions.json)
 
 | Classifier | Type-only | Type+Direction | Status |
 |--|--|--|--|

@@ -1,8 +1,31 @@
 ---
 recommended_model: sonnet
-session_date: 2026-04-26
-primary_subproject: ssb (insights-generation Layer A build)
+session_date: 2026-04-26 to 2026-04-27
+primary_subproject: ssb (insights-generation Layer A + A.5)
 ---
+
+# Session Handoff — 2026-04-27
+
+## Late-session work (2026-04-27, "do it now" sprint)
+
+11. **Classifier model swapped from `gemini-2.5-flash` to `gemini-3-flash-preview`** + `system_instruction` config refactor (proper Gemini API role separation). Result vs Bean's grades: still 9-10/20 type-only, ~7/20 strict — same ballpark as 2.5-flash. The Gemini Flash CLI's earlier 15/20 was an artefact of CLI-internal scaffolding, not directly replicable via API. Honest call: stop chasing the gate via prompt tuning, lock in improvements, focus value-add on Layer A.5.
+
+12. **Spawns direction logic fixed.** Code now uses different rules for spawns vs supersedes:
+    - supersedes: newer is the source (replaces older) — natural reading
+    - spawns: older is the source (origin that produced newer) — matches Bean's natural reading
+    The previous code conflated both as "newer is source" which inverted spawns notation.
+
+13. **Layer A.5 shipped — `insights_metrics.py`** (~340 lines, no LLM cost). Pure SQL on `lesson_edges` + `learning` + `lesson_embeddings`. 11 widgets to `workspace/memory/insights-metrics.json`: library_health, edge_type_distribution, contradiction_heatmap, fertility_leaderboard (top-10), lonely_lessons, duplicate_candidates (cosine ≥0.95), captured_twice_pattern, stale_chains (recursive supersedes CTE), recurring_incidents (recurrence ≥3), category_density_over_time, cross_cutting_bridges. First run already surfaced: lesson-16 has recurrence=21 (rule isn't being enforced), lesson-68 just says "audit" (broken entry), 25 captured-twice anti-pattern pairs detected.
+
+14. **Lesson corrections from Bean's grading session applied:**
+    - **Lesson 134** rewritten: 6th lens is **end-goal alignment + brand alignment**, not motivation/purpose. Original framing inverted cause and effect.
+    - **Lesson 133** rewritten: multi-stage handoffs CAN auto-run on `go` — the actual rule is reasoning/strategic tasks need human input regardless of trigger.
+    - **Lesson 79** marked `status='stale'`, supersedes edge (66→79) added to lesson_edges with `classified_by='human-review'`.
+    - **Lessons 140, 141, 142** moved to `category='gap_correction_bookkeeping'` + `status='stale'` so they no longer pollute the producer's input.
+
+15. **Layer B priority order updated.** New top-priority units bumped above original U10-U14: cluster-level synthesis (one LLM call per dense cluster proposing higher-order theme rule) + tension surfacing (Decide mode from original Insight Graph vision). Original U10-U14 deferred to Layer B.5/B.6.
+
+16. **Producer real-run started** (`--max-pairs 75 --max-cost £0.05`). Heavy 503 rate limiting on gemini-3-flash-preview. 12 typed edges written so far (8 connects, 3 spawns, 1 human-review supersedes). Will continue in background; next session can re-run with `--resume` if interrupted.
 
 # Session Handoff — 2026-04-26
 
