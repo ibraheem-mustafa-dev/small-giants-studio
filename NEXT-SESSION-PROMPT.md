@@ -1,11 +1,11 @@
-You are a senior AI/ML engineer specialising in retrieval-augmented systems and prompt engineering for typed knowledge graphs. Your immediate job is verifying the insights-generation producer hits its regression gate (≥14/20) and tuning the CLASSIFICATION prompt if it doesn't.
+You are a senior AI/ML engineer specialising in retrieval-augmented systems, typed knowledge graph analysis, and dashboard data visualisation. Your immediate job is fixing the producer to pass the regression gate, then layering meta-analysis on top so the producer is *insightful* not just a graph builder.
 
 ## Where You Are
 
-**Plan:** SSB subproject — insights-generation Layer A (parallel to Phase 3 planning-upgrade)
-**Current phase:** Layer A built, awaiting regression gate result
-**Progress:** 9/9 build units complete (U01-U09). Gate verification = next step.
-**Next task:** Compute Bean's blind grades vs Producer predictions; gate ≥14/20.
+**Plan:** SSB subproject — insights-generation Layer A → Layer A.5 (meta-analysis layer added on Bean's request 2026-04-27)
+**Current phase:** Layer A built, regression gate FAILED on producer's gemini-2.5-flash classifier (best 10/20). Path to pass: model swap + direction fix.
+**Progress:** 9/9 build units complete. Gate verification done. Bean's blind grades captured at fixtures/regression-pairs.json + fixtures/regression-predictions.json.
+**Next task:** Swap the classifier model + fix spawns direction logic. THEN add Layer A.5 meta-analyses for actual insights.
 
 ---
 
@@ -50,25 +50,91 @@ If the producer fails the gate and prompt-tuning is needed:
 
 ---
 
-## Task 1: Pick the winning prompt variant against Bean's blind grades
+## Bean's grading results (already computed, persisted in fixtures/regression-predictions.json)
 
-`fixtures/regression-predictions.json` contains FOUR producer prediction sets:
-- `producer` — v1 spec-canonical (currently shipping)
-- `producer_tuned` — v2 (CoT + 2 worked examples)
-- `producer_tuned_v3` — v3 (CoT + adjusted)
-- `producer_tuned_v4` — v4 (CoT + 3 examples + strict supersedes constraint)
+| Classifier | Type-only | Type+Direction | Status |
+|--|--|--|--|
+| Producer v1 (gemini-2.5-flash, spec-canonical) | 9/20 | 9/20 | FAIL |
+| Producer v2-v4 (tuned variants) | 9-10/20 | 8-10/20 | FAIL |
+| **Gemini Flash CLI (gemini-3-flash-preview)** | **15/20** | **13/20** | **TYPE PASS** |
+| Claude sonnet | 11/20 | 9/20 | FAIL |
+| Cerebras (Qwen) | 8/20 | 8/20 | FAIL |
 
-Read Bean's grades from `fixtures/regression-pairs.json` (`expected` field) OR chat history (Telegram). Compute accuracy of each variant against Bean's grades (type-only AND type+direction). The variant with the highest agreement WINS.
+**Conclusion: the fix is the MODEL, not the prompt.** No prompt variant passed on `gemini-2.5-flash`. `gemini-3-flash-preview` (used by the Gemini CLI) hits 15/20 type-only — clears the gate.
 
-If the winner is NOT v1, restore that variant's prompt body in `insights_producer.py` (commit history shows v2-v4 prompts).
+## Task 1: Swap classifier model + fix spawns direction logic
 
-Pass gate: winning variant ≥14/20. Below = the issue isn't prompt tuning — it's lesson library structure (see Tasks 2-3).
+**1a. Swap model.** In `insights_producer.py`:
+```python
+CLASSIFICATION_MODEL = "gemini-3-flash-preview"   # was: gemini-2.5-flash
+```
+Verify the model name is callable via `google.genai` API (it may need `models/gemini-3-flash-preview` prefix). If not directly available, fall back to `gemini-2.5-pro` for classification.
 
-## Task 2: Clean lesson library pollution
+**1b. Fix spawns direction notation bug.** Current code generates `A→B` when A is *newer* — but for spawns, natural reading is `A→B = A spawned B = A is the origin (older)`. Inverted from natural reading. Code is at the direction-prediction block in `main()`:
+```python
+if edge_type == 'spawns':
+    # spawns: older lesson is the origin, newer is the spawn
+    prediction = f"spawns A->B" if a['created_at'] < b['created_at'] else f"spawns B->A"
+elif edge_type == 'supersedes':
+    # supersedes: newer replaces older (natural reading already correct)
+    prediction = f"supersedes A->B" if a['created_at'] > b['created_at'] else f"supersedes B->A"
+```
+This fix alone takes Bean's strict gate from 13/20 to ~15/20 on Gemini-3-Flash.
 
-Three entries (lessons 140, 141, 142) have format `Original grade: n/a / Corrected grade: n/a / Reasoning: ...` — they're gap-analysis bookkeeping, not retrievable rules. Move them out of the `learning` table into a separate `gap_corrections` log. Re-run the producer; pair count above 0.75 should drop slightly and the producer's signal-to-noise ratio improves.
+**1c. Re-run regression on the 20 fixed pairs.** Verify ≥14/20 strict. If still below, surface miss patterns and ask Bean.
 
-Lesson 79 is a 2-line reference to lesson 66 (`Source: negotiated-decisions (2026-04-18)`). Mark as `supersedes` target by 66 (or merge them).
+## Task 2: Run producer for real (write typed edges, populate the Map view)
+
+So far ONLY `--dry-run` has been used. The cluster JSON at `workspace/memory/insight-graph-lessons-clusters.json` is from 2026-04-25 and has 576 `member-of` edges, ZERO typed edges. The dashboard Map view shows clusters but no typed lesson-to-lesson edges.
+
+Run the producer fresh:
+```bash
+python C:/Users/Bean/.agents/skills/capture-lesson/scripts/insights_producer.py --max-cost 0.05
+```
+Verify:
+- `lesson_edges` table populated with typed edges
+- New cluster JSON written
+- Bean opens http://localhost:5050/insights → **Graphs tab** → typed edges render in the Cluster Map (colours per type, dashed for supersedes, etc.)
+
+Run `/rebuild-dashboard` if the bundle is stale.
+
+## Task 3: Build Layer A.5 — meta-analysis dashboard widgets
+
+This is the **value-add layer** Bean asked for on 2026-04-27. Pure SQL queries against `lesson_edges` + `learning` tables, no LLM cost. Each becomes a small widget on `/insights`.
+
+| Widget | SQL shape | What it tells Bean |
+|--|--|--|
+| **Contradiction heatmap by category** | `GROUP BY category, COUNT(WHERE edge_type='contradicts')` | Where understanding is evolving |
+| **Lesson library health** | counts of: connected, isolated (0 edges), stale, synthesis-derived | Corpus health metrics |
+| **Top-10 fertility leaderboard** | `ORDER BY (edge_count + recurrence/5) DESC LIMIT 10` | Spine of the knowledge base |
+| **Lonely lessons** | lessons with 0 edges + status='active' | Archival candidates / under-explored areas |
+| **Duplicate detector** | pairs with cosine ≥ 0.95 + same direction | Catches lesson 79=66 duplicates automatically |
+| **Captured-twice anti-pattern counter** | count of rule+incident pairs (heuristic: spawns + same-day captures) | Signals to capture-lesson skill that future captures should combine rule + incident in ONE entry |
+| **Stale chain navigator** | `WITH RECURSIVE supersedes_chain` | Surface "current canonical" lesson per topic |
+| **Recurring incident detector** | lessons with `recurrence_count >= 3` | Rule isn't being enforced — needs structural fix |
+| **Category density over time** | `GROUP BY week, category` over `created_at` | Which categories grow each week |
+| **Cross-cutting bridges** | lessons connecting 2+ categories via typed edges | Most valuable rules — surface them |
+
+Build pattern: one Python script (`scripts/insights_metrics.py`) that runs the queries and outputs a compact JSON consumed by a new dashboard widget at `/insights/metrics` route. ~30-60 min total.
+
+## Task 4: Lesson corrections from Bean's grading session
+
+Bean flagged 3 lessons that need updating:
+
+1. **Lesson 134** — captured the wrong 6th lens content. Should be **end-goal alignment + brand alignment**, not motivation/purpose. Rewrite the rule body via `/capture-lesson` with the corrected framing.
+2. **Lesson 133** — wrong conclusion. Multi-stage handoffs CAN auto-run on "go". The real distinction is **reasoning/strategic tasks need human input regardless of trigger**. Rewrite.
+3. **Lessons 79, 140, 141, 142** — corpus pollution. Move 140-142 to a `gap_corrections` table (they're not retrievable rules). Mark 79 as `supersedes` target by 66 (or merge).
+
+## Task 5: Layer B priority decision
+
+After Layer A + A.5 ship and the gate clears, decide Layer B priority order:
+- U10: synthesis review terminal flow expansion
+- U11: active-learning feedback loop (corrections feed back to next run's prompts)
+- U12: dashboard "Contradictions only" toggle + diamond synthesis nodes
+- U13: `--metrics` flag for accuracy delta over time
+- U14: cycle detection for `supersedes` and `depends`
+- **NEW: cluster-level synthesis** (one LLM call per dense cluster proposing a higher-order theme — not just triangles). Bean wants this.
+- **NEW: tension surfacing** (Decide mode — when contradicts edges exist, run "resolve" prompt). The original Insight Graph product vision.
 
 ## Task 3: /qc + /rebuild-dashboard verification
 

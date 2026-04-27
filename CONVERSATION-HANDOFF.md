@@ -27,7 +27,11 @@ primary_subproject: ssb (insights-generation Layer A build)
 
 7. **Producer connection hardened.** Added `busy_timeout=30000` to `get_db_connection()` after a transient SQLite "database is locked" error during reembed (caused by orphan Python process holding the DB).
 
-8. **Prompt-tuning experiments v2-v4 attempted, reverted to v1.** Ran /research-check (default tier, 2 Sonnet agents) on typed-relationship classification best practices. Found c-ICL (EMNLP 2024) + Chain-of-Thought (Wadhwa 2023, ~5pt F1 gain) as the two well-supported patterns. Built three prompt variants (CoT-only, CoT + 2 worked examples, CoT + 3 examples with strict supersedes constraint). Against Claude-proxy ground truth: v1=8/20, v3=9/20, v4=7/20. No consistent improvement; tuning oscillated between over-spawns and over-supersedes. Reverted to v1 (spec-canonical) on the basis that proxy-driven tuning is shooting in the dark. All 4 variant predictions saved in `regression-predictions.json` (`producer / producer_tuned / producer_tuned_v3 / producer_tuned_v4`) for re-evaluation against Bean's blind grades. Research persisted: `workspace/memory/research/2026-04-26-typed-relationship-llm-prompt-patterns.md`, blub.db id 12747.
+8. **Prompt-tuning experiments v2-v4 attempted, reverted to v1.** Ran /research-check (default tier, 2 Sonnet agents) on typed-relationship classification best practices. Found c-ICL (EMNLP 2024) + Chain-of-Thought (Wadhwa 2023, ~5pt F1 gain) as the two well-supported patterns. Built three prompt variants (CoT-only, CoT + 2 worked examples, CoT + 3 examples with strict supersedes constraint). Against Claude-proxy ground truth: v1=8/20, v3=9/20, v4=7/20. No consistent improvement; tuning oscillated between over-spawns and over-supersedes. Reverted to v1 (spec-canonical). All 4 variant predictions saved in `regression-predictions.json` for grading against Bean's actual ground truth. Research persisted: `workspace/memory/research/2026-04-26-typed-relationship-llm-prompt-patterns.md`, blub.db id 12747.
+
+9. **Bean blind-graded 20 pairs (2026-04-26 evening).** All 4 producer variants on gemini-2.5-flash failed the gate (best 10/20). Gemini Flash CLI on `gemini-3-flash-preview` hit 15/20 type-only — passes. Three bugs surfaced: spawns direction notation inverted from natural reading; producer + Claude proxy share spawns B→A bias; date-of-capture ≠ date-of-incident breaks temporal logic. Three lesson corrections flagged: 134's 6th-lens content wrong (should be end-goal + brand alignment, not motivation/purpose), 133's conclusion wrong (auto-go is fine for non-strategic tasks), 79/140/141/142 are corpus pollution.
+
+10. **Layer A.5 scope confirmed (2026-04-27).** Bean asked for deeper analysis beyond pair classification. Agreed plan: 10 cheap SQL meta-analyses on `lesson_edges` + `learning` (contradiction heatmap, fertility leaderboard, lonely-lessons report, duplicate detector, captured-twice anti-pattern counter, stale chain navigator, recurring incident detector, category density over time, cross-cutting bridges, library health metrics). Plus two higher-cost LLM additions for Layer B: cluster-level synthesis (theme rules for whole clusters, not just triangles) + tension surfacing (Decide mode from original Insight Graph vision). Layer A.5 = 30-60 min build, no LLM cost.
 
 ## Current State
 
@@ -42,14 +46,24 @@ primary_subproject: ssb (insights-generation Layer A build)
 - **Gemini Flash CLI is workspace-sandboxed** to `C:/Users/Bean/Projects/small-giants-studio` and `C:/Users/Bean/.gemini/tmp/small-giants-studio`. Cannot read `C:/Users/Bean/.agents/` directly. Workaround: pipe content via stdin OR copy file into project workspace.
 - **Producer's CLASSIFICATION prompt under-detects `spawns`** (per cross-model comparison). On 9 of 11 rule+incident pairs, Producer called `connects` while Claude + Gemini Flash both called `spawns`. Spec needs a worked example.
 
+## Bean's grading result (2026-04-26 evening)
+
+All four producer variants on `gemini-2.5-flash` FAILED the 14/20 gate (best 10/20). But **Gemini Flash CLI (`gemini-3-flash-preview`) hits 15/20 type-only / 13/20 strict** against Bean's grades — the fix is the model, not the prompt.
+
+Bean's grading also surfaced three real bugs:
+- Spawns direction notation inverted from natural reading (code uses `A→B` = A is newer; natural reading = A spawned B = A is origin/older). Strict gate drops from 15→13 because of this.
+- Producer + Claude proxy both biased toward `spawns B→A` (mechanical date-based logic).
+- Date-of-capture ≠ date-of-incident (rule lessons captured before detailed incident write-ups break the temporal logic).
+
+Three lesson corrections also flagged (134's 6th-lens content wrong, 133's conclusion wrong, 79/140/141/142 are corpus pollution).
+
 ## Next Priorities (in order)
 
-1. **Compare Bean's blind grades against ALL FOUR prompt variants in `fixtures/regression-predictions.json`.** Variants: `producer` (v1, current shipping), `producer_tuned` (v2 CoT+2-examples), `producer_tuned_v3` (v3 CoT+adjusted), `producer_tuned_v4` (v4 strict supersedes). The variant with the highest agreement to Bean's grades wins and ships. Pass gate: ≥14/20 on the winner. Below = root cause likely sits in lesson library structure (see issues 2 & 3 below), not the prompt.
-2. **Triage 3 marginal lesson entries.** Lessons 140, 141, 142 are bookkeeping (`Original grade: n/a / Corrected grade: n/a`), not retrievable rules. Recommend moving them out of `learning` into a separate `gap_corrections` log so they stop polluting the producer's input.
-3. **Lesson 79 is a duplicate of lesson 66.** It's a 2-line reference saying `Source: negotiated-decisions (2026-04-18)`. Mark as supersedes target or merge into 66.
-4. **Run /qc on the producer + dashboard build output** (NOT the spec — spec is locked). Use `/qc` skill.
-5. **Run /rebuild-dashboard** to verify typed edges render. Visual check at http://localhost:5050/insights for typed edge colours + filter panel + stale dimming.
-6. **Layer B planning.** Once Layer A passes the gate, decide priority for Layer B units (U10-U14).
+1. **Swap classifier model + fix spawns direction logic.** `CLASSIFICATION_MODEL = "gemini-3-flash-preview"`. Invert spawns date check (older→newer is the origin direction). Re-run on 20 pairs. Expected gate: ≥14/20 strict.
+2. **Run producer for real (NOT dry-run).** Cluster JSON at `workspace/memory/insight-graph-lessons-clusters.json` is still from 2026-04-25 — zero typed edges written. Bean's seeing only the table view because the Map view has nothing typed to draw. After this run + dashboard rebuild, Map view populates.
+3. **Build Layer A.5 — meta-analysis widgets.** New 30-60 min layer Bean requested 2026-04-27. Pure SQL queries on `lesson_edges` + `learning`, no LLM cost. 10 cheap widgets give corpus-level insights (contradiction heatmap, fertility leaderboard, lonely-lessons report, duplicate detector, captured-twice anti-pattern counter, stale chain navigator, etc.). This is what makes Layer A actually *insightful* not just a graph.
+4. **Lesson corrections** — rewrite 134 (6th lens = end-goal + brand alignment) and 133 (auto-go is fine for non-strategic tasks). Move 79/140/141/142 out of `learning` into `gap_corrections` table.
+5. **Layer B priority decision** — cluster-level synthesis (one LLM call per dense cluster) + tension-surfacing (Decide mode from original Insight Graph vision) are the two Bean wants prioritised over the original Layer B units.
 
 ## Files Modified
 
