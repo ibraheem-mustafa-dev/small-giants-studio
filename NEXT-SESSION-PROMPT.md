@@ -1,168 +1,75 @@
-You are a senior AI/ML engineer specialising in retrieval-augmented systems, typed knowledge graph analysis, and dashboard data visualisation. Your immediate job is fixing the producer to pass the regression gate, then layering meta-analysis on top so the producer is *insightful* not just a graph builder.
+You are a senior skill architect specialising in AI coding assistant tooling and meta-skill optimisation infrastructure (DSPy + ProTeGi + TextGrad + Sakana patterns). Continue from yesterday's optimisation-toolkit audit.
+
+Resume command: `CLAUDE_CODE_ENABLE_AWAY_SUMMARY=1 claude -p --resume "small-giants-studio-2026-04-27-ssb-optimisation-toolkit"`
 
 ## Where You Are
 
-**Plan:** SSB subproject — insights-generation Layer A + A.5 SHIPPED (2026-04-27 sprint)
-**Current phase:** Producer running first real-run; Layer A.5 metrics live; lesson corrections applied; Layer B priorities set
-**Progress:** 9/9 Layer A units + Layer A.5 widgets + 4 lesson corrections + classifier+direction fixes all shipped. Gate still ~10/20 — accepted as model-bound limitation.
-**Next task:** Wait for producer real-run to finish writing edges → rebuild dashboard → Map view populates → wire Layer A.5 widgets to dashboard UI.
+**Plan:** SSB subproject — cross-cutting optimisation-toolkit (Phase 4, lean)
+**Current phase:** Audit + spec — 161 SKILL.md files classified, 6 brains identified, DSPy installed, meta-rule QC'd. Spec writing next.
+**Progress:** Audit ~70% (3/5 Pro batches done; 87/161 multi-role classifications complete). Spec 0%. Toolkit build 0%.
+**Next task:** Aggregate remaining Pro batches → spec → first utility.
 
----
-
-Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context. The spec is locked at `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/specs/2026-04-25-insights-generation-redesign.md` — do not re-design. Layer A is built and the producer runs on BGE-M3 (1024 dims).
+Read `CONVERSATION-HANDOFF.md` and the SSB subproject docs (`C:/Users/Bean/.openclaw/.claude/subprojects/ssb/state.md`, `decisions.md`) for full context.
 
 ## Skills to Invoke
 
 | Skill | When to use |
 |-------|-------------|
-| `/brainstorming` | If gate fails and prompt-tuning needs design discussion |
-| `/gap-analysis` | After Layer A passes the regression gate — grade the BUILD output (NOT the spec) |
-| `/lifecycle` | Only if any skill / agent file is edited |
-| `/research` | If tuning needs source comparison |
-| `/strategic-plan` | When planning Layer B units (U10-U14) |
-| `/qc` | Mandatory verification gate after regression gate passes |
-| `/rebuild-dashboard` | Mandatory after producer ships its first real run |
-| `/research-check` | Quick lookups (Ollama version notes, model quirks) |
+| `/brainstorming` | Designing toolkit module shapes + adoption-hook patterns |
+| `/gap-analysis` | Grade the toolkit spec before writing code (>= B required) |
+| `/lifecycle` | If editing any existing skill to add adoption hooks |
+| `/research` / `/research-check` | Quick fact-checks on DSPy MIPROv2 + TextGrad + ProTeGi specifics |
+| `/strategic-plan` | Phase the toolkit build + consumer adoption order |
+| `/qc-inline` | QC the meta-rule revision before committing it |
+| `/skillscore` | Score the toolkit utilities + each adoption hook |
+| `/skill-optimiser` | Use existing 7-step OPTIMISE flow if any utility design needs iteration |
 
 ## MCP Servers & Tools
 
 | Tool | What to use it for |
 |------|-------------------|
-| Playwright (browser_navigate / browser_take_screenshot) | Verify `/insights` after rebuild — typed edges, filter panel, stale dimming |
-| Direct sqlite3 via Python on `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/data/blub.db` | Inspect lesson_edges after first real run |
-| Telegram CLI `python C:/Users/Bean/.claude/hooks/tg-cli.py send` | Send Bean status updates while he is away from PC |
+| Local-search hook (`python ~/.claude/hooks/local-search.py "query"`) | Relevance lookups against blub.db |
+| Direct sqlite3 on `blub.db` | Reading skill_registry, embeddings, lesson_edges, gap-analysis history |
+| Gemini CLI (`gemini -p ... --model gemini-3-pro-preview`) | Re-run Pro batches 3+4 if not complete; run new Pro batches as needed |
+| `python C:/Users/Bean/.claude/hooks/tg-cli.py send` | Telegram updates while Bean is away from PC |
 
 ## Agents to Delegate To
 
 | Agent | When |
 |-------|------|
-| `general-purpose` | Cross-model re-classification on 20 pairs (compact-prompt, after prompt tune) |
-| `research-pipeline` | If deeper research needed for prompt design |
+| `general-purpose` | Aggregating Pro batch results into final multi-role table |
+| `feature-dev:code-architect` | Toolkit utility module designs |
+| `feature-dev:code-reviewer` | Review toolkit utility code before wiring to consumers |
 
 ## Research Approach
 
-If the producer fails the gate and prompt-tuning is needed:
-1. Read Bean's blind grades from `fixtures/regression-pairs.json` (`expected` field) — or chat history if Bean replied directly
-2. Diff against `fixtures/regression-predictions.json` (private file with 4-model predictions)
-3. Categorise misses by edge type — which type does Producer over/under-detect?
-4. For each miss category, add ONE worked example to the few-shot block
-5. Re-run on same 20 pairs and verify accuracy improves
+Past relevant research is at `C:/Users/Bean/.openclaw/workspace/memory/research/2026-04-27-self-improving-llm-classifier-orchestrator.md` + `2026-04-27-orchestrator-worker-llm-frameworks-gh.md`. Both already vetted via /research-buddies — cite directly without re-running. Use `/research-check` only for new edge cases (e.g. DSPy 3.2.0 API specifics if they bite).
 
 ---
 
-## What was shipped on 2026-04-27 (the "do it now" sprint)
+## Task 1: Verify + aggregate Pro multi-role classification
 
-| Task | Status | Notes |
-|--|--|--|
-| 1. Classifier swap to gemini-3-flash-preview + system_instruction split + spawns direction fix | DONE | Gate still ~10/20, model-bound |
-| 2. Producer real-run | RUNNING IN BACKGROUND | First real run, heavy 503 rate-limiting. 12 edges written so far. Resume with `--resume` if interrupted. |
-| 3. Layer A.5 SQL widgets | DONE | `insights_metrics.py` ships 11 widgets. JSON at `workspace/memory/insights-metrics.json`. |
-| 4. Lesson corrections | DONE | 134 rewritten (alignment, not motivation), 133 rewritten (mechanical vs reasoning split), 79 supersedes-by-66, 140-142 archived. |
-| 5. Layer B priority reorder | DONE | Cluster synthesis + tension surfacing top priority. Original U10-U14 deferred. |
-
-## Outstanding work for THIS session
-
-1. **Wait for producer real-run to finish** (or kill + restart with `--resume`). 75 pairs, currently rate-limited.
-2. **Run `/rebuild-dashboard`** → typed edges populate the cluster JSON → Graphs tab shows the Cytoscape Map with edges.
-3. **Wire Layer A.5 metrics to dashboard UI** — `insights_metrics.py` already produces the JSON. Need a dashboard widget at `/insights/metrics` that reads it. Could be: API route `/api/insights/metrics` that runs the script + returns JSON; React component that renders the 11 widgets. ~30 min.
-4. **Re-run regression on 20 pairs after corrections** — lessons 79/140-142 now stale and 133/134 rewritten, so a few of the 20 pairs may behave differently.
-5. **Layer B kickoff** — cluster-level synthesis prompt (~11 LLM calls, one per cluster) + tension surfacing on contradicts edges.
-
-## Bean's grading results (persisted in fixtures/regression-predictions.json)
-
-| Classifier | Type-only | Type+Direction | Status |
-|--|--|--|--|
-| Producer v1 (gemini-2.5-flash, spec-canonical) | 9/20 | 9/20 | FAIL |
-| Producer v2-v4 (tuned variants) | 9-10/20 | 8-10/20 | FAIL |
-| **Gemini Flash CLI (gemini-3-flash-preview)** | **15/20** | **13/20** | **TYPE PASS** |
-| Claude sonnet | 11/20 | 9/20 | FAIL |
-| Cerebras (Qwen) | 8/20 | 8/20 | FAIL |
-
-**Conclusion: the fix is the MODEL, not the prompt.** No prompt variant passed on `gemini-2.5-flash`. `gemini-3-flash-preview` (used by the Gemini CLI) hits 15/20 type-only — clears the gate.
-
-## Task 1: Swap classifier model + fix spawns direction logic
-
-**1a. Swap model.** In `insights_producer.py`:
-```python
-CLASSIFICATION_MODEL = "gemini-3-flash-preview"   # was: gemini-2.5-flash
-```
-Verify the model name is callable via `google.genai` API (it may need `models/gemini-3-flash-preview` prefix). If not directly available, fall back to `gemini-2.5-pro` for classification.
-
-**1b. Fix spawns direction notation bug.** Current code generates `A→B` when A is *newer* — but for spawns, natural reading is `A→B = A spawned B = A is the origin (older)`. Inverted from natural reading. Code is at the direction-prediction block in `main()`:
-```python
-if edge_type == 'spawns':
-    # spawns: older lesson is the origin, newer is the spawn
-    prediction = f"spawns A->B" if a['created_at'] < b['created_at'] else f"spawns B->A"
-elif edge_type == 'supersedes':
-    # supersedes: newer replaces older (natural reading already correct)
-    prediction = f"supersedes A->B" if a['created_at'] > b['created_at'] else f"supersedes B->A"
-```
-This fix alone takes Bean's strict gate from 13/20 to ~15/20 on Gemini-3-Flash.
-
-**1c. Re-run regression on the 20 fixed pairs.** Verify ≥14/20 strict. If still below, surface miss patterns and ask Bean.
-
-## Task 2: Run producer for real (write typed edges, populate the Map view)
-
-So far ONLY `--dry-run` has been used. The cluster JSON at `workspace/memory/insight-graph-lessons-clusters.json` is from 2026-04-25 and has 576 `member-of` edges, ZERO typed edges. The dashboard Map view shows clusters but no typed lesson-to-lesson edges.
-
-Run the producer fresh:
+Check `C:/Users/Bean/Projects/small-giants-studio/.scratch/skill-batches/result-v2-{1..5}.txt`. If batches 3 or 4 still missing pipe-format lines (≥ 25), re-dispatch with same command shape:
 ```bash
-python C:/Users/Bean/.agents/skills/capture-lesson/scripts/insights_producer.py --max-cost 0.05
+cat CLASSIFY_PROMPT_V2.md batch-N.md | gemini -p "Classify every skill in this bundle per the rules. ONE pipe-delimited line per skill, exactly the format specified. No preamble, no summary, no headers." -y --model gemini-3-pro-preview > result-v2-N.txt
 ```
-Verify:
-- `lesson_edges` table populated with typed edges
-- New cluster JSON written
-- Bean opens http://localhost:5050/insights → **Graphs tab** → typed edges render in the Cluster Map (colours per type, dashed for supersedes, etc.)
 
-Run `/rebuild-dashboard` if the bundle is stale.
+Then update `aggregate.py` to handle the new 12-column multi-role pipe format and produce a final table grouped by primary_role with secondary_roles surfaced. Output to `all-skills-classified-v2.json`.
 
-## Task 3: Build Layer A.5 — meta-analysis dashboard widgets
+## Task 2: Re-test /search--local at higher params + finalise meta-rule
 
-This is the **value-add layer** Bean asked for on 2026-04-27. Pure SQL queries against `lesson_edges` + `learning` tables, no LLM cost. Each becomes a small widget on `/insights`.
+Run /search--local across the same 20 qualification queries but at `limit=50` instead of 15. Recompute the miss rate. If still >50% miss vs Flash, the revised meta-rule stands. Otherwise weaken wording. Final rule goes to correction ledger + POST to `/api/corrections` (the API requires a `learning` field — check schema in `skill_registry` or sample existing `learning` rows).
 
-| Widget | SQL shape | What it tells Bean |
-|--|--|--|
-| **Contradiction heatmap by category** | `GROUP BY category, COUNT(WHERE edge_type='contradicts')` | Where understanding is evolving |
-| **Lesson library health** | counts of: connected, isolated (0 edges), stale, synthesis-derived | Corpus health metrics |
-| **Top-10 fertility leaderboard** | `ORDER BY (edge_count + recurrence/5) DESC LIMIT 10` | Spine of the knowledge base |
-| **Lonely lessons** | lessons with 0 edges + status='active' | Archival candidates / under-explored areas |
-| **Duplicate detector** | pairs with cosine ≥ 0.95 + same direction | Catches lesson 79=66 duplicates automatically |
-| **Captured-twice anti-pattern counter** | count of rule+incident pairs (heuristic: spawns + same-day captures) | Signals to capture-lesson skill that future captures should combine rule + incident in ONE entry |
-| **Stale chain navigator** | `WITH RECURSIVE supersedes_chain` | Surface "current canonical" lesson per topic |
-| **Recurring incident detector** | lessons with `recurrence_count >= 3` | Rule isn't being enforced — needs structural fix |
-| **Category density over time** | `GROUP BY week, category` over `created_at` | Which categories grow each week |
-| **Cross-cutting bridges** | lessons connecting 2+ categories via typed edges | Most valuable rules — surface them |
+## Task 3: Spec the optimisation-toolkit + build first utility
 
-Build pattern: one Python script (`scripts/insights_metrics.py`) that runs the queries and outputs a compact JSON consumed by a new dashboard widget at `/insights/metrics` route. ~30-60 min total.
-
-## Task 4: Lesson corrections from Bean's grading session
-
-Bean flagged 3 lessons that need updating:
-
-1. **Lesson 134** — captured the wrong 6th lens content. Should be **end-goal alignment + brand alignment**, not motivation/purpose. Rewrite the rule body via `/capture-lesson` with the corrected framing.
-2. **Lesson 133** — wrong conclusion. Multi-stage handoffs CAN auto-run on "go". The real distinction is **reasoning/strategic tasks need human input regardless of trigger**. Rewrite.
-3. **Lessons 79, 140, 141, 142** — corpus pollution. Move 140-142 to a `gap_corrections` table (they're not retrievable rules). Mark 79 as `supersedes` target by 66 (or merge).
-
-## Task 5: Layer B priority decision
-
-After Layer A + A.5 ship and the gate clears, decide Layer B priority order:
-- U10: synthesis review terminal flow expansion
-- U11: active-learning feedback loop (corrections feed back to next run's prompts)
-- U12: dashboard "Contradictions only" toggle + diamond synthesis nodes
-- U13: `--metrics` flag for accuracy delta over time
-- U14: cycle detection for `supersedes` and `depends`
-- **NEW: cluster-level synthesis** (one LLM call per dense cluster proposing a higher-order theme — not just triangles). Bean wants this.
-- **NEW: tension surfacing** (Decide mode — when contradicts edges exist, run "resolve" prompt). The original Insight Graph product vision.
-
-## Task 3: /qc + /rebuild-dashboard verification
-
-Run `/qc` on the producer + dashboard changes (NOT the spec). Then `/rebuild-dashboard`. Visual check at http://localhost:5050/insights via Playwright: typed edges render with EDGE_STYLE colours, filter panel works, stale lessons dimmed.
+Use `/strategic-plan` to phase the build. Write spec to `~/.openclaw/.claude/subprojects/ssb/specs/2026-04-27-optimisation-toolkit-v1.md`. Then build `dspy_signature.py` (foundational utility) at `~/.agents/skills/shared-references/optimisation-toolkit/dspy_signature.py`. Wire to skill-writer as a `--optimise` flag against a held-out corpus of 5-10 hand-picked "good" SKILL.md files. Validate: skill-writer runs the optimised prompt, output passes `/skillscore` ≥ 90% AND `/gap-analysis` ≥ B. If yes → architecture validated; build the other 5 utilities.
 
 ## Guardrails
 
-- Spec is LOCKED — do not re-design, do not change the 5 producer defaults
-- The 3 LLM prompts are character-for-character contracts — only ADD few-shot examples, never change SYSTEM blocks
-- The 14/20 gate is the ship gate. Below = tune + re-run. Do not lower the gate.
-- Embedding model swap (BGE-M3 → nomic) is a 3-line change — do not revert without explicit reason
-- Bean's grades are ground truth, not cross-model consensus
-- `OLLAMA_FLASH_ATTENTION=false` env var (User scope) is REQUIRED for BGE-M3 to work — if a future session runs on a fresh machine, set it before starting Ollama
+- Do NOT build anything that competes with skill-optimiser, gap-analysis, or lifecycle. The toolkit is shared utilities used BY them.
+- Do NOT label this as a new subproject. SSB Phase 4 (lean), not standalone.
+- Read full SKILL.md content for any audit decisions, never just descriptions (lesson 151).
+- Time estimates: default LOW. Toolkit core is ~4 hrs, per-consumer wire is ~90 min. Do not quote weeks.
+- Pro batches 3+4 may complete on their own — check first before re-dispatching.
+- Symlink at `~/.agents/skills/seo-audit/` is a real Windows SymbolicLink, not a junction. Do not delete or rename without recreating the link.
+- Bean specifically chose Opus this session — adversarial-design + system-level evaluation work warrants it.

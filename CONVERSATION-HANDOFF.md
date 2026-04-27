@@ -1,189 +1,135 @@
 ---
-recommended_model: sonnet
-session_date: 2026-04-26 to 2026-04-27
-primary_subproject: ssb (insights-generation Layer A + A.5)
+recommended_model: opus
+session_date: 2026-04-27
+primary_subproject: ssb (cross-cutting optimisation-toolkit audit)
+session_tag: small-giants-studio-2026-04-27-ssb-optimisation-toolkit
+recommended_model_reason: Bean's call — large system-level decisions and evaluations (toolkit architecture, adoption ordering, gap-analysis grading of design choices). Opus over sonnet for the adversarial-design depth.
 ---
 
-# Session Handoff — 2026-04-27
-
-## Late-session work (2026-04-27, "do it now" sprint)
-
-11. **Classifier model swapped from `gemini-2.5-flash` to `gemini-3-flash-preview`** + `system_instruction` config refactor (proper Gemini API role separation). Result vs Bean's grades: still 9-10/20 type-only, ~7/20 strict — same ballpark as 2.5-flash. The Gemini Flash CLI's earlier 15/20 was an artefact of CLI-internal scaffolding, not directly replicable via API. Honest call: stop chasing the gate via prompt tuning, lock in improvements, focus value-add on Layer A.5.
-
-12. **Spawns direction logic fixed.** Code now uses different rules for spawns vs supersedes:
-    - supersedes: newer is the source (replaces older) — natural reading
-    - spawns: older is the source (origin that produced newer) — matches Bean's natural reading
-    The previous code conflated both as "newer is source" which inverted spawns notation.
-
-13. **Layer A.5 shipped — `insights_metrics.py`** (~340 lines, no LLM cost). Pure SQL on `lesson_edges` + `learning` + `lesson_embeddings`. 11 widgets to `workspace/memory/insights-metrics.json`: library_health, edge_type_distribution, contradiction_heatmap, fertility_leaderboard (top-10), lonely_lessons, duplicate_candidates (cosine ≥0.95), captured_twice_pattern, stale_chains (recursive supersedes CTE), recurring_incidents (recurrence ≥3), category_density_over_time, cross_cutting_bridges. First run already surfaced: lesson-16 has recurrence=21 (rule isn't being enforced), lesson-68 just says "audit" (broken entry), 25 captured-twice anti-pattern pairs detected.
-
-14. **Lesson corrections from Bean's grading session applied:**
-    - **Lesson 134** rewritten: 6th lens is **end-goal alignment + brand alignment**, not motivation/purpose. Original framing inverted cause and effect.
-    - **Lesson 133** rewritten: multi-stage handoffs CAN auto-run on `go` — the actual rule is reasoning/strategic tasks need human input regardless of trigger.
-    - **Lesson 79** marked `status='stale'`, supersedes edge (66→79) added to lesson_edges with `classified_by='human-review'`.
-    - **Lessons 140, 141, 142** moved to `category='gap_correction_bookkeeping'` + `status='stale'` so they no longer pollute the producer's input.
-
-15. **Layer B priority order updated.** New top-priority units bumped above original U10-U14: cluster-level synthesis (one LLM call per dense cluster proposing higher-order theme rule) + tension surfacing (Decide mode from original Insight Graph vision). Original U10-U14 deferred to Layer B.5/B.6.
-
-16. **Producer real-run started** (`--max-pairs 75 --max-cost £0.05`). Heavy 503 rate limiting on gemini-3-flash-preview. 12 typed edges written so far (8 connects, 3 spawns, 1 human-review supersedes). Will continue in background; next session can re-run with `--resume` if interrupted.
-
-# Session Handoff — 2026-04-26
+# Session Handoff — 2026-04-27 (Optimisation Toolkit Audit)
 
 ## Completed This Session
 
-1. **Layer A FULLY BUILT — 9 units U01-U09 shipped via parallel subagent dispatch.** SQL migration (4 new tables: lesson_embeddings, lesson_edges, synthesis_nodes, edge_corrections — `learning.status` already existed). Mock fixture JSON. Producer skeleton (`insights_producer.py`, ~1378 lines, all CLI flags). Edge classification loop with 3 verbatim prompts (CLASSIFICATION/DIRECTION/SYNTHESIS). Fertility recompute + JSON writer. Dashboard edge styles + filter panel + stale dimming. APScheduler stub (disabled). `--review` terminal flow. Regression harness skeleton.
+1. **Architectural reframing of optimisation-toolkit proposal.** Bean clarified SSB IS the global AI setup, not a subset. All proposed consumers live within SSB. The toolkit becomes SSB Phase 4 (lean), not a separate subproject. Build estimate retracted to ~11 hrs total (4 hrs core + ~90 min × 5 consumers wired). Models existing `shared-references/sgs-skillscore.py` precedent: shared utilities, opt-in adoption hooks, NO parallel system.
 
-2. **BGE-M3 NaN bug diagnosed and fixed.** Ollama 0.13.5+ auto-enables flash attention for bert architecture, causing F32→F16 K/V tensor overflow → deterministic NaN in ~30% of embedding outputs. Fixed via `OLLAMA_FLASH_ATTENTION=false` (User-scope env var, persists). Verified 20/20 OK vs 7/20 before. Producer now running on BGE-M3 (1024 dims) at COSINE_THRESHOLD=0.75. Research persisted: `workspace/memory/research/2026-04-26-ollama-bge-m3-nan-bug.md`, blub.db id 12723.
+2. **161 SKILL.md files classified end-to-end.** Two passes: (a) 5 parallel Gemini Flash CLI batches (~70 sec, free) — 161/161 classified, 94 qualifiers + 5 edge cases. (b) 5 parallel Gemini Pro CLI batches with multi-role schema (re-run for accuracy + multi-role flagging). 3/5 Pro batches succeeded (87 skills); batches 3, 4 hit transient API network errors and were re-dispatched. **Identified 6 BRAINS:** ui-ux-pro-max, superdesign, sgs-wp-engine, vercel-react-best-practices, marketing-psychology, marketing-ideas. ui-ux-pro-max already ships the self-improvement pattern (Stage 5 INGEST + 11,964-row DB); others are static reference DBs that gain learning via the toolkit.
 
-3. **/research-check ran on the BGE-M3 bug.** Default-tier dispatch (2 Sonnet agents). Found root cause + workaround + backup path (FlagEmbedding direct PyTorch). Documented in research markdown and decisions.md.
+3. **Duplicate skill cleanup: `seo-audit`.** Standalone (`~/.agents/skills/seo-audit/`) was a 2,978-byte orphan (disabled, user-invocable: false, content stale). Active version is the 8,453-byte nested one at `marketing-skills/references/seo-audit/`. Resolved by: archived standalone to `_archived/2026-04-27-seo-audit-standalone/` with note; created **real Windows SymbolicLink** at standalone path → canonical nested location (Bean wanted standalone path browsable); registry row 34 deleted, row 516 inserted pointing at symlinked path; Junction approach rejected in favour of true SymbolicLink per Bean's preference.
 
-4. **Cosmin similarity recalibrated for BGE-M3.** 75 pairs above 0.75 threshold (vs 115 with nomic, 410 with Gemini). Distribution across bins: 0.75-0.80 (24), 0.80-0.85 (19), 0.85-0.90 (23), 0.90+ (9). Diverse enough for regression testing.
+4. **Meta-rule QC'd via /qc-inline before logging.** Original rule scored 22/100 (HOLD). Three defects: over-prescriptive recipe ("5 batches × 360KB" specific to one execution), absolute "do not read inline" clause, missing lesson-151 caveat (script-wrapping skills need both docs + scripts read). Revised version approved. Stored to be added to correction ledger next session.
 
-5. **20 regression pairs sampled + classified by 4 models.** Sampled 5 pairs from each similarity bin (20 total). All 4 models classified independently:
-    - Producer (gemini-2.5-flash via API): 9 connects / 9 spawns / 1 depends / 1 none
-    - Gemini Flash (gemini-3-flash-preview CLI): 13 spawns / 4 connects / 2 supersedes / 1 none
-    - Claude (sonnet-4-6): 15 spawns / 3 connects / 2 none
-    - Cerebras (qwen-3-235b): 15 connects / 3 spawns / 1 depends / 1 contradicts
-    Consensus: 1 unanimous (pair 6), 10 strong (3/4), 9 split (2/4). Saved to `fixtures/regression-predictions.json` (private).
+5. **DSPy 3.2.0 + sklearn 1.8.0 + litellm installed.** Smoke test passed against local Ollama (llama3.2:3b classification of typed-edge pair → returned `supersedes`, valid edge type). MIPROv2, COPRO, Evaluate harness all importable. Deprecated `google-generativeai` 0.8.6 uninstalled (replaced by `google.genai`).
 
-6. **20-pair blind grading sheet on Telegram.** Sent to Bean (msg 170 + cross-model summary msg 171). File at `subprojects/ssb/2026-04-26-regression-gate-pairs.md` for Bean to fill in via either chat reply or markdown file edit.
+6. **`/search--local` fairness flag captured.** Original /search--local test (20 queries × 15 limit) returned 11/161 skills, claimed 88% miss vs Flash batches. QC flagged this as untested at higher params. Listed as next-session task to re-test with 50 queries × 50 limit before citing publicly.
 
-7. **Producer connection hardened.** Added `busy_timeout=30000` to `get_db_connection()` after a transient SQLite "database is locked" error during reembed (caused by orphan Python process holding the DB).
-
-8. **Prompt-tuning experiments v2-v4 attempted, reverted to v1.** Ran /research-check (default tier, 2 Sonnet agents) on typed-relationship classification best practices. Found c-ICL (EMNLP 2024) + Chain-of-Thought (Wadhwa 2023, ~5pt F1 gain) as the two well-supported patterns. Built three prompt variants (CoT-only, CoT + 2 worked examples, CoT + 3 examples with strict supersedes constraint). Against Claude-proxy ground truth: v1=8/20, v3=9/20, v4=7/20. No consistent improvement; tuning oscillated between over-spawns and over-supersedes. Reverted to v1 (spec-canonical). All 4 variant predictions saved in `regression-predictions.json` for grading against Bean's actual ground truth. Research persisted: `workspace/memory/research/2026-04-26-typed-relationship-llm-prompt-patterns.md`, blub.db id 12747.
-
-9. **Bean blind-graded 20 pairs (2026-04-26 evening).** All 4 producer variants on gemini-2.5-flash failed the gate (best 10/20). Gemini Flash CLI on `gemini-3-flash-preview` hit 15/20 type-only — passes. Three bugs surfaced: spawns direction notation inverted from natural reading; producer + Claude proxy share spawns B→A bias; date-of-capture ≠ date-of-incident breaks temporal logic. Three lesson corrections flagged: 134's 6th-lens content wrong (should be end-goal + brand alignment, not motivation/purpose), 133's conclusion wrong (auto-go is fine for non-strategic tasks), 79/140/141/142 are corpus pollution.
-
-10. **Layer A.5 scope confirmed (2026-04-27).** Bean asked for deeper analysis beyond pair classification. Agreed plan: 10 cheap SQL meta-analyses on `lesson_edges` + `learning` (contradiction heatmap, fertility leaderboard, lonely-lessons report, duplicate detector, captured-twice anti-pattern counter, stale chain navigator, recurring incident detector, category density over time, cross-cutting bridges, library health metrics). Plus two higher-cost LLM additions for Layer B: cluster-level synthesis (theme rules for whole clusters, not just triangles) + tension surfacing (Decide mode from original Insight Graph vision). Layer A.5 = 30-60 min build, no LLM cost.
+7. **WAL checkpoint pattern noted** during the session — `database is locked` errors on dashboard `/api/knowledge` writes after long-running scripts hold WAL. Producer auto-checkpoint already shipped earlier in week. Pattern recurred briefly when registry insert hit a stale lock; resolved with `PRAGMA wal_checkpoint(TRUNCATE)` + retry-with-backoff.
 
 ## Current State
 
-- **Branch:** main at 6c8ed4d (small-giants-studio repo — session work was in OC + .agents, not this repo)
-- **Tests:** no test suite (per project CLAUDE.md); 20-pair regression gate awaiting Bean's blind grades
-- **Build:** producer dry-run ends cleanly: 166 embedded, 75 pairs above 0.75, 5 sample classifications all valid edge types
-- **Uncommitted:** `.gitignore` (added .scratch/ + data/), CONVERSATION-HANDOFF.md (this), NEXT-SESSION-PROMPT.md (about to write)
+- **Branch:** `main` at `8f97d8c`
+- **Tests:** no test suite (per project CLAUDE.md)
+- **Build:** n/a
+- **Uncommitted changes:** none in repo; all work in `.scratch/` (gitignored) and `~/.agents/skills/` + `~/.openclaw/.claude/subprojects/ssb/`
+- **Pro batch state:** 3/5 complete (87 of 161 skills with multi-role data); batches 3, 4 re-dispatched after transient API errors, may have completed by next session start
+- **DSPy state:** installed and smoke-tested; ready for first consumer build
 
 ## Known Issues / Blockers
 
-- **Cerebras can't read large JSON files (>50KB input budget).** Fix: passed compact form (16KB) instead — works. Document this in cerebras skill if not already there.
-- **Gemini Flash CLI is workspace-sandboxed** to `C:/Users/Bean/Projects/small-giants-studio` and `C:/Users/Bean/.gemini/tmp/small-giants-studio`. Cannot read `C:/Users/Bean/.agents/` directly. Workaround: pipe content via stdin OR copy file into project workspace.
-- **Producer's CLASSIFICATION prompt under-detects `spawns`** (per cross-model comparison). On 9 of 11 rule+incident pairs, Producer called `connects` while Claude + Gemini Flash both called `spawns`. Spec needs a worked example.
-
-## Bean's grading result (2026-04-26 evening)
-
-All four producer variants on `gemini-2.5-flash` FAILED the 14/20 gate (best 10/20). But **Gemini Flash CLI (`gemini-3-flash-preview`) hits 15/20 type-only / 13/20 strict** against Bean's grades — the fix is the model, not the prompt.
-
-Bean's grading also surfaced three real bugs:
-- Spawns direction notation inverted from natural reading (code uses `A→B` = A is newer; natural reading = A spawned B = A is origin/older). Strict gate drops from 15→13 because of this.
-- Producer + Claude proxy both biased toward `spawns B→A` (mechanical date-based logic).
-- Date-of-capture ≠ date-of-incident (rule lessons captured before detailed incident write-ups break the temporal logic).
-
-Three lesson corrections also flagged (134's 6th-lens content wrong, 133's conclusion wrong, 79/140/141/142 are corpus pollution).
+- Pro batches 3, 4 may need final completion check / re-dispatch on session start (small risk)
+- Meta-rule revision needs final write to correction ledger + blub.db `/api/corrections` POST (the API expects a `learning` field that the autopilot capture format doesn't supply — captured as TODO)
+- `/search--local` 88% miss claim is untested at higher params and shouldn't be cited verbatim until re-tested
 
 ## Next Priorities (in order)
 
-1. **Swap classifier model + fix spawns direction logic.** `CLASSIFICATION_MODEL = "gemini-3-flash-preview"`. Invert spawns date check (older→newer is the origin direction). Re-run on 20 pairs. Expected gate: ≥14/20 strict.
-2. **Run producer for real (NOT dry-run).** Cluster JSON at `workspace/memory/insight-graph-lessons-clusters.json` is still from 2026-04-25 — zero typed edges written. Bean's seeing only the table view because the Map view has nothing typed to draw. After this run + dashboard rebuild, Map view populates.
-3. **Build Layer A.5 — meta-analysis widgets.** New 30-60 min layer Bean requested 2026-04-27. Pure SQL queries on `lesson_edges` + `learning`, no LLM cost. 10 cheap widgets give corpus-level insights (contradiction heatmap, fertility leaderboard, lonely-lessons report, duplicate detector, captured-twice anti-pattern counter, stale chain navigator, etc.). This is what makes Layer A actually *insightful* not just a graph.
-4. **Lesson corrections** — rewrite 134 (6th lens = end-goal + brand alignment) and 133 (auto-go is fine for non-strategic tasks). Move 79/140/141/142 out of `learning` into `gap_corrections` table.
-5. **Layer B priority decision** — cluster-level synthesis (one LLM call per dense cluster) + tension-surfacing (Decide mode from original Insight Graph vision) are the two Bean wants prioritised over the original Layer B units.
+1. **Verify Pro batches 3+4 complete; re-dispatch if not.** Same Flash CLI command shape — `cat CLASSIFY_PROMPT_V2.md batch-N.md | gemini -p ... --model gemini-3-pro-preview > result-v2-N.txt`. Aggregate ALL 5 batches via `aggregate.py` (Flash version exists — needs minor tweak for multi-role schema with new pipe columns).
+2. **Aggregate Pro multi-role data + map adoption tiers.** Produce a final classification table grouping by `primary_role` and surfacing `secondary_roles` per skill. Use this to confirm/refine the 5-tier toolkit adoption order (Brains → core JUDGES → OPTIMISERS → WRITERS → ROUTERS/specialists).
+3. **Test /search--local at 50 queries × 50 limit** (or until exhausted) on the same 161 skills to fact-check the 88% miss-rate claim. Adjust the meta-rule if findings shift, then write the rule to correction ledger + POST to `/api/corrections` with the right schema.
+4. **Spec the optimisation-toolkit** as `~/.agents/skills/shared-references/optimisation-toolkit/` with 6 utility modules (`dspy_signature.py`, `few_shot_injector.py`, `certainty_calc.py`, `canary_split.py`, `forward_hypothesis.py`, `cost_router.py`). Use `/strategic-plan` first for phasing + adoption order. Write spec at `~/.openclaw/.claude/subprojects/ssb/specs/2026-04-27-optimisation-toolkit-v1.md`.
+5. **Build first toolkit utility + wire to one consumer end-to-end.** Recommended: `dspy_signature.py` + wire to skill-writer with `--optimise` flag against held-out skill corpus. Validates the architecture before building the other 5 utilities.
 
 ## Files Modified
 
 | File path | What changed |
 |---|---|
-| `C:/Users/Bean/.agents/skills/capture-lesson/scripts/insights_producer.py` | NEW (1378 lines): full producer with embedding cache, classification loop, fertility recompute, review flow |
-| `C:/Users/Bean/.agents/skills/capture-lesson/scripts/run_regression.py` | NEW: regression harness skeleton |
-| `C:/Users/Bean/.agents/skills/capture-lesson/scripts/migrations/2026-04-25_add_typed_edges.sql` | NEW: SQL migration for 4 typed-edge tables |
-| `C:/Users/Bean/.agents/skills/capture-lesson/fixtures/mock-graph-output.json` | NEW: dashboard mock fixture |
-| `C:/Users/Bean/.agents/skills/capture-lesson/fixtures/regression-pairs.json` | NEW: 20 pairs for regression gate (blind to Bean) |
-| `C:/Users/Bean/.agents/skills/capture-lesson/fixtures/regression-predictions.json` | NEW: 4-model predictions (private — Bean grades blind) |
-| `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/src/components/ClusterMap.tsx` | EDGE_STYLE map, edge type styling, synthesis diamond, stale dimming |
-| `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/src/components/ClusterDashboard.tsx` | Filter panel, edge filtering, stale dimming in table |
-| `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/src/app/api/insights/route.ts` | edge_types/hide_stale/min_confidence query params |
-| `C:/Users/Bean/.openclaw/.claude/subprojects/automation-engine/flows/insights-producer-weekly.yaml` | NEW: disabled APScheduler flow |
-| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/state.md` | current_step + last_updated bumped |
-| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/decisions.md` | +2 entries (BGE-M3 switch, cosine threshold 0.75) |
-| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/2026-04-26-regression-gate-pairs.md` | NEW: blind grading sheet (sent to Bean's Telegram) |
-| `C:/Users/Bean/.openclaw/workspace/memory/research/2026-04-26-ollama-bge-m3-nan-bug.md` | NEW: research finding |
-| `c:/Users/Bean/Projects/small-giants-studio/.gitignore` | Added .scratch/ + data/ |
-| Ollama env (Windows User scope) | OLLAMA_FLASH_ATTENTION=false (persists across reboots) |
+| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/state.md` | current_step updated with optimisation-toolkit audit context |
+| `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/decisions.md` | +4 entries (toolkit framing, shared-utility model, audit method, seo-audit symlink) |
+| `C:/Users/Bean/.agents/skills/seo-audit` | archived → real SymbolicLink → `marketing-skills/references/seo-audit/` |
+| `C:/Users/Bean/.agents/skills/_archived/2026-04-27-seo-audit-standalone/` | NEW — old standalone + ARCHIVE_NOTE.md |
+| `blub.db skill_registry` | row 34 deleted (stale path); row 516 inserted (symlinked path, enabled=1) |
+| Python env | dspy-ai 3.2.0 + scikit-learn 1.8.0 + litellm installed; google-generativeai 0.8.6 uninstalled |
+| `C:/Users/Bean/Projects/small-giants-studio/.scratch/skill-batches/` | NEW dir — 5 batch bundles, prompt template, Flash + Pro classifications, aggregator |
 
 ## Notes for Next Session
 
-- **Spec is LOCKED.** Do not re-research, do not re-design. The 5 producer defaults are unchanged. Embedding model is the only deviation (BGE-M3 vs Gemini).
-- **Producer's bias:** under-detects `spawns`. On rule+incident pairs (which are the dominant pattern in Bean's lesson library), the Producer's prompt requires a more explicit worked example. Don't rewrite the prompt body wholesale — add ONE example to `[FEW-SHOT EXAMPLES]`.
-- **Cerebras + Gemini Flash both have workspace constraints.** Cerebras hangs on >50KB inputs. Gemini Flash CLI sandboxes to project root. For cross-model verification, copy/compact files into the project workspace OR pipe via stdin.
-- **Producer NEVER mentions OLLAMA_FLASH_ATTENTION in code paths.** It's set globally as a User-scope env var. If a future session ships the producer to a different machine, that env var is required — comment in producer constants block documents this.
-- **Pair 6 is the unanimous-strong-spawns pair.** All 4 models agreed. Use it as the worked example if tuning the CLASSIFICATION prompt: lesson 67 (rule "quality scores must ship with remediations") + lesson 136 (incident "Pre-script remediations for every quality score").
+- **The optimisation-toolkit is shared infrastructure, not a new system.** Anti-pattern signal: any proposal that reads as "build new X to replace skill-optimiser/gap-analysis/lifecycle" — those skills already do most of the work via the 7-step OPTIMISE flow + correction ledger + 6-lens check + skillscore. Toolkit adds the few specific missing pieces (DSPy MIPROv2, ProTeGi auto-injection, certainty %, canary held-out, forward hypothesis, CAPO cost gate).
+- **Reading SKILL.md descriptions ≠ reading content.** I scanned descriptions in earlier turns and missed: skill-auditor merge into skill-optimiser (still TBD — auditor still has its own SKILL.md but Bean implied a merge happened), ui-ux-pro-max as the design-system brain (not just one design tool), 6 brains rather than 1. Always read full content for cross-cutting audits.
+- **/search--local is for relevance, not coverage.** Top-RRF chunks per query miss most matches at registry-audit scale. Use parallel cheap-model batches (Flash CLI free, Pro CLI for higher fidelity).
+- **Symlinks need PowerShell `New-Item -ItemType SymbolicLink`** (works without admin if dev mode is on, which Bean's machine has). Junction is the fallback if symlink fails.
+- **WAL checkpoint pattern**: any sustained writer should periodically `PRAGMA wal_checkpoint(PASSIVE)` to avoid blocking concurrent writers. Already in producer; remember for any new long-running scripts.
 
 ## Next Session Prompt
 
 ~~~
-You are a senior AI/ML engineer specialising in retrieval-augmented systems and prompt engineering for typed knowledge graphs. Your immediate job is verifying the insights-generation producer hits its regression gate (≥14/20) and tuning the CLASSIFICATION prompt if it doesn't.
+You are a senior skill architect specialising in AI coding assistant tooling and meta-skill optimisation infrastructure (DSPy + ProTeGi + TextGrad + Sakana patterns). Continue from yesterday's optimisation-toolkit audit.
 
-Read CONVERSATION-HANDOFF.md and CLAUDE.md for full context. The spec is locked at `C:/Users/Bean/.openclaw/.claude/subprojects/ssb/specs/2026-04-25-insights-generation-redesign.md` — do not re-design. Layer A is built and the producer runs on BGE-M3.
+Resume command: CLAUDE_CODE_ENABLE_AWAY_SUMMARY=1 claude -p --resume "small-giants-studio-2026-04-27-ssb-optimisation-toolkit"
+
+Read `CONVERSATION-HANDOFF.md` and the SSB subproject docs (`C:/Users/Bean/.openclaw/.claude/subprojects/ssb/state.md`, `decisions.md`) for full context.
 
 ## Skills to Invoke
 
 | Skill | When to use |
 |-------|-------------|
-| `/brainstorming` | If gate fails and prompt-tuning needs design discussion |
-| `/gap-analysis` | After Layer A passes the regression gate — grade the BUILD output (NOT the spec) |
-| `/lifecycle` | Only if any skill / agent file is edited |
-| `/research` | If a tuning question needs source comparison (e.g. "how do retrieval models distinguish spawns from connects") |
-| `/strategic-plan` | When planning Layer B units (U10-U14) |
-| `/qc` | Mandatory verification gate after the regression gate passes |
-| `/rebuild-dashboard` | Mandatory after producer ships its first real run |
-| `/research-check` | Quick lookups (e.g. Ollama version notes, Gemini Flash quirks) |
+| `/brainstorming` | Designing toolkit module shapes + adoption-hook patterns |
+| `/gap-analysis` | Grade the toolkit spec before writing code (>= B required) |
+| `/lifecycle` | If editing any existing skill to add adoption hooks |
+| `/research` / `/research-check` | Quick fact-checks on DSPy MIPROv2 + TextGrad + ProTeGi specifics |
+| `/strategic-plan` | Phase the toolkit build + consumer adoption order |
+| `/qc-inline` | QC the meta-rule revision before committing it (already drafted, needs final review + log) |
+| `/skillscore` | Score the toolkit utilities + each adoption hook |
+| `/skill-optimiser` | Use existing 7-step OPTIMISE flow if any utility design needs iteration |
 
 ## MCP Servers & Tools
 
 | Tool | What to use it for |
 |------|-------------------|
-| Playwright (browser_navigate / browser_take_screenshot) | Verify `/insights` after rebuild — typed edges visible, filter panel works, stale dimming |
-| Direct sqlite3 via Python on `C:/Users/Bean/.openclaw/workspace/tools/blub-dashboard-v2/data/blub.db` | Inspect lesson_edges after first real run |
-| Telegram CLI `python C:/Users/Bean/.claude/hooks/tg-cli.py send` | Send Bean grading prompts or status updates while he is away from PC |
+| Local-search hook (`python ~/.claude/hooks/local-search.py "query"`) | Relevance lookups against blub.db |
+| Direct sqlite3 on `blub.db` | Reading skill_registry, embeddings, lesson_edges, gap-analysis history |
+| Gemini CLI (`gemini -p ... --model gemini-3-pro-preview`) | Re-run Pro batches 3+4 if not complete; aggregate later batches |
+| `python C:/Users/Bean/.claude/hooks/tg-cli.py send` | Telegram updates while Bean is away from PC |
 
 ## Agents to Delegate To
 
 | Agent | When |
 |-------|------|
-| `general-purpose` | Compact-prompt cross-model classification on 20 pairs (when re-running after prompt tune) |
-| `research-pipeline` | If a deeper research call is needed for prompt design |
+| `general-purpose` | Aggregating Pro batch results into final multi-role table |
+| `feature-dev:code-architect` | Toolkit utility module designs (`dspy_signature.py`, `few_shot_injector.py`, etc.) |
+| `feature-dev:code-reviewer` | Review toolkit utility code before wiring to consumers |
 
 ## Research Approach
 
-If the producer fails the gate and prompt-tuning is needed:
-1. Read Bean's actual blind grades from chat or `regression-pairs.json` (after Bean fills in `expected` field)
-2. Diff against `regression-predictions.json` (private) — focus on misses
-3. Categorise misses by edge type (which type does the producer over/under-detect?)
-4. For each miss category, propose ONE worked example to add to the few-shot block
-5. Re-run on the 20 pairs and verify accuracy improves
+If adopting cutting-edge DSPy/TextGrad patterns, use `/research-check` (default tier) for quick fact-checks; `/research-buddies` for deeper validation against production write-ups. Past relevant research is at `C:/Users/Bean/.openclaw/workspace/memory/research/2026-04-27-self-improving-llm-classifier-orchestrator.md` + `2026-04-27-orchestrator-worker-llm-frameworks-gh.md`. Both already vetted; cite directly without re-running.
 
 ---
 
-## Task 1: Compute the regression gate result
+## Task 1: Verify + aggregate Pro multi-role classification
 
-Run a comparison script that reads Bean's grades from `fixtures/regression-pairs.json` (the `expected` field he fills in) against `fixtures/regression-predictions.json` (private file with all 4 model predictions). Compute Producer accuracy: count where Producer's prediction matches Bean's expected (type + direction). Pass if ≥14/20.
+Check `C:/Users/Bean/Projects/small-giants-studio/.scratch/skill-batches/result-v2-{1..5}.txt`. If batches 3 or 4 still missing pipe-format lines (≥ 25), re-dispatch with same command shape (`cat CLASSIFY_PROMPT_V2.md batch-N.md | gemini -p ... --model gemini-3-pro-preview > result-v2-N.txt`). Then update `aggregate.py` to handle the new 12-column multi-role pipe format and produce a final table grouped by primary_role with secondary_roles surfaced. Output to `all-skills-classified-v2.json`.
 
-Use Bean's grades as the source of truth. The cross-model consensus is informational only — do not weight it.
+## Task 2: Re-test /search--local at higher params + finalise meta-rule
 
-## Task 2: If gate fails, tune the CLASSIFICATION prompt
+Run /search--local across the same 20 qualification queries but at limit=50 instead of 15. Optionally extend to 50 queries. Recompute the miss rate. If it's still >50% miss vs Flash, the revised meta-rule stands. Otherwise weaken the rule wording. Final rule goes to correction ledger + POST to `/api/corrections` (note: API requires `learning` field — see schema in skill_registry table or sample existing rows).
 
-The prompt body is in `insights_producer.py` constants near the top OR in `classify_edge_type()` function. Add ONE worked example to the `[FEW-SHOT EXAMPLES]` block that distinguishes the misclassified edge type. Most likely fix (based on cross-model evidence): a `spawns B->A` example using lesson 67 + lesson 136 (pair 6 — unanimous strong consensus).
+## Task 3: Spec the optimisation-toolkit + build first utility
 
-After tuning, re-run on the same 20 pairs and verify accuracy ≥14/20. Only then proceed to Task 3.
-
-## Task 3: /qc + /rebuild-dashboard verification
-
-Run `/qc` on the producer + dashboard changes (NOT the spec — spec is locked). Then `/rebuild-dashboard`. Visual check at http://localhost:5050/insights via Playwright: typed edges render with the EDGE_STYLE colours from `ClusterMap.tsx`, filter panel checkboxes work, stale lessons are dimmed in the table.
+Use `/strategic-plan` to phase the build. Write spec to `~/.openclaw/.claude/subprojects/ssb/specs/2026-04-27-optimisation-toolkit-v1.md`. Then build `dspy_signature.py` (the foundational utility) at `~/.agents/skills/shared-references/optimisation-toolkit/dspy_signature.py`. Wire to skill-writer as a `--optimise` flag against a held-out corpus of 5-10 hand-picked "good" SKILL.md files. Validate: skill-writer runs the optimised prompt, produces a SKILL.md that passes `/skillscore` ≥ 90% and `/gap-analysis` ≥ B. If yes → architecture validated; build the other 5 utilities.
 
 ## Guardrails
 
-- Spec is LOCKED — do not re-design, do not change the 5 producer defaults
-- The 3 LLM prompts in the spec are character-for-character contracts — only ADD few-shot examples, never change the SYSTEM block
-- The 14/20 gate is the ship gate. Below = tune + re-run. Do not lower the gate.
-- Embedding model swap is a one-line change — do not switch back to nomic without explicit reason
-- Bean's grades are ground truth, not the cross-model consensus
+- Do NOT build anything that competes with skill-optimiser, gap-analysis, lifecycle. Toolkit is shared utilities used BY them.
+- Do NOT label this as a new subproject. SSB Phase 4.
+- Read full SKILL.md content for any audit decisions, never just descriptions.
+- Time estimates: default LOW. Toolkit core is ~4 hrs, per-consumer wire is ~90 min. Don't quote weeks.
+- Pro batches 3+4 may complete on their own — check first before re-dispatching.
+- Symlink at `~/.agents/skills/seo-audit/` is a real SymbolicLink, not a junction. Do not delete or rename without re-creating link.
 ~~~
