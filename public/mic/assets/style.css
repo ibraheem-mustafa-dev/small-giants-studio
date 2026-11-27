@@ -26,6 +26,8 @@ html { -webkit-text-size-adjust: 100%; scroll-padding-top: 12px; }
 body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 1.0625rem; line-height: 1.55; }
 img { max-width: 100%; height: auto; }
 h1, h2, h3, h4 { font-family: var(--head); font-weight: 600; line-height: 1.15; margin: 0 0 .5em; }
+/* Fraunces stays on h1 and h2; everything smaller is Figtree, which reads more easily. */
+h3, h4 { font-family: var(--body); font-weight: 800; }
 h2 { font-size: clamp(1.7rem, 6vw, 2.4rem); color: var(--teal); }
 h3 { font-size: 1.3rem; }
 h4 { font-size: 1.15rem; }
@@ -47,7 +49,7 @@ li { margin-bottom: .5em; }
 .hero-inner { max-width: 1100px; margin: 0 auto; padding: 22px 20px 0; position: relative; }
 .hero .logo { display: block; width: 200px; height: auto; margin-bottom: 28px; }
 .hero h1 { font-size: clamp(2.2rem, 9.5vw, 3.9rem); max-width: 14em; margin-bottom: .4em; }
-.hero h1 em { font-style: italic; }
+.hero h1 em { font-style: normal; color: #FDE68A; }
 .hero .lede { font-size: 1.2rem; max-width: 30em; margin-bottom: 0; }
 .hero .giant { display: block; width: 170px; height: auto; margin: -10px -20px -52px auto; pointer-events: none; }
 
@@ -93,7 +95,7 @@ main > section { padding-top: 38px; }
 .group { margin-top: 28px; color: var(--ink); border-bottom: 3px solid var(--amber); padding-bottom: 6px; display: inline-block; }
 .prompt { background: var(--paper); border: 2px solid var(--line); border-radius: var(--radius); padding: 18px 18px 14px; margin: 14px 0 18px; }
 .prompt h3 { display: flex; align-items: center; gap: 12px; margin-bottom: .3em; font-size: 1.25rem; }
-.num { flex: none; display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--teal); color: #fff; font-family: var(--head); font-size: 1.15rem; }
+.num { flex: none; display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--teal); color: #fff; font-family: var(--body); font-weight: 800; font-size: 1.1rem; }
 .tags { margin-bottom: .8em; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
 .roles { font-size: .92rem; color: var(--ink-soft); font-weight: 600; }
 .work { background: var(--amber-deep); color: #fff; font-weight: 800; font-size: .78rem; letter-spacing: .04em; padding: 3px 9px; border-radius: 6px; }
@@ -113,7 +115,7 @@ summary { cursor: pointer; list-style: none; display: flex; align-items: center;
 summary::-webkit-details-marker { display: none; }
 summary::after { content: "+"; margin-left: auto; flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--teal); color: #fff; font: 800 1.4rem/1 var(--body); }
 details[open] > summary::after { content: "\2212"; }
-.rname { font-family: var(--head); font-weight: 600; font-size: 1.3rem; color: var(--ink); }
+.rname { font-family: var(--body); font-weight: 800; font-size: 1.2rem; color: var(--ink); }
 .rcount { font-size: .9rem; color: var(--ink-soft); font-weight: 600; }
 summary { flex-wrap: wrap; }
 summary .rcount { flex-basis: 100%; order: 3; margin-top: -8px; }
@@ -148,7 +150,7 @@ summary .rcount { flex-basis: 100%; order: 3; margin-top: -8px; }
 .gala h4 { margin: .2em 0 .35em; }
 .offers h3:not(.gala-h) { margin-top: 30px; }
 .price { margin-bottom: .5em; }
-.now { font-family: var(--head); font-weight: 600; font-size: 2.1rem; line-height: 1; color: var(--ink); }
+.now { font-family: var(--body); font-weight: 800; font-size: 2rem; line-height: 1; color: var(--ink); }
 .then { font-size: 1.05rem; font-weight: 600; color: var(--ink-soft); margin-left: 6px; }
 .std { width: 100%; border-collapse: collapse; background: var(--paper); border: 2px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 16px; }
 .std th, .std td { text-align: left; padding: 12px 14px; border-top: 1px solid var(--line); vertical-align: top; }
@@ -165,7 +167,7 @@ summary .rcount { flex-basis: 100%; order: 3; margin-top: -8px; }
 .about figure { margin: 0; text-align: center; }
 .about figure img { width: 180px; height: 180px; border-radius: 50%; border: 6px solid var(--teal); }
 .about figcaption { font-weight: 700; margin-top: 8px; }
-.bfg { font-family: var(--head); font-size: 1.5rem; line-height: 1.25; color: var(--teal); border-left: 8px solid var(--amber); padding-left: 16px; }
+.bfg { font-family: var(--body); font-weight: 700; font-size: 1.3rem; line-height: 1.25; color: var(--teal); border-left: 8px solid var(--amber); padding-left: 16px; }
 #mic-proof { font-weight: 700; }
 
 /* Footer */
@@ -173,7 +175,7 @@ summary .rcount { flex-basis: 100%; order: 3; margin-top: -8px; }
 .foot-inner { max-width: 1060px; margin: 0 auto; }
 .foot .logo { width: 190px; height: auto; display: block; margin-bottom: 14px; }
 .foot a { color: #fff; }
-.every { font-family: var(--head); font-style: italic; font-size: 1.3rem; }
+.every { font-family: var(--body); font-weight: 700; font-size: 1.2rem; }
 .contacts { list-style: none; padding: 0; }
 .contacts li { margin-bottom: .4em; }
 .contacts a { display: inline-block; padding: 11px 0; }
