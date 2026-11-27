@@ -5,6 +5,8 @@ Website for Small Giants Studio — a Birmingham-based digital transformation co
 
 **Domain:** smallgiantsstudio.co.uk
 **Stack:** Next.js 16 + Tailwind CSS v4 (deployed to Vercel)
+
+**Deploying:** pushing to GitHub does not deploy (Vercel blocks git deployments for this project). After pushing, deploy from this folder with `npx vercel --prod` (CLI signed in as `ibraheem-mustafa-dev`). `/mic` is the MIC gala stall page (static files in `public/mic`, copied in from `small-giants-business/02-marketing/mic-gala-2026/deploy/sync-to-site.py`) and `/hello` is a temporary 302 to it: printed QR codes depend on both, so never remove them.
 **Status:** Phases 1-5 complete. Design Overhaul (March 2026) complete.
 
 ---
