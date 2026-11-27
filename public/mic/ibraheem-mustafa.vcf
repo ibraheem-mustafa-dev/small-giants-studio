@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Mustafa;Ibraheem;;;
+FN:Ibraheem Mustafa
+ORG:Small Giants Studio
+TITLE:Founder
+TEL;TYPE=CELL,VOICE:+44 7424 449555
+EMAIL;TYPE=INTERNET,WORK:ibraheem@smallgiantsstudio.co.uk
+URL:https://smallgiantsstudio.co.uk
+item1.URL:https://www.linkedin.com/in/ibraheem-mustafa
+item1.X-ABLabel:LinkedIn
+END:VCARD

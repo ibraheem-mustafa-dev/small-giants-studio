@@ -1,6 +1,20 @@
 import type { NextConfig } from "next";
 
+// The MIC gala stall page is static files in public/mic (built in the small-giants-business repo,
+// 02-marketing/mic-gala-2026/stall-page, copied here by deploy/sync-to-site.py). It embeds the Cal.com
+// booking calendar, so it has its own Content-Security-Policy.
+const MIC_CSP =
+  "default-src 'none'; script-src 'self' https://app.cal.com https://cal.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://app.cal.com https://cal.com; font-src 'self'; frame-src https://app.cal.com https://cal.com; connect-src 'self' https://app.cal.com https://cal.com https://api.cal.com; form-action 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'";
+
 const nextConfig: NextConfig = {
+  // Printed QR codes: /hello (banner and cards, repointed per event) and /mic (MIC gala leaflet).
+  // A temporary 302 so /hello can point somewhere else after the event.
+  async redirects() {
+    return [{ source: "/hello", destination: "/mic", statusCode: 302 }];
+  },
+  async rewrites() {
+    return [{ source: "/mic", destination: "/mic/index.html" }];
+  },
   async headers() {
     return [
       {
@@ -27,6 +41,14 @@ const nextConfig: NextConfig = {
             value: "camera=(), microphone=(), geolocation=()",
           },
         ],
+      },
+      {
+        source: "/mic",
+        headers: [{ key: "Content-Security-Policy", value: MIC_CSP }],
+      },
+      {
+        source: "/mic/:path*",
+        headers: [{ key: "Content-Security-Policy", value: MIC_CSP }],
       },
     ];
   },

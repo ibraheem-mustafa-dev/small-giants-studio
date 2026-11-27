@@ -1,0 +1,66 @@
+/* Small Giants Studio, MIC gala cheat sheet PDF. A4 portrait. */
+@font-face { font-family: "Fraunces"; src: url("fonts/fraunces-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+@font-face { font-family: "Fraunces"; src: url("fonts/fraunces-italic-600.woff2") format("woff2"); font-weight: 600; font-style: italic; }
+@font-face { font-family: "Figtree"; src: url("fonts/figtree-var.woff2") format("woff2"); font-weight: 300 900; font-style: normal; }
+
+:root { --teal: #1F7A7A; --amber: #D97706; --ink: #1A1A1A; --soft: #3D3D3D; --tint: #EAF4F4; --line: #B9D6D6; --head: "Fraunces", Georgia, serif; --body: "Figtree", Arial, sans-serif; }
+@page { size: A4; margin: 16mm 15mm 18mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: var(--body); font-size: 9.6pt; line-height: 1.42; color: var(--ink); }
+h1, h2, h3, h4 { font-family: var(--head); font-weight: 600; margin: 0 0 .4em; line-height: 1.15; break-after: avoid; }
+h2 { font-size: 17pt; color: var(--teal); margin-top: 16pt; border-bottom: 2.5pt solid var(--amber); padding-bottom: 3pt; }
+h3 { font-size: 12pt; }
+p { margin: 0 0 .7em; }
+a { color: var(--teal); }
+ul, ol { margin: 0 0 .8em; padding-left: 1.3em; }
+li { margin-bottom: .3em; }
+
+.cover { background: var(--teal); color: #fff; border-radius: 6pt; margin: 0 0 10pt; padding: 9mm 10mm 7mm; }
+.cover .logo { display: block; width: 62mm; margin-bottom: 8mm; }
+.cover h1 { font-size: 25pt; margin-bottom: 6pt; }
+.cover h1 em { font-style: italic; }
+.cover .lede { font-size: 11pt; margin: 0; }
+
+.safety { border: 2pt solid var(--teal); border-left-width: 6pt; border-radius: 4pt; padding: 8pt 12pt 2pt; margin-bottom: 8pt; break-inside: avoid; }
+.safety h3, .start h3, .habits h3, .evidence h3 { color: var(--teal); }
+.wa-note { background: #FFF3DC; border-left: 6pt solid var(--amber); padding: 6pt 10pt; font-weight: 600; border-radius: 4pt; }
+.start, .habits, .evidence { border: 1pt solid var(--line); border-radius: 4pt; padding: 8pt 12pt 2pt; margin-bottom: 8pt; break-inside: avoid; }
+.start ul { list-style: none; padding: 0; columns: 2; column-gap: 14pt; }
+.start li { break-inside: avoid; }
+.group { margin-top: 12pt; display: block; border-bottom: 1.5pt solid var(--amber); padding-bottom: 2pt; }
+
+.prompt { border: 1pt solid var(--line); border-radius: 4pt; padding: 8pt 10pt 4pt; margin: 6pt 0 9pt; break-inside: avoid; }
+.prompt h3 { display: flex; align-items: center; gap: 7pt; font-size: 11pt; margin-bottom: 2pt; }
+.num { flex: none; display: inline-block; width: 17pt; height: 17pt; line-height: 17pt; text-align: center; border-radius: 50%; background: var(--teal); color: #fff; font-size: 9.5pt; }
+.tags { margin-bottom: 4pt; font-size: 8.4pt; }
+.roles { color: var(--soft); font-weight: 600; }
+.work { background: var(--amber); color: var(--ink); font-weight: 800; font-size: 7.2pt; letter-spacing: .04em; padding: 1pt 5pt; border-radius: 3pt; margin-left: 6pt; }
+.ptext { background: var(--tint); border-left: 3pt solid var(--teal); border-radius: 3pt; padding: 6pt 8pt; margin-bottom: 4pt; white-space: pre-wrap; overflow-wrap: anywhere; }
+.tip { font-size: 8.8pt; color: var(--soft); margin-bottom: 3pt; }
+.tip strong { color: var(--ink); }
+
+.role { break-before: auto; }
+.rolename { break-after: avoid; }
+.intro { font-weight: 600; }
+.see { font-size: 8.8pt; }
+.tools-h { margin-top: 8pt; font-size: 11pt; }
+.tools { list-style: none; padding: 0; }
+.tools li { padding: 4pt 0; border-top: .6pt solid var(--line); margin: 0; break-inside: avoid; }
+.label { display: inline-block; font-size: 7.4pt; font-weight: 700; padding: 0 4pt; border-radius: 3pt; border: 1pt solid var(--teal); background: var(--tint); white-space: nowrap; }
+.label-maker, .label-customer { border-color: var(--amber); background: #FFF3DC; }
+.note { background: var(--tint); border-radius: 3pt; padding: 5pt 8pt; font-size: 8.8pt; break-inside: avoid; }
+.key { font-size: 8.6pt; color: var(--soft); margin-top: 12pt; }
+.pagebreak { break-before: page; margin-top: 0; }
+
+.back { break-before: page; }
+.about-grid { display: grid; grid-template-columns: 38mm 1fr; gap: 8mm; align-items: center; margin-bottom: 8pt; }
+.about-grid figure { margin: 0; text-align: center; }
+.about-grid img { width: 34mm; height: 34mm; border-radius: 50%; border: 2.5pt solid var(--teal); }
+.about-grid figcaption { font-weight: 700; font-size: 8.8pt; margin-top: 3pt; }
+.bfg { font-family: var(--head); font-size: 13pt; color: var(--teal); border-left: 4pt solid var(--amber); padding-left: 8pt; }
+.nextstep { display: grid; grid-template-columns: 34mm 1fr; gap: 7mm; align-items: center; background: #FFF3DC; border-left: 6pt solid var(--amber); border-radius: 4pt; padding: 8pt 12pt; margin: 8pt 0; }
+.qr { width: 34mm; height: 34mm; }
+.big { font-family: var(--head); font-size: 15pt; margin-bottom: 3pt; }
+.contacts { list-style: none; padding: 0; }
+.small { font-size: 8.6pt; color: var(--soft); }
