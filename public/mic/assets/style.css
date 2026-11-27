@@ -1,6 +1,5 @@
 /* Small Giants Studio, MIC gala stall page. Mobile first. */
 @font-face { font-family: "Fraunces"; src: url("fonts/fraunces-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Fraunces"; src: url("fonts/fraunces-italic-600.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
 @font-face { font-family: "Figtree"; src: url("fonts/figtree-var.woff2") format("woff2"); font-weight: 300 900; font-style: normal; font-display: swap; }
 
 :root {

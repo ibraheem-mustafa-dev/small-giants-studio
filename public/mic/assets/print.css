@@ -1,6 +1,5 @@
 /* Small Giants Studio, MIC gala cheat sheet PDF. A4 portrait. */
 @font-face { font-family: "Fraunces"; src: url("fonts/fraunces-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
-@font-face { font-family: "Fraunces"; src: url("fonts/fraunces-italic-600.woff2") format("woff2"); font-weight: 600; font-style: italic; }
 @font-face { font-family: "Figtree"; src: url("fonts/figtree-var.woff2") format("woff2"); font-weight: 300 900; font-style: normal; }
 
 :root { --teal: #1F7A7A; --amber: #D97706; --ink: #1A1A1A; --soft: #3D3D3D; --tint: #EAF4F4; --line: #B9D6D6; --head: "Fraunces", Georgia, serif; --body: "Figtree", Arial, sans-serif; }
@@ -19,7 +18,7 @@ li { margin-bottom: .3em; }
 .cover { background: var(--teal); color: #fff; border-radius: 6pt; margin: 0 0 10pt; padding: 9mm 10mm 7mm; }
 .cover .logo { display: block; width: 62mm; margin-bottom: 8mm; }
 .cover h1 { font-size: 25pt; margin-bottom: 6pt; }
-.cover h1 em { font-style: italic; }
+.cover h1 em { font-style: normal; color: #FDE68A; }
 .cover .lede { font-size: 11pt; margin: 0; }
 
 .safety { border: 2pt solid var(--teal); border-left-width: 6pt; border-radius: 4pt; padding: 8pt 12pt 2pt; margin-bottom: 8pt; break-inside: avoid; }
