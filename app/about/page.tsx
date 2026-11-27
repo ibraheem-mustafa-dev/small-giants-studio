@@ -167,8 +167,8 @@ export default function AboutPage() {
       <section className="bg-gradient-to-r from-primary-800 to-primary-700 py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <blockquote className="text-xl font-medium leading-relaxed text-white sm:text-2xl lg:text-3xl">
-            &ldquo;Government research says small business owners spend 33 hours a week on admin.
-            That&apos;s not running a business — that&apos;s being run by one.&rdquo;
+            &ldquo;Small business owners lose about a day a week to admin.
+            That&apos;s not running a business, that&apos;s being run by one.&rdquo;
           </blockquote>
           <p className="mt-4 text-base text-white/80">
             That stat is why Small Giants Studio exists.

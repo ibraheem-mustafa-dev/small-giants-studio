@@ -1,10 +1,10 @@
 export function Problem() {
   const painPoints = [
     {
-      stat: "33",
-      unit: "hours",
-      label: "per week on admin",
-      description: "Government research shows small business owners spend a third of their week on paperwork",
+      stat: "1",
+      unit: "day",
+      label: "a week on admin",
+      description: "The FSB found small business owners spend 33 hours a month on admin. That's about a day every week",
     },
     {
       stat: "Multiple",
