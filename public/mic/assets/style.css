@@ -199,3 +199,10 @@ summary .rcount { flex-basis: 100%; order: 3; margin-top: -8px; }
 
 .use { margin: 0 0 .8em; line-height: 1.5; }
 .use strong { color: #165E5E; font-weight: 800; }
+
+.paid { background: #FDE68A; color: #1A1A1A; border-color: #D97706; }
+.nudge { margin: 1.6em 0; }
+.nudge .btn { width: 100%; justify-content: center; text-align: center; }
+.stories ul, ul.plain { padding-left: 1.2em; line-height: 1.55; }
+.stories li, ul.plain li { margin: 0 0 .7em; }
+.stories, .skills, .connect { margin-top: 2.2em; }

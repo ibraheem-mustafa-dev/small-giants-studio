@@ -67,3 +67,7 @@ li { margin-bottom: .3em; }
 
 .use { margin: 0 0 4pt; }
 .use strong { color: #165E5E; }
+
+.paid { background: #FDE68A; color: #1A1A1A; }
+.stories ul, ul.plain { padding-left: 12pt; }
+.stories li, ul.plain li { margin: 0 0 3pt; }
