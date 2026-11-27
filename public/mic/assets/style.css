@@ -48,7 +48,7 @@ li { margin-bottom: .5em; }
 .hero-inner { max-width: 1100px; margin: 0 auto; padding: 22px 20px 0; position: relative; }
 .hero .logo { display: block; width: 200px; height: auto; margin-bottom: 28px; }
 .hero h1 { font-size: clamp(2.2rem, 9.5vw, 3.9rem); max-width: 14em; margin-bottom: .4em; }
-.hero h1 em { font-style: normal; color: #FDE68A; }
+.hero h1 em { font-style: normal; color: #FBBF24; }
 .hero .lede { font-size: 1.2rem; max-width: 30em; margin-bottom: 0; }
 .hero .giant { display: block; width: 170px; height: auto; margin: -10px -20px -52px auto; pointer-events: none; }
 

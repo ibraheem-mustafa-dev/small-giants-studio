@@ -18,7 +18,7 @@ li { margin-bottom: .3em; }
 .cover { background: var(--teal); color: #fff; border-radius: 6pt; margin: 0 0 10pt; padding: 9mm 10mm 7mm; }
 .cover .logo { display: block; width: 62mm; margin-bottom: 8mm; }
 .cover h1 { font-size: 25pt; margin-bottom: 6pt; }
-.cover h1 em { font-style: normal; color: #FDE68A; }
+.cover h1 em { font-style: normal; color: #FBBF24; }
 .cover .lede { font-size: 11pt; margin: 0; }
 
 .safety { border: 2pt solid var(--teal); border-left-width: 6pt; border-radius: 4pt; padding: 8pt 12pt 2pt; margin-bottom: 8pt; break-inside: avoid; }
